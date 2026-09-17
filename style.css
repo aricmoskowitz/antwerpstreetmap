@@ -321,13 +321,46 @@ header.module-header {
   background: var(--bg);
   border-bottom: 1px solid var(--line);
   position: relative;
+  /* aspect-ratio is set inline in JS to match the map's own projection */
+  overflow: hidden;
+}
+
+.map-shell {
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
 
 #map-wrap svg {
   display: block;
   width: 100%;
-  height: auto;
-  touch-action: manipulation;
+  height: 100%;
+  touch-action: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.map-recenter {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  color: var(--ink);
+  font-size: 1.1rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+}
+
+.map-recenter:active {
+  background: var(--bg);
 }
 
 .boundary {
@@ -336,6 +369,7 @@ header.module-header {
   stroke-width: 2;
   stroke-dasharray: 6 4;
   vector-effect: non-scaling-stroke;
+  pointer-events: none;
 }
 
 .bg-streets {
@@ -344,6 +378,7 @@ header.module-header {
   stroke-width: 0.6;
   opacity: 0.35;
   vector-effect: non-scaling-stroke;
+  pointer-events: none;
 }
 
 .bg-waterways {
@@ -352,6 +387,7 @@ header.module-header {
   stroke-width: 1.2;
   opacity: 0.3;
   vector-effect: non-scaling-stroke;
+  pointer-events: none;
 }
 
 .bg-neighborhoods {
@@ -361,6 +397,7 @@ header.module-header {
   stroke-dasharray: 1.5 2;
   opacity: 0.35;
   vector-effect: non-scaling-stroke;
+  pointer-events: none;
 }
 
 .target-line {

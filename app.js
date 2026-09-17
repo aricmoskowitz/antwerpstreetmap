@@ -235,6 +235,242 @@
     go({ screen: "module", moduleId: moduleId, mode: "learn" });
   }
 
+  /* ============================== VIEWPORT / PAN & ZOOM ============================== */
+
+  function parseViewBox(s) {
+    var p = s.trim().split(/\s+/).map(Number);
+    return { x: p[0], y: p[1], w: p[2], h: p[3] };
+  }
+
+  var FULL_VB = parseViewBox(MAP_DATA.viewBox);
+  var MAP_ASPECT = FULL_VB.w / FULL_VB.h;
+  var MIN_VB_W = 12; // deepest allowed zoom-in, in world units
+  var FIT_PADDING = 0.4; // fraction of the module's own extent added as margin
+  var FIT_MIN_SIZE = 70; // floor on the fitted viewBox width, so a single tiny
+
+  // object (one small building) doesn't zoom in absurdly far.
+
+  function unionBBox(boxes) {
+    var minX = Infinity,
+      minY = Infinity,
+      maxX = -Infinity,
+      maxY = -Infinity;
+    boxes.forEach(function (b) {
+      if (b[0] < minX) minX = b[0];
+      if (b[1] < minY) minY = b[1];
+      if (b[2] > maxX) maxX = b[2];
+      if (b[3] > maxY) maxY = b[3];
+    });
+    return [minX, minY, maxX, maxY];
+  }
+
+  function clampViewBox(vb) {
+    var w = Math.min(Math.max(vb.w, MIN_VB_W), FULL_VB.w);
+    var h = w / MAP_ASPECT;
+    var minX = FULL_VB.x - w * 0.9;
+    var maxX = FULL_VB.x + FULL_VB.w - w * 0.1;
+    var minY = FULL_VB.y - h * 0.9;
+    var maxY = FULL_VB.y + FULL_VB.h - h * 0.1;
+    return {
+      x: Math.min(Math.max(vb.x, minX), maxX),
+      y: Math.min(Math.max(vb.y, minY), maxY),
+      w: w,
+      h: h,
+    };
+  }
+
+  function fitViewBoxForBBox(bbox) {
+    var w = Math.max(bbox[2] - bbox[0], 1);
+    var h = Math.max(bbox[3] - bbox[1], 1);
+    var cx = (bbox[0] + bbox[2]) / 2;
+    var cy = (bbox[1] + bbox[3]) / 2;
+    w *= 1 + FIT_PADDING * 2;
+    h *= 1 + FIT_PADDING * 2;
+    w = Math.max(w, FIT_MIN_SIZE);
+    h = Math.max(h, FIT_MIN_SIZE / MAP_ASPECT);
+    if (w / h < MAP_ASPECT) {
+      w = h * MAP_ASPECT;
+    } else {
+      h = w / MAP_ASPECT;
+    }
+    // Fully contain the fitted window within the real map extent (rather
+    // than the looser pan clamp, which permits overscroll during
+    // interaction but would otherwise leave a large/whole-map module
+    // off-center here).
+    if (w >= FULL_VB.w || h >= FULL_VB.h) {
+      return { x: FULL_VB.x, y: FULL_VB.y, w: FULL_VB.w, h: FULL_VB.h };
+    }
+    var x = Math.min(Math.max(cx - w / 2, FULL_VB.x), FULL_VB.x + FULL_VB.w - w);
+    var y = Math.min(Math.max(cy - h / 2, FULL_VB.y), FULL_VB.y + FULL_VB.h - h);
+    return { x: x, y: y, w: w, h: h };
+  }
+
+  function createMapController(svg, homeBBox, onTap) {
+    var home = fitViewBoxForBBox(homeBBox);
+    var vb = { x: home.x, y: home.y, w: home.w, h: home.h };
+
+    function apply() {
+      svg.setAttribute("viewBox", vb.x + " " + vb.y + " " + vb.w + " " + vb.h);
+      rescaleBadges();
+    }
+
+    function rescaleBadges() {
+      var s = vb.w / FULL_VB.w;
+      var badges = svg.querySelectorAll(".badge");
+      for (var i = 0; i < badges.length; i++) {
+        var g = badges[i];
+        g.setAttribute(
+          "transform",
+          "translate(" + g.getAttribute("data-bx") + "," + g.getAttribute("data-by") + ") scale(" + s + ")"
+        );
+      }
+    }
+
+    function reset() {
+      vb = { x: home.x, y: home.y, w: home.w, h: home.h };
+      apply();
+    }
+
+    function clientToUser(clientX, clientY) {
+      var rect = svg.getBoundingClientRect();
+      return {
+        x: vb.x + ((clientX - rect.left) / rect.width) * vb.w,
+        y: vb.y + ((clientY - rect.top) / rect.height) * vb.h,
+      };
+    }
+
+    function zoomAt(clientX, clientY, factor) {
+      var before = clientToUser(clientX, clientY);
+      var rect = svg.getBoundingClientRect();
+      var newW = vb.w / factor;
+      var clamped = clampViewBox({ x: vb.x, y: vb.y, w: newW, h: newW / MAP_ASPECT });
+      vb.w = clamped.w;
+      vb.h = clamped.h;
+      vb.x = before.x - ((clientX - rect.left) / rect.width) * vb.w;
+      vb.y = before.y - ((clientY - rect.top) / rect.height) * vb.h;
+      var reclamped = clampViewBox(vb);
+      vb = reclamped;
+      apply();
+    }
+
+    function dist(a, b) {
+      return Math.hypot(a.x - b.x, a.y - b.y);
+    }
+
+    var pointers = {};
+    var dragLast = null;
+    var pinchStartDist = null;
+    var startPointerPos = null;
+    var moved = 0;
+    var lastTapTime = 0;
+    var lastTapPos = null;
+
+    function pointerIds() {
+      return Object.keys(pointers);
+    }
+
+    svg.style.touchAction = "none";
+
+    svg.addEventListener("pointerdown", function (e) {
+      if (e.pointerType === "mouse" && e.button !== 0) return;
+      svg.setPointerCapture(e.pointerId);
+      pointers[e.pointerId] = { x: e.clientX, y: e.clientY };
+      var ids = pointerIds();
+      if (ids.length === 1) {
+        dragLast = { x: e.clientX, y: e.clientY };
+        startPointerPos = { x: e.clientX, y: e.clientY };
+        moved = 0;
+      } else if (ids.length === 2) {
+        var p = ids.map(function (id) {
+          return pointers[id];
+        });
+        pinchStartDist = dist(p[0], p[1]);
+        dragLast = null;
+      }
+    });
+
+    svg.addEventListener("pointermove", function (e) {
+      if (!pointers[e.pointerId]) return;
+      pointers[e.pointerId] = { x: e.clientX, y: e.clientY };
+      var ids = pointerIds();
+      if (ids.length === 1 && dragLast) {
+        var dx = e.clientX - dragLast.x;
+        var dy = e.clientY - dragLast.y;
+        moved += Math.abs(dx) + Math.abs(dy);
+        var rect = svg.getBoundingClientRect();
+        vb.x -= (dx / rect.width) * vb.w;
+        vb.y -= (dy / rect.height) * vb.h;
+        var clamped = clampViewBox(vb);
+        vb.x = clamped.x;
+        vb.y = clamped.y;
+        dragLast = { x: e.clientX, y: e.clientY };
+        apply();
+      } else if (ids.length === 2 && pinchStartDist != null) {
+        var pts = ids.map(function (id) {
+          return pointers[id];
+        });
+        var d = dist(pts[0], pts[1]);
+        var mid = { x: (pts[0].x + pts[1].x) / 2, y: (pts[0].y + pts[1].y) / 2 };
+        var factor = d / pinchStartDist;
+        if (factor && isFinite(factor) && factor > 0) {
+          zoomAt(mid.x, mid.y, factor);
+        }
+        pinchStartDist = d;
+      }
+    });
+
+    function handleTap(clientX, clientY) {
+      var el = document.elementFromPoint(clientX, clientY);
+      if (!el) return;
+      var t = el.closest("[data-idx]");
+      if (!t) return;
+      onTap(parseInt(t.getAttribute("data-idx"), 10));
+    }
+
+    function endPointer(e) {
+      var wasSingle = pointerIds().length === 1;
+      var startPos = startPointerPos;
+      delete pointers[e.pointerId];
+      var ids = pointerIds();
+      if (ids.length < 2) pinchStartDist = null;
+      if (ids.length === 0) {
+        dragLast = null;
+        if (wasSingle && moved < 10 && startPos) {
+          var now = Date.now();
+          if (lastTapPos && now - lastTapTime < 320 && dist(lastTapPos, startPos) < 24) {
+            zoomAt(startPos.x, startPos.y, 1.8);
+            lastTapTime = 0;
+            lastTapPos = null;
+          } else {
+            lastTapTime = now;
+            lastTapPos = startPos;
+            handleTap(startPos.x, startPos.y);
+          }
+        }
+        startPointerPos = null;
+      } else if (ids.length === 1) {
+        var remaining = pointers[ids[0]];
+        dragLast = { x: remaining.x, y: remaining.y };
+      }
+    }
+
+    svg.addEventListener("pointerup", endPointer);
+    svg.addEventListener("pointercancel", endPointer);
+
+    svg.addEventListener(
+      "wheel",
+      function (e) {
+        e.preventDefault();
+        var factor = Math.exp(-e.deltaY * 0.0015);
+        zoomAt(e.clientX, e.clientY, factor);
+      },
+      { passive: false }
+    );
+
+    apply();
+    return { reset: reset };
+  }
+
   /* ============================== MAP RENDERING ============================== */
 
   function metaLine(curObj, baseObj) {
@@ -294,6 +530,10 @@
       targets +=
         '<g class="badge" data-idx="' +
         idx +
+        '" data-bx="' +
+        bx +
+        '" data-by="' +
+        by +
         '" transform="translate(' +
         bx +
         "," +
@@ -305,6 +545,7 @@
     });
 
     return (
+      '<div class="map-shell">' +
       '<svg id="map" viewBox="' +
       MAP_DATA.viewBox +
       '" xmlns="http://www.w3.org/2000/svg">' +
@@ -323,7 +564,9 @@
       '<g id="targets">' +
       targets +
       "</g>" +
-      "</svg>"
+      "</svg>" +
+      '<button class="map-recenter" id="mapRecenter" aria-label="Recenter map" title="Recenter">⤢</button>' +
+      "</div>"
     );
   }
 
@@ -384,7 +627,9 @@
       '<div id="quiz-results"></div>';
 
     appEl.innerHTML = html;
-    document.getElementById("map-wrap").innerHTML = mapSVG(moduleRuntime.resolved);
+    var mapWrap = document.getElementById("map-wrap");
+    mapWrap.style.aspectRatio = String(MAP_ASPECT);
+    mapWrap.innerHTML = mapSVG(moduleRuntime.resolved);
 
     document.getElementById("backHome").addEventListener("click", function () {
       go({ screen: "home" });
@@ -397,11 +642,16 @@
     });
 
     var svg = document.getElementById("map");
-    svg.addEventListener("click", function (e) {
-      var t = e.target.closest("[data-idx]");
-      if (!t) return;
-      var idx = parseInt(t.getAttribute("data-idx"), 10);
+    var moduleBBox = unionBBox(
+      moduleRuntime.resolved.map(function (item) {
+        return item.baseObj.bbox;
+      })
+    );
+    moduleRuntime.mapController = createMapController(svg, moduleBBox, function (idx) {
       onMapObjectTap(mod, idx);
+    });
+    document.getElementById("mapRecenter").addEventListener("click", function () {
+      moduleRuntime.mapController.reset();
     });
 
     if (moduleRuntime.mode === "learn") {

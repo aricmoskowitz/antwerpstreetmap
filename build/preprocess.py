@@ -175,6 +175,22 @@ def polygon_path_d(rings_ll):
     return " ".join(parts)
 
 
+def bbox_of_lines(lines_ll):
+    """[minX,minY,maxX,maxY] in projected space, for camera fitting."""
+    xs = []
+    ys = []
+    for line in lines_ll:
+        for p in line:
+            x, y = project(p)
+            xs.append(x)
+            ys.append(y)
+    return [min(xs), min(ys), max(xs), max(ys)]
+
+
+def bbox_of_rings(rings_ll):
+    return bbox_of_lines(rings_ll)
+
+
 def polyline_length_px(line_ll):
     pts = [project(p) for p in line_ll]
     return sum(dist(pts[i], pts[i + 1]) for i in range(len(pts) - 1))
@@ -387,6 +403,7 @@ for s in base["streets"]:
         "d": line_path_d(s["lines"]),
         "badge": list(midpoint_of_longest(s["lines"])),
         "length_m": lines_length_m(s["lines"]),
+        "bbox": bbox_of_lines(s["lines"]),
     }
 
 for w in base["waterways"]:
@@ -398,6 +415,7 @@ for w in base["waterways"]:
         "badge": list(midpoint_of_longest(w["lines"])),
         "water_type": w["type"],
         "length_m": lines_length_m(w["lines"]),
+        "bbox": bbox_of_lines(w["lines"]),
     }
 
 for l in base["landmarks"]:
@@ -409,6 +427,7 @@ for l in base["landmarks"]:
         "badge": list(centroid_of_ring(l["ring"])),
         "is_church": l["is_church"],
         "area_m2": ring_area_m2(l["ring"]),
+        "bbox": bbox_of_rings([l["ring"]]),
     }
 
 for p in base["parks"]:
@@ -420,6 +439,7 @@ for p in base["parks"]:
         "badge": list(centroid_of_ring(p["ring"])),
         "park_type": p["type"],
         "area_m2": ring_area_m2(p["ring"]),
+        "bbox": bbox_of_rings([p["ring"]]),
     }
 
 neighborhood_debug = []
@@ -433,6 +453,7 @@ for n in base["neighborhoods"]:
         "badge": list(centroid_of_rings(rings)),
         "density": n.get("density"),
         "parts": len(rings),
+        "bbox": bbox_of_rings(rings),
     }
     neighborhood_debug.append(
         {
