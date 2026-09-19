@@ -443,9 +443,11 @@ for p in base["parks"]:
     }
 
 neighborhood_debug = []
+neighborhood_lonlat_rings = {}  # exposed for build/rebuild_curriculum.py's spatial join
 for n in base["neighborhoods"]:
     key = norm(n["name"])
     rings = build_neighborhood_rings(n)
+    neighborhood_lonlat_rings[key] = rings
     objects["neighborhood"][key] = {
         "name": n["name"],
         "kind": "polygon",
@@ -473,6 +475,48 @@ bg_neighborhoods_d = " ".join(
     objects["neighborhood"][norm(n["name"])]["d"] for n in base["neighborhoods"]
 )
 boundary_d = polygon_path_d([base["ring_boundary"]])
+
+# Scenery layers: visible as context on every module regardless of what the
+# module itself is teaching (per Change Request 1). None of these are
+# interactive - they reuse the same path strings already built for the
+# quizzable objects (buildings, parks) or are built fresh (transit, trees).
+bg_buildings_plain_d = " ".join(
+    objects["building"][norm(l["name"])]["d"] for l in base["landmarks"] if not l["is_church"]
+)
+bg_buildings_church_d = " ".join(
+    objects["building"][norm(l["name"])]["d"] for l in base["landmarks"] if l["is_church"]
+)
+bg_parks_major_d = " ".join(
+    objects["park"][norm(p["name"])]["d"] for p in base["parks"] if p["type"] == "park"
+)
+bg_parks_buurt_d = " ".join(
+    objects["park"][norm(p["name"])]["d"] for p in base["parks"] if p["type"] == "buurtpark"
+)
+bg_tram_d = line_path_d(base["transit"]["tram_lines"])
+bg_rail_d = line_path_d(base["transit"]["rail_lines"])
+
+
+def tree_markers():
+    out = []
+    for t in base["trees"]["ginkgo_individual"]:
+        x, y = project((t["lon"], t["lat"]))
+        out.append({"x": x, "y": y, "kind": "ginkgo"})
+    for t in base["trees"]["ginkgo_clusters"]:
+        x, y = project((t["lon"], t["lat"]))
+        out.append({"x": x, "y": y, "kind": "ginkgo-cluster", "count": t["count"]})
+    for t in base["trees"]["magnolia_individual"]:
+        x, y = project((t["lon"], t["lat"]))
+        out.append({"x": x, "y": y, "kind": "magnolia"})
+    for t in base["trees"]["magnolia_clusters"]:
+        x, y = project((t["lon"], t["lat"]))
+        out.append({"x": x, "y": y, "kind": "magnolia-cluster", "count": t["count"]})
+    for t in base["trees"]["notable_trees"]:
+        x, y = project((t["lon"], t["lat"]))
+        out.append({"x": x, "y": y, "kind": "notable", "name": t["name"]})
+    return out
+
+
+tree_marker_list = tree_markers()
 
 # ------------------------------------------------------------------
 # App icon: a simplified silhouette of the ring boundary itself
@@ -539,6 +583,13 @@ map_data = {
     "bgStreets": bg_streets_d,
     "bgWaterways": bg_waterways_d,
     "bgNeighborhoods": bg_neighborhoods_d,
+    "bgBuildingsPlain": bg_buildings_plain_d,
+    "bgBuildingsChurch": bg_buildings_church_d,
+    "bgParksMajor": bg_parks_major_d,
+    "bgParksBuurt": bg_parks_buurt_d,
+    "bgTram": bg_tram_d,
+    "bgRail": bg_rail_d,
+    "trees": tree_marker_list,
     "objects": objects,
     "iconPath": icon_path,
 }
