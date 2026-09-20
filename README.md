@@ -13,14 +13,20 @@ Live app: `index.html` (deployed via GitHub Pages from `main`).
   `app.js`, and two generated data files as plain `<script>` tags.
 - **Map rendering is a single inline SVG**, projected with an equirectangular
   + `cos(latitude)` correction, no tile server or mapping library. One shared
-  base map (ring boundary, dimmed streets/waterways/neighborhood outlines) is
-  reused across all 68 modules; each module overlays just its own objects as
-  interactive targets.
+  base map is reused across all 136 modules; every module also renders the
+  full scenery layer (streets, waterways, neighborhood outlines, parks,
+  buildings, tram/rail lines, and both tree species) dimmed for context, then
+  overlays just its own objects as bright interactive targets.
 - **Tap targets:** line objects (roads, waterways, squares) get an invisible
   16px-wide hit-stroke on top of their thin visual line, since a raw 2-3px
   SVG stroke is not a reliable touch target. Polygon objects (buildings,
   parks, neighborhoods) are hit-tested by their own fill area plus a small
   stroke buffer.
+- **The map frames itself to each module's own objects on open** (padded,
+  floor and ceiling clamped) rather than always showing the whole ring at a
+  fixed zoom, and is a real pan/pinch-zoom viewport from there (Pointer
+  Events, so touch and mouse share one code path) with a recenter button
+  back to that fitted view.
 
 ## Data pipeline
 
@@ -35,6 +41,34 @@ Re-run it after touching source data or the ring boundary:
 ```
 python3 build/preprocess.py
 ```
+
+### Curriculum coverage
+
+`build/rebuild_curriculum.py` regenerates `antwerp-curriculum-data.json` (and
+the `.md` alongside it) so that **every object in the base map — every road,
+square, waterway, park, building, and neighborhood — appears in at least one
+module**, and almost all of them in at least two (once geographically, once
+in Super Section 8's review). The original curriculum only covered the
+curated subset of roads (longest/kaai/lei); this script assigns the
+remaining ~1,020 ordinary streets to a neighborhood via point-in-polygon
+against the reconstructed neighborhood outlines, adds an "Other Streets"
+module per section (chunked to the 50-object cap, with small leftovers
+carried forward to the next section so nothing drops below the 5-object
+floor), and adds matching review modules to Super Section 8. It's additive
+to the existing 8 super sections and their neighborhood groupings, not a
+restructure. Run it before `preprocess.py` if you've changed the source
+curriculum or the neighborhood-polygon logic:
+
+```
+python3 build/rebuild_curriculum.py && python3 build/preprocess.py
+```
+
+A handful of objects still only appear once, all pre-existing and out of
+this script's scope: a few kaai/lei streets and one square/park from the
+original curated lists, and the 18 neighborhoods that had zero tracked
+objects to begin with (they still only list in Super Section 8, since
+Foundations' 1.5.1 explicitly filters to neighborhoods *with* tracked
+objects — that filter is unchanged).
 
 ### Neighborhood polygons are reconstructed, not sourced directly
 
@@ -61,10 +95,11 @@ surveyed municipal boundaries.
 
 ## Scope notes
 
-- Trees, tram lines, and rail lines exist in the source data but are
-  excluded from the curriculum (per `data/source/antwerp-curriculum-data.json`
-  meta) and are not rendered, to keep the base map legible and the payload
-  size down.
+- Trees, tram lines, and rail lines are rendered on every module's map as
+  scenery (per Change Request 1) but are excluded from the curriculum itself
+  (per `data/source/antwerp-curriculum-data.json` meta) — they're never a
+  quiz object.
 - The quiz target color is one consistent blue across every object type, by
   design — it signals "this is what you're being tested on" independent of
-  category.
+  category. Scenery layers (parks, buildings, trams, rail, trees) use their
+  own dim, non-interactive colors so they never compete with that signal.

@@ -501,6 +501,62 @@
     }
   }
 
+  var TREE_DEFS =
+    '<defs>' +
+    '<symbol id="tree-ginkgo" viewBox="-3 -3 6 6">' +
+    '<path d="M0,1.6 C-2,1.6 -2.4,-0.9 -1.3,-2 C-0.6,-1.3 -0.3,-0.6 0,0.1 C0.3,-0.6 0.6,-1.3 1.3,-2 C2.4,-0.9 2,1.6 0,1.6 Z" fill="#4a7a3a"/>' +
+    '</symbol>' +
+    '<symbol id="tree-magnolia" viewBox="-3 -3 6 6">' +
+    [0, 72, 144, 216, 288]
+      .map(function (deg) {
+        return '<ellipse cx="0" cy="-1.5" rx="0.75" ry="1.15" fill="#e8a5c4" transform="rotate(' + deg + ')"/>';
+      })
+      .join("") +
+    '<circle r="0.55" fill="#c9a227"/>' +
+    '</symbol>' +
+    '<symbol id="tree-notable" viewBox="-3 -3 6 6">' +
+    '<circle r="2.6" fill="none" stroke="#c9a227" stroke-width="0.35" stroke-dasharray="0.5 0.4"/>' +
+    '<rect x="-0.3" y="0.4" width="0.6" height="1.3" fill="#6b4a2a"/>' +
+    '<circle cy="-0.4" r="1.5" fill="#4a7a3a"/>' +
+    '</symbol>' +
+    '</defs>';
+
+  var TREE_SIZE = { ginkgo: 3, magnolia: 3, notable: 5, "ginkgo-cluster": 4.5, "magnolia-cluster": 4.5 };
+  var TREE_SYMBOL = {
+    ginkgo: "tree-ginkgo",
+    magnolia: "tree-magnolia",
+    notable: "tree-notable",
+    "ginkgo-cluster": "tree-ginkgo",
+    "magnolia-cluster": "tree-magnolia",
+  };
+
+  function treeMarkersSVG() {
+    var out = "";
+    MAP_DATA.trees.forEach(function (t) {
+      var s = TREE_SIZE[t.kind];
+      var sym = TREE_SYMBOL[t.kind];
+      var half = s / 2;
+      out +=
+        '<use href="#' +
+        sym +
+        '" x="' +
+        (t.x - half) +
+        '" y="' +
+        (t.y - half) +
+        '" width="' +
+        s +
+        '" height="' +
+        s +
+        '" class="tree-marker"/>';
+      if (t.count) {
+        out += '<circle class="tree-cluster-ring" cx="' + t.x + '" cy="' + t.y + '" r="' + (half + 0.6) + '"/>';
+        out +=
+          '<text class="tree-cluster-count" x="' + t.x + '" y="' + (t.y - half - 0.8) + '">' + t.count + "</text>";
+      }
+    });
+    return out;
+  }
+
   function resolveModuleObjects(mod) {
     var list = [];
     mod.objects.forEach(function (curObj, idx) {
@@ -549,8 +605,21 @@
       '<svg id="map" viewBox="' +
       MAP_DATA.viewBox +
       '" xmlns="http://www.w3.org/2000/svg">' +
+      TREE_DEFS +
+      '<path class="bg-parks-major" d="' +
+      MAP_DATA.bgParksMajor +
+      '"/>' +
+      '<path class="bg-parks-buurt" d="' +
+      MAP_DATA.bgParksBuurt +
+      '"/>' +
       '<path class="bg-neighborhoods" d="' +
       MAP_DATA.bgNeighborhoods +
+      '"/>' +
+      '<path class="bg-tram" d="' +
+      MAP_DATA.bgTram +
+      '"/>' +
+      '<path class="bg-rail" d="' +
+      MAP_DATA.bgRail +
       '"/>' +
       '<path class="bg-waterways" d="' +
       MAP_DATA.bgWaterways +
@@ -558,6 +627,15 @@
       '<path class="bg-streets" d="' +
       MAP_DATA.bgStreets +
       '"/>' +
+      '<path class="bg-buildings-plain" d="' +
+      MAP_DATA.bgBuildingsPlain +
+      '"/>' +
+      '<path class="bg-buildings-church" d="' +
+      MAP_DATA.bgBuildingsChurch +
+      '"/>' +
+      '<g class="tree-layer">' +
+      treeMarkersSVG() +
+      "</g>" +
       '<path class="boundary" d="' +
       MAP_DATA.boundary +
       '"/>' +
