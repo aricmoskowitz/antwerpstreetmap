@@ -558,6 +558,7 @@
     });
 
     var svg = document.getElementById("map");
+    svg.classList.toggle("quiz-mode", lessonRuntime.mode === "quiz");
     lessonRuntime.mapController = MapRender.createMapController(svg, lessonBBox, function (idx) {
       onMapObjectTap(lesson, idx);
     });
@@ -691,7 +692,8 @@
 
   function renderQuizPanel(lesson) {
     document.getElementById("quiz-panel").classList.remove("hidden");
-    if (!lessonRuntime.quiz) {
+    var q = lessonRuntime.quiz;
+    if (!q || q.index >= q.order.length) {
       startQuiz(lesson);
     } else {
       renderQuizQuestion();
