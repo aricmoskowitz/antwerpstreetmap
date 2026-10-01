@@ -271,7 +271,7 @@
 
   function endText(endpoint) {
     if (!endpoint.crosses.length) return "dead end";
-    return "meets " + joinNames(endpoint.crosses);
+    return joinNames(endpoint.crosses);
   }
 
   // one horizontally scrolling row, so a street with 20 junctions takes the
@@ -311,7 +311,7 @@
   // takes whatever height the card's text doesn't need, so the map is drawn
   // after the card is laid out (see populateSlot).
 
-  var LABEL_PX = 11;
+  var LABEL_PX = 14;
 
   function parsePolylines(d) {
     return d
@@ -430,20 +430,20 @@
         h = LABEL_PX + 4;
       var cands = [];
       [1, -1].forEach(function (dir) {
-        // points 28 / 48 / 72 px along the cross street from the junction
+        // points 30 / 55 / 85 / 120 px along the cross street from the junction
         var acc = 0;
         for (var i = junction.pi; i + dir >= 0 && i + dir < line.length; i += dir) {
           var a = line[i],
             b2 = line[i + dir];
           var seg = Math.hypot(b2[0] - a[0], b2[1] - a[1]);
-          [28, 48, 72].forEach(function (target) {
+          [30, 55, 85, 120].forEach(function (target) {
             if (acc < target && acc + seg >= target) {
               var t = (target - acc) / seg;
               cands.push({ pt: [a[0] + (b2[0] - a[0]) * t, a[1] + (b2[1] - a[1]) * t], order: target });
             }
           });
           acc += seg;
-          if (acc > 72) break;
+          if (acc > 120) break;
         }
       });
       cands.sort(function (x, y) {
