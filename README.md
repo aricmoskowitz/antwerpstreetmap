@@ -7,16 +7,43 @@ then quiz yourself by tapping the right place on the map.
 
 Live app: `index.html` (deployed via GitHub Pages from `main`).
 
+## Pages
+
+The app is three plain HTML pages, not a single-page app with routes — each
+is its own entry point, sharing `style.css` and the map-rendering code:
+
+- **`index.html`** — the home menu. Two choices, Learn and Scroll, each with
+  a progress line read from existing localStorage (module count for Learn,
+  last card seen for Scroll). Loads only `curriculum-data.js` (to count
+  modules) and `menu.js`; no map data, so it's light.
+- **`learn.html`** — the original curriculum app (modules, Learn/Quiz, the
+  pan/zoom map). This is what `index.html` used to be before Change Request
+  2 added the home menu in front of it.
+- **`scroll.html`** — the Scroll feed: one card per street/square (1,233 of
+  them, including 3 duplicate-named-but-physically-distinct entries — see
+  "Scroll feed" below), browsable as a vertical swipe list.
+
+All three keep the same Add-to-Home-Screen icon and meta tags, and are
+same-origin, so an already-installed home-screen app keeps working.
+
 ## How it's built
 
-- **No backend, no client-side build step.** `index.html` loads `style.css`,
-  `app.js`, and two generated data files as plain `<script>` tags.
+- **No backend, no client-side build step.** Each page loads `style.css`
+  and its own script plus the generated data files it needs as plain
+  `<script>` tags.
 - **Map rendering is a single inline SVG**, projected with an equirectangular
   + `cos(latitude)` correction, no tile server or mapping library. One shared
-  base map is reused across all 136 modules; every module also renders the
-  full scenery layer (streets, waterways, neighborhood outlines, parks,
-  buildings, tram/rail lines, and both tree species) dimmed for context, then
-  overlays just its own objects as bright interactive targets.
+  base map is reused across all 136 modules and all 1,233 Scroll cards; every
+  screen also renders the full scenery layer (streets, waterways,
+  neighborhood outlines, parks, buildings, tram/rail lines, and both tree
+  species) dimmed for context, then overlays just its own objects as bright
+  interactive (Learn/Quiz) or labeled (Scroll) targets.
+- **`map-render.js`** holds everything both pages need: the scenery-layer
+  builder, the tree icon defs, viewport-fitting math, and the pan/pinch-zoom
+  controller (`app.js` uses the controller; `scroll.js` only uses the
+  fitting/scenery helpers, since each Scroll card is a small static map, not
+  an interactive one). It's loaded as a global (`MapRender`) before
+  `app.js`/`scroll.js`, and depends on `map-data.js` being loaded first.
 - **Tap targets:** line objects (roads, waterways, squares) get an invisible
   16px-wide hit-stroke on top of their thin visual line, since a raw 2-3px
   SVG stroke is not a reliable touch target. Polygon objects (buildings,
@@ -92,6 +119,57 @@ harbor (Oude Haven / Houtdok / Albertdok / IJzerlaan). A tap landing in that
 sliver won't register; everywhere else resolves correctly. Treat these
 polygons as a best-effort reconstruction for a memorization app, not
 surveyed municipal boundaries.
+
+## Scroll feed
+
+`build/street_cards.py` generates `data/street-cards.json` (and
+`data/generated/street-cards.js`, the same data wrapped as `const
+STREET_CARDS = [...]` for plain `<script>` loading) — one fact-only record
+per road/square in the base map, for the Scroll page. It reuses
+`preprocess.py`'s projection and reconstructed neighborhood polygons rather
+than re-deriving them (imported via `importlib.util`, the same pattern
+`rebuild_curriculum.py` uses). Run it after `preprocess.py`:
+
+```
+python3 build/street_cards.py
+```
+
+Each record carries facts only — name, orientation, which streets it meets
+and where, neighborhood, curriculum modules — never geometry. Scroll's own
+map draws from the same already-projected paths in `map-data.js` that Learn
+uses (`MapRender.resolveObjectByName(name, "road" | "square")`), so geometry
+is never duplicated between the two data files. See the docstring in
+`build/street_cards.py` for exactly how intersections, start/end, and
+orientation are derived (shared-vertex matching, not geometric crossing, so
+tunnels don't register as junctions with the streets above them).
+
+**Known data notes** (from the last generation run):
+
+- **1,233 cards, not 1,230.** The base map's own street count is 1,233
+  (`meta.counts.streets`); three names (Turnhoutsebaan, Hogeweg,
+  Statiestraat) each exist as two physically distinct entries in the source
+  data. Each entry gets its own card, since that's what the authoritative
+  source data actually contains.
+- **5 streets/squares show zero intersections**: Flamingoplein, Sasdok,
+  Moeke Bitterpeeënstraat, a small Turnhoutsebaan stub, and Kalverveld — all
+  checked individually; each is a tiny clipped fragment or duplicate stub
+  (tens of meters across), not a bug in the intersection matching.
+- **92 dead ends** (one bare endpoint with nothing within ~20m).
+- **23 curved streets** (path length more than 1.3&times; the straight-line
+  distance between its two endpoints).
+- **0 "about the name" explanations.** The curriculum data has no free-text
+  history/name field today, so the Scroll card never shows that row. Adding
+  that content is out of scope here — a future change request.
+
+## localStorage keys
+
+- `antwerpRing.v1` — Learn's existing progress (`{progress, lastOpened,
+  openSections}`). Unchanged by this change request.
+- `antwerpScroll.v1` — Scroll's resume state: `{order, positions, total,
+  filterStarted, shuffleOrder}`, one position remembered per order
+  (Curriculum/Region/A&ndash;Z/Shuffle). Scroll only ever *reads*
+  `antwerpRing.v1` (for the "only streets from modules I've started" filter)
+  and never writes to it.
 
 ## Scope notes
 
