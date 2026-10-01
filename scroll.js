@@ -270,7 +270,7 @@
   }
 
   function endText(endpoint) {
-    if (!endpoint.crosses.length) return "dead end";
+    if (!endpoint.crosses.length) return '<span class="sc-muted">dead end</span>';
     return joinNames(endpoint.crosses);
   }
 
@@ -372,36 +372,6 @@
       return l.map(toPx);
     });
     var placed = [[box.w - 44, 0, box.w, 44]]; // north arrow
-    var marks = "";
-
-    if (!c.is_square) {
-      var sp = toPx(c.start.pixel),
-        ep = toPx(c.end.pixel);
-      [
-        { p: sp, other: ep, label: "Start", cls: "start" },
-        { p: ep, other: sp, label: "End", cls: "end" },
-      ].forEach(function (m) {
-        // pill just beyond the street's end, pointing away from the other end
-        var dx = m.p[0] - m.other[0],
-          dy = m.p[1] - m.other[1],
-          len = Math.hypot(dx, dy) || 1;
-        var w = m.label.length * 7 + 14,
-          h = 18;
-        var cx = m.p[0] + (dx / len) * (w / 2 + 6),
-          cy = m.p[1] + (dy / len) * (h / 2 + 6);
-        cx = Math.max(w / 2 + 2, Math.min(box.w - w / 2 - 2, cx));
-        cy = Math.max(h / 2 + 2, Math.min(box.h - h / 2 - 2, cy));
-        placed.push([cx - w / 2, cy - h / 2, cx + w / 2, cy + h / 2]);
-        marks +=
-          '<g class="scroll-endpoint ' +
-          m.cls +
-          '">' +
-          '<line x1="' + m.p[0] * u + '" y1="' + m.p[1] * u + '" x2="' + cx * u + '" y2="' + cy * u + '"/>' +
-          '<circle cx="' + m.p[0] * u + '" cy="' + m.p[1] * u + '" r="' + 4.5 * u + '"/>' +
-          '<rect x="' + (cx - w / 2) * u + '" y="' + (cy - h / 2) * u + '" width="' + w * u + '" height="' + h * u + '" rx="' + 9 * u + '"/>' +
-          '<text x="' + cx * u + '" y="' + cy * u + '" style="font-size:' + 11 * u + 'px">' + m.label + "</text></g>";
-      });
-    }
 
     var crossSVG = "",
       labelSVG = "";
@@ -462,20 +432,15 @@
       }
     });
 
-    // markers were built in pixel coordinates relative to the box; shift
-    // them into world space via a translate on the group
     return (
       '<svg viewBox="' + vb.x + " " + vb.y + " " + vb.w + " " + vb.h + '" xmlns="http://www.w3.org/2000/svg">' +
       MapRender.sceneryLayersSVG() +
       crossSVG +
       '<path class="scroll-target-line" d="' + baseObj.d + '"/>' +
       labelSVG +
-      '<g transform="translate(' + vb.x + "," + vb.y + ')">' + marks + "</g>" +
       "</svg>"
     );
   }
-
-  var COMPASS_DEG = { north: 0, northeast: 45, east: 90, southeast: 135, south: 180, southwest: 225, west: 270, northwest: 315 };
 
   function buildCardHTML(idx, pos, listLen) {
     var c = STREET_CARDS[idx];
@@ -496,20 +461,17 @@
     if (!c.is_square) {
       var o = c.orientation;
       html +=
-        '<div class="sc-dir"><span class="sc-arrow" aria-hidden="true" style="transform:rotate(' +
-        COMPASS_DEG[o.to] +
-        'deg)">&uarr;</span>Runs ' +
+        '<div class="sc-dir">' +
         o.from +
         " &rarr; " +
         o.to +
         (o.shape === "curved" ? ' <span class="sc-muted">&middot; curved</span>' : "") +
         "</div>";
       html +=
-        '<div class="sc-ends">' +
-        '<div class="sc-end"><span class="sc-pill start">Start</span><span class="sc-side">' + o.from + " end</span></div>" +
-        '<div class="sc-end-text">' + endText(c.start) + "</div>" +
-        '<div class="sc-end"><span class="sc-pill end">End</span><span class="sc-side">' + o.to + " end</span></div>" +
-        '<div class="sc-end-text">' + endText(c.end) + "</div>" +
+        '<div class="sc-ends"><span class="sc-start-word">Start</span> ' +
+        endText(c.start) +
+        " &rarr; " +
+        endText(c.end) +
         "</div>";
       html += '<div class="sc-label">Meets along the way &middot; ' + c.intersections.length + "</div>";
     } else {
