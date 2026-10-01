@@ -1083,36 +1083,6 @@ header.lesson-header {
   pointer-events: none;
 }
 
-.scroll-endpoint line {
-  stroke: var(--ink);
-  stroke-width: 1;
-  vector-effect: non-scaling-stroke;
-}
-
-.scroll-endpoint circle {
-  stroke: #fff;
-  stroke-width: 1.5;
-  vector-effect: non-scaling-stroke;
-}
-
-.scroll-endpoint text {
-  fill: #fff;
-  font-family: "Inter", sans-serif;
-  font-weight: 700;
-  text-anchor: middle;
-  dominant-baseline: central;
-}
-
-.scroll-endpoint.start circle,
-.scroll-endpoint.start rect {
-  fill: var(--good);
-}
-
-.scroll-endpoint.end circle,
-.scroll-endpoint.end rect {
-  fill: var(--ink);
-}
-
 /* The card body is laid out to fit without scrolling on a 390 x 664
    iPhone Safari viewport (toolbars showing); overflow-y stays as a
    fallback for smaller screens. */
@@ -1142,24 +1112,8 @@ header.lesson-header {
 }
 
 .sc-dir {
-  display: flex;
-  align-items: center;
-  gap: 6px;
   font-size: 0.88rem;
   font-weight: 600;
-}
-
-.sc-arrow {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: var(--target);
-  color: #fff;
-  font-size: 0.75rem;
-  flex: none;
 }
 
 .sc-muted {
@@ -1168,50 +1122,18 @@ header.lesson-header {
 }
 
 .sc-ends {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  column-gap: 10px;
-  row-gap: 5px;
-  align-items: baseline;
-  font-size: 0.84rem;
-  line-height: 1.35;
-}
-
-.sc-end {
-  display: flex;
-  align-items: baseline;
-  gap: 6px;
-  white-space: nowrap;
-}
-
-.sc-side {
-  color: var(--muted);
-  font-size: 0.78rem;
-}
-
-.sc-end-text {
+  font-size: 0.86rem;
+  line-height: 1.4;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
   overflow-wrap: anywhere;
 }
 
-.sc-pill {
-  display: inline-block;
-  padding: 1px 8px;
-  border-radius: 999px;
-  color: #fff;
-  font-size: 0.72rem;
+.sc-start-word {
   font-weight: 700;
-}
-
-.sc-pill.start {
-  background: var(--good);
-}
-
-.sc-pill.end {
-  background: var(--ink);
+  margin-right: 0.15em;
 }
 
 .sc-label {

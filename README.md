@@ -199,8 +199,9 @@ tunnels don't register as junctions with the streets above them).
 
 Orientation is directional, written start &rarr; end: a street whose
 start (the end nearest Grote Markt, the house-numbering heuristic) is its
-south end reads "south–north", and the card's Start/End markers and rows
-name the matching ends. The card's text is laid out to fit without
+south end reads "south–north". Below it, the streets at the start and the
+end are listed the same way, e.g. "Start Britselei and Kasteelpleinstraat
+&rarr; Bolivarplaats". The card's text is laid out to fit without
 scrolling on an iPhone (checked across all cards at 375&times;548 up to
 430&times;739 viewports); the map takes whatever height the text leaves.
 
