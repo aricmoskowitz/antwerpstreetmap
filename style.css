@@ -1012,7 +1012,9 @@ header.lesson-header {
 }
 
 .scroll-card-map {
-  flex: 0 0 55%;
+  /* takes the height the text below doesn't need */
+  flex: 1 1 0;
+  min-height: 40%;
   position: relative;
   background: var(--panel);
   border-bottom: 1px solid var(--line);
@@ -1071,76 +1073,189 @@ header.lesson-header {
 .scroll-cross-label {
   fill: var(--ink);
   font-family: "Inter", sans-serif;
-  font-weight: 700;
+  font-weight: 600;
+  text-anchor: middle;
+  dominant-baseline: central;
   paint-order: stroke;
   stroke: var(--bg);
-  stroke-width: 0.35em;
+  stroke-width: 0.3em;
+  stroke-linejoin: round;
   pointer-events: none;
 }
 
+.scroll-endpoint line {
+  stroke: var(--ink);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
 .scroll-endpoint circle {
-  fill: var(--panel);
-  stroke: var(--target);
-  stroke-width: 1.2;
+  stroke: #fff;
+  stroke-width: 1.5;
   vector-effect: non-scaling-stroke;
 }
 
 .scroll-endpoint text {
-  fill: var(--target);
+  fill: #fff;
   font-family: "Inter", sans-serif;
   font-weight: 700;
   text-anchor: middle;
   dominant-baseline: central;
 }
 
+.scroll-endpoint.start circle,
+.scroll-endpoint.start rect {
+  fill: var(--good);
+}
+
+.scroll-endpoint.end circle,
+.scroll-endpoint.end rect {
+  fill: var(--ink);
+}
+
+/* The card body is laid out to fit without scrolling on a 390 x 664
+   iPhone Safari viewport (toolbars showing); overflow-y stays as a
+   fallback for smaller screens. */
 .scroll-card-body {
-  flex: 1 1 auto;
+  flex: 0 1 auto;
   min-height: 0;
   overflow-y: auto;
-  padding: 14px 18px calc(14px + env(safe-area-inset-bottom));
+  padding: 10px 16px calc(8px + env(safe-area-inset-bottom));
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 7px;
 }
 
 .scroll-card-name {
-  font-size: 1.4rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.2;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.sc-about {
+  font-size: 0.82rem;
+  line-height: 1.4;
+}
+
+.sc-dir {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.sc-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--target);
+  color: #fff;
+  font-size: 0.75rem;
+  flex: none;
+}
+
+.sc-muted {
+  color: var(--muted);
+  font-weight: 400;
+}
+
+.sc-ends {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 10px;
+  row-gap: 5px;
+  align-items: baseline;
+  font-size: 0.84rem;
+  line-height: 1.35;
+}
+
+.sc-end {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.sc-side {
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.sc-end-text {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  overflow-wrap: anywhere;
+}
+
+.sc-pill {
+  display: inline-block;
+  padding: 1px 8px;
+  border-radius: 999px;
+  color: #fff;
+  font-size: 0.72rem;
   font-weight: 700;
 }
 
-.scroll-card-row {
-  font-size: 0.88rem;
-  line-height: 1.5;
+.sc-pill.start {
+  background: var(--good);
 }
 
-.scroll-card-label {
-  font-size: 0.7rem;
+.sc-pill.end {
+  background: var(--ink);
+}
+
+.sc-label {
+  font-size: 0.68rem;
   text-transform: uppercase;
   letter-spacing: 0.06em;
   color: var(--muted);
-  margin-bottom: 3px;
+  margin-top: 2px;
 }
 
 .scroll-card-empty {
   color: var(--muted);
+  font-size: 0.84rem;
 }
 
+/* one row that scrolls sideways, however many junctions there are */
 .scroll-chip-row {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 6px;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  margin: 0 -16px;
+  padding: 0 16px;
+  flex: none;
+}
+
+.scroll-chip-row::-webkit-scrollbar {
+  display: none;
 }
 
 .scroll-chip {
   appearance: none;
+  flex: none;
   border: 1px solid var(--line);
   background: var(--panel);
   color: var(--ink);
   font-family: "Inter", sans-serif;
   font-size: 0.8rem;
   border-radius: 999px;
-  padding: 10px 14px;
-  min-height: 40px;
+  padding: 0 14px;
+  min-height: 44px;
+  white-space: nowrap;
   cursor: pointer;
 }
 
@@ -1150,14 +1265,21 @@ header.lesson-header {
 
 .scroll-card-footer {
   margin-top: auto;
-  padding-top: 10px;
+  padding-top: 7px;
   border-top: 1px solid var(--line);
   display: flex;
   justify-content: space-between;
   align-items: baseline;
   gap: 10px;
-  font-size: 0.76rem;
+  font-size: 0.72rem;
   color: var(--muted);
+}
+
+.scroll-footer-meta {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .scroll-counter {

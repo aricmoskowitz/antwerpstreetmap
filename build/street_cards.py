@@ -176,17 +176,17 @@ def bearing_deg(p1, p2):
     return (theta + 360) % 360
 
 
-AXIS_BUCKETS = [(0, "north–south"), (45, "northeast–southwest"), (90, "east–west"), (135, "northwest–southeast")]
+COMPASS = ["north", "northeast", "east", "southeast", "south", "southwest", "west", "northwest"]
 
 
-def axis_label(bearing):
-    a = bearing % 180
-
-    def circ_diff(a, c):
-        d = abs(a - c)
-        return min(d, 180 - d)
-
-    return min(AXIS_BUCKETS, key=lambda b: circ_diff(a, b[0]))[1]
+def direction(bearing):
+    """Directional, start -> end: (from_side, to_side, "from–to"). A street
+    heading north from its start reads "south–north" - it starts at its
+    south end - not the undirected "north–south"."""
+    i = int(round(bearing / 45.0)) % 8
+    to_side = COMPASS[i]
+    from_side = COMPASS[(i + 4) % 8]
+    return from_side, to_side, f"{from_side}–{to_side}"
 
 
 def bbox_of(pts):
@@ -254,7 +254,7 @@ for idx, s in enumerate(streets):
             start_pt, end_pt, start_line, end_line = pt_b, pt_a, line_b, line_a
 
         bearing = bearing_deg(start_pt, end_pt)
-        axis = axis_label(bearing)
+        from_side, to_side, axis = direction(bearing)
 
         shape = "straight"
         if start_line == end_line:
@@ -310,7 +310,7 @@ for idx, s in enumerate(streets):
 
         record.update(
             {
-                "orientation": {"axis": axis, "bearing": round(bearing), "shape": shape},
+                "orientation": {"axis": axis, "from": from_side, "to": to_side, "bearing": round(bearing), "shape": shape},
                 # "pixel" is the same projected space as data/generated/map-data.js
                 # (two numbers, not geometry) so the Scroll card can place a
                 # start/end marker without re-deriving the projection in JS.

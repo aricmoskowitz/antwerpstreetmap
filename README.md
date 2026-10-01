@@ -197,6 +197,13 @@ is never duplicated between the two data files. See the docstring in
 orientation are derived (shared-vertex matching, not geometric crossing, so
 tunnels don't register as junctions with the streets above them).
 
+Orientation is directional, written start &rarr; end: a street whose
+start (the end nearest Grote Markt, the house-numbering heuristic) is its
+south end reads "south–north", and the card's Start/End markers and rows
+name the matching ends. The card's text is laid out to fit without
+scrolling on an iPhone (checked across all cards at 375&times;548 up to
+430&times;739 viewports); the map takes whatever height the text leaves.
+
 **Known data notes** (from the last generation run):
 
 - **1,233 cards, not 1,230.** The base map's own street count is 1,233
