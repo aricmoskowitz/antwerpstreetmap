@@ -117,7 +117,7 @@ h3 {
   color: var(--muted);
 }
 
-.super-section {
+.section-group {
   margin: 10px 12px 0;
   border: 1px solid var(--line);
   border-radius: 2px 16px 2px 16px;
@@ -125,7 +125,7 @@ h3 {
   overflow: hidden;
 }
 
-.ss-header {
+.section-header {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -134,7 +134,7 @@ h3 {
   user-select: none;
 }
 
-.ss-header .ss-num {
+.section-header .section-num {
   width: 26px;
   height: 26px;
   flex: none;
@@ -149,44 +149,44 @@ h3 {
   justify-content: center;
 }
 
-.ss-header .ss-title {
+.section-header .section-title-wrap {
   flex: 1;
   min-width: 0;
 }
 
-.ss-header .ss-title h2 {
+.section-header .section-title-wrap h2 {
   font-size: 0.98rem;
 }
 
-.ss-header .ss-title .ss-sub {
+.section-header .section-title-wrap .section-sub {
   font-size: 0.72rem;
   color: var(--muted);
 }
 
-.ss-header .chevron {
+.section-header .chevron {
   font-size: 0.8rem;
   color: var(--muted);
   transition: transform 0.15s;
 }
 
-.super-section.open .chevron {
+.section-group.open .chevron {
   transform: rotate(90deg);
 }
 
-.ss-body {
+.section-body {
   display: none;
   border-top: 1px solid var(--line);
 }
 
-.super-section.open .ss-body {
+.section-group.open .section-body {
   display: block;
 }
 
-.section-block {
+.module-block {
   padding: 10px 14px 4px;
 }
 
-.section-block .sec-title {
+.module-block .module-title {
   font-size: 0.72rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -194,7 +194,7 @@ h3 {
   margin-bottom: 4px;
 }
 
-.module-row {
+.lesson-row {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -203,11 +203,11 @@ h3 {
   cursor: pointer;
 }
 
-.section-block .module-row:last-child {
+.module-block .lesson-row:last-child {
   border-bottom: none;
 }
 
-.module-row .m-id {
+.lesson-row .lesson-id {
   font-family: "Fraunces", serif;
   font-size: 0.78rem;
   color: var(--target);
@@ -215,22 +215,22 @@ h3 {
   flex: none;
 }
 
-.module-row .m-info {
+.lesson-row .lesson-info {
   flex: 1;
   min-width: 0;
 }
 
-.module-row .m-title {
+.lesson-row .lesson-title {
   font-size: 0.88rem;
   font-weight: 600;
 }
 
-.module-row .m-count {
+.lesson-row .lesson-count {
   font-size: 0.72rem;
   color: var(--muted);
 }
 
-.module-row .m-badge {
+.lesson-row .lesson-score-badge {
   font-size: 0.72rem;
   flex: none;
   color: var(--good);
@@ -253,9 +253,9 @@ h3 {
   min-height: 44px;
 }
 
-/* ---------- module screen ---------- */
+/* ---------- lesson screen ---------- */
 
-header.module-header {
+header.lesson-header {
   padding: 12px 16px;
   border-bottom: 1px solid var(--line);
   background: var(--bg);
@@ -292,7 +292,7 @@ header.module-header {
   margin: 0 0 2px;
 }
 
-.module-header h1 {
+.lesson-header h1 {
   font-size: 1.15rem;
 }
 
@@ -552,19 +552,15 @@ header.module-header {
   fill-opacity: 0.35 !important;
 }
 
-.badge circle {
+.badge-shape {
   fill: var(--panel);
-  stroke: var(--target);
+  stroke: var(--ink);
   stroke-width: 1.2;
   vector-effect: non-scaling-stroke;
 }
 
-.quiz-mode .badge circle {
-  stroke: var(--target-dim);
-}
-
 .badge text {
-  fill: var(--target);
+  fill: var(--ink);
   font-size: 9px;
   font-family: "Inter", sans-serif;
   font-weight: 700;
@@ -574,7 +570,20 @@ header.module-header {
 }
 
 .badge {
-  cursor: pointer;
+  pointer-events: none;
+}
+
+.badge-leader {
+  stroke: var(--muted);
+  stroke-width: 0.6;
+  vector-effect: non-scaling-stroke;
+}
+
+/* Numbers would let a test-taker match the badge to the answer list, so
+   Quiz mode hides every reading-order badge; Learn mode is the only place
+   they're shown (per Change Request 3). */
+.quiz-mode .badge {
+  display: none;
 }
 
 /* ---------- learn list / bottom sheet ---------- */

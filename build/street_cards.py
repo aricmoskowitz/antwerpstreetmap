@@ -4,7 +4,7 @@ Generates data/street-cards.json: one fact-only record per road (including
 squares) in the base map, for the Scroll feed (Change Request 2). Geometry
 itself is NOT duplicated here - the app draws from the already-projected
 paths in data/generated/map-data.js; this file only adds derived facts
-(orientation, intersections, neighborhood, curriculum modules) that aren't
+(orientation, intersections, neighborhood, curriculum lessons) that aren't
 cheap to recompute in the browser.
 
 Run after build/preprocess.py (it imports that module to reuse the
@@ -145,17 +145,17 @@ def assign_neighborhood(pt):
 neighborhood_display_name = {norm(n["name"]): n["name"] for n in base["neighborhoods"]}
 
 # ------------------------------------------------------------------
-# 3. Which modules reference each (name, type) object, from the curriculum.
+# 3. Which lessons reference each (name, type) object, from the curriculum.
 # ------------------------------------------------------------------
 
-modules_by_object = {}
-for ss in curriculum["super_sections"]:
-    for sec in ss["sections"]:
-        for mod in sec["modules"]:
-            for obj in mod["objects"]:
+lessons_by_object = {}
+for sec in curriculum["sections"]:
+    for mod in sec["modules"]:
+        for lesson in mod["lessons"]:
+            for obj in lesson["objects"]:
                 if obj["type"] in ("road", "square"):
                     key = (norm(obj["name"]), obj["type"])
-                    modules_by_object.setdefault(key, []).append(mod["id"])
+                    lessons_by_object.setdefault(key, []).append(lesson["id"])
 
 # ------------------------------------------------------------------
 # 4. Grote Markt reference point, for the "nearest end is start" heuristic
@@ -209,7 +209,7 @@ for idx, s in enumerate(streets):
     bbox = bbox_of(pts)
 
     key = (norm(name), "square" if is_square else "road")
-    modules = sorted(set(modules_by_object.get(key, [])))
+    lessons = sorted(set(lessons_by_object.get(key, [])))
 
     rep_pt = pts[len(pts) // 2] if not is_square else ring_centroid(pts)
     nb_key = assign_neighborhood(rep_pt)
@@ -229,7 +229,7 @@ for idx, s in enumerate(streets):
         "is_square": is_square,
         "bbox": bbox,
         "neighborhood": neighborhood,
-        "modules": modules,
+        "lessons": lessons,
     }
 
     if is_square:
@@ -325,10 +325,10 @@ for idx, s in enumerate(streets):
     # antwerp-curriculum-data.json). Per the CR, never invent one - look
     # for an optional "about" field and only include it if present.
     about = None
-    for ss in curriculum["super_sections"]:
-        for sec in ss["sections"]:
-            for mod in sec["modules"]:
-                for obj in mod["objects"]:
+    for sec in curriculum["sections"]:
+        for mod in sec["modules"]:
+            for lesson in mod["lessons"]:
+                for obj in lesson["objects"]:
                     if norm(obj["name"]) == key[0] and obj["type"] == key[1] and obj.get("about"):
                         about = obj["about"]
     if about:

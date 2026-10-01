@@ -83,9 +83,9 @@
     return 0;
   }
 
-  function moduleKey(mods) {
-    if (!mods.length) return [999999];
-    var parts = mods.map(function (id) {
+  function lessonKey(lessonIds) {
+    if (!lessonIds.length) return [999999];
+    var parts = lessonIds.map(function (id) {
       return id.split(".").map(Number);
     });
     parts.sort(cmpParts);
@@ -99,21 +99,21 @@
       return i;
     });
 
-    var withMod = idxs.filter(function (i) {
-      return STREET_CARDS[i].modules.length;
+    var withLesson = idxs.filter(function (i) {
+      return STREET_CARDS[i].lessons.length;
     });
-    var withoutMod = idxs.filter(function (i) {
-      return !STREET_CARDS[i].modules.length;
+    var withoutLesson = idxs.filter(function (i) {
+      return !STREET_CARDS[i].lessons.length;
     });
-    withMod.sort(function (a, b) {
-      var c = cmpParts(moduleKey(STREET_CARDS[a].modules), moduleKey(STREET_CARDS[b].modules));
+    withLesson.sort(function (a, b) {
+      var c = cmpParts(lessonKey(STREET_CARDS[a].lessons), lessonKey(STREET_CARDS[b].lessons));
       if (c) return c;
       return STREET_CARDS[a].name.localeCompare(STREET_CARDS[b].name);
     });
-    withoutMod.sort(function (a, b) {
+    withoutLesson.sort(function (a, b) {
       return STREET_CARDS[a].name.localeCompare(STREET_CARDS[b].name);
     });
-    ORDERS.curriculum = withMod.concat(withoutMod);
+    ORDERS.curriculum = withLesson.concat(withoutLesson);
 
     ORDERS.region = idxs.slice().sort(function (a, b) {
       var ra = STREET_CARDS[a].neighborhood || "";
@@ -142,9 +142,9 @@
     ORDERS.shuffle = shuf;
   })();
 
-  /* ============================== STARTED-MODULE FILTER ============================== */
+  /* ============================== STARTED-LESSON FILTER ============================== */
 
-  function startedModuleSet() {
+  function startedLessonSet() {
     var s = readJSON(LEARN_LS_KEY);
     var set = {};
     if (s && s.progress) {
@@ -158,10 +158,10 @@
   function effectiveList() {
     var base = ORDERS[state.order] || ORDERS.curriculum;
     if (!state.filterStarted) return base;
-    var started = startedModuleSet();
+    var started = startedLessonSet();
     return base.filter(function (i) {
-      return STREET_CARDS[i].modules.some(function (m) {
-        return started[m];
+      return STREET_CARDS[i].lessons.some(function (lessonId) {
+        return started[lessonId];
       });
     });
   }
@@ -222,8 +222,8 @@
 
     if (!list.length) {
       feedEl.innerHTML =
-        '<div class="scroll-empty">No streets from modules you’ve started yet. Try unchecking ' +
-        '&ldquo;Started only&rdquo;, or start a module in Learn first.</div>';
+        '<div class="scroll-empty">No streets from lessons you’ve started yet. Try unchecking ' +
+        '&ldquo;Started only&rdquo;, or start a lesson in Learn first.</div>';
       return;
     }
 
@@ -290,7 +290,7 @@
   function footerHTML(c, pos, listLen) {
     var bits = [];
     if (c.neighborhood) bits.push(escapeHTML(c.neighborhood));
-    if (c.modules.length) bits.push(escapeHTML(c.modules.join(", ")));
+    if (c.lessons.length) bits.push("lesson " + escapeHTML(c.lessons.join(", ")));
     var counter = (pos + 1).toLocaleString() + " / " + listLen.toLocaleString();
     return (
       '<span class="scroll-footer-meta">' +

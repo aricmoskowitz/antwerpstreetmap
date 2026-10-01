@@ -17,9 +17,9 @@
 
   function learnStats() {
     var total = 0;
-    CURRICULUM.super_sections.forEach(function (ss) {
-      ss.sections.forEach(function (sec) {
-        total += sec.modules.length;
+    CURRICULUM.sections.forEach(function (sec) {
+      sec.modules.forEach(function (mod) {
+        total += mod.lessons.length;
       });
     });
     var state = readJSON(LEARN_LS_KEY);
@@ -63,7 +63,7 @@
 
     var learnProgress =
       ls.complete > 0
-        ? ls.complete + " / " + ls.total + " modules complete"
+        ? ls.complete + " / " + ls.total + " lessons complete"
         : "Not started yet";
     var scrollProgress = ss
       ? ss.position.toLocaleString() + " / " + ss.total.toLocaleString() + " streets seen"
@@ -75,7 +75,7 @@
       '<div class="sub">Pick how you want to explore</div>' +
       "</div>" +
       '<div class="menu-cards">' +
-      card("learn.html", "Learn", "Modules &amp; quizzes", learnProgress) +
+      card("learn.html", "Learn", "Lessons &amp; quizzes", learnProgress) +
       card("scroll.html", "Scroll", "Browse every street, one card at a time", scrollProgress) +
       "</div>";
 
