@@ -8,7 +8,7 @@ JS data files consumed directly by the app (data/generated/*.js):
   - map-data.js         projected base map: boundary, streets, waterways,
                         neighborhoods (closed polygons), landmarks, parks,
                         each with a ready-to-use SVG path `d` string.
-  - curriculum-data.js  the 68-module curriculum, unchanged in structure,
+  - curriculum-data.js  the 136-lesson curriculum, unchanged in structure,
                         wrapped as a JS global.
 
 Re-run this whenever the source data or ring boundary changes:
@@ -216,35 +216,6 @@ def midpoint_of_longest(lines_ll):
     return pts[-1]
 
 
-def centroid_of_ring(ring_ll):
-    """Area-weighted centroid (shoelace) of a closed lon/lat ring, projected."""
-    pts = [project(p) for p in ring_ll]
-    if pts[0] != pts[-1]:
-        pts = pts + [pts[0]]
-    a = cx = cy = 0.0
-    for i in range(len(pts) - 1):
-        x0, y0 = pts[i]
-        x1, y1 = pts[i + 1]
-        cross = x0 * y1 - x1 * y0
-        a += cross
-        cx += (x0 + x1) * cross
-        cy += (y0 + y1) * cross
-    a *= 0.5
-    if abs(a) < 1e-9:
-        xs = [p[0] for p in pts]
-        ys = [p[1] for p in pts]
-        return (round(sum(xs) / len(xs), 2), round(sum(ys) / len(ys), 2))
-    cx /= 6 * a
-    cy /= 6 * a
-    return (round(cx, 2), round(cy, 2))
-
-
-def centroid_of_rings(rings_ll):
-    """Centroid of the largest ring among several (multi-part polygons)."""
-    best = max(rings_ll, key=lambda r: abs(_shoelace_area(r)))
-    return centroid_of_ring(best)
-
-
 def _shoelace_area(ring_ll):
     pts = [project(p) for p in ring_ll]
     if pts[0] != pts[-1]:
@@ -255,6 +226,80 @@ def _shoelace_area(ring_ll):
         x1, y1 = pts[i + 1]
         a += x0 * y1 - x1 * y0
     return a / 2.0
+
+
+def _point_in_ring_px(pt, ring_px):
+    x, y = pt
+    inside = False
+    n = len(ring_px)
+    j = n - 1
+    for i in range(n):
+        xi, yi = ring_px[i]
+        xj, yj = ring_px[j]
+        if ((yi > y) != (yj > y)) and (x < (xj - xi) * (y - yi) / (yj - yi) + xi):
+            inside = not inside
+        j = i
+    return inside
+
+
+def _dist_point_to_segment_px(p, a, b):
+    px, py = p
+    ax, ay = a
+    bx, by = b
+    dx, dy = bx - ax, by - ay
+    if dx == 0 and dy == 0:
+        return dist(p, a)
+    t = max(0, min(1, ((px - ax) * dx + (py - ay) * dy) / (dx * dx + dy * dy)))
+    return dist(p, (ax + t * dx, ay + t * dy))
+
+
+def pole_of_inaccessibility(rings_ll):
+    """Approximate point-on-surface (Change Request 3): not a centroid, which
+    can fall outside a concave shape. Coarse grid search over the largest
+    ring's bbox (for a multi-part polygon), then iterative local refinement,
+    maximizing distance to the nearest edge. This is the one reference point
+    used both for badge placement and for the reading-order numbering of
+    polygon objects (building/park/neighborhood) - not the exact
+    priority-queue polylabel algorithm, but close enough to land well inside
+    the shape for label placement."""
+    best_ring_ll = max(rings_ll, key=lambda r: abs(_shoelace_area(r)))
+    ring = [project(p) for p in best_ring_ll]
+    minx = min(p[0] for p in ring)
+    maxx = max(p[0] for p in ring)
+    miny = min(p[1] for p in ring)
+    maxy = max(p[1] for p in ring)
+    edges = [(ring[i], ring[(i + 1) % len(ring)]) for i in range(len(ring))]
+
+    def signed_dist(pt):
+        d = min(_dist_point_to_segment_px(pt, a, b) for a, b in edges)
+        return d if _point_in_ring_px(pt, ring) else -d
+
+    grid = 24
+    best = None
+    best_d = -float("inf")
+    for ix in range(grid + 1):
+        for iy in range(grid + 1):
+            cand = (minx + (maxx - minx) * ix / grid, miny + (maxy - miny) * iy / grid)
+            d = signed_dist(cand)
+            if d > best_d:
+                best_d, best = d, cand
+
+    cell = max(maxx - minx, maxy - miny) / grid
+    for _ in range(14):
+        improved = False
+        for dx in (-1, 0, 1):
+            for dy in (-1, 0, 1):
+                if dx == 0 and dy == 0:
+                    continue
+                cand = (best[0] + dx * cell, best[1] + dy * cell)
+                if not (minx <= cand[0] <= maxx and miny <= cand[1] <= maxy):
+                    continue
+                d = signed_dist(cand)
+                if d > best_d:
+                    best_d, best, improved = d, cand, True
+        if not improved:
+            cell *= 0.5
+    return (round(best[0], 2), round(best[1], 2))
 
 
 # ------------------------------------------------------------------
@@ -424,7 +469,7 @@ for l in base["landmarks"]:
         "name": l["name"],
         "kind": "polygon",
         "d": polygon_path_d([l["ring"]]),
-        "badge": list(centroid_of_ring(l["ring"])),
+        "badge": list(pole_of_inaccessibility([l["ring"]])),
         "is_church": l["is_church"],
         "area_m2": ring_area_m2(l["ring"]),
         "bbox": bbox_of_rings([l["ring"]]),
@@ -436,7 +481,7 @@ for p in base["parks"]:
         "name": p["name"],
         "kind": "polygon",
         "d": polygon_path_d([p["ring"]]),
-        "badge": list(centroid_of_ring(p["ring"])),
+        "badge": list(pole_of_inaccessibility([p["ring"]])),
         "park_type": p["type"],
         "area_m2": ring_area_m2(p["ring"]),
         "bbox": bbox_of_rings([p["ring"]]),
@@ -452,7 +497,7 @@ for n in base["neighborhoods"]:
         "name": n["name"],
         "kind": "polygon",
         "d": polygon_path_d(rings),
-        "badge": list(centroid_of_rings(rings)),
+        "badge": list(pole_of_inaccessibility(rings)),
         "density": n.get("density"),
         "parts": len(rings),
         "bbox": bbox_of_rings(rings),
@@ -476,8 +521,8 @@ bg_neighborhoods_d = " ".join(
 )
 boundary_d = polygon_path_d([base["ring_boundary"]])
 
-# Scenery layers: visible as context on every module regardless of what the
-# module itself is teaching (per Change Request 1). None of these are
+# Scenery layers: visible as context on every lesson regardless of what the
+# lesson itself is teaching (per Change Request 1). None of these are
 # interactive - they reuse the same path strings already built for the
 # quizzable objects (buildings, parks) or are built fresh (transit, trees).
 bg_buildings_plain_d = " ".join(

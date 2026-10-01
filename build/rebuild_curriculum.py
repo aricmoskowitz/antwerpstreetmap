@@ -2,28 +2,33 @@
 """
 Regenerates data/source/antwerp-curriculum-data.json (and the human-readable
 .md alongside it) to satisfy Change Request 1's coverage requirement: every
-object in the base map appears in at least one module, and - since Super
-Section 8 already reviews every category completely - every object that
-gains a new geographic/topical appearance here also gets a second guaranteed
-appearance in an expanded Super Section 8.
+object in the base map appears in at least one lesson, and - since Section 8
+already reviews every category completely - every object that gains a new
+geographic/topical appearance here also gets a second guaranteed appearance
+in an expanded Section 8.
 
-This is additive, not a redesign: the existing 8 super sections, their
-regions, and their neighborhood groupings are all kept exactly as they are.
-Two kinds of module get added on top:
+Hierarchy (Change Request 3): section > module > lesson > object. A lesson
+like "4.2.1" is the same unit this script used to call a "module" - only the
+name changed, not the numbering.
 
-  1. Per-section "Other Streets" module(s) - the ordinary roads (not already
+This is additive, not a redesign: the existing 8 sections, their regions,
+and their neighborhood groupings are all kept exactly as they are. Two kinds
+of lesson get added on top:
+
+  1. Per-module "Other Streets" lesson(s) - the ordinary roads (not already
      a Foundations-curated longest/kaai/lei street) whose representative
-     point falls inside that section's neighborhood(s), via point-in-polygon
+     point falls inside that module's neighborhood(s), via point-in-polygon
      against the closed neighborhood polygons this project already
      reconstructs in build/preprocess.py.
-  2. Expanded Super Section 8 road review (8.5.3+) - every ordinary road,
-     chunked alphabetically, so the "appears at least twice" guarantee holds
-     for the roughly 1,000 streets this newly covers.
+  2. Expanded Section 8 road review (8.5.3+) - every ordinary road, chunked
+     alphabetically, so the "appears at least twice" guarantee holds for the
+     roughly 1,000 streets this newly covers.
 
 Re-run after preprocess.py's neighborhood-polygon logic changes, or if the
 source data changes. This script imports preprocess.py directly (running it
 in full) to reuse its projection, base data, and neighborhood polygons
-rather than re-deriving any of that.
+rather than re-deriving any of that. It's idempotent: re-running it once
+everything is already covered finds no uncovered roads and adds nothing.
 """
 import importlib.util
 import json
@@ -51,10 +56,10 @@ MAX_OBJECTS = 50
 # ------------------------------------------------------------------
 
 covered_roads = set()
-for ss in curriculum["super_sections"]:
-    for sec in ss["sections"]:
-        for mod in sec["modules"]:
-            for obj in mod["objects"]:
+for sec in curriculum["sections"]:
+    for mod in sec["modules"]:
+        for lesson in mod["lessons"]:
+            for obj in lesson["objects"]:
                 if obj["type"] == "road":
                     covered_roads.add(norm(obj["name"]))
 
@@ -121,36 +126,36 @@ def assign_neighborhood(pt):
 
 
 # ------------------------------------------------------------------
-# 3. Map each region section (super sections 2-7) to its member
-#    neighborhoods, by parsing the existing " + "-joined section titles -
-#    and redirect the handful of "orphan" neighborhoods (ones the original
-#    curriculum excluded from every section because they had zero tracked
-#    landmarks/squares/parks/waterways/notable roads) to whichever section
+# 3. Map each region module (sections 2-7) to its member neighborhoods, by
+#    parsing the existing " + "-joined module titles - and redirect the
+#    handful of "orphan" neighborhoods (ones the original curriculum
+#    excluded from every module because they had zero tracked
+#    landmarks/squares/parks/waterways/notable roads) to whichever module
 #    their nearest real neighbor belongs to, so their ordinary streets still
 #    get a geographic home instead of only ever showing up in review.
 # ------------------------------------------------------------------
 
-REGION_SS_IDS = [2, 3, 4, 5, 6, 7]
+REGION_SECTION_IDS = [2, 3, 4, 5, 6, 7]
 
 
-def section_member_neighborhoods(section_title):
-    parts = [p.strip() for p in section_title.split(" + ")]
+def module_member_neighborhoods(module_title):
+    parts = [p.strip() for p in module_title.split(" + ")]
     keys = []
     for p in parts:
         k = norm(p)
         if k in neighborhood_rings:
             keys.append(k)
         else:
-            print(f"  WARNING: could not match neighborhood name from section title part: {p!r}")
+            print(f"  WARNING: could not match neighborhood name from module title part: {p!r}")
     return keys
 
 
 referenced_keys = set()
-for ss in curriculum["super_sections"]:
-    if ss["id"] not in REGION_SS_IDS:
+for sec in curriculum["sections"]:
+    if sec["id"] not in REGION_SECTION_IDS:
         continue
-    for sec in ss["sections"]:
-        referenced_keys.update(section_member_neighborhoods(sec["title"]))
+    for mod in sec["modules"]:
+        referenced_keys.update(module_member_neighborhoods(mod["title"]))
 
 orphan_keys = set(neighborhood_rings.keys()) - referenced_keys
 redirect = {}
@@ -159,7 +164,7 @@ for ok in orphan_keys:
         referenced_keys, key=lambda k: dist(neighborhood_centroid[ok], neighborhood_centroid[k])
     )
     redirect[ok] = nearest
-print(f"redirecting {len(orphan_keys)} orphan neighborhoods (no home section) to their nearest neighbor's section")
+print(f"redirecting {len(orphan_keys)} orphan neighborhoods (no home module) to their nearest neighbor's module")
 
 road_to_neighborhood = {}
 for road in ordinary_roads:
@@ -171,7 +176,8 @@ for road in ordinary_roads:
 from collections import Counter
 
 dist_counts = Counter(road_to_neighborhood.values())
-print(f"assigned across {len(dist_counts)} neighborhoods (post-redirect); min {min(dist_counts.values())}, max {max(dist_counts.values())}")
+if dist_counts:
+    print(f"assigned across {len(dist_counts)} neighborhoods (post-redirect); min {min(dist_counts.values())}, max {max(dist_counts.values())}")
 
 
 def chunk(lst, size):
@@ -184,17 +190,17 @@ def road_obj(road):
 
 roads_by_norm_name = {norm(r["name"]): r for r in ordinary_roads}
 
-new_module_count = 0
+new_lesson_count = 0
 
-for ss in curriculum["super_sections"]:
-    if ss["id"] not in REGION_SS_IDS:
+for sec in curriculum["sections"]:
+    if sec["id"] not in REGION_SECTION_IDS:
         continue
-    sections = ss["sections"]
-    carry = []  # leftover road-name-keys from undersized sections, deferred forward
-    last_section_with_module = None
+    modules = sec["modules"]
+    carry = []  # leftover road-name-keys from undersized modules, deferred forward
+    last_module_with_lesson = None
 
-    for sec in sections:
-        member_keys = section_member_neighborhoods(sec["title"])
+    for mod in modules:
+        member_keys = module_member_neighborhoods(mod["title"])
         pool_keys = sorted(
             [k for k, nb in road_to_neighborhood.items() if nb in member_keys]
         )
@@ -207,113 +213,115 @@ for ss in curriculum["super_sections"]:
             (roads_by_norm_name[k] for k in pool_keys), key=lambda r: -pp.lines_length_m(r["lines"])
         )
         chunks = chunk(roads_sorted, MAX_OBJECTS)
-        next_mod_num = max((int(m["id"].split(".")[-1]) for m in sec["modules"]), default=0) + 1
+        next_lesson_num = max((int(m["id"].split(".")[-1]) for m in mod["lessons"]), default=0) + 1
         for i, ch in enumerate(chunks):
             title = "Other Streets" if len(chunks) == 1 else f"Other Streets, Part {i + 1} of {len(chunks)}"
-            sec["modules"].append(
+            mod["lessons"].append(
                 {
-                    "id": f"{sec['id']}.{next_mod_num}",
+                    "id": f"{mod['id']}.{next_lesson_num}",
                     "title": title,
                     "objects": [road_obj(r) for r in ch],
                 }
             )
-            next_mod_num += 1
-            new_module_count += 1
-        last_section_with_module = sec
+            next_lesson_num += 1
+            new_lesson_count += 1
+        last_module_with_lesson = mod
 
-    if carry and last_section_with_module is not None:
-        # fold any final undersized remainder into the last module we just
+    if carry and last_module_with_lesson is not None:
+        # fold any final undersized remainder into the last lesson we just
         # added for this region, splitting further only if that overflows
         roads_sorted = sorted((roads_by_norm_name[k] for k in carry), key=lambda r: -pp.lines_length_m(r["lines"]))
-        last_mod = last_section_with_module["modules"][-1]
-        combined_names = {norm(o["name"]) for o in last_mod["objects"]}
+        last_lesson = last_module_with_lesson["lessons"][-1]
+        combined_names = {norm(o["name"]) for o in last_lesson["objects"]}
         for r in roads_sorted:
             if norm(r["name"]) not in combined_names:
-                last_mod["objects"].append(road_obj(r))
-        if len(last_mod["objects"]) > MAX_OBJECTS:
-            overflow = last_mod["objects"][MAX_OBJECTS:]
-            last_mod["objects"] = last_mod["objects"][:MAX_OBJECTS]
-            next_mod_num = max(int(m["id"].split(".")[-1]) for m in last_section_with_module["modules"]) + 1
-            last_section_with_module["modules"].append(
+                last_lesson["objects"].append(road_obj(r))
+        if len(last_lesson["objects"]) > MAX_OBJECTS:
+            overflow = last_lesson["objects"][MAX_OBJECTS:]
+            last_lesson["objects"] = last_lesson["objects"][:MAX_OBJECTS]
+            next_lesson_num = max(int(m["id"].split(".")[-1]) for m in last_module_with_lesson["lessons"]) + 1
+            last_module_with_lesson["lessons"].append(
                 {
-                    "id": f"{last_section_with_module['id']}.{next_mod_num}",
+                    "id": f"{last_module_with_lesson['id']}.{next_lesson_num}",
                     "title": "Other Streets (cont.)",
                     "objects": overflow,
                 }
             )
-            new_module_count += 1
+            new_lesson_count += 1
 
-print(f"added {new_module_count} 'Other Streets' modules across regions")
+print(f"added {new_lesson_count} 'Other Streets' lessons across regions")
 
 # ------------------------------------------------------------------
-# 4. Expand Super Section 8's road review with every ordinary road
+# 4. Expand Section 8's road review with every ordinary road
 # ------------------------------------------------------------------
 
-ss8 = next(s for s in curriculum["super_sections"] if s["id"] == 8)
-sec85 = next(s for s in ss8["sections"] if s["id"] == "8.5")
-sec85["title"] = "All Roads"  # was "All Notable Roads" - now covers every road, not just the curated set
+sec8 = next(s for s in curriculum["sections"] if s["id"] == 8)
+mod85 = next(s for s in sec8["modules"] if s["id"] == "8.5")
+mod85["title"] = "All Roads"  # was "All Notable Roads" - now covers every road, not just the curated set
 
 all_ordinary_sorted = sorted(ordinary_roads, key=lambda r: norm(r["name"]))
 review_chunks = chunk(all_ordinary_sorted, MAX_OBJECTS)
-next_mod_num = max(int(m["id"].split(".")[-1]) for m in sec85["modules"]) + 1
+next_lesson_num = max(int(m["id"].split(".")[-1]) for m in mod85["lessons"]) + 1
 for ch in review_chunks:
     # first character of the same sort key used above, so the label always
     # matches the actual alphabetical order of the chunk
     first_letter = norm(ch[0]["name"])[0]
     last_letter = norm(ch[-1]["name"])[0]
     label = first_letter if first_letter == last_letter else f"{first_letter}–{last_letter}"
-    sec85["modules"].append(
+    mod85["lessons"].append(
         {
-            "id": f"8.5.{next_mod_num}",
+            "id": f"8.5.{next_lesson_num}",
             "title": f"Other Streets ({label}) ({len(ch)})",
             "objects": [road_obj(r) for r in ch],
         }
     )
-    next_mod_num += 1
+    next_lesson_num += 1
 
-print(f"added {len(review_chunks)} review modules to Super Section 8.5 covering {len(all_ordinary_sorted)} roads")
+print(f"added {len(review_chunks)} review lessons to Module 8.5 covering {len(all_ordinary_sorted)} roads")
 
 # ------------------------------------------------------------------
-# 5. Safety net: split any non-review module that exceeds the new 50-cap.
+# 5. Safety net: split any non-review lesson that exceeds the new 50-cap.
 #    (1.5.1 "Neighborhoods With Tracked Objects", pre-dating this script,
 #    has 87 - the new bound applies to it too even though this script
 #    didn't create it.)
 # ------------------------------------------------------------------
 
 split_count = 0
-for ss in curriculum["super_sections"]:
-    if ss["id"] == 8:
+for sec in curriculum["sections"]:
+    if sec["id"] == 8:
         continue
-    for sec in ss["sections"]:
-        new_modules = []
-        for mod in sec["modules"]:
-            if len(mod["objects"]) <= MAX_OBJECTS:
-                new_modules.append(mod)
+    for mod in sec["modules"]:
+        new_lessons = []
+        for lesson in mod["lessons"]:
+            if len(lesson["objects"]) <= MAX_OBJECTS:
+                new_lessons.append(lesson)
                 continue
-            chunks = chunk(mod["objects"], MAX_OBJECTS)
-            base_id = mod["id"]
+            chunks = chunk(lesson["objects"], MAX_OBJECTS)
+            base_id = lesson["id"]
             for i, ch in enumerate(chunks):
-                new_modules.append(
+                new_lessons.append(
                     {
                         "id": base_id if i == 0 else f"{base_id}-{i + 1}",
-                        "title": mod["title"] if len(chunks) == 1 else f"{mod['title']}, Part {i + 1} of {len(chunks)}",
+                        "title": lesson["title"] if len(chunks) == 1 else f"{lesson['title']}, Part {i + 1} of {len(chunks)}",
                         "objects": ch,
                     }
                 )
             split_count += 1
-        sec["modules"] = new_modules
+        mod["lessons"] = new_lessons
 
-print(f"split {split_count} oversized non-review module(s) to respect the 50-object cap")
+print(f"split {split_count} oversized non-review lesson(s) to respect the 50-object cap")
 
 # ------------------------------------------------------------------
 # 6. Update meta and write out
 # ------------------------------------------------------------------
 
 curriculum["meta"]["note"] = (
-    curriculum["meta"].get("note", "")
-    + " Every road (including squares), waterway, park, building, and neighborhood in the base map "
-    "appears in at least one module; most appear in at least two (a geographic/topical module plus "
-    "Super Section 8's complete review)."
+    "An object may appear in multiple lessons by design (e.g. a road can be a longest road, a lei "
+    "street, AND a neighborhood's notable road). Within any single lesson's object list, each object "
+    "is deduplicated and counted once toward that lesson's 5-object minimum. Every road (including "
+    "squares), waterway, park, building, and neighborhood in the base map appears in at least one "
+    "lesson; most appear in at least two (a geographic/topical lesson plus Section 8's complete "
+    "review)."
 )
 
 with open(SRC / "antwerp-curriculum-data.json", "w") as f:
@@ -332,32 +340,34 @@ def fmt_obj(o):
         extra = f" — {o['length_m'] / 1000:.2f} km"
     elif "area_m2" in o:
         extra = f" — {o['area_m2']:,} m²"
-    return f"- {o['name']} ({o['type']}){extra}"
+    num = f"{o['number']}. " if "number" in o else ""
+    return f"- {num}{o['name']} ({o['type']}){extra}"
 
 
 md_lines = [
     "# Antwerp Inside the Ring — Learning Curriculum\n",
     "*A curriculum for learning the streets, squares, waterways, buildings, parks, and "
     "neighborhoods of Antwerp's historic core, built from the reference map. Numbering follows "
-    "Super Section.Section.Module (e.g. 4.2.1). An object may appear in more than one module — "
-    "a long boulevard, for instance, belongs both to the city-wide roads module and to every "
-    "neighborhood it passes through; the goal, since Super Section 8 reviews every category "
+    "Section.Module.Lesson (e.g. 4.2.1). An object may appear in more than one lesson — "
+    "a long boulevard, for instance, belongs both to the city-wide roads lesson and to every "
+    "neighborhood it passes through; the goal, since Section 8 reviews every category "
     "completely, is that every object appears at least twice (once geographically/topically, "
-    "once in review). Super Section 1 uses curated, filtered lists to keep the foundations "
-    "manageable; Super Section 8 holds the complete, unfiltered lists of every category, "
+    "once in review). Section 1 uses curated, filtered lists to keep the foundations "
+    "manageable; Section 8 holds the complete, unfiltered lists of every category, "
     "including every ordinary street not already covered by a Foundations or neighborhood "
-    "module.*\n",
+    "lesson. Within each lesson, objects are numbered in reading order (north to south, "
+    "west to east within each row) - see build/number_lesson_objects.py.*\n",
     "*This document is generated from `antwerp-curriculum-data.json` by "
     "`build/rebuild_curriculum.py` — edit the JSON (or the generator), not this file directly.*\n",
     "---\n",
 ]
-for ss in curriculum["super_sections"]:
-    md_lines.append(f"## Super Section {ss['id']} — {ss['title']}\n")
-    for sec in ss["sections"]:
-        md_lines.append(f"### {sec['id']} {sec['title']}\n")
-        for mod in sec["modules"]:
-            md_lines.append(f"#### {mod['id']} {mod['title']} ({len(mod['objects'])})\n")
-            for o in mod["objects"]:
+for sec in curriculum["sections"]:
+    md_lines.append(f"## Section {sec['id']} — {sec['title']}\n")
+    for mod in sec["modules"]:
+        md_lines.append(f"### {mod['id']} {mod['title']}\n")
+        for lesson in mod["lessons"]:
+            md_lines.append(f"#### {lesson['id']} {lesson['title']} ({len(lesson['objects'])})\n")
+            for o in lesson["objects"]:
                 md_lines.append(fmt_obj(o))
             md_lines.append("")
     md_lines.append("---\n")

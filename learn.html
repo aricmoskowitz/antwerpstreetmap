@@ -18,7 +18,20 @@
 <body>
 <div id="app"></div>
 
+<div class="modal-backdrop" id="resetModal" hidden>
+  <div class="modal-card">
+    <h3>Reset all progress?</h3>
+    <p>This clears every module's quiz score. This can't be undone.</p>
+    <div class="modal-btn-row">
+      <button class="btn btn-secondary" id="resetCancel">Cancel</button>
+      <button class="btn btn-primary" id="resetConfirm">Reset</button>
+    </div>
+  </div>
+</div>
+
+<script src="data/generated/map-data.js"></script>
 <script src="data/generated/curriculum-data.js"></script>
-<script src="menu.js"></script>
+<script src="map-render.js"></script>
+<script src="app.js"></script>
 </body>
 </html>

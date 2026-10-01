@@ -22,24 +22,27 @@
   }
 
   /* ============================== CURRICULUM INDEX ============================== */
+  // Hierarchy (Change Request 3): section > module > lesson > object. A
+  // lesson like "4.2.1" is the exact same unit this app used to call a
+  // "module" - only the name changed, not the numbering.
 
-  var MODULES_BY_ID = {};
-  var MODULE_ORDER = [];
+  var LESSONS_BY_ID = {};
+  var LESSON_ORDER = [];
 
   (function buildIndex() {
-    CURRICULUM.super_sections.forEach(function (ss) {
-      ss.sections.forEach(function (sec) {
-        sec.modules.forEach(function (mod) {
-          MODULES_BY_ID[mod.id] = {
-            id: mod.id,
-            title: mod.title,
-            objects: mod.objects,
-            ssId: ss.id,
-            ssTitle: ss.title,
-            secId: sec.id,
-            secTitle: sec.title,
+    CURRICULUM.sections.forEach(function (sec) {
+      sec.modules.forEach(function (mod) {
+        mod.lessons.forEach(function (lesson) {
+          LESSONS_BY_ID[lesson.id] = {
+            id: lesson.id,
+            title: lesson.title,
+            objects: lesson.objects,
+            sectionId: sec.id,
+            sectionTitle: sec.title,
+            moduleId: mod.id,
+            moduleTitle: mod.title,
           };
-          MODULE_ORDER.push(mod.id);
+          LESSON_ORDER.push(lesson.id);
         });
       });
     });
@@ -108,8 +111,8 @@
   }
 
   function router() {
-    if (route.screen === "module") {
-      renderModuleScreen(route.moduleId);
+    if (route.screen === "lesson") {
+      renderLessonScreen(route.lessonId);
     } else {
       renderHome();
     }
@@ -128,30 +131,33 @@
     );
   }
 
-  function objectCountLabel(mod) {
-    return mod.objects.length + (mod.objects.length === 1 ? " object" : " objects");
+  function objectCountLabel(lesson) {
+    return lesson.objects.length + (lesson.objects.length === 1 ? " object" : " objects");
   }
 
-  function moduleBadge(modId) {
-    var prog = state.progress[modId];
+  function lessonScoreBadge(lessonId) {
+    var prog = state.progress[lessonId];
     if (!prog || !prog.attempts) return "";
-    return '<div class="m-badge">' + pct(prog.bestScore) + "</div>";
+    return '<div class="lesson-score-badge">' + pct(prog.bestScore) + "</div>";
   }
 
   function renderHome() {
     var html = "";
     html +=
+      '<div class="top-row" style="padding:12px 16px 0;">' +
+      '<a class="back-btn" href="index.html">&larr; Menu</a>' +
+      "</div>" +
       '<div class="home-header">' +
       brandMark() +
       "<div><h1>Antwerp Inside the Ring</h1>" +
       '<div class="sub">' +
-      CURRICULUM.super_sections.length +
-      " super sections &middot; " +
-      MODULE_ORDER.length +
-      " modules</div></div></div>";
+      CURRICULUM.sections.length +
+      " sections &middot; " +
+      LESSON_ORDER.length +
+      " lessons</div></div></div>";
 
-    if (state.lastOpened && MODULES_BY_ID[state.lastOpened]) {
-      var lm = MODULES_BY_ID[state.lastOpened];
+    if (state.lastOpened && LESSONS_BY_ID[state.lastOpened]) {
+      var lm = LESSONS_BY_ID[state.lastOpened];
       html +=
         '<div class="resume-card" id="resumeCard">' +
         '<div><div class="label">Continue</div>' +
@@ -162,35 +168,35 @@
         "</div></div><div>&rarr;</div></div>";
     }
 
-    CURRICULUM.super_sections.forEach(function (ss) {
-      var isOpen = !!state.openSections[ss.id];
-      html += '<div class="super-section' + (isOpen ? " open" : "") + '" data-ss="' + ss.id + '">';
+    CURRICULUM.sections.forEach(function (sec) {
+      var isOpen = !!state.openSections[sec.id];
+      html += '<div class="section-group' + (isOpen ? " open" : "") + '" data-section="' + sec.id + '">';
       html +=
-        '<div class="ss-header" data-toggle-ss="' +
-        ss.id +
-        '"><div class="ss-num">' +
-        ss.id +
-        '</div><div class="ss-title"><h2>' +
-        ss.title +
-        '</h2><div class="ss-sub">' +
-        ss.sections.length +
-        " sections</div></div>" +
+        '<div class="section-header" data-toggle-section="' +
+        sec.id +
+        '"><div class="section-num">' +
+        sec.id +
+        '</div><div class="section-title-wrap"><h2>' +
+        sec.title +
+        '</h2><div class="section-sub">' +
+        sec.modules.length +
+        " modules</div></div>" +
         '<div class="chevron">&#9656;</div></div>';
-      html += '<div class="ss-body">';
-      ss.sections.forEach(function (sec) {
-        html += '<div class="section-block"><div class="sec-title">' + sec.id + " &middot; " + sec.title + "</div>";
-        sec.modules.forEach(function (mod) {
+      html += '<div class="section-body">';
+      sec.modules.forEach(function (mod) {
+        html += '<div class="module-block"><div class="module-title">' + mod.id + " &middot; " + mod.title + "</div>";
+        mod.lessons.forEach(function (lesson) {
           html +=
-            '<div class="module-row" data-open-module="' +
-            mod.id +
-            '"><div class="m-id">' +
-            mod.id +
-            '</div><div class="m-info"><div class="m-title">' +
-            mod.title +
-            '</div><div class="m-count">' +
-            objectCountLabel(mod) +
+            '<div class="lesson-row" data-open-lesson="' +
+            lesson.id +
+            '"><div class="lesson-id">' +
+            lesson.id +
+            '</div><div class="lesson-info"><div class="lesson-title">' +
+            lesson.title +
+            '</div><div class="lesson-count">' +
+            objectCountLabel(lesson) +
             "</div></div>" +
-            moduleBadge(mod.id) +
+            lessonScoreBadge(lesson.id) +
             "</div>";
         });
         html += "</div>";
@@ -205,22 +211,22 @@
     var resumeCard = document.getElementById("resumeCard");
     if (resumeCard) {
       resumeCard.addEventListener("click", function () {
-        openModule(state.lastOpened);
+        openLesson(state.lastOpened);
       });
     }
 
-    document.querySelectorAll("[data-toggle-ss]").forEach(function (el) {
+    document.querySelectorAll("[data-toggle-section]").forEach(function (el) {
       el.addEventListener("click", function () {
-        var id = el.getAttribute("data-toggle-ss");
+        var id = el.getAttribute("data-toggle-section");
         state.openSections[id] = !state.openSections[id];
         saveState();
         renderHome();
       });
     });
 
-    document.querySelectorAll("[data-open-module]").forEach(function (el) {
+    document.querySelectorAll("[data-open-lesson]").forEach(function (el) {
       el.addEventListener("click", function () {
-        openModule(el.getAttribute("data-open-module"));
+        openLesson(el.getAttribute("data-open-lesson"));
       });
     });
 
@@ -229,249 +235,17 @@
     });
   }
 
-  function openModule(moduleId) {
-    state.lastOpened = moduleId;
+  function openLesson(lessonId) {
+    state.lastOpened = lessonId;
     saveState();
-    go({ screen: "module", moduleId: moduleId, mode: "learn" });
+    go({ screen: "lesson", lessonId: lessonId, mode: "learn" });
   }
 
   /* ============================== VIEWPORT / PAN & ZOOM ============================== */
 
-  function parseViewBox(s) {
-    var p = s.trim().split(/\s+/).map(Number);
-    return { x: p[0], y: p[1], w: p[2], h: p[3] };
-  }
-
-  var FULL_VB = parseViewBox(MAP_DATA.viewBox);
-  var MAP_ASPECT = FULL_VB.w / FULL_VB.h;
-  var MIN_VB_W = 12; // deepest allowed zoom-in, in world units
-  var FIT_PADDING = 0.4; // fraction of the module's own extent added as margin
-  var FIT_MIN_SIZE = 70; // floor on the fitted viewBox width, so a single tiny
-
-  // object (one small building) doesn't zoom in absurdly far.
-
-  function unionBBox(boxes) {
-    var minX = Infinity,
-      minY = Infinity,
-      maxX = -Infinity,
-      maxY = -Infinity;
-    boxes.forEach(function (b) {
-      if (b[0] < minX) minX = b[0];
-      if (b[1] < minY) minY = b[1];
-      if (b[2] > maxX) maxX = b[2];
-      if (b[3] > maxY) maxY = b[3];
-    });
-    return [minX, minY, maxX, maxY];
-  }
-
-  function clampViewBox(vb) {
-    var w = Math.min(Math.max(vb.w, MIN_VB_W), FULL_VB.w);
-    var h = w / MAP_ASPECT;
-    var minX = FULL_VB.x - w * 0.9;
-    var maxX = FULL_VB.x + FULL_VB.w - w * 0.1;
-    var minY = FULL_VB.y - h * 0.9;
-    var maxY = FULL_VB.y + FULL_VB.h - h * 0.1;
-    return {
-      x: Math.min(Math.max(vb.x, minX), maxX),
-      y: Math.min(Math.max(vb.y, minY), maxY),
-      w: w,
-      h: h,
-    };
-  }
-
-  function fitViewBoxForBBox(bbox) {
-    var w = Math.max(bbox[2] - bbox[0], 1);
-    var h = Math.max(bbox[3] - bbox[1], 1);
-    var cx = (bbox[0] + bbox[2]) / 2;
-    var cy = (bbox[1] + bbox[3]) / 2;
-    w *= 1 + FIT_PADDING * 2;
-    h *= 1 + FIT_PADDING * 2;
-    w = Math.max(w, FIT_MIN_SIZE);
-    h = Math.max(h, FIT_MIN_SIZE / MAP_ASPECT);
-    if (w / h < MAP_ASPECT) {
-      w = h * MAP_ASPECT;
-    } else {
-      h = w / MAP_ASPECT;
-    }
-    // Fully contain the fitted window within the real map extent (rather
-    // than the looser pan clamp, which permits overscroll during
-    // interaction but would otherwise leave a large/whole-map module
-    // off-center here).
-    if (w >= FULL_VB.w || h >= FULL_VB.h) {
-      return { x: FULL_VB.x, y: FULL_VB.y, w: FULL_VB.w, h: FULL_VB.h };
-    }
-    var x = Math.min(Math.max(cx - w / 2, FULL_VB.x), FULL_VB.x + FULL_VB.w - w);
-    var y = Math.min(Math.max(cy - h / 2, FULL_VB.y), FULL_VB.y + FULL_VB.h - h);
-    return { x: x, y: y, w: w, h: h };
-  }
-
-  function createMapController(svg, homeBBox, onTap) {
-    var home = fitViewBoxForBBox(homeBBox);
-    var vb = { x: home.x, y: home.y, w: home.w, h: home.h };
-
-    function apply() {
-      svg.setAttribute("viewBox", vb.x + " " + vb.y + " " + vb.w + " " + vb.h);
-      rescaleBadges();
-    }
-
-    function rescaleBadges() {
-      var s = vb.w / FULL_VB.w;
-      var badges = svg.querySelectorAll(".badge");
-      for (var i = 0; i < badges.length; i++) {
-        var g = badges[i];
-        g.setAttribute(
-          "transform",
-          "translate(" + g.getAttribute("data-bx") + "," + g.getAttribute("data-by") + ") scale(" + s + ")"
-        );
-      }
-    }
-
-    function reset() {
-      vb = { x: home.x, y: home.y, w: home.w, h: home.h };
-      apply();
-    }
-
-    function clientToUser(clientX, clientY) {
-      var rect = svg.getBoundingClientRect();
-      return {
-        x: vb.x + ((clientX - rect.left) / rect.width) * vb.w,
-        y: vb.y + ((clientY - rect.top) / rect.height) * vb.h,
-      };
-    }
-
-    function zoomAt(clientX, clientY, factor) {
-      var before = clientToUser(clientX, clientY);
-      var rect = svg.getBoundingClientRect();
-      var newW = vb.w / factor;
-      var clamped = clampViewBox({ x: vb.x, y: vb.y, w: newW, h: newW / MAP_ASPECT });
-      vb.w = clamped.w;
-      vb.h = clamped.h;
-      vb.x = before.x - ((clientX - rect.left) / rect.width) * vb.w;
-      vb.y = before.y - ((clientY - rect.top) / rect.height) * vb.h;
-      var reclamped = clampViewBox(vb);
-      vb = reclamped;
-      apply();
-    }
-
-    function dist(a, b) {
-      return Math.hypot(a.x - b.x, a.y - b.y);
-    }
-
-    var pointers = {};
-    var dragLast = null;
-    var pinchStartDist = null;
-    var startPointerPos = null;
-    var moved = 0;
-    var lastTapTime = 0;
-    var lastTapPos = null;
-
-    function pointerIds() {
-      return Object.keys(pointers);
-    }
-
-    svg.style.touchAction = "none";
-
-    svg.addEventListener("pointerdown", function (e) {
-      if (e.pointerType === "mouse" && e.button !== 0) return;
-      svg.setPointerCapture(e.pointerId);
-      pointers[e.pointerId] = { x: e.clientX, y: e.clientY };
-      var ids = pointerIds();
-      if (ids.length === 1) {
-        dragLast = { x: e.clientX, y: e.clientY };
-        startPointerPos = { x: e.clientX, y: e.clientY };
-        moved = 0;
-      } else if (ids.length === 2) {
-        var p = ids.map(function (id) {
-          return pointers[id];
-        });
-        pinchStartDist = dist(p[0], p[1]);
-        dragLast = null;
-      }
-    });
-
-    svg.addEventListener("pointermove", function (e) {
-      if (!pointers[e.pointerId]) return;
-      pointers[e.pointerId] = { x: e.clientX, y: e.clientY };
-      var ids = pointerIds();
-      if (ids.length === 1 && dragLast) {
-        var dx = e.clientX - dragLast.x;
-        var dy = e.clientY - dragLast.y;
-        moved += Math.abs(dx) + Math.abs(dy);
-        var rect = svg.getBoundingClientRect();
-        vb.x -= (dx / rect.width) * vb.w;
-        vb.y -= (dy / rect.height) * vb.h;
-        var clamped = clampViewBox(vb);
-        vb.x = clamped.x;
-        vb.y = clamped.y;
-        dragLast = { x: e.clientX, y: e.clientY };
-        apply();
-      } else if (ids.length === 2 && pinchStartDist != null) {
-        var pts = ids.map(function (id) {
-          return pointers[id];
-        });
-        var d = dist(pts[0], pts[1]);
-        var mid = { x: (pts[0].x + pts[1].x) / 2, y: (pts[0].y + pts[1].y) / 2 };
-        var factor = d / pinchStartDist;
-        if (factor && isFinite(factor) && factor > 0) {
-          zoomAt(mid.x, mid.y, factor);
-        }
-        pinchStartDist = d;
-      }
-    });
-
-    function handleTap(clientX, clientY) {
-      var el = document.elementFromPoint(clientX, clientY);
-      if (!el) return;
-      var t = el.closest("[data-idx]");
-      if (!t) return;
-      onTap(parseInt(t.getAttribute("data-idx"), 10));
-    }
-
-    function endPointer(e) {
-      var wasSingle = pointerIds().length === 1;
-      var startPos = startPointerPos;
-      delete pointers[e.pointerId];
-      var ids = pointerIds();
-      if (ids.length < 2) pinchStartDist = null;
-      if (ids.length === 0) {
-        dragLast = null;
-        if (wasSingle && moved < 10 && startPos) {
-          var now = Date.now();
-          if (lastTapPos && now - lastTapTime < 320 && dist(lastTapPos, startPos) < 24) {
-            zoomAt(startPos.x, startPos.y, 1.8);
-            lastTapTime = 0;
-            lastTapPos = null;
-          } else {
-            lastTapTime = now;
-            lastTapPos = startPos;
-            handleTap(startPos.x, startPos.y);
-          }
-        }
-        startPointerPos = null;
-      } else if (ids.length === 1) {
-        var remaining = pointers[ids[0]];
-        dragLast = { x: remaining.x, y: remaining.y };
-      }
-    }
-
-    svg.addEventListener("pointerup", endPointer);
-    svg.addEventListener("pointercancel", endPointer);
-
-    svg.addEventListener(
-      "wheel",
-      function (e) {
-        e.preventDefault();
-        var factor = Math.exp(-e.deltaY * 0.0015);
-        zoomAt(e.clientX, e.clientY, factor);
-      },
-      { passive: false }
-    );
-
-    apply();
-    return { reset: reset };
-  }
-
   /* ============================== MAP RENDERING ============================== */
+  // Pan/zoom, scenery layers, and tree icons live in map-render.js (shared
+  // with scroll.js) as the global `MapRender`.
 
   function metaLine(curObj, baseObj) {
     var lengthM = curObj.length_m != null ? curObj.length_m : baseObj && baseObj.length_m;
@@ -501,65 +275,9 @@
     }
   }
 
-  var TREE_DEFS =
-    '<defs>' +
-    '<symbol id="tree-ginkgo" viewBox="-3 -3 6 6">' +
-    '<path d="M0,1.6 C-2,1.6 -2.4,-0.9 -1.3,-2 C-0.6,-1.3 -0.3,-0.6 0,0.1 C0.3,-0.6 0.6,-1.3 1.3,-2 C2.4,-0.9 2,1.6 0,1.6 Z" fill="#4a7a3a"/>' +
-    '</symbol>' +
-    '<symbol id="tree-magnolia" viewBox="-3 -3 6 6">' +
-    [0, 72, 144, 216, 288]
-      .map(function (deg) {
-        return '<ellipse cx="0" cy="-1.5" rx="0.75" ry="1.15" fill="#e8a5c4" transform="rotate(' + deg + ')"/>';
-      })
-      .join("") +
-    '<circle r="0.55" fill="#c9a227"/>' +
-    '</symbol>' +
-    '<symbol id="tree-notable" viewBox="-3 -3 6 6">' +
-    '<circle r="2.6" fill="none" stroke="#c9a227" stroke-width="0.35" stroke-dasharray="0.5 0.4"/>' +
-    '<rect x="-0.3" y="0.4" width="0.6" height="1.3" fill="#6b4a2a"/>' +
-    '<circle cy="-0.4" r="1.5" fill="#4a7a3a"/>' +
-    '</symbol>' +
-    '</defs>';
-
-  var TREE_SIZE = { ginkgo: 3, magnolia: 3, notable: 5, "ginkgo-cluster": 4.5, "magnolia-cluster": 4.5 };
-  var TREE_SYMBOL = {
-    ginkgo: "tree-ginkgo",
-    magnolia: "tree-magnolia",
-    notable: "tree-notable",
-    "ginkgo-cluster": "tree-ginkgo",
-    "magnolia-cluster": "tree-magnolia",
-  };
-
-  function treeMarkersSVG() {
-    var out = "";
-    MAP_DATA.trees.forEach(function (t) {
-      var s = TREE_SIZE[t.kind];
-      var sym = TREE_SYMBOL[t.kind];
-      var half = s / 2;
-      out +=
-        '<use href="#' +
-        sym +
-        '" x="' +
-        (t.x - half) +
-        '" y="' +
-        (t.y - half) +
-        '" width="' +
-        s +
-        '" height="' +
-        s +
-        '" class="tree-marker"/>';
-      if (t.count) {
-        out += '<circle class="tree-cluster-ring" cx="' + t.x + '" cy="' + t.y + '" r="' + (half + 0.6) + '"/>';
-        out +=
-          '<text class="tree-cluster-count" x="' + t.x + '" y="' + (t.y - half - 0.8) + '">' + t.count + "</text>";
-      }
-    });
-    return out;
-  }
-
-  function resolveModuleObjects(mod) {
+  function resolveLessonObjects(lesson) {
     var list = [];
-    mod.objects.forEach(function (curObj, idx) {
+    lesson.objects.forEach(function (curObj) {
       var baseObj = resolveObject(curObj);
       if (!baseObj) return; // shouldn't happen; guards against data drift
       list.push({ idx: list.length, curObj: curObj, baseObj: baseObj });
@@ -567,14 +285,157 @@
     return list;
   }
 
-  function mapSVG(resolvedList) {
+  /* ---------- reading-order badge layout (Change Request 3) ---------- */
+  // Numbers themselves are computed at build time (build/number_lesson_
+  // objects.py) and stored as curObj.number. This only decides where to
+  // draw each badge on top of its object's fixed reference point
+  // (baseObj.badge): nudged apart, with a short leader line back to the
+  // true point, whenever two badges would otherwise overlap on screen.
+  // The nudge is expressed in the badge's own local coordinate space (the
+  // same space the <circle r="9"> badge glyph is drawn in, before the
+  // zoom-driven translate(bx,by) scale(s) transform map-render.js applies)
+  // so it scales with the badge - and with the current zoom level - instead
+  // of drifting as the user pans/zooms. Numbers never change to resolve an
+  // overlap, only badge position does.
+
+  function computeBadgeLayout(resolvedList, homeVbWidth) {
+    var n = resolvedList.length;
+    var positions = resolvedList.map(function (item) {
+      return { x: item.baseObj.badge[0], y: item.baseObj.badge[1] };
+    });
+    var sHome = homeVbWidth / MapRender.FULL_VB.w;
+    var threshold = homeVbWidth * 0.03; // world units, ~3% of the visible width at the home zoom
+    var offsets = positions.map(function () {
+      return { dx: 0, dy: 0 };
+    });
+
+    for (var pass = 0; pass < 3; pass++) {
+      for (var i = 0; i < n; i++) {
+        for (var j = i + 1; j < n; j++) {
+          var ax = positions[i].x + offsets[i].dx;
+          var ay = positions[i].y + offsets[i].dy;
+          var bx = positions[j].x + offsets[j].dx;
+          var by = positions[j].y + offsets[j].dy;
+          var dx = bx - ax;
+          var dy = by - ay;
+          var d = Math.hypot(dx, dy);
+          if (d < threshold) {
+            var push = (threshold - d) / 2 + 0.5;
+            var ux = d === 0 ? 1 : dx / d;
+            var uy = d === 0 ? 0 : dy / d;
+            offsets[i].dx -= ux * push;
+            offsets[i].dy -= uy * push;
+            offsets[j].dx += ux * push;
+            offsets[j].dy += uy * push;
+          }
+        }
+      }
+    }
+
+    // world-space offset -> local badge-space offset (divide by the home
+    // zoom's scale factor, since local units get multiplied by scale(s))
+    return offsets.map(function (o) {
+      return { lx: round2(o.dx / sHome), ly: round2(o.dy / sHome) };
+    });
+  }
+
+  function round2(n) {
+    return Math.round(n * 100) / 100;
+  }
+
+  var BADGE_HALF = 8;
+
+  function notebookCornerPath(cx, cy, size, rTL, rTR, rBR, rBL) {
+    var x0 = cx - size / 2,
+      y0 = cy - size / 2,
+      x1 = cx + size / 2,
+      y1 = cy + size / 2;
+    return (
+      "M " +
+      (x0 + rTL) +
+      " " +
+      y0 +
+      " L " +
+      (x1 - rTR) +
+      " " +
+      y0 +
+      " Q " +
+      x1 +
+      " " +
+      y0 +
+      " " +
+      x1 +
+      " " +
+      (y0 + rTR) +
+      " L " +
+      x1 +
+      " " +
+      (y1 - rBR) +
+      " Q " +
+      x1 +
+      " " +
+      y1 +
+      " " +
+      (x1 - rBR) +
+      " " +
+      y1 +
+      " L " +
+      (x0 + rBL) +
+      " " +
+      y1 +
+      " Q " +
+      x0 +
+      " " +
+      y1 +
+      " " +
+      x0 +
+      " " +
+      (y1 - rBL) +
+      " L " +
+      x0 +
+      " " +
+      (y0 + rTL) +
+      " Q " +
+      x0 +
+      " " +
+      y0 +
+      " " +
+      (x0 + rTL) +
+      " " +
+      y0 +
+      " Z"
+    );
+  }
+
+  function badgeShapeSVG(lx, ly, number) {
+    var size = BADGE_HALF * 2;
+    var path = notebookCornerPath(lx, ly, size, size * 0.12, size * 0.65, size * 0.12, size * 0.65);
+    var fontSize = number >= 100 ? 7 : 9;
+    return (
+      '<path class="badge-shape" d="' +
+      path +
+      '"/><text x="' +
+      lx +
+      '" y="' +
+      (ly + fontSize * 0.08) +
+      '" style="font-size:' +
+      fontSize +
+      'px">' +
+      number +
+      "</text>"
+    );
+  }
+
+  function mapSVG(resolvedList, homeVbWidth) {
+    var layout = computeBadgeLayout(resolvedList, homeVbWidth);
     var targets = "";
-    resolvedList.forEach(function (item) {
+    resolvedList.forEach(function (item, i) {
       var b = item.baseObj;
       var idx = item.idx;
-      var rank = idx + 1;
+      var number = item.curObj.number != null ? item.curObj.number : idx + 1;
       var bx = b.badge[0];
       var by = b.badge[1];
+      var nudge = layout[i];
       targets += '<g class="obj" data-idx="' + idx + '">';
       if (b.kind === "line") {
         targets += '<path class="target-line" d="' + b.d + '"/>';
@@ -594,9 +455,12 @@
         bx +
         "," +
         by +
-        ')"><circle r="9"/><text x="0" y="0.5">' +
-        rank +
-        "</text></g>";
+        ')">' +
+        (nudge.lx !== 0 || nudge.ly !== 0
+          ? '<line class="badge-leader" x1="0" y1="0" x2="' + nudge.lx + '" y2="' + nudge.ly + '"/>'
+          : "") +
+        badgeShapeSVG(nudge.lx, nudge.ly, number) +
+        "</g>";
       targets += "</g>";
     });
 
@@ -605,40 +469,7 @@
       '<svg id="map" viewBox="' +
       MAP_DATA.viewBox +
       '" xmlns="http://www.w3.org/2000/svg">' +
-      TREE_DEFS +
-      '<path class="bg-parks-major" d="' +
-      MAP_DATA.bgParksMajor +
-      '"/>' +
-      '<path class="bg-parks-buurt" d="' +
-      MAP_DATA.bgParksBuurt +
-      '"/>' +
-      '<path class="bg-neighborhoods" d="' +
-      MAP_DATA.bgNeighborhoods +
-      '"/>' +
-      '<path class="bg-tram" d="' +
-      MAP_DATA.bgTram +
-      '"/>' +
-      '<path class="bg-rail" d="' +
-      MAP_DATA.bgRail +
-      '"/>' +
-      '<path class="bg-waterways" d="' +
-      MAP_DATA.bgWaterways +
-      '"/>' +
-      '<path class="bg-streets" d="' +
-      MAP_DATA.bgStreets +
-      '"/>' +
-      '<path class="bg-buildings-plain" d="' +
-      MAP_DATA.bgBuildingsPlain +
-      '"/>' +
-      '<path class="bg-buildings-church" d="' +
-      MAP_DATA.bgBuildingsChurch +
-      '"/>' +
-      '<g class="tree-layer">' +
-      treeMarkersSVG() +
-      "</g>" +
-      '<path class="boundary" d="' +
-      MAP_DATA.boundary +
-      '"/>' +
+      MapRender.sceneryLayersSVG() +
       '<g id="targets">' +
       targets +
       "</g>" +
@@ -655,48 +486,48 @@
     if (cls) g.classList.add(cls);
   }
 
-  /* ============================== MODULE SCREEN ============================== */
+  /* ============================== LESSON SCREEN ============================== */
 
-  var moduleRuntime = {}; // per-open-module transient state (not persisted mid-quiz)
+  var lessonRuntime = {}; // per-open-lesson transient state (not persisted mid-quiz)
 
-  function renderModuleScreen(moduleId) {
-    var mod = MODULES_BY_ID[moduleId];
-    if (!mod) {
+  function renderLessonScreen(lessonId) {
+    var lesson = LESSONS_BY_ID[lessonId];
+    if (!lesson) {
       go({ screen: "home" });
       return;
     }
-    if (!moduleRuntime.moduleId || moduleRuntime.moduleId !== moduleId) {
-      moduleRuntime = {
-        moduleId: moduleId,
-        resolved: resolveModuleObjects(mod),
+    if (!lessonRuntime.lessonId || lessonRuntime.lessonId !== lessonId) {
+      lessonRuntime = {
+        lessonId: lessonId,
+        resolved: resolveLessonObjects(lesson),
         mode: route.mode || "learn",
         selectedIdx: null,
       };
     }
 
     var html =
-      '<header class="module-header">' +
-      '<div class="top-row"><button class="back-btn" id="backHome">&larr; Modules</button></div>' +
+      '<header class="lesson-header">' +
+      '<div class="top-row"><button class="back-btn" id="backHome">&larr; Lessons</button></div>' +
       '<div class="eyebrow">' +
-      mod.ssId +
+      lesson.sectionId +
       " " +
-      mod.ssTitle +
+      lesson.sectionTitle +
       " &middot; " +
-      mod.secId +
+      lesson.moduleId +
       " " +
-      mod.secTitle +
+      lesson.moduleTitle +
       "</div>" +
       "<h1>" +
-      mod.id +
+      lesson.id +
       " &middot; " +
-      mod.title +
+      lesson.title +
       "</h1>" +
       '<div class="mode-switch">' +
       '<button id="btn-learn" class="' +
-      (moduleRuntime.mode === "learn" ? "active" : "") +
+      (lessonRuntime.mode === "learn" ? "active" : "") +
       '">Learn</button>' +
       '<button id="btn-quiz" class="' +
-      (moduleRuntime.mode === "quiz" ? "active" : "") +
+      (lessonRuntime.mode === "quiz" ? "active" : "") +
       '">Quiz</button>' +
       "</div></header>" +
       '<div id="map-wrap"></div>' +
@@ -706,41 +537,44 @@
 
     appEl.innerHTML = html;
     var mapWrap = document.getElementById("map-wrap");
-    mapWrap.style.aspectRatio = String(MAP_ASPECT);
-    mapWrap.innerHTML = mapSVG(moduleRuntime.resolved);
+    mapWrap.style.aspectRatio = String(MapRender.MAP_ASPECT);
+
+    var lessonBBox = MapRender.unionBBox(
+      lessonRuntime.resolved.map(function (item) {
+        return item.baseObj.bbox;
+      })
+    );
+    var home = MapRender.fitViewBoxForBBox(lessonBBox);
+    mapWrap.innerHTML = mapSVG(lessonRuntime.resolved, home.w);
 
     document.getElementById("backHome").addEventListener("click", function () {
       go({ screen: "home" });
     });
     document.getElementById("btn-learn").addEventListener("click", function () {
-      setMode(mod, "learn");
+      setMode(lesson, "learn");
     });
     document.getElementById("btn-quiz").addEventListener("click", function () {
-      setMode(mod, "quiz");
+      setMode(lesson, "quiz");
     });
 
     var svg = document.getElementById("map");
-    var moduleBBox = unionBBox(
-      moduleRuntime.resolved.map(function (item) {
-        return item.baseObj.bbox;
-      })
-    );
-    moduleRuntime.mapController = createMapController(svg, moduleBBox, function (idx) {
-      onMapObjectTap(mod, idx);
+    svg.classList.toggle("quiz-mode", lessonRuntime.mode === "quiz");
+    lessonRuntime.mapController = MapRender.createMapController(svg, lessonBBox, function (idx) {
+      onMapObjectTap(lesson, idx);
     });
     document.getElementById("mapRecenter").addEventListener("click", function () {
-      moduleRuntime.mapController.reset();
+      lessonRuntime.mapController.reset();
     });
 
-    if (moduleRuntime.mode === "learn") {
-      renderLearnPanel(mod);
+    if (lessonRuntime.mode === "learn") {
+      renderLearnPanel(lesson);
     } else {
-      renderQuizPanel(mod);
+      renderQuizPanel(lesson);
     }
   }
 
-  function setMode(mod, mode) {
-    moduleRuntime.mode = mode;
+  function setMode(lesson, mode) {
+    lessonRuntime.mode = mode;
     var svg = document.getElementById("map");
     svg.querySelectorAll(".obj").forEach(function (g) {
       g.classList.remove("selected", "correct", "incorrect");
@@ -752,34 +586,42 @@
     document.getElementById("quiz-results").classList.remove("show");
     if (mode === "learn") {
       document.getElementById("quiz-panel").classList.add("hidden");
-      renderLearnPanel(mod);
+      renderLearnPanel(lesson);
     } else {
       document.getElementById("learn-panel").classList.add("hidden");
-      startQuiz(mod);
+      startQuiz(lesson);
     }
   }
 
-  function onMapObjectTap(mod, idx) {
-    if (moduleRuntime.mode === "learn") {
-      selectLearnObject(mod, idx);
+  function onMapObjectTap(lesson, idx) {
+    if (lessonRuntime.mode === "learn") {
+      selectLearnObject(lesson, idx);
     } else {
-      handleQuizAnswer(mod, idx);
+      handleQuizAnswer(lesson, idx);
     }
   }
 
   /* ---------- LEARN MODE ---------- */
 
-  function renderLearnPanel(mod) {
+  function objectNumber(item) {
+    return item.curObj.number != null ? item.curObj.number : item.idx + 1;
+  }
+
+  function renderLearnPanel(lesson) {
     var panel = document.getElementById("learn-panel");
     panel.classList.remove("hidden");
+    // Displayed in reading-order (Change Request 3), independent of the
+    // underlying resolved-list order used for quiz hit-testing.
+    var byNumber = lessonRuntime.resolved.slice().sort(function (a, b) {
+      return objectNumber(a) - objectNumber(b);
+    });
     var html = "";
-    moduleRuntime.resolved.forEach(function (item) {
-      var rank = item.idx + 1;
+    byNumber.forEach(function (item) {
       html +=
         '<div class="obj-row" data-idx="' +
         item.idx +
         '"><div class="rank">' +
-        rank +
+        objectNumber(item) +
         '</div><div class="info"><div class="name">' +
         item.curObj.name +
         '</div><div class="meta">' +
@@ -789,13 +631,13 @@
     panel.innerHTML = html;
     panel.querySelectorAll(".obj-row").forEach(function (row) {
       row.addEventListener("click", function () {
-        selectLearnObject(mod, parseInt(row.getAttribute("data-idx"), 10));
+        selectLearnObject(lesson, parseInt(row.getAttribute("data-idx"), 10));
       });
     });
     ensureSheet();
   }
 
-  function selectLearnObject(mod, idx) {
+  function selectLearnObject(lesson, idx) {
     var svg = document.getElementById("map");
     svg.querySelectorAll(".obj").forEach(function (g) {
       g.classList.toggle("selected", g.getAttribute("data-idx") === String(idx));
@@ -803,7 +645,7 @@
     document.querySelectorAll(".obj-row").forEach(function (row) {
       row.classList.toggle("selected", row.getAttribute("data-idx") === String(idx));
     });
-    var item = moduleRuntime.resolved[idx];
+    var item = lessonRuntime.resolved[idx];
     openSheet(item);
   }
 
@@ -822,7 +664,7 @@
 
   function openSheet(item) {
     ensureSheet();
-    document.getElementById("sheet-rank").textContent = "#" + (item.idx + 1) + " of " + moduleRuntime.resolved.length;
+    document.getElementById("sheet-rank").textContent = "#" + objectNumber(item) + " of " + lessonRuntime.resolved.length;
     document.getElementById("sheet-name").textContent = item.curObj.name;
     document.getElementById("sheet-meta").textContent = metaLine(item.curObj, item.baseObj);
     document.getElementById("detail-sheet").classList.add("open");
@@ -835,9 +677,9 @@
 
   /* ---------- QUIZ MODE ---------- */
 
-  function startQuiz(mod) {
-    moduleRuntime.quiz = {
-      order: shuffle(moduleRuntime.resolved),
+  function startQuiz(lesson) {
+    lessonRuntime.quiz = {
+      order: shuffle(lessonRuntime.resolved),
       index: 0,
       score: 0,
       answered: false,
@@ -848,17 +690,18 @@
     renderQuizQuestion();
   }
 
-  function renderQuizPanel(mod) {
+  function renderQuizPanel(lesson) {
     document.getElementById("quiz-panel").classList.remove("hidden");
-    if (!moduleRuntime.quiz) {
-      startQuiz(mod);
+    var q = lessonRuntime.quiz;
+    if (!q || q.index >= q.order.length) {
+      startQuiz(lesson);
     } else {
       renderQuizQuestion();
     }
   }
 
   function renderQuizQuestion() {
-    var q = moduleRuntime.quiz;
+    var q = lessonRuntime.quiz;
     var panel = document.getElementById("quiz-panel");
     var current = q.order[q.index];
     panel.innerHTML =
@@ -882,8 +725,8 @@
     q.answered = false;
   }
 
-  function handleQuizAnswer(mod, tappedIdx) {
-    var q = moduleRuntime.quiz;
+  function handleQuizAnswer(lesson, tappedIdx) {
+    var q = lessonRuntime.quiz;
     if (!q || q.answered) return;
     q.answered = true;
     var current = q.order[q.index];
@@ -897,7 +740,7 @@
       fb.textContent = "Correct.";
       fb.className = "good";
     } else {
-      var tappedItem = moduleRuntime.resolved[tappedIdx];
+      var tappedItem = lessonRuntime.resolved[tappedIdx];
       setObjClass(svg, tappedIdx, "incorrect");
       setObjClass(svg, current.idx, "correct");
       fb.textContent = tappedItem ? "Not quite — that was " + tappedItem.curObj.name + "." : "Not quite.";
@@ -911,7 +754,7 @@
   }
 
   function advanceQuiz() {
-    var q = moduleRuntime.quiz;
+    var q = lessonRuntime.quiz;
     var svg = document.getElementById("map");
     svg.querySelectorAll(".obj").forEach(function (g) {
       g.classList.remove("correct", "incorrect");
@@ -925,13 +768,13 @@
   }
 
   function finishQuiz() {
-    var q = moduleRuntime.quiz;
+    var q = lessonRuntime.quiz;
     var score = q.score / q.order.length;
-    var modId = moduleRuntime.moduleId;
-    var prog = state.progress[modId] || { attempts: 0, bestScore: 0 };
+    var lessonId = lessonRuntime.lessonId;
+    var prog = state.progress[lessonId] || { attempts: 0, bestScore: 0 };
     prog.attempts++;
     prog.bestScore = Math.max(prog.bestScore, score);
-    state.progress[modId] = prog;
+    state.progress[lessonId] = prog;
     saveState();
 
     document.getElementById("quiz-panel").classList.add("hidden");
@@ -964,11 +807,11 @@
       html += "</div>";
     }
     html += '<button class="btn btn-primary" id="quiz-retry-btn">Try Again</button>';
-    html += '<button class="btn btn-secondary" id="quiz-home-btn">Back to Modules</button>';
+    html += '<button class="btn btn-secondary" id="quiz-home-btn">Back to Lessons</button>';
     results.innerHTML = html;
     document.getElementById("quiz-retry-btn").addEventListener("click", function () {
       results.classList.remove("show");
-      startQuiz(MODULES_BY_ID[modId]);
+      startQuiz(LESSONS_BY_ID[lessonId]);
     });
     document.getElementById("quiz-home-btn").addEventListener("click", function () {
       go({ screen: "home" });
@@ -988,7 +831,7 @@
   /* ============================== INIT ============================== */
 
   if (Object.keys(state.openSections).length === 0) {
-    state.openSections[CURRICULUM.super_sections[0].id] = true;
+    state.openSections[CURRICULUM.sections[0].id] = true;
   }
 
   router();

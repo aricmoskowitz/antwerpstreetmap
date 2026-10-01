@@ -117,7 +117,7 @@ h3 {
   color: var(--muted);
 }
 
-.super-section {
+.section-group {
   margin: 10px 12px 0;
   border: 1px solid var(--line);
   border-radius: 2px 16px 2px 16px;
@@ -125,7 +125,7 @@ h3 {
   overflow: hidden;
 }
 
-.ss-header {
+.section-header {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -134,7 +134,7 @@ h3 {
   user-select: none;
 }
 
-.ss-header .ss-num {
+.section-header .section-num {
   width: 26px;
   height: 26px;
   flex: none;
@@ -149,44 +149,44 @@ h3 {
   justify-content: center;
 }
 
-.ss-header .ss-title {
+.section-header .section-title-wrap {
   flex: 1;
   min-width: 0;
 }
 
-.ss-header .ss-title h2 {
+.section-header .section-title-wrap h2 {
   font-size: 0.98rem;
 }
 
-.ss-header .ss-title .ss-sub {
+.section-header .section-title-wrap .section-sub {
   font-size: 0.72rem;
   color: var(--muted);
 }
 
-.ss-header .chevron {
+.section-header .chevron {
   font-size: 0.8rem;
   color: var(--muted);
   transition: transform 0.15s;
 }
 
-.super-section.open .chevron {
+.section-group.open .chevron {
   transform: rotate(90deg);
 }
 
-.ss-body {
+.section-body {
   display: none;
   border-top: 1px solid var(--line);
 }
 
-.super-section.open .ss-body {
+.section-group.open .section-body {
   display: block;
 }
 
-.section-block {
+.module-block {
   padding: 10px 14px 4px;
 }
 
-.section-block .sec-title {
+.module-block .module-title {
   font-size: 0.72rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -194,7 +194,7 @@ h3 {
   margin-bottom: 4px;
 }
 
-.module-row {
+.lesson-row {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -203,11 +203,11 @@ h3 {
   cursor: pointer;
 }
 
-.section-block .module-row:last-child {
+.module-block .lesson-row:last-child {
   border-bottom: none;
 }
 
-.module-row .m-id {
+.lesson-row .lesson-id {
   font-family: "Fraunces", serif;
   font-size: 0.78rem;
   color: var(--target);
@@ -215,22 +215,22 @@ h3 {
   flex: none;
 }
 
-.module-row .m-info {
+.lesson-row .lesson-info {
   flex: 1;
   min-width: 0;
 }
 
-.module-row .m-title {
+.lesson-row .lesson-title {
   font-size: 0.88rem;
   font-weight: 600;
 }
 
-.module-row .m-count {
+.lesson-row .lesson-count {
   font-size: 0.72rem;
   color: var(--muted);
 }
 
-.module-row .m-badge {
+.lesson-row .lesson-score-badge {
   font-size: 0.72rem;
   flex: none;
   color: var(--good);
@@ -253,9 +253,9 @@ h3 {
   min-height: 44px;
 }
 
-/* ---------- module screen ---------- */
+/* ---------- lesson screen ---------- */
 
-header.module-header {
+header.lesson-header {
   padding: 12px 16px;
   border-bottom: 1px solid var(--line);
   background: var(--bg);
@@ -279,6 +279,9 @@ header.module-header {
   padding: 6px 12px;
   cursor: pointer;
   min-height: 32px;
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
 }
 
 .eyebrow {
@@ -289,7 +292,7 @@ header.module-header {
   margin: 0 0 2px;
 }
 
-.module-header h1 {
+.lesson-header h1 {
   font-size: 1.15rem;
 }
 
@@ -549,19 +552,15 @@ header.module-header {
   fill-opacity: 0.35 !important;
 }
 
-.badge circle {
+.badge-shape {
   fill: var(--panel);
-  stroke: var(--target);
+  stroke: var(--ink);
   stroke-width: 1.2;
   vector-effect: non-scaling-stroke;
 }
 
-.quiz-mode .badge circle {
-  stroke: var(--target-dim);
-}
-
 .badge text {
-  fill: var(--target);
+  fill: var(--ink);
   font-size: 9px;
   font-family: "Inter", sans-serif;
   font-weight: 700;
@@ -571,7 +570,20 @@ header.module-header {
 }
 
 .badge {
-  cursor: pointer;
+  pointer-events: none;
+}
+
+.badge-leader {
+  stroke: var(--muted);
+  stroke-width: 0.6;
+  vector-effect: non-scaling-stroke;
+}
+
+/* Numbers would let a test-taker match the badge to the answer list, so
+   Quiz mode hides every reading-order badge; Learn mode is the only place
+   they're shown (per Change Request 3). */
+.quiz-mode .badge {
+  display: none;
 }
 
 /* ---------- learn list / bottom sheet ---------- */
@@ -852,4 +864,304 @@ header.module-header {
 
 .hidden {
   display: none !important;
+}
+
+/* ---------- home menu ---------- */
+
+.menu-header {
+  padding: calc(28px + env(safe-area-inset-top)) 20px 8px;
+  text-align: center;
+}
+
+.menu-header h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.menu-header .sub {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+.menu-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 18px 18px calc(18px + env(safe-area-inset-bottom));
+}
+
+.menu-card {
+  display: block;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 2px 16px 2px 16px;
+  padding: 20px 20px;
+  text-decoration: none;
+  color: var(--ink);
+  min-height: 44px;
+}
+
+.menu-card-title {
+  font-family: "Fraunces", serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.menu-card-sub {
+  font-size: 0.88rem;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+.menu-card-progress {
+  font-size: 0.78rem;
+  color: var(--accent);
+  margin-top: 10px;
+  font-weight: 600;
+}
+
+/* ---------- scroll feed ---------- */
+
+.scroll-page #app {
+  height: 100vh;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.scroll-topbar {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: calc(10px + env(safe-area-inset-top)) 12px 10px;
+  border-bottom: 1px solid var(--line);
+  background: var(--bg);
+}
+
+.scroll-back-chip {
+  appearance: none;
+  border: 1px solid var(--line);
+  background: var(--target);
+  color: #fff;
+  font-size: 0.78rem;
+  border-radius: 999px;
+  padding: 6px 12px;
+  min-height: 32px;
+  cursor: pointer;
+}
+
+.scroll-order-select {
+  flex: 1;
+  min-width: 0;
+  appearance: none;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  color: var(--ink);
+  font-family: "Inter", sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: 999px;
+  padding: 7px 14px;
+  min-height: 36px;
+}
+
+.scroll-filter-label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.72rem;
+  color: var(--muted);
+  white-space: nowrap;
+  flex: 0 0 auto;
+}
+
+.scroll-filter-label input {
+  width: 16px;
+  height: 16px;
+}
+
+.scroll-feed {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.scroll-empty {
+  padding: 40px 24px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+.card-slot {
+  height: 100%;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+.scroll-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.scroll-card-map {
+  flex: 0 0 55%;
+  position: relative;
+  background: var(--panel);
+  border-bottom: 1px solid var(--line);
+  overflow: hidden;
+}
+
+.scroll-card-map svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.scroll-map-missing {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.scroll-north-arrow {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--ink);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+}
+
+.scroll-target-line {
+  fill: none;
+  stroke: var(--target);
+  stroke-width: 4;
+  vector-effect: non-scaling-stroke;
+  stroke-linecap: round;
+}
+
+.scroll-cross-line {
+  fill: none;
+  stroke: var(--street);
+  stroke-width: 1.4;
+  opacity: 0.85;
+  vector-effect: non-scaling-stroke;
+}
+
+.scroll-cross-label {
+  fill: var(--ink);
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  paint-order: stroke;
+  stroke: var(--bg);
+  stroke-width: 0.35em;
+  pointer-events: none;
+}
+
+.scroll-endpoint circle {
+  fill: var(--panel);
+  stroke: var(--target);
+  stroke-width: 1.2;
+  vector-effect: non-scaling-stroke;
+}
+
+.scroll-endpoint text {
+  fill: var(--target);
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  text-anchor: middle;
+  dominant-baseline: central;
+}
+
+.scroll-card-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 14px 18px calc(14px + env(safe-area-inset-bottom));
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.scroll-card-name {
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.scroll-card-row {
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.scroll-card-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  margin-bottom: 3px;
+}
+
+.scroll-card-empty {
+  color: var(--muted);
+}
+
+.scroll-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.scroll-chip {
+  appearance: none;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  color: var(--ink);
+  font-family: "Inter", sans-serif;
+  font-size: 0.8rem;
+  border-radius: 999px;
+  padding: 10px 14px;
+  min-height: 40px;
+  cursor: pointer;
+}
+
+.scroll-chip:active {
+  background: var(--bg);
+}
+
+.scroll-card-footer {
+  margin-top: auto;
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 0.76rem;
+  color: var(--muted);
+}
+
+.scroll-counter {
+  font-weight: 700;
+  color: var(--ink);
+  white-space: nowrap;
 }
