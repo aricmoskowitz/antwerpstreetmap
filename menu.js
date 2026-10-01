@@ -3,6 +3,7 @@
 
   var LEARN_LS_KEY = "antwerpRing.v1";
   var SCROLL_LS_KEY = "antwerpScroll.v1";
+  var WALK_LS_KEY = "antwerpWalk.v1";
   var PASS_THRESHOLD = 0.7;
 
   function readJSON(key) {
@@ -41,6 +42,12 @@
     return { position: pos + 1, total: state.total };
   }
 
+  function walkStats() {
+    var state = readJSON(WALK_LS_KEY);
+    if (!state || !state.played) return 0;
+    return (state.played.easy || 0) + (state.played.hard || 0);
+  }
+
   function card(href, title, subtitle, progressLine) {
     return (
       '<a class="menu-card" href="' +
@@ -69,6 +76,9 @@
       ? ss.position.toLocaleString() + " / " + ss.total.toLocaleString() + " streets seen"
       : "Not started yet";
 
+    var walked = walkStats();
+    var walkProgress = walked ? walked + (walked === 1 ? " route walked" : " routes walked") : "Not started yet";
+
     var html =
       '<div class="menu-header">' +
       "<h1>Antwerp Inside the Ring</h1>" +
@@ -77,6 +87,7 @@
       '<div class="menu-cards">' +
       card("learn.html", "Learn", "Lessons &amp; quizzes", learnProgress) +
       card("scroll.html", "Scroll", "Browse every street, one card at a time", scrollProgress) +
+      card("walk.html", "Walk", "Find your way from A to B", walkProgress) +
       "</div>";
 
     document.getElementById("app").innerHTML = html;

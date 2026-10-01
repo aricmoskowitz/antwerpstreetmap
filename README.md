@@ -26,6 +26,9 @@ is its own entry point, sharing `style.css` and the map-rendering code:
 - **`scroll.html`** — the Scroll feed: one card per street/square (1,233 of
   them, including 3 duplicate-named-but-physically-distinct entries — see
   "Scroll feed" below), browsable as a vertical swipe list.
+- **`walk.html`** — the Walk game: get from A to B by naming the roads of a
+  contiguous path (Easy: multiple choice along the fastest path; Hard: type
+  any road that continues the walk). See "Walk game" below.
 
 All three keep the same Add-to-Home-Screen icon and meta tags, and are
 same-origin, so an already-installed home-screen app keeps working.
@@ -132,7 +135,7 @@ sections and their neighborhood groupings, not a restructure. Run it before
 curriculum or the neighborhood-polygon logic:
 
 ```
-python3 build/rebuild_curriculum.py && python3 build/number_lesson_objects.py && python3 build/preprocess.py && python3 build/street_cards.py
+python3 build/rebuild_curriculum.py && python3 build/number_lesson_objects.py && python3 build/preprocess.py && python3 build/street_cards.py && python3 build/street_graph.py
 ```
 
 (`number_lesson_objects.py` must run after the curriculum's final object
@@ -212,6 +215,58 @@ tunnels don't register as junctions with the streets above them).
   history/name field today, so the Scroll card never shows that row. Adding
   that content is out of scope here — a future change request.
 
+## Walk game
+
+`build/street_graph.py` builds `data/street-graph.json` (plus the
+`data/generated/street-graph.js` wrapper the page loads): the walkable street
+network as junction nodes and edge lengths, and which roads count as "being
+at" each endpoint object. Run it after `preprocess.py`:
+
+```
+python3 build/street_graph.py
+```
+
+- **Nodes** are vertices shared by two or more lines (different roads
+  meeting, or one road forking), plus line ends; vertices within 0.25 m of
+  each other on *different* lines are the same junction (the data is noded
+  to within centimetres). Same-road pass-through nodes are contracted away,
+  so the graph only branches where a walker could choose. Bridges and
+  tunnels that cross without sharing a vertex are not junctions.
+- **Edges** store road, length in metres, and which `MAP_DATA.bgStreets`
+  subpath and vertex range they cover - geometry isn't duplicated; `walk.js`
+  draws edges from the map data the page already has.
+- **Walkability:** the source data has no access/highway tags, so roads
+  whose name *ends* in "tunnel" are excluded (10, listed in the file's
+  `meta`). "Contains tunnel" would also drop Tunnelplaats, a walkable square.
+- **Attachment:** a street is at itself; a square is at itself plus every
+  road meeting it; a building or park is at every walkable road within 40 m
+  of its footprint (nearest road if none - one park). Neighborhoods and
+  waterways aren't endpoints. Only roads in the largest connected component
+  (98.7% of nodes) are attached; 4 tiny clipped fragments are orphans.
+- **Anchors (a deliberate refinement):** the game's rules are road-level,
+  exactly as specified - the round is complete the moment you turn onto one
+  of B's attached roads. But distance and the drawn walk run *to the object*:
+  along the final road to B's anchor, and from A's anchor along the first.
+  Without that, a building beside one end of a long boulevard counted as
+  "reached" from the boulevard's far end (a 266 m "fastest route" to a church
+  ~1 km away, in testing). Streets anchor anywhere along themselves, squares
+  at their own junctions, buildings/parks at the ends of each attached
+  road's edge closest to the footprint.
+
+`walk.js` holds all routing (no DOM, so it also runs under Node):
+fastest path (A* for the true shortest distance under the rules, then a
+fewest-road-changes search within 2% of it), shortest walk along a given
+road sequence (layered Dijkstra, for Hard-mode distances), Easy-mode
+distractors, Hard-mode validation and hints. `walk-page.js` is the UI.
+Tests:
+
+```
+python3 build/test_street_graph.py   # graph build on a synthetic grid
+node build/test_walk.js              # tie-break, anchors, Hard validation,
+                                     # hint after deviation, dropdown filter,
+                                     # 1,000-round Easy invariant, hint play-through
+```
+
 ## localStorage keys
 
 - `antwerpRing.v1` — Learn's existing progress (`{progress, lastOpened,
@@ -221,6 +276,9 @@ tunnels don't register as junctions with the streets above them).
   (Curriculum/Region/A&ndash;Z/Shuffle). Scroll only ever *reads*
   `antwerpRing.v1` (for the "only streets from lessons I've started" filter)
   and never writes to it.
+- `antwerpWalk.v1` — Walk: `{mode, filter, played: {easy, hard}, misses,
+  hints}`. Also only reads `antwerpRing.v1`, for its "lessons I've started"
+  filter.
 
 ## Scope notes
 
