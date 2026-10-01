@@ -269,11 +269,13 @@
     return escapeHTML(names.slice(0, -1).join(", ")) + " and " + escapeHTML(names[names.length - 1]);
   }
 
-  function startEndText(endpoint) {
-    if (!endpoint.crosses.length) return "Dead end";
-    return "Meets " + joinNames(endpoint.crosses);
+  function endText(endpoint) {
+    if (!endpoint.crosses.length) return "dead end";
+    return "meets " + joinNames(endpoint.crosses);
   }
 
+  // one horizontally scrolling row, so a street with 20 junctions takes the
+  // same height as one with 2
   function chipList(names) {
     if (!names.length) return '<span class="scroll-card-empty">None found</span>';
     return (
@@ -302,108 +304,218 @@
     );
   }
 
-  function endpointMarkerSVG(pixel, label, r, font) {
-    return (
-      '<g class="scroll-endpoint" transform="translate(' +
-      pixel[0] +
-      "," +
-      pixel[1] +
-      ')">' +
-      '<circle r="' +
-      r +
-      '"/><text y="' +
-      font * 0.08 +
-      '" style="font-size:' +
-      font +
-      'px">' +
-      label +
-      "</text></g>"
-    );
+  /* ---------- card map ---------- */
+  // The card map is a static SVG, so labels and markers are sized in screen
+  // pixels: the viewBox is widened to the map box's exact aspect ratio, so
+  // one world unit = mapWidthPx / vb.w pixels everywhere in it. The map box
+  // takes whatever height the card's text doesn't need, so the map is drawn
+  // after the card is laid out (see populateSlot).
+
+  var LABEL_PX = 11;
+
+  function parsePolylines(d) {
+    return d
+      .split("M ")
+      .filter(function (x) {
+        return x.trim();
+      })
+      .map(function (sp) {
+        return sp
+          .trim()
+          .split(" L ")
+          .map(function (xy) {
+            var c = xy.split(",");
+            return [+c[0], +c[1]];
+          });
+      });
   }
 
-  function buildMapSVG(c, baseObj) {
-    var vb = MapRender.fitViewBoxForBBox(baseObj.bbox, { padding: 0.45, minSize: 55 });
-    var s = vb.w / MapRender.FULL_VB.w;
-    var svg = '<svg viewBox="' + vb.x + " " + vb.y + " " + vb.w + " " + vb.h + '" xmlns="http://www.w3.org/2000/svg">';
-    svg += MapRender.sceneryLayersSVG();
+  function segDist(p, a, b) {
+    var dx = b[0] - a[0],
+      dy = b[1] - a[1];
+    var t = dx || dy ? ((p[0] - a[0]) * dx + (p[1] - a[1]) * dy) / (dx * dx + dy * dy) : 0;
+    t = Math.max(0, Math.min(1, t));
+    return Math.hypot(p[0] - (a[0] + t * dx), p[1] - (a[1] + t * dy));
+  }
 
+  function distToLines(p, lines) {
+    var best = Infinity;
+    lines.forEach(function (l) {
+      for (var i = 0; i < l.length - 1; i++) best = Math.min(best, segDist(p, l[i], l[i + 1]));
+    });
+    return best;
+  }
+
+  function boxesOverlap(a, b) {
+    return a[0] < b[2] && b[0] < a[2] && a[1] < b[3] && b[1] < a[3];
+  }
+
+  function buildMapSVG(c, baseObj, box) {
+    var vb = MapRender.fitViewBoxForBBox(baseObj.bbox, { padding: 0.35, minSize: 55 });
+    // widen/heighten (never crop) to the map box's aspect ratio
+    var aspect = box.w / box.h;
+    if (vb.w / vb.h < aspect) {
+      var nw = vb.h * aspect;
+      vb.x -= (nw - vb.w) / 2;
+      vb.w = nw;
+    } else {
+      var nh = vb.w / aspect;
+      vb.y -= (nh - vb.h) / 2;
+      vb.h = nh;
+    }
+    var u = vb.w / box.w; // world units per screen pixel
+    function toPx(p) {
+      return [(p[0] - vb.x) / u, (p[1] - vb.y) / u];
+    }
+
+    var focusLines = parsePolylines(baseObj.d).map(function (l) {
+      return l.map(toPx);
+    });
+    var placed = [[box.w - 44, 0, box.w, 44]]; // north arrow
+    var marks = "";
+
+    if (!c.is_square) {
+      var sp = toPx(c.start.pixel),
+        ep = toPx(c.end.pixel);
+      [
+        { p: sp, other: ep, label: "Start", cls: "start" },
+        { p: ep, other: sp, label: "End", cls: "end" },
+      ].forEach(function (m) {
+        // pill just beyond the street's end, pointing away from the other end
+        var dx = m.p[0] - m.other[0],
+          dy = m.p[1] - m.other[1],
+          len = Math.hypot(dx, dy) || 1;
+        var w = m.label.length * 7 + 14,
+          h = 18;
+        var cx = m.p[0] + (dx / len) * (w / 2 + 6),
+          cy = m.p[1] + (dy / len) * (h / 2 + 6);
+        cx = Math.max(w / 2 + 2, Math.min(box.w - w / 2 - 2, cx));
+        cy = Math.max(h / 2 + 2, Math.min(box.h - h / 2 - 2, cy));
+        placed.push([cx - w / 2, cy - h / 2, cx + w / 2, cy + h / 2]);
+        marks +=
+          '<g class="scroll-endpoint ' +
+          m.cls +
+          '">' +
+          '<line x1="' + m.p[0] * u + '" y1="' + m.p[1] * u + '" x2="' + cx * u + '" y2="' + cy * u + '"/>' +
+          '<circle cx="' + m.p[0] * u + '" cy="' + m.p[1] * u + '" r="' + 4.5 * u + '"/>' +
+          '<rect x="' + (cx - w / 2) * u + '" y="' + (cy - h / 2) * u + '" width="' + w * u + '" height="' + h * u + '" rx="' + 9 * u + '"/>' +
+          '<text x="' + cx * u + '" y="' + cy * u + '" style="font-size:' + 11 * u + 'px">' + m.label + "</text></g>";
+      });
+    }
+
+    var crossSVG = "",
+      labelSVG = "";
     c.intersections.forEach(function (name) {
       var ob = MapRender.resolveObjectByName(name, "road") || MapRender.resolveObjectByName(name, "square");
       if (!ob) return;
-      svg += '<path class="scroll-cross-line" d="' + ob.d + '"/>';
-      svg +=
-        '<text class="scroll-cross-label" x="' +
-        ob.badge[0] +
-        '" y="' +
-        ob.badge[1] +
-        '" style="font-size:' +
-        9 * s +
-        'px">' +
-        escapeHTML(name) +
-        "</text>";
+      crossSVG += '<path class="scroll-cross-line" d="' + ob.d + '"/>';
+      // label it next to where it meets the focus street, a little way out
+      var lines = parsePolylines(ob.d).map(function (l) {
+        return l.map(toPx);
+      });
+      var junction = null,
+        jd = Infinity;
+      lines.forEach(function (l, li) {
+        l.forEach(function (p, pi) {
+          var d = distToLines(p, focusLines);
+          if (d < jd) {
+            jd = d;
+            junction = { li: li, pi: pi };
+          }
+        });
+      });
+      if (!junction) return;
+      var line = lines[junction.li];
+      var w = name.length * LABEL_PX * 0.56 + 6,
+        h = LABEL_PX + 4;
+      var cands = [];
+      [1, -1].forEach(function (dir) {
+        // points 28 / 48 / 72 px along the cross street from the junction
+        var acc = 0;
+        for (var i = junction.pi; i + dir >= 0 && i + dir < line.length; i += dir) {
+          var a = line[i],
+            b2 = line[i + dir];
+          var seg = Math.hypot(b2[0] - a[0], b2[1] - a[1]);
+          [28, 48, 72].forEach(function (target) {
+            if (acc < target && acc + seg >= target) {
+              var t = (target - acc) / seg;
+              cands.push({ pt: [a[0] + (b2[0] - a[0]) * t, a[1] + (b2[1] - a[1]) * t], order: target });
+            }
+          });
+          acc += seg;
+          if (acc > 72) break;
+        }
+      });
+      cands.sort(function (x, y) {
+        return x.order - y.order;
+      });
+      for (var k = 0; k < cands.length; k++) {
+        var pt = cands[k].pt;
+        var bx = [pt[0] - w / 2, pt[1] - h / 2, pt[0] + w / 2, pt[1] + h / 2];
+        if (bx[0] < 2 || bx[1] < 2 || bx[2] > box.w - 2 || bx[3] > box.h - 2) continue;
+        if (distToLines(pt, focusLines) < h / 2 + 3) continue;
+        if (placed.some(function (q) { return boxesOverlap(bx, q); })) continue;
+        placed.push(bx);
+        labelSVG +=
+          '<text class="scroll-cross-label" x="' + (vb.x + pt[0] * u) + '" y="' + (vb.y + pt[1] * u) + '" style="font-size:' + LABEL_PX * u + 'px">' + escapeHTML(name) + "</text>";
+        return;
+      }
     });
 
-    svg += '<path class="scroll-target-line" d="' + baseObj.d + '"/>';
-
-    if (!c.is_square) {
-      svg += endpointMarkerSVG(c.start.pixel, "S", 7 * s, 9 * s);
-      svg += endpointMarkerSVG(c.end.pixel, "E", 7 * s, 9 * s);
-    }
-
-    svg += "</svg>";
-    return svg;
+    // markers were built in pixel coordinates relative to the box; shift
+    // them into world space via a translate on the group
+    return (
+      '<svg viewBox="' + vb.x + " " + vb.y + " " + vb.w + " " + vb.h + '" xmlns="http://www.w3.org/2000/svg">' +
+      MapRender.sceneryLayersSVG() +
+      crossSVG +
+      '<path class="scroll-target-line" d="' + baseObj.d + '"/>' +
+      labelSVG +
+      '<g transform="translate(' + vb.x + "," + vb.y + ')">' + marks + "</g>" +
+      "</svg>"
+    );
   }
+
+  var COMPASS_DEG = { north: 0, northeast: 45, east: 90, southeast: 135, south: 180, southwest: 225, west: 270, northwest: 315 };
 
   function buildCardHTML(idx, pos, listLen) {
     var c = STREET_CARDS[idx];
     var type = c.is_square ? "square" : "road";
     var baseObj = MapRender.resolveObjectByName(c.name, type);
-    var mapHTML = baseObj
-      ? buildMapSVG(c, baseObj)
-      : '<div class="scroll-map-missing">Map unavailable</div>';
-
     var html = '<div class="scroll-card">';
     html +=
       '<div class="scroll-card-map">' +
-      mapHTML +
-      '<div class="scroll-north-arrow" aria-hidden="true">N&uarr;</div>' +
-      "</div>";
+      (baseObj ? "" : '<div class="scroll-map-missing">Map unavailable</div>') +
+      '<div class="scroll-north-arrow" aria-hidden="true">N&uarr;</div></div>';
     html += '<div class="scroll-card-body">';
     html += '<h2 class="scroll-card-name">' + escapeHTML(c.name) + "</h2>";
 
     if (c.about) {
-      html +=
-        '<div class="scroll-card-row"><div class="scroll-card-label">About the name</div>' +
-        escapeHTML(c.about) +
-        "</div>";
+      html += '<div class="sc-about"><span class="sc-label">About the name</span> ' + escapeHTML(c.about) + "</div>";
     }
 
     if (!c.is_square) {
-      var axisText =
-        c.orientation.axis + (c.orientation.shape === "curved" ? " · curved" : "");
+      var o = c.orientation;
       html +=
-        '<div class="scroll-card-row"><div class="scroll-card-label">Orientation</div>' +
-        escapeHTML(axisText) +
+        '<div class="sc-dir"><span class="sc-arrow" aria-hidden="true" style="transform:rotate(' +
+        COMPASS_DEG[o.to] +
+        'deg)">&uarr;</span>Runs ' +
+        o.from +
+        " &rarr; " +
+        o.to +
+        (o.shape === "curved" ? ' <span class="sc-muted">&middot; curved</span>' : "") +
         "</div>";
       html +=
-        '<div class="scroll-card-row"><div class="scroll-card-label">Start</div>' +
-        startEndText(c.start) +
+        '<div class="sc-ends">' +
+        '<div class="sc-end"><span class="sc-pill start">Start</span><span class="sc-side">' + o.from + " end</span></div>" +
+        '<div class="sc-end-text">' + endText(c.start) + "</div>" +
+        '<div class="sc-end"><span class="sc-pill end">End</span><span class="sc-side">' + o.to + " end</span></div>" +
+        '<div class="sc-end-text">' + endText(c.end) + "</div>" +
         "</div>";
-      html +=
-        '<div class="scroll-card-row"><div class="scroll-card-label">End</div>' +
-        startEndText(c.end) +
-        "</div>";
-      html +=
-        '<div class="scroll-card-row"><div class="scroll-card-label">Meets along the way</div>' +
-        chipList(c.intersections) +
-        "</div>";
+      html += '<div class="sc-label">Meets along the way &middot; ' + c.intersections.length + "</div>";
     } else {
-      html +=
-        '<div class="scroll-card-row"><div class="scroll-card-label">Streets that meet here</div>' +
-        chipList(c.intersections) +
-        "</div>";
+      html += '<div class="sc-label">Streets that meet here &middot; ' + c.intersections.length + "</div>";
     }
-
+    html += chipList(c.intersections);
     html += '<div class="scroll-card-footer">' + footerHTML(c, pos, listLen) + "</div>";
     html += "</div></div>";
     return html;
@@ -414,7 +526,15 @@
     var pos = parseInt(slot.dataset.pos, 10);
     slot.innerHTML = buildCardHTML(idx, pos, listLen);
     slot.dataset.populated = "1";
+    var c = STREET_CARDS[idx];
+    var baseObj = MapRender.resolveObjectByName(c.name, c.is_square ? "square" : "road");
+    if (!baseObj) return;
+    var mapEl = slot.querySelector(".scroll-card-map");
+    var r = mapEl.getBoundingClientRect();
+    var box = { w: r.width || feedEl.clientWidth || 390, h: r.height || 300 };
+    mapEl.insertAdjacentHTML("afterbegin", buildMapSVG(c, baseObj, box));
   }
+
 
   /* ============================== NAVIGATION ============================== */
 

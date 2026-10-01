@@ -298,13 +298,23 @@
   // of drifting as the user pans/zooms. Numbers never change to resolve an
   // overlap, only badge position does.
 
-  function computeBadgeLayout(resolvedList, homeVbWidth) {
+  // Badges are drawn in a local space that map-render.js scales with the
+  // viewBox (translate(bx,by) scale(vb.w / FULL_VB.w)), which keeps them a
+  // constant size on screen: one local unit = mapWidthPx / FULL_VB.w screen
+  // pixels at any zoom. So sizes are chosen in screen pixels and converted.
+  var BADGE_PX = 20;
+  var BADGE_FONT_PX = 11;
+  var BADGE_FONT_PX_3DIGIT = 9;
+
+  function computeBadgeLayout(resolvedList, homeVbWidth, mapWidthPx) {
     var n = resolvedList.length;
     var positions = resolvedList.map(function (item) {
       return { x: item.baseObj.badge[0], y: item.baseObj.badge[1] };
     });
     var sHome = homeVbWidth / MapRender.FULL_VB.w;
-    var threshold = homeVbWidth * 0.03; // world units, ~3% of the visible width at the home zoom
+    // two badges closer than one badge width (+ a little air) on screen at
+    // the home zoom overlap; expressed in world units
+    var threshold = ((BADGE_PX + 3) * homeVbWidth) / mapWidthPx;
     var offsets = positions.map(function () {
       return { dx: 0, dy: 0 };
     });
@@ -343,7 +353,6 @@
     return Math.round(n * 100) / 100;
   }
 
-  var BADGE_HALF = 8;
 
   function notebookCornerPath(cx, cy, size, rTL, rTR, rBR, rBL) {
     var x0 = cx - size / 2,
@@ -407,10 +416,10 @@
     );
   }
 
-  function badgeShapeSVG(lx, ly, number) {
-    var size = BADGE_HALF * 2;
+  function badgeShapeSVG(lx, ly, number, unitsPerPx) {
+    var size = BADGE_PX * unitsPerPx;
     var path = notebookCornerPath(lx, ly, size, size * 0.12, size * 0.65, size * 0.12, size * 0.65);
-    var fontSize = number >= 100 ? 7 : 9;
+    var fontSize = (number >= 100 ? BADGE_FONT_PX_3DIGIT : BADGE_FONT_PX) * unitsPerPx;
     return (
       '<path class="badge-shape" d="' +
       path +
@@ -426,8 +435,9 @@
     );
   }
 
-  function mapSVG(resolvedList, homeVbWidth) {
-    var layout = computeBadgeLayout(resolvedList, homeVbWidth);
+  function mapSVG(resolvedList, homeVbWidth, mapWidthPx) {
+    var layout = computeBadgeLayout(resolvedList, homeVbWidth, mapWidthPx);
+    var unitsPerPx = MapRender.FULL_VB.w / mapWidthPx;
     var targets = "";
     resolvedList.forEach(function (item, i) {
       var b = item.baseObj;
@@ -459,7 +469,7 @@
         (nudge.lx !== 0 || nudge.ly !== 0
           ? '<line class="badge-leader" x1="0" y1="0" x2="' + nudge.lx + '" y2="' + nudge.ly + '"/>'
           : "") +
-        badgeShapeSVG(nudge.lx, nudge.ly, number) +
+        badgeShapeSVG(nudge.lx, nudge.ly, number, unitsPerPx) +
         "</g>";
       targets += "</g>";
     });
@@ -545,7 +555,7 @@
       })
     );
     var home = MapRender.fitViewBoxForBBox(lessonBBox);
-    mapWrap.innerHTML = mapSVG(lessonRuntime.resolved, home.w);
+    mapWrap.innerHTML = mapSVG(lessonRuntime.resolved, home.w, mapWrap.getBoundingClientRect().width || 390);
 
     document.getElementById("backHome").addEventListener("click", function () {
       go({ screen: "home" });
