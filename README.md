@@ -23,8 +23,8 @@ is its own entry point, sharing `style.css` and the map-rendering code:
 - **`learn.html`** — the original curriculum app (lessons, Learn/Quiz, the
   pan/zoom map). This is what `index.html` used to be before Change Request
   2 added the home menu in front of it.
-- **`scroll.html`** — the Scroll feed: one card per street/square (1,233 of
-  them, including 3 duplicate-named-but-physically-distinct entries — see
+- **`scroll.html`** — the Scroll feed: one card per street/square (1,225 of
+  them, including 2 duplicate-named-but-physically-distinct entries — see
   "Scroll feed" below), browsable as a vertical swipe list.
 - **`walk.html`** — the Walk game: get from A to B by naming the roads of a
   contiguous path (Easy: multiple choice along the fastest path; Hard: type
@@ -40,7 +40,7 @@ same-origin, so an already-installed home-screen app keeps working.
   `<script>` tags.
 - **Map rendering is a single inline SVG**, projected with an equirectangular
   + `cos(latitude)` correction, no tile server or mapping library. One shared
-  base map is reused across all 136 lessons and all 1,233 Scroll cards; every
+  base map is reused across all 135 lessons and all 1,225 Scroll cards; every
   screen also renders the full scenery layer (streets, waterways,
   neighborhood outlines, parks, buildings, tram/rail lines, and both tree
   species) dimmed for context, then overlays just its own objects as bright
@@ -76,10 +76,10 @@ same-origin, so an already-installed home-screen app keeps working.
 Change Request 3 renamed the curriculum's nesting, in place: `super_section`
 &rarr; `section`, `section` &rarr; `module`, `module` &rarr; `lesson`. The
 numbers didn't change - lesson `4.2.1` is the exact unit this app used to
-call module `4.2.1`, just renamed. `build/rename_hierarchy.py` did this
-rename once (a single explicit old-key &rarr; new-key pass over the whole
-JSON, not three sequential find-and-replace passes, which would double
--convert section &rarr; module &rarr; lesson); `build/rebuild_curriculum.py`,
+call module `4.2.1`, just renamed. The rename was a one-time migration
+(a single explicit old-key &rarr; new-key pass over the whole JSON, not
+three sequential find-and-replace passes, which would double-convert
+section &rarr; module &rarr; lesson); `build/rebuild_curriculum.py`,
 `build/street_cards.py`, and `build/number_lesson_objects.py` all read and
 write the new schema from here on.
 
@@ -207,16 +207,16 @@ scrolling on an iPhone (checked across all cards at 375&times;548 up to
 
 **Known data notes** (from the last generation run):
 
-- **1,233 cards, not 1,230.** The base map's own street count is 1,233
-  (`meta.counts.streets`); three names (Turnhoutsebaan, Hogeweg,
-  Statiestraat) each exist as two physically distinct entries in the source
-  data. Each entry gets its own card, since that's what the authoritative
-  source data actually contains.
-- **5 streets/squares show zero intersections**: Flamingoplein, Sasdok,
-  Moeke Bitterpeeënstraat, a small Turnhoutsebaan stub, and Kalverveld — all
-  checked individually; each is a tiny clipped fragment or duplicate stub
-  (tens of meters across), not a bug in the intersection matching.
-- **92 dead ends** (one bare endpoint with nothing within ~20m).
+- **1,225 cards.** The source data has 1,233 street entries; `preprocess.py`
+  trims dead-end stubs clipped at the ring, which leaves 8 of them with no
+  geometry, so they get no card. Two names (Hogeweg, Statiestraat) each
+  exist as two physically distinct entries in the source data. Each entry
+  gets its own card, since that's what the authoritative source data
+  actually contains.
+- **2 streets/squares show zero intersections**: Flamingoplein and Moeke
+  Bitterpeeënstraat — both checked individually; each is a tiny clipped
+  fragment (tens of meters across), not a bug in the intersection matching.
+- **87 dead ends** (one bare endpoint with nothing within ~20m).
 - **23 curved streets** (path length more than 1.3&times; the straight-line
   distance between its two endpoints).
 - **0 "about the name" explanations.** The curriculum data has no free-text
@@ -250,7 +250,8 @@ python3 build/street_graph.py
   road meeting it; a building or park is at every walkable road within 40 m
   of its footprint (nearest road if none - one park). Neighborhoods and
   waterways aren't endpoints. Only roads in the largest connected component
-  (98.7% of nodes) are attached; 4 tiny clipped fragments are orphans.
+  (99.1% of nodes) are attached; 2 tiny clipped fragments (Flamingoplein,
+  Moeke Bitterpeeënstraat) are orphans.
 - **Anchors (a deliberate refinement):** the game's rules are road-level,
   exactly as specified - the round is complete the moment you turn onto one
   of B's attached roads. But distance and the drawn walk run *to the object*:

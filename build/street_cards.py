@@ -357,7 +357,7 @@ with open(gen_dir / "street-cards.js", "w") as f:
     f.write(json.dumps(cards, ensure_ascii=False, separators=(",", ":")))
     f.write(";\n")
 
-print(f"wrote {out_path} ({len(cards)} cards, expect 1230)")
+print(f"wrote {out_path} ({len(cards)} cards)")
 print(f"wrote {gen_dir / 'street-cards.js'}")
 print(f"dead ends (empty crosses at an endpoint): {stats['dead_ends']}")
 print(f"streets/squares with 0 intersections (check these): {stats['zero_intersections']}")
