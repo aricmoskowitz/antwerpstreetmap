@@ -12,16 +12,16 @@
 
 #### 1.1.1 Ten Longest Roads on the Map (10)
 
-- 10. Binnensingel (road) — 8.54 km
+- 9. Binnensingel (road) — 8.54 km
 - 1. Italiëlei (road) — 5.65 km
-- 5. Noordersingel (road) — 5.65 km
-- 4. Turnhoutsebaan (road) — 5.38 km
+- 3. Noordersingel (road) — 5.65 km
 - 2. Noorderlaan (road) — 5.05 km
-- 6. Amerikalei (road) — 4.91 km
-- 7. Mechelsesteenweg (road) — 3.92 km
-- 3. Frankrijklei (road) — 3.49 km
-- 8. Plantin en Moretuslei (road) — 3.40 km
-- 9. Jan Van Rijswijcklaan (road) — 3.39 km
+- 4. Amerikalei (road) — 4.91 km
+- 8. Mechelsesteenweg (road) — 3.92 km
+- 5. Frankrijklei (road) — 3.49 km
+- 6. Plantin en Moretuslei (road) — 3.40 km
+- 7. Jan Van Rijswijcklaan (road) — 3.39 km
+- Turnhoutsebaan (road) — 5.38 km
 
 #### 1.1.2 Waterfront Quays ("-kaai" streets) over 500m (19)
 
@@ -112,32 +112,34 @@
 - 9. Sint-Augustinuskerk (building) — 1,233 m²
 - 16. Kapel van het Allerheiligste Sacrament (building) — 1,159 m²
 
-#### 1.2.3 Other Key Landmarks over 700 m² (24)
+#### 1.2.3 Other Key Landmarks over 700 m² (26)
 
-- 19. Zwembad Plantin-Moretus (building) — 4,415 m²
-- 7. Stadscampus: Gebouw A (building) — 4,268 m²
-- 5. Stadsarchief Sint-Felix pakhuis (building) — 3,669 m²
-- 10. Boerentoren (building) — 3,595 m²
-- 15. M HKA - Museum van Hedendaagse Kunst Antwerpen (building) — 3,092 m²
-- 12. Bourlaschouwburg (building) — 2,489 m²
-- 11. Handelsbeurs (building) — 2,436 m²
-- 20. De Roma (building) — 2,322 m²
-- 13. Koningin Elisabethzaal (building) — 2,170 m²
-- 21. De Beukelaer (building) — 2,044 m²
-- 8. Stadhuis Antwerpen (building) — 1,754 m²
-- 3. Loodswezen (building) — 1,630 m²
-- 22. Feestzaal Harmonie (building) — 1,619 m²
-- 4. Museum aan de Stroom (building) — 1,487 m²
-- 6. Hessenhuis (building) — 1,431 m²
-- 24. Antwerpen-Berchem (station) (building) — 1,424 m²
-- 16. Zuiderpershuis (building) — 1,328 m²
-- 1. Het Steen (building) — 1,235 m²
+- 21. Zwembad Plantin-Moretus (building) — 4,415 m²
+- 10. Stadscampus: Gebouw A (building) — 4,268 m²
+- 3. Stadsarchief Sint-Felix pakhuis (building) — 3,669 m²
+- 8. Boerentoren (building) — 3,595 m²
+- 13. M HKA - Museum van Hedendaagse Kunst Antwerpen (building) — 3,092 m²
+- 16. Bourlaschouwburg (building) — 2,489 m²
+- 9. Handelsbeurs (building) — 2,436 m²
+- 19. De Roma (building) — 2,322 m²
+- 11. Koningin Elisabethzaal (building) — 2,170 m²
+- 22. De Beukelaer (building) — 2,044 m²
+- 6. Stadhuis Antwerpen (building) — 1,754 m²
+- 1. Loodswezen (building) — 1,630 m²
+- 24. Feestzaal Harmonie (building) — 1,619 m²
+- 2. Museum aan de Stroom (building) — 1,487 m²
+- 4. Hessenhuis (building) — 1,431 m²
+- 26. Antwerpen-Berchem (station) (building) — 1,424 m²
+- 14. Zuiderpershuis (building) — 1,328 m²
+- 5. Het Steen (building) — 1,235 m²
 - 17. Lindner Hotel Antwerp (building) — 1,028 m²
 - 18. Districtshuis Borgerhout (building) — 944 m²
-- 14. Planetarium (building) — 889 m²
-- 9. Oudaan (building) — 781 m²
-- 23. Kasteel de Bergeyck (building) — 780 m²
-- 2. Vleeshuis (building) — 764 m²
+- 12. Planetarium (building) — 889 m²
+- 15. Oudaan (building) — 781 m²
+- 25. Kasteel de Bergeyck (building) — 780 m²
+- 7. Vleeshuis (building) — 764 m²
+- 20. ZAS Vincentius (building) — 29,302 m²
+- 23. AZ Monica Antwerpen (building) — 9,020 m²
 
 ### 1.3 Public Space
 
@@ -205,56 +207,56 @@
 
 #### 1.5.1 Neighborhoods With Tracked Objects, Part 1 of 2 (50)
 
-- 8. Antwerpen Kern - Oude Stad (Sp Wall) (neighborhood)
-- 6. Willemdok (Spaanse Wallen) (neighborhood)
-- 5. Oude Haven (neighborhood)
-- 2. Houtdok (neighborhood)
-- 11. Hessenhuis (Spaanse Wallen) (neighborhood)
+- 13. Antwerpen Kern - Oude Stad (Sp Wall) (neighborhood)
+- 8. Willemdok (Spaanse Wallen) (neighborhood)
+- 3. Oude Haven (neighborhood)
+- 1. Houtdok (neighborhood)
+- 9. Hessenhuis (Spaanse Wallen) (neighborhood)
 - 45. Stappaerts - Krijgshospitaal (Oostwijk) (neighborhood)
 - 40. An-2000 / Nieuw Gerechtshof (neighborhood)
-- 29. Kns - Nat. Bank (Spaanse Wallen) (neighborhood)
-- 15. Groenplaats (Spaanse Wallen) (neighborhood)
+- 25. Kns - Nat. Bank (Spaanse Wallen) (neighborhood)
+- 14. Groenplaats (Spaanse Wallen) (neighborhood)
 - 48. Oude Justitie (neighborhood)
-- 39. Dageraadplaats - Ooststatie (Oostwijk) (neighborhood)
-- 26. Museumwijk (Zuidwijk) (neighborhood)
-- 1. 't Eilandje (neighborhood)
-- 10. Stadswaag-Begijnhof (Spaanse Wallen) (neighborhood)
-- 9. Kipdorp - St.-Jacobs (Spaanse Wallen) (neighborhood)
-- 25. St.-Andries (Spaanse Wallen) (neighborhood)
+- 38. Dageraadplaats - Ooststatie (Oostwijk) (neighborhood)
+- 35. Museumwijk (Zuidwijk) (neighborhood)
+- 4. 't Eilandje (neighborhood)
+- 7. Stadswaag-Begijnhof (Spaanse Wallen) (neighborhood)
+- 16. Kipdorp - St.-Jacobs (Spaanse Wallen) (neighborhood)
+- 22. St.-Andries (Spaanse Wallen) (neighborhood)
 - 47. Karel Oomstraat (neighborhood)
 - 50. Vestingen (neighborhood)
-- 7. An-2060 / Slachthuis-Lobroekdok (neighborhood)
-- 3. Albertdok (neighborhood)
-- 31. Provinciestraat (Stationswijk) (neighborhood)
-- 16. Meir - Leysstraat (Spaanse Wallen) (neighborhood)
-- 17. Jezuitencollege (Stationswijk) (neighborhood)
-- 34. Fonteinstraat (neighborhood)
+- 5. An-2060 / Slachthuis-Lobroekdok (neighborhood)
+- 2. Albertdok (neighborhood)
+- 28. Provinciestraat (Stationswijk) (neighborhood)
+- 15. Meir - Leysstraat (Spaanse Wallen) (neighborhood)
+- 27. Jezuitencollege (Stationswijk) (neighborhood)
+- 31. Fonteinstraat (neighborhood)
 - 49. Op ten Bergh (neighborhood)
-- 24. Waalse Kaai (Zuidwijk) (neighborhood)
-- 23. Bo / Kleine Ring (neighborhood)
-- 14. Stuivenbergplein (Noordwijk) (neighborhood)
-- 21. St.-Anna (neighborhood)
-- 28. Oudaan (Spaanse Wallen) (neighborhood)
-- 33. Den Bleekhof (neighborhood)
-- 37. St.-Vincentius (Oostwijk) (neighborhood)
+- 21. Waalse Kaai (Zuidwijk) (neighborhood)
+- 20. Bo / Kleine Ring (neighborhood)
+- 12. Stuivenbergplein (Noordwijk) (neighborhood)
+- 19. St.-Anna (neighborhood)
+- 24. Oudaan (Spaanse Wallen) (neighborhood)
+- 39. Den Bleekhof (neighborhood)
+- 36. St.-Vincentius (Oostwijk) (neighborhood)
 - 46. Zurenborg (neighborhood)
 - 42. St.-Laurentius (Zuidwijk) (neighborhood)
 - 43. Albertpark (Oostwijk) (neighborhood)
-- 35. Oude Schipperdokken (Zuidwijk) (neighborhood)
-- 19. De Conincplein - Z. (Stationswijk) (neighborhood)
-- 22. De Peperbus (neighborhood)
-- 27. Gevangenis (Spaanse Wallen) (neighborhood)
-- 32. Borgerhout - Gemeentehuis (neighborhood)
-- 30. Stadspark (Stationswijk) (neighborhood)
-- 38. Charlottalei (Oostwijk) (neighborhood)
+- 33. Oude Schipperdokken (Zuidwijk) (neighborhood)
+- 18. De Conincplein - Z. (Stationswijk) (neighborhood)
+- 32. De Peperbus (neighborhood)
+- 23. Gevangenis (Spaanse Wallen) (neighborhood)
+- 29. Borgerhout - Gemeentehuis (neighborhood)
+- 26. Stadspark (Stationswijk) (neighborhood)
+- 37. Charlottalei (Oostwijk) (neighborhood)
 - 41. Troonplaats (Zuidwijk) (neighborhood)
 - 44. Lamorinierestr. - Zuid (Ebes) (oostwijk) (neighborhood)
-- 18. Statiekwartier (Stationswijk) (neighborhood)
-- 36. Vlaamse Kaai (Zuidwijk) (neighborhood)
-- 20. Kattenberg (neighborhood)
-- 4. Sportpaleis (neighborhood)
-- 12. St.-Jansplein - Trapstraat (Noordwijk) (neighborhood)
-- 13. St.-Amandus (Noordwijk) (neighborhood)
+- 17. Statiekwartier (Stationswijk) (neighborhood)
+- 34. Vlaamse Kaai (Zuidwijk) (neighborhood)
+- 30. Kattenberg (neighborhood)
+- 6. Sportpaleis (neighborhood)
+- 10. St.-Jansplein - Trapstraat (Noordwijk) (neighborhood)
+- 11. St.-Amandus (Noordwijk) (neighborhood)
 
 #### 1.5.1-2 Neighborhoods With Tracked Objects, Part 2 of 2 (37)
 
@@ -447,18 +449,16 @@
 - 2. Kattendijksluis (waterway)
 - 5. Verbindingsdok (waterway)
 
-#### 2.3.3 Other Streets (10)
+#### 2.3.3 Other Streets (8)
 
-- 7. Kempenstraat (road) — 0.99 km
-- 9. Ellermanstraat (road) — 0.90 km
-- 4. Kattendijkdok (road) — 0.84 km
+- 5. Kempenstraat (road) — 0.99 km
+- 6. Ellermanstraat (road) — 0.90 km
+- 2. Kattendijkdok (road) — 0.84 km
 - 8. Marguerie Schuilhaven (road) — 0.60 km
-- 1. Kattendijkbrug (road) — 0.16 km
-- 3. Limastraat (road) — 0.08 km
-- 6. Tallinnstraat (road) — 0.06 km
-- 2. Sasdok (road) — 0.02 km
-- 10. Architect Hugo Van Kuycktuin (road) — 0.01 km
-- 5. Calcuttastraat (road) — 0.01 km
+- 1. Limastraat (road) — 0.08 km
+- 4. Tallinnstraat (road) — 0.06 km
+- 7. Architect Hugo Van Kuycktuin (road) — 0.01 km
+- 3. Calcuttastraat (road) — 0.01 km
 
 ### 2.4 Houtdok
 
@@ -1492,11 +1492,11 @@
 
 #### 5.3.1 Notable Roads & Squares, Parks & Waterways (7)
 
-- 6. Domein Hertoghe (park)
+- 5. Domein Hertoghe (park)
 - 1. Arthur Goemaerelei (road)
 - 4. Bosmanslei (road)
-- 7. Doornelei (road)
-- 5. Jan Van Rijswijcklaan (road)
+- 6. Doornelei (road)
+- 7. Jan Van Rijswijcklaan (road)
 - 3. Markgravelei (road)
 - 2. Van Putlei (road)
 
@@ -1583,14 +1583,15 @@
 
 ### 5.6 Stadspark - Zuid (Oostwijk) + St.-Vincentius (Oostwijk)
 
-#### 5.6.1 Notable Roads & Landmarks & Buildings & Squares, Parks & Waterways (6)
+#### 5.6.1 Notable Roads & Landmarks & Buildings & Squares, Parks & Waterways (7)
 
-- 6. Verdraagzaamheidsplein (square)
+- 7. Verdraagzaamheidsplein (square)
 - 2. Kapel van het Allerheiligste Sacrament (building)
 - 4. Heilige Geestkerk (building)
 - 1. Frankrijklei (road)
 - 3. Maria-Henriëttalei (road)
 - 5. Mechelsesteenweg (road)
+- 6. ZAS Vincentius (building) — 29,302 m²
 
 #### 5.6.2 Other Streets (19)
 
@@ -1616,16 +1617,17 @@
 
 ### 5.7 C. Teichmann Plaats (Zuidwijk) + Gerechtshof (Zuidw) + Harmonie (Zuidwijk) + Albertpark (Oostwijk)
 
-#### 5.7.1 Squares, Parks & Waterways & Landmarks & Buildings & Notable Roads (8)
+#### 5.7.1 Squares, Parks & Waterways & Landmarks & Buildings & Notable Roads (9)
 
-- 7. Koningin Elisabethlei (road)
+- 8. Koningin Elisabethlei (road)
 - 1. Gerechtshof (building)
-- 5. Feestzaal Harmonie (building)
+- 6. Feestzaal Harmonie (building)
 - 3. Aarschotplaats (square)
 - 2. Constantia Teichmannplaats (square)
 - 4. Buurtpark Van Schoonbekestraat  (park)
-- 6. Harmonie (park)
-- 8. Koning Albertpark (park)
+- 7. Harmonie (park)
+- 9. Koning Albertpark (park)
+- 5. AZ Monica Antwerpen (building) — 9,020 m²
 
 #### 5.7.2 Other Streets (26)
 
@@ -1738,10 +1740,10 @@
 - 6. Sint-Laurentiuskerk (building)
 - 2. De Beukelaer (building)
 
-#### 5.10.2 Other Streets (16)
+#### 5.10.2 Other Streets (13)
 
 - 5. Lange Lozanastraat (road) — 1.12 km
-- 16. Gerard Le Grellelaan (road) — 0.71 km
+- 13. Gerard Le Grellelaan (road) — 0.71 km
 - 3. Ballaarstraat (road) — 0.37 km
 - 4. Durletstraat (road) — 0.25 km
 - 1. Pyckestraat (road) — 0.23 km
@@ -1750,12 +1752,9 @@
 - 6. Juliaan Dillensstraat (road) — 0.20 km
 - 11. Lokkaardstraat (road) — 0.18 km
 - 8. Van Peltstraat (road) — 0.18 km
-- 13. Floris Primsstraat (road) — 0.14 km
+- 12. Floris Primsstraat (road) — 0.14 km
 - 10. Lemméstraat (road) — 0.13 km
 - 7. Korte Van Peltstraat (road) — 0.11 km
-- 15. Jan Baptist Verlooystraat (road) — 0.04 km
-- 14. Willem Eekelersstraat (road) — 0.01 km
-- 12. Volhardingstraat (road) — 0.00 km
 
 ---
 
@@ -2055,24 +2054,19 @@
 
 ### 7.1 Bo / Kleine Ring + Stenenbrug - Zuid + Deurne - Gemeentehuis
 
-#### 7.1.1 Notable Roads & Squares, Parks & Waterways (7)
+#### 7.1.1 Notable Roads, Landmarks, Parks, Waterways & Other Streets (11)
 
 - 4. Foorplein (square)
 - 2. Buurtpark Spoor Oost (park)
-- 7. Buurtpark Dokter Van De Perrelei (park)
+- 5. Buurtpark Dokter Van De Perrelei (park)
 - 1. Buurtspoorweglei (road)
 - 3. Noordersingel (road)
-- 5. Turnhoutsebaan (road)
-- 6. Turnhoutsebaan (road)
-
-#### 7.1.2 Other Streets (6)
-
-- 2. Stenenbrug (road) — 0.95 km
-- 4. Luitenant Lippenslaan (road) — 0.85 km
+- Turnhoutsebaan (road) — 5.38 km
+- Turnhoutsebaan (road) — 5.38 km
+- 3. Stenenbrug (road) — 0.95 km
+- 2. Luitenant Lippenslaan (road) — 0.85 km
 - 1. Hof ter Lo (road) — 0.16 km
-- 6. Joe Englishstraat (road) — 0.15 km
-- 5. Kalverveld (road) — 0.06 km
-- 3. Collegelaan (road) — 0.01 km
+- 4. Joe Englishstraat (road) — 0.15 km
 
 ---
 
@@ -2080,25 +2074,25 @@
 
 ### 8.1 All Landmarks & Buildings
 
-#### 8.1.1 Complete List (79) (79)
+#### 8.1.1 Complete List (81) (81)
 
-- 71. Antwerpen-Berchem (station) (building)
-- 72. Antwerpen-Zuid (station) (building)
-- 75. Basiliek van het Heilig Hart (building)
+- 73. Antwerpen-Berchem (station) (building)
+- 74. Antwerpen-Zuid (station) (building)
+- 77. Basiliek van het Heilig Hart (building)
 - 28. Boerentoren (building)
 - 30. Bourlaschouwburg (building)
 - 33. Centraal Station (building)
 - 55. Christus’ Geboortekerk (building)
-- 76. Church (unnamed) (building)
-- 67. De Beukelaer (building)
+- 78. Church (unnamed) (building)
+- 68. De Beukelaer (building)
 - 45. De Roma (building)
-- 79. De Singel en AP Hogeschool - Campus De Singel (building)
-- 70. De Slag van Waterloo (building)
+- 81. De Singel en AP Hogeschool - Campus De Singel (building)
+- 72. De Slag van Waterloo (building)
 - 52. De Vijf Werelddeelen (building)
 - 16. Delbekehuis (building)
 - 44. Districtshuis Borgerhout (building)
 - 14. Erfgoedbibliotheek Hendrik Conscience (building)
-- 68. Feestzaal Harmonie (building)
+- 70. Feestzaal Harmonie (building)
 - 53. Gerechtshof (building)
 - 29. Handelsbeurs (building)
 - 22. Heilig-Hartkerk (building)
@@ -2108,13 +2102,13 @@
 - 9. Het Steen (building)
 - 61. Hollandse Synagoge (building)
 - 56. Hoofdsynagoge van Shomre Hadas (building)
-- 64. Hoofdsynagoge van de Israelisch Orthodoxe Gemeente Machsiké Hadass (building)
-- 66. Huzur (building)
+- 65. Hoofdsynagoge van de Israelisch Orthodoxe Gemeente Machsiké Hadass (building)
+- 67. Huzur (building)
 - 20. Instituut Onze-Lieve-Vrouw Middelares (building)
 - 62. International Baptist Church (building)
 - 59. Justitiepaleis Antwerpen (building)
 - 54. Kapel van het Allerheiligste Sacrament (building)
-- 77. Kasteel de Bergeyck (building)
+- 79. Kasteel de Bergeyck (building)
 - 34. Koningin Elisabethzaal (building)
 - 50. Koninklijk Museum voor Schone Kunsten Antwerpen (KMSKA) (building)
 - 42. Lindner Hotel Antwerp (building)
@@ -2131,25 +2125,25 @@
 - 32. Pagodepoort (building)
 - 35. Planetarium (building)
 - 19. Protestants Evangelische kerk (building)
-- 73. Provincial Institute PIVA (building)
+- 75. Provincial Institute PIVA (building)
 - 31. Shopping Stadsfeestzaal (building)
 - 7. Sint-Amanduskerk (building)
 - 24. Sint-Andrieskerk (building)
 - 23. Sint-Annakerk (building)
 - 5. Sint-Antoniuskerk (building)
 - 26. Sint-Augustinuskerk (building)
-- 69. Sint-Bonifaciuskerk (building)
+- 71. Sint-Bonifaciuskerk (building)
 - 15. Sint-Carolus Borromeuskerk (building)
 - 21. Sint-Catharinakerk (building)
 - 43. Sint-Dominicuskerk (building)
 - 8. Sint-Eligiuskerk (building)
-- 78. Sint-Hubertuskerk (building)
+- 80. Sint-Hubertuskerk (building)
 - 18. Sint-Jacobskerk (building)
 - 46. Sint-Janskerk (building)
 - 38. Sint-Joriskerk (building)
-- 74. Sint-Laurentiuskerk (building)
+- 76. Sint-Laurentiuskerk (building)
 - 60. Sint-Michielskerk (building)
-- 65. Sint-Norbertuskerk (building)
+- 66. Sint-Norbertuskerk (building)
 - 13. Sint-Pauluskerk (building)
 - 51. Sint-Walburgiskerk (building)
 - 36. Sint-Willibrorduskerk (building)
@@ -2161,6 +2155,8 @@
 - 47. Waterpoort (building)
 - 49. Zuiderpershuis (building)
 - 58. Zwembad Plantin-Moretus (building)
+- 64. ZAS Vincentius (building) — 29,302 m²
+- 69. AZ Monica Antwerpen (building) — 9,020 m²
 
 ### 8.2 All Waterways
 
@@ -2364,16 +2360,16 @@
 
 #### 8.5.1 Ten Longest (10) (10)
 
-- 10. Binnensingel (road)
+- 9. Binnensingel (road)
 - 1. Italiëlei (road)
-- 5. Noordersingel (road)
-- 4. Turnhoutsebaan (road)
+- 3. Noordersingel (road)
 - 2. Noorderlaan (road)
-- 6. Amerikalei (road)
-- 7. Mechelsesteenweg (road)
-- 3. Frankrijklei (road)
-- 8. Plantin en Moretuslei (road)
-- 9. Jan Van Rijswijcklaan (road)
+- 4. Amerikalei (road)
+- 8. Mechelsesteenweg (road)
+- 5. Frankrijklei (road)
+- 6. Plantin en Moretuslei (road)
+- 7. Jan Van Rijswijcklaan (road)
+- Turnhoutsebaan (road) — 5.38 km
 
 #### 8.5.2 Kaai & Lei Streets (79) (79)
 
@@ -2563,58 +2559,57 @@
 - 28. Bouwensstraat (road) — 0.21 km
 - 33. Bouwmeestersstraat (road) — 0.11 km
 
-#### 8.5.5 Other Streets (B–D) (50) (50)
+#### 8.5.5 Other Streets (B–D) (49) (49)
 
-- 25. Brabantstraat (road) — 0.06 km
-- 15. Braderijstraat (road) — 0.07 km
+- 27. Brabantstraat (road) — 0.06 km
+- 16. Braderijstraat (road) — 0.07 km
 - 1. Braziliëstraat (road) — 0.35 km
 - 5. Bredastraat (road) — 1.06 km
-- 41. Brederodestraat (road) — 1.11 km
-- 24. Bredestraat (road) — 0.13 km
-- 32. Bresstraat (road) — 0.13 km
-- 33. Breughelstraat (road) — 0.22 km
-- 18. Breydelstraat (road) — 0.21 km
-- 42. Broederminstraat (road) — 0.31 km
-- 48. Bronstraat (road) — 0.06 km
-- 8. Brouwersvliet (road) — 0.53 km
-- 10. Brugstraat (road) — 0.14 km
-- 38. Brusselstraat (road) — 0.41 km
-- 14. Burchtgracht (road) — 0.22 km
-- 22. Burgerwelzijn (road) — 0.08 km
+- 31. Brederodestraat (road) — 1.11 km
+- 26. Bredestraat (road) — 0.13 km
+- 34. Bresstraat (road) — 0.13 km
+- 36. Breughelstraat (road) — 0.22 km
+- 19. Breydelstraat (road) — 0.21 km
+- 32. Broederminstraat (road) — 0.31 km
+- 49. Bronstraat (road) — 0.06 km
+- 9. Brouwersvliet (road) — 0.53 km
+- 11. Brugstraat (road) — 0.14 km
+- 40. Brusselstraat (road) — 0.41 km
+- 7. Burchtgracht (road) — 0.22 km
+- 14. Burgerwelzijn (road) — 0.08 km
 - 4. Cadixstraat (road) — 0.32 km
 - 2. Calcuttastraat (road) — 0.01 km
-- 47. Callensstraat (road) — 0.15 km
-- 49. Cameliastraat (road) — 0.11 km
-- 19. Carnotstraat (road) — 1.68 km
-- 9. Cassiersstraat (road) — 0.28 km
-- 39. Catharina Beersmansstraat (road) — 0.20 km
+- 48. Callensstraat (road) — 0.15 km
+- 45. Cameliastraat (road) — 0.11 km
+- 20. Carnotstraat (road) — 1.68 km
+- 10. Cassiersstraat (road) — 0.28 km
+- 41. Catharina Beersmansstraat (road) — 0.20 km
 - 3. Catharina Pepijnstraat (road) — 0.09 km
-- 17. Cellebroedersstraat (road) — 0.14 km
-- 23. Ceresstraat (road) — 0.08 km
-- 13. Ceulemansstraat (road) — 0.19 km
+- 18. Cellebroedersstraat (road) — 0.14 km
+- 24. Ceresstraat (road) — 0.08 km
+- 15. Ceulemansstraat (road) — 0.19 km
 - 6. Chocoladegang (road) — 0.09 km
-- 30. Clara Peetershof (road) — 0.42 km
-- 44. Clementinastraat (road) — 0.24 km
-- 36. Clément van Bogaerttunnel (road) — 0.06 km
-- 46. Cobdenstraat (road) — 0.20 km
+- 33. Clara Peetershof (road) — 0.42 km
+- 35. Clementinastraat (road) — 0.24 km
+- 38. Clément van Bogaerttunnel (road) — 0.06 km
+- 47. Cobdenstraat (road) — 0.20 km
 - 43. Coebergerstraat (road) — 0.22 km
-- 28. Collegelaan (road) — 0.01 km
-- 20. Congresstraat (road) — 0.34 km
-- 34. Consciencestraat (road) — 0.31 km
-- 21. Constitutiestraat (road) — 0.37 km
-- 26. Copernicuslaan (road) — 0.13 km
-- 16. Coppenolstraat (road) — 0.07 km
-- 31. Coquilhatstraat (road) — 0.26 km
-- 45. Coveliersstraat (road) — 0.16 km
-- 7. Crauwelengang (road) — 0.04 km
-- 27. Cronjéstraat (road) — 0.12 km
-- 37. Cuperusstraat (road) — 0.73 km
-- 29. Cuylitsstraat (road) — 0.42 km
-- 50. Daenenstraat (road) — 0.21 km
-- 11. Dahliastraat (road) — 0.15 km
-- 12. Dambruggestraat (road) — 1.28 km
-- 40. De Beuckerstraat (road) — 0.20 km
-- 35. De Boeystraat (road) — 0.09 km
+- 21. Congresstraat (road) — 0.34 km
+- 37. Consciencestraat (road) — 0.31 km
+- 22. Constitutiestraat (road) — 0.37 km
+- 28. Copernicuslaan (road) — 0.13 km
+- 17. Coppenolstraat (road) — 0.07 km
+- 25. Coquilhatstraat (road) — 0.26 km
+- 44. Coveliersstraat (road) — 0.16 km
+- 8. Crauwelengang (road) — 0.04 km
+- 23. Cronjéstraat (road) — 0.12 km
+- 39. Cuperusstraat (road) — 0.73 km
+- 30. Cuylitsstraat (road) — 0.42 km
+- 46. Daenenstraat (road) — 0.21 km
+- 12. Dahliastraat (road) — 0.15 km
+- 13. Dambruggestraat (road) — 1.28 km
+- 42. De Beuckerstraat (road) — 0.20 km
+- 29. De Boeystraat (road) — 0.09 km
 
 #### 8.5.6 Other Streets (D–E) (50) (50)
 
@@ -2775,111 +2770,108 @@
 - 43. Harmoniepark (road) — 0.44 km
 - 48. Harmoniestraat (road) — 0.62 km
 
-#### 8.5.9 Other Streets (H–J) (50) (50)
+#### 8.5.9 Other Streets (H–J) (49) (49)
 
 - 4. Haverstraat (road) — 0.05 km
-- 50. Heilig Hartstraat (road) — 0.25 km
-- 20. Heilige Geeststraat (road) — 0.08 km
-- 28. Helmstraat (road) — 0.71 km
-- 34. Hemelstraat (road) — 0.16 km
-- 43. Henri La Fontainestraat (road) — 0.31 km
-- 37. Henri Storckpad (road) — 0.09 km
-- 33. Henri Van Heurckstraat (road) — 0.13 km
-- 15. Herderinstraat (road) — 0.13 km
-- 17. Herderstraat (road) — 0.15 km
-- 42. Hertoginstraat (road) — 0.22 km
-- 39. Hertsdeinstraat (road) — 0.16 km
-- 11. Hessenbrug (road) — 0.05 km
-- 10. Hessenstraatje (road) — 0.09 km
-- 45. Hof ter Bekestraat (road) — 0.20 km
-- 16. Hof ter Elst (road) — 0.04 km
-- 31. Hof ter Lo (road) — 0.16 km
-- 14. Hof Van Camp (road) — 0.02 km
-- 5. Hofstraat (road) — 0.12 km
-- 48. Hogeweg (road) — 0.32 km
-- 49. Hogeweg (road) — 0.25 km
-- 13. Hollandstraat (road) — 0.23 km
-- 6. Hoofdkerkstraat (road) — 0.05 km
-- 19. Hoogstraat (road) — 0.33 km
-- 9. Hoornstraat (road) — 0.08 km
-- 25. Hopland (road) — 0.29 km
+- 49. Heilig Hartstraat (road) — 0.25 km
+- 22. Heilige Geeststraat (road) — 0.08 km
+- 30. Helmstraat (road) — 0.71 km
+- 36. Hemelstraat (road) — 0.16 km
+- 44. Henri La Fontainestraat (road) — 0.31 km
+- 33. Henri Storckpad (road) — 0.09 km
+- 26. Henri Van Heurckstraat (road) — 0.13 km
+- 16. Herderinstraat (road) — 0.13 km
+- 18. Herderstraat (road) — 0.15 km
+- 37. Hertoginstraat (road) — 0.22 km
+- 42. Hertsdeinstraat (road) — 0.16 km
+- 12. Hessenbrug (road) — 0.05 km
+- 11. Hessenstraatje (road) — 0.09 km
+- 41. Hof ter Bekestraat (road) — 0.20 km
+- 17. Hof ter Elst (road) — 0.04 km
+- 20. Hof ter Lo (road) — 0.16 km
+- 15. Hof Van Camp (road) — 0.02 km
+- 6. Hofstraat (road) — 0.12 km
+- 47. Hogeweg (road) — 0.32 km
+- 48. Hogeweg (road) — 0.25 km
+- 14. Hollandstraat (road) — 0.23 km
+- 7. Hoofdkerkstraat (road) — 0.05 km
+- 21. Hoogstraat (road) — 0.33 km
+- 10. Hoornstraat (road) — 0.08 km
+- 27. Hopland (road) — 0.29 km
 - 2. Houtdok (road) — 0.63 km
-- 8. Houtenbrug (road) — 0.04 km
-- 12. Houwerstraat (road) — 0.11 km
-- 26. Hoveniersstraat (road) — 0.17 km
-- 23. Huidevettersstraat (road) — 0.75 km
-- 7. Huikstraat (road) — 0.20 km
-- 27. Huybrechtsstraat (road) — 0.22 km
-- 38. Ieperstraat (road) — 0.13 km
-- 22. IJzerenwaag (road) — 0.07 km
+- 9. Houtenbrug (road) — 0.04 km
+- 13. Houwerstraat (road) — 0.11 km
+- 28. Hoveniersstraat (road) — 0.17 km
+- 24. Huidevettersstraat (road) — 0.75 km
+- 8. Huikstraat (road) — 0.20 km
+- 29. Huybrechtsstraat (road) — 0.22 km
+- 40. Ieperstraat (road) — 0.13 km
+- 23. IJzerenwaag (road) — 0.07 km
 - 3. IJzerlaan (road) — 1.83 km
 - 1. Indiëstraat (road) — 0.34 km
-- 40. Isabella Brantstraat (road) — 0.24 km
-- 24. Israelietenstraat (road) — 0.04 km
-- 29. Jaak De Braeckeleerstraat (road) — 0.12 km
-- 36. Jacob Jacobsstraat (road) — 0.28 km
-- 35. Jacob Jordaensstraat (road) — 0.40 km
-- 46. Jan Baptist Verlooystraat (road) — 0.04 km
-- 41. Jan Blockxstraat (road) — 0.15 km
-- 21. Jan Blomstraat (road) — 0.06 km
-- 47. Jan Breydelstraat (road) — 0.30 km
-- 30. Jan De Laetstraat (road) — 0.16 km
-- 44. Jan Denucéstraat (road) — 1.12 km
-- 32. Jan Frans Willemsstraat (road) — 0.07 km
-- 18. Jan Palfijnstraat (road) — 0.18 km
+- 34. Isabella Brantstraat (road) — 0.24 km
+- 25. Israelietenstraat (road) — 0.04 km
+- 31. Jaak De Braeckeleerstraat (road) — 0.12 km
+- 39. Jacob Jacobsstraat (road) — 0.28 km
+- 38. Jacob Jordaensstraat (road) — 0.40 km
+- 43. Jan Blockxstraat (road) — 0.15 km
+- 5. Jan Blomstraat (road) — 0.06 km
+- 46. Jan Breydelstraat (road) — 0.30 km
+- 32. Jan De Laetstraat (road) — 0.16 km
+- 45. Jan Denucéstraat (road) — 1.12 km
+- 35. Jan Frans Willemsstraat (road) — 0.07 km
+- 19. Jan Palfijnstraat (road) — 0.18 km
 
-#### 8.5.10 Other Streets (J–K) (50) (50)
+#### 8.5.10 Other Streets (J–K) (48) (48)
 
-- 42. Jan Van Asperenpad (road) — 0.29 km
-- 43. Jan Van Beersstraat (road) — 0.16 km
-- 31. Jan van Gentstraat (road) — 0.19 km
+- 30. Jan Van Asperenpad (road) — 0.29 km
+- 41. Jan Van Beersstraat (road) — 0.16 km
+- 33. Jan van Gentstraat (road) — 0.19 km
 - 17. Jan van Lierstraat (road) — 0.08 km
-- 30. Jan Vanhoenackerstraat (road) — 0.30 km
-- 25. Jeanne Brabantstunnel (road) — 0.54 km
-- 41. Jef Cassiersstraat (road) — 0.31 km
-- 49. Jennevalstraat (road) — 0.16 km
-- 12. Jeruzalemstraat (road) — 0.10 km
-- 24. Jezusstraat (road) — 0.22 km
-- 13. Jezuïetenrui (road) — 0.07 km
-- 20. Joannasteeg (road) — 0.07 km
-- 22. Jodenstraat (road) — 0.23 km
+- 32. Jan Vanhoenackerstraat (road) — 0.30 km
+- 21. Jeanne Brabantstunnel (road) — 0.54 km
+- 29. Jef Cassiersstraat (road) — 0.31 km
+- 47. Jennevalstraat (road) — 0.16 km
+- 14. Jeruzalemstraat (road) — 0.10 km
+- 20. Jezusstraat (road) — 0.22 km
+- 15. Jezuïetenrui (road) — 0.07 km
+- 10. Joannasteeg (road) — 0.07 km
+- 25. Jodenstraat (road) — 0.23 km
 - 40. Joe Englishstraat (road) — 0.15 km
-- 44. Jonghelinckstraat (road) — 0.15 km
+- 42. Jonghelinckstraat (road) — 0.15 km
 - 5. Joossensgang (road) — 0.14 km
-- 26. Jos Brabantstunnel (road) — 0.62 km
-- 29. Jos Smolderenstraat (road) — 0.59 km
-- 47. Jozef Balstraat (road) — 0.12 km
-- 38. Jozef De Bomstraat (road) — 0.31 km
-- 15. Jozef de Hasquestraat (road) — 0.05 km
-- 33. Jozef Liesstraat (road) — 0.12 km
-- 45. Jules Bordetstraat (road) — 0.35 km
-- 46. Juliaan Dillensstraat (road) — 0.20 km
-- 37. Justitiestraat (road) — 0.39 km
-- 14. Kaasbrug (road) — 0.04 km
-- 10. Kaasrui (road) — 0.07 km
-- 9. Kaasstraat (road) — 0.10 km
+- 22. Jos Brabantstunnel (road) — 0.62 km
+- 31. Jos Smolderenstraat (road) — 0.59 km
+- 45. Jozef Balstraat (road) — 0.12 km
+- 39. Jozef De Bomstraat (road) — 0.31 km
+- 8. Jozef de Hasquestraat (road) — 0.05 km
+- 35. Jozef Liesstraat (road) — 0.12 km
+- 44. Jules Bordetstraat (road) — 0.35 km
+- 43. Juliaan Dillensstraat (road) — 0.20 km
+- 38. Justitiestraat (road) — 0.39 km
+- 7. Kaasbrug (road) — 0.04 km
+- 13. Kaasrui (road) — 0.07 km
+- 12. Kaasstraat (road) — 0.10 km
 - 4. Kalkstraat (road) — 0.11 km
-- 7. Kalverstraat (road) — 0.32 km
-- 39. Kalverveld (road) — 0.06 km
-- 8. Kalverwei (road) — 0.06 km
-- 3. Kambalastraat (road) — 0.30 km
-- 21. Kammenstraat (road) — 0.37 km
-- 36. Kapucinessenstraat (road) — 0.27 km
+- 9. Kalverstraat (road) — 0.32 km
+- 11. Kalverwei (road) — 0.06 km
+- 2. Kambalastraat (road) — 0.30 km
+- 23. Kammenstraat (road) — 0.37 km
+- 24. Kapucinessenstraat (road) — 0.27 km
 - 28. Karel Geertsstraat (road) — 0.30 km
-- 48. Karel Oomsstraat (road) — 0.93 km
-- 34. Karel Rogierstraat (road) — 0.19 km
-- 35. Kasteelpleinstraat (road) — 0.31 km
-- 32. Kasteelstraat (road) — 0.30 km
+- 46. Karel Oomsstraat (road) — 0.93 km
+- 36. Karel Rogierstraat (road) — 0.19 km
+- 37. Kasteelpleinstraat (road) — 0.31 km
+- 34. Kasteelstraat (road) — 0.30 km
 - 27. Kattenberg (road) — 0.42 km
-- 1. Kattendijkbrug (road) — 0.16 km
-- 2. Kattendijkdok (road) — 0.84 km
+- 1. Kattendijkdok (road) — 0.84 km
 - 18. Kattenstraat (road) — 0.14 km
 - 19. Kauwenstraatje (road) — 0.05 km
-- 11. Keistraat (road) — 0.18 km
+- 6. Keistraat (road) — 0.18 km
 - 16. Keizerstraat (road) — 0.38 km
-- 23. Kelderstraat (road) — 0.09 km
-- 50. Kemmelbergstraat (road) — 0.31 km
-- 6. Kempenstraat (road) — 0.99 km
+- 26. Kelderstraat (road) — 0.09 km
+- 48. Kemmelbergstraat (road) — 0.31 km
+- 3. Kempenstraat (road) — 0.99 km
 
 #### 8.5.11 Other Streets (K) (50) (50)
 
@@ -3103,13 +3095,13 @@
 - 41. Montebellostraat (road) — 0.20 km
 - 36. Montensstraat (road) — 0.25 km
 - 3. Montevideostraat (road) — 0.15 km
-- 46. Montignystraat (road) — 0.89 km
-- 47. Moonsstraat (road) — 0.19 km
+- 47. Montignystraat (road) — 0.89 km
+- 48. Moonsstraat (road) — 0.19 km
 - 16. Morgenstraat (road) — 0.05 km
 - 11. Moriaanstraat (road) — 0.08 km
 - 12. Moriaanstraatje (road) — 0.03 km
 - 8. Mouterijsteeg (road) — 0.04 km
-- 48. Mozartstraat (road) — 0.12 km
+- 42. Mozartstraat (road) — 0.12 km
 - 18. Muizenstraat (road) — 0.11 km
 - 24. Munthof (road) — 0.09 km
 - 25. Muntstraat (road) — 0.11 km
@@ -3123,7 +3115,7 @@
 - 1. Natiestraat (road) — 0.16 km
 - 27. Nationalestraat (road) — 0.96 km
 - 21. Neefsteeg (road) — 0.10 km
-- 42. Nerviërsstraat (road) — 0.20 km
+- 43. Nerviërsstraat (road) — 0.20 km
 - 37. Nicole Van Goethempad (road) — 0.56 km
 - 15. Nieuwe Gang (road) — 0.07 km
 - 34. Nieuwstad (road) — 0.09 km
@@ -3131,18 +3123,18 @@
 - 23. Nikkelstraat (road) — 0.18 km
 - 2. Noordschippersdok (road) — 0.40 km
 - 10. Nosestraat (road) — 0.07 km
-- 44. Nottebohmstraat (road) — 0.20 km
+- 45. Nottebohmstraat (road) — 0.20 km
 - 35. Oedenkovenstraat (road) — 0.24 km
 - 26. Oever (road) — 0.23 km
 - 31. Offerandestraat (road) — 0.35 km
 - 17. Olijftakstraat (road) — 0.17 km
-- 45. Omheining Statie van Borgerhout (road) — 0.34 km
+- 46. Omheining Statie van Borgerhout (road) — 0.34 km
 - 30. Ommeganckstraat (road) — 0.33 km
 - 49. Onafhankelijkheidslaan (road) — 0.41 km
 - 22. Onderwijsstraat (road) — 0.43 km
 - 50. Onze-Lieve-Vrouwstraat (road) — 0.19 km
 - 32. Ooievaarstraat (road) — 0.13 km
-- 43. Oostenstraat (road) — 0.42 km
+- 44. Oostenstraat (road) — 0.42 km
 - 7. Oranjestraat (road) — 0.57 km
 - 28. Orgelstraat (road) — 0.09 km
 
@@ -3199,58 +3191,57 @@
 - 7. Predikerinnenstraat (road) — 0.09 km
 - 31. Prekersstraat (road) — 0.29 km
 
-#### 8.5.17 Other Streets (P–S) (50) (50)
+#### 8.5.17 Other Streets (P–S) (49) (49)
 
-- 49. Pretoriastraat (road) — 0.38 km
-- 37. Prins Leopoldstraat (road) — 0.25 km
-- 11. Prinsesstraat (road) — 0.19 km
-- 10. Prinsstraat (road) — 0.18 km
-- 35. Provinciestraat (road) — 1.11 km
+- 46. Pretoriastraat (road) — 0.38 km
+- 39. Prins Leopoldstraat (road) — 0.25 km
+- 10. Prinsesstraat (road) — 0.19 km
+- 9. Prinsstraat (road) — 0.18 km
+- 36. Provinciestraat (road) — 1.11 km
 - 22. Pruynenstraat (road) — 0.08 km
 - 47. Pyckestraat (road) — 0.23 km
 - 23. Quellinstraat (road) — 0.31 km
-- 7. Quinten Matsijsdoorgang (road) — 0.02 km
-- 45. Raafstraat (road) — 0.07 km
-- 8. Raapstraat (road) — 0.15 km
-- 44. Ramstraat (road) — 0.19 km
-- 28. Ranststraat (road) — 0.15 km
-- 30. Rechtestraat (road) — 0.10 km
+- 6. Quinten Matsijsdoorgang (road) — 0.02 km
+- 38. Raafstraat (road) — 0.07 km
+- 7. Raapstraat (road) — 0.15 km
+- 45. Ramstraat (road) — 0.19 km
+- 29. Ranststraat (road) — 0.15 km
+- 31. Rechtestraat (road) — 0.10 km
 - 26. Regentstraat (road) — 0.11 km
-- 38. Reizigersstraat (road) — 0.11 km
-- 42. Rembrandtstraat (road) — 0.17 km
-- 5. Repenstraat (road) — 0.05 km
-- 50. Resedastraat (road) — 0.08 km
-- 36. Reuzenpoort (road) — 0.06 km
-- 29. Reuzenstraat (road) — 0.15 km
+- 40. Reizigersstraat (road) — 0.11 km
+- 35. Rembrandtstraat (road) — 0.17 km
+- 4. Repenstraat (road) — 0.05 km
+- 49. Resedastraat (road) — 0.08 km
+- 27. Reuzenpoort (road) — 0.06 km
+- 30. Reuzenstraat (road) — 0.15 km
 - 21. Reyndersstraat (road) — 0.18 km
-- 16. Richardstraat (road) — 0.15 km
-- 31. Riemstraat (road) — 0.20 km
-- 2. Rigastraat (road) — 0.19 km
+- 15. Richardstraat (road) — 0.15 km
+- 32. Riemstraat (road) — 0.20 km
+- 1. Rigastraat (road) — 0.19 km
 - 24. Rijfstraat (road) — 0.07 km
-- 20. Rijke Beukelaarstraat (road) — 0.07 km
-- 17. Rijkenhoek (road) — 0.04 km
-- 14. Rijnpoortvest (road) — 0.15 km
+- 19. Rijke Beukelaarstraat (road) — 0.07 km
+- 16. Rijkenhoek (road) — 0.04 km
+- 13. Rijnpoortvest (road) — 0.15 km
 - 48. Robert Molsstraat (road) — 0.22 km
-- 13. Rodestraat (road) — 0.26 km
-- 46. Roland Verhavertpad (road) — 0.18 km
-- 43. Rolwagenstraat (road) — 0.27 km
+- 12. Rodestraat (road) — 0.26 km
+- 41. Roland Verhavertpad (road) — 0.18 km
+- 37. Rolwagenstraat (road) — 0.27 km
 - 34. Rosier (road) — 0.17 km
-- 9. Roskamgang (road) — 0.05 km
-- 15. Rotterdamstraat (road) — 0.36 km
-- 12. Rozenstraat (road) — 0.07 km
-- 40. Rudolfstraat (road) — 0.21 km
-- 4. Rupelstraat (road) — 0.25 km
-- 33. Salm-Salmstraat (road) — 0.08 km
-- 3. Samberstraat (road) — 0.50 km
-- 19. Sandersstraatje (road) — 0.04 km
-- 41. Sanderusstraat (road) — 0.40 km
-- 1. Sasdok (road) — 0.02 km
-- 6. Saucierstraat (road) — 0.05 km
+- 8. Roskamgang (road) — 0.05 km
+- 14. Rotterdamstraat (road) — 0.36 km
+- 11. Rozenstraat (road) — 0.07 km
+- 43. Rudolfstraat (road) — 0.21 km
+- 3. Rupelstraat (road) — 0.25 km
+- 20. Salm-Salmstraat (road) — 0.08 km
+- 2. Samberstraat (road) — 0.50 km
+- 18. Sandersstraatje (road) — 0.04 km
+- 44. Sanderusstraat (road) — 0.40 km
+- 5. Saucierstraat (road) — 0.05 km
 - 25. Schaafstraat (road) — 0.06 km
-- 39. Schaliënstraat (road) — 0.18 km
-- 27. Schapenstraat (road) — 0.19 km
-- 18. Scheldeken (road) — 0.17 km
-- 32. Scheldestraat (road) — 0.52 km
+- 42. Schaliënstraat (road) — 0.18 km
+- 28. Schapenstraat (road) — 0.19 km
+- 17. Scheldeken (road) — 0.17 km
+- 33. Scheldestraat (road) — 0.52 km
 
 #### 8.5.18 Other Streets (S) (50) (50)
 
@@ -3464,56 +3455,54 @@
 - 12. Vliegenstraat (road) — 0.15 km
 - 43. Vlijtstraat (road) — 0.41 km
 
-#### 8.5.22 Other Streets (V–Z) (50) (50)
+#### 8.5.22 Other Streets (V–Z) (48) (48)
 
 - 1. Vlissingenstraat (road) — 0.07 km
-- 44. Volhardingstraat (road) — 0.00 km
-- 29. Volkstraat (road) — 0.31 km
+- 24. Volkstraat (road) — 0.31 km
 - 6. Vondelstraat (road) — 0.13 km
-- 20. Vooruitzichtstraat (road) — 0.14 km
-- 28. Vorstermanstraat (road) — 0.14 km
-- 50. Vredestraat (road) — 0.73 km
+- 21. Vooruitzichtstraat (road) — 0.14 km
+- 30. Vorstermanstraat (road) — 0.14 km
+- 48. Vredestraat (road) — 0.73 km
 - 11. Vrijdagmarktstraatje (road) — 0.03 km
-- 30. Vrijheidstraat (road) — 0.25 km
-- 22. Waaistraat (road) — 0.06 km
+- 31. Vrijheidstraat (road) — 0.25 km
+- 25. Waaistraat (road) — 0.06 km
 - 3. Waaslandtunnel (road) — 0.96 km
-- 47. Walemstraat (road) — 0.24 km
+- 40. Walemstraat (road) — 0.24 km
 - 7. Walenstraat (road) — 0.22 km
 - 33. Walvisstraat (road) — 0.23 km
 - 38. Wambachstraat (road) — 0.12 km
-- 27. Wapenstraat (road) — 0.10 km
-- 25. Wapper (road) — 0.41 km
-- 48. Wasstraat (road) — 0.25 km
-- 41. Waterfordstraat (road) — 0.16 km
-- 43. Waterloostraat (road) — 0.23 km
-- 42. Weidestraat (road) — 0.27 km
+- 22. Wapenstraat (road) — 0.10 km
+- 27. Wapper (road) — 0.41 km
+- 41. Wasstraat (road) — 0.25 km
+- 43. Waterfordstraat (road) — 0.16 km
+- 45. Waterloostraat (road) — 0.23 km
+- 44. Weidestraat (road) — 0.27 km
 - 2. Weilandstraat (road) — 0.25 km
-- 31. Welvaartstraat (road) — 0.28 km
+- 32. Welvaartstraat (road) — 0.28 km
 - 37. Werkstraat (road) — 0.12 km
-- 18. Wetstraat (road) — 0.37 km
+- 19. Wetstraat (road) — 0.37 km
 - 46. Wezenbergpad (road) — 0.16 km
-- 23. Wiegstraat (road) — 0.14 km
-- 19. Wijnegemstraat (road) — 0.20 km
-- 16. Wijngaardbrug (road) — 0.03 km
+- 16. Wiegstraat (road) — 0.14 km
+- 20. Wijnegemstraat (road) — 0.20 km
+- 17. Wijngaardbrug (road) — 0.03 km
 - 14. Wijngaardstraat (road) — 0.11 km
 - 39. Wijnstraat (road) — 0.12 km
 - 8. Wilgenstraat (road) — 0.28 km
-- 45. Willem Eekelersstraat (road) — 0.01 km
-- 21. Willem Lepelstraat (road) — 0.25 km
-- 17. Willem Linnigstraat (road) — 0.10 km
-- 24. Willem Tellstraat (road) — 0.04 km
-- 49. Willem Van Laarstraat (road) — 0.27 km
+- 23. Willem Lepelstraat (road) — 0.25 km
+- 18. Willem Linnigstraat (road) — 0.10 km
+- 26. Willem Tellstraat (road) — 0.04 km
+- 47. Willem Van Laarstraat (road) — 0.27 km
 - 4. Willemdok (road) — 0.05 km
 - 36. Wilrijkstraat (road) — 0.18 km
-- 32. Wipstraat (road) — 0.20 km
+- 28. Wipstraat (road) — 0.20 km
 - 13. Wisselstraat (road) — 0.07 km
-- 40. Woeringenstraat (road) — 0.21 km
+- 42. Woeringenstraat (road) — 0.21 km
 - 34. Wolfstraat (road) — 0.15 km
 - 15. Wolstraat (road) — 0.16 km
 - 12. Zakstraat (road) — 0.10 km
 - 10. Zand (road) — 0.13 km
 - 5. Zeevaartstraat (road) — 0.15 km
-- 26. Zegelstraat (road) — 0.14 km
+- 29. Zegelstraat (road) — 0.14 km
 - 35. Zegepraalstraat (road) — 0.12 km
 - 9. Zeilstraat (road) — 0.15 km
 
@@ -3544,110 +3533,110 @@
 
 #### 8.6.1 Complete List (105) (105)
 
-- 8. 't Eilandje (neighborhood)
-- 5. Albertdok (neighborhood)
-- 93. Albertpark (Oostwijk) (neighborhood)
-- 77. An-2000 / Nieuw Gerechtshof (neighborhood)
-- 89. An-2020 / Kielsbroek+kielpark (neighborhood)
-- 88. An-2020 / Petroleum-Zuid (neighborhood)
-- 12. An-2060 / Slachthuis-Lobroekdok (neighborhood)
-- 10. An-2060 / Spoor-Noord Site (neighborhood)
-- 23. Antwerpen Kern - Oude Stad (Sp Wall) (neighborhood)
-- 83. Astrid Bad (Oostwijk) (neighborhood)
-- 26. Atheneum (Stationswijk) (neighborhood)
-- 79. Bell (Zuidwijk) (neighborhood)
-- 33. Bo / Kleine Ring (neighborhood)
-- 60. Borgerhout - Gemeentehuis (neighborhood)
-- 81. C. Teichmann Plaats (Zuidwijk) (neighborhood)
-- 70. Charlottalei (Oostwijk) (neighborhood)
-- 63. College (neighborhood)
-- 71. Dageraadplaats - Ooststatie (Oostwijk) (neighborhood)
-- 9. Dam (Dam - Schijnpoort) (neighborhood)
-- 28. Dambruggestraat-N. (Stationswijk) (neighborhood)
-- 27. De Conincplein - Z. (Stationswijk) (neighborhood)
-- 44. De Peperbus (neighborhood)
-- 29. De Zavel (Noordwijk) (neighborhood)
-- 72. Den Bleekhof (neighborhood)
-- 48. Deurne - Gemeentehuis (neighborhood)
-- 46. Deurne - Huiskens (neighborhood)
-- 47. Deurne - het Dorp (neighborhood)
-- 16. Duboisstraat (Noordwijk) (neighborhood)
-- 4. Duivelshoek (neighborhood)
-- 62. Fonteinstraat (neighborhood)
-- 45. Foorplein (neighborhood)
-- 91. Fransen Plaats (Zuidwijk) (neighborhood)
-- 3. Gagelvelden (neighborhood)
-- 73. Gas (Oostwijk) (neighborhood)
-- 68. Gerechtshof (Zuidw) (neighborhood)
-- 67. Gerechtshof (Zuidwijk) (neighborhood)
-- 52. Gevangenis (Spaanse Wallen) (neighborhood)
-- 36. Groenplaats (Spaanse Wallen) (neighborhood)
-- 80. Harmonie (Zuidwijk) (neighborhood)
-- 15. Hessenhuis (Spaanse Wallen) (neighborhood)
-- 43. Het Laar (neighborhood)
-- 103. Hofveld (neighborhood)
-- 35. Hoogstraat (Spaanse Wallen) (neighborhood)
+- 6. 't Eilandje (neighborhood)
+- 2. Albertdok (neighborhood)
+- 90. Albertpark (Oostwijk) (neighborhood)
+- 86. An-2000 / Nieuw Gerechtshof (neighborhood)
+- 85. An-2020 / Kielsbroek+kielpark (neighborhood)
+- 84. An-2020 / Petroleum-Zuid (neighborhood)
+- 14. An-2060 / Slachthuis-Lobroekdok (neighborhood)
+- 13. An-2060 / Spoor-Noord Site (neighborhood)
+- 16. Antwerpen Kern - Oude Stad (Sp Wall) (neighborhood)
+- 79. Astrid Bad (Oostwijk) (neighborhood)
+- 21. Atheneum (Stationswijk) (neighborhood)
+- 74. Bell (Zuidwijk) (neighborhood)
+- 41. Bo / Kleine Ring (neighborhood)
+- 55. Borgerhout - Gemeentehuis (neighborhood)
+- 77. C. Teichmann Plaats (Zuidwijk) (neighborhood)
+- 67. Charlottalei (Oostwijk) (neighborhood)
+- 59. College (neighborhood)
+- 81. Dageraadplaats - Ooststatie (Oostwijk) (neighborhood)
+- 7. Dam (Dam - Schijnpoort) (neighborhood)
+- 22. Dambruggestraat-N. (Stationswijk) (neighborhood)
+- 35. De Conincplein - Z. (Stationswijk) (neighborhood)
+- 58. De Peperbus (neighborhood)
+- 25. De Zavel (Noordwijk) (neighborhood)
+- 69. Den Bleekhof (neighborhood)
+- 44. Deurne - Gemeentehuis (neighborhood)
+- 42. Deurne - Huiskens (neighborhood)
+- 43. Deurne - het Dorp (neighborhood)
+- 12. Duboisstraat (Noordwijk) (neighborhood)
+- 9. Duivelshoek (neighborhood)
+- 70. Fonteinstraat (neighborhood)
+- 40. Foorplein (neighborhood)
+- 95. Fransen Plaats (Zuidwijk) (neighborhood)
+- 4. Gagelvelden (neighborhood)
+- 83. Gas (Oostwijk) (neighborhood)
+- 75. Gerechtshof (Zuidw) (neighborhood)
+- 64. Gerechtshof (Zuidwijk) (neighborhood)
+- 47. Gevangenis (Spaanse Wallen) (neighborhood)
+- 31. Groenplaats (Spaanse Wallen) (neighborhood)
+- 76. Harmonie (Zuidwijk) (neighborhood)
+- 19. Hessenhuis (Spaanse Wallen) (neighborhood)
+- 56. Het Laar (neighborhood)
+- 100. Hofveld (neighborhood)
+- 30. Hoogstraat (Spaanse Wallen) (neighborhood)
 - 1. Houtdok (neighborhood)
-- 2. Ijzerlaan (Dam - Schijnport) (neighborhood)
-- 56. Jezuitencollege (Stationswijk) (neighborhood)
-- 99. Karel Oomstraat (neighborhood)
-- 61. Kattenberg (neighborhood)
-- 24. Kipdorp - St.-Jacobs (Spaanse Wallen) (neighborhood)
-- 13. Klapdorp - Brouwersvliet (neighborhood)
-- 54. Kns - Nat. Bank (Spaanse Wallen) (neighborhood)
-- 98. Kolonielaan (Cam. Huysmanslaan) (neighborhood)
-- 59. Kroonstraat - West (neighborhood)
-- 94. Lamorinierestr. - Zuid (Ebes) (oostwijk) (neighborhood)
-- 90. Lange Elzenstraat (Zuidwijk) (neighborhood)
-- 37. Meir - Leysstraat (Spaanse Wallen) (neighborhood)
-- 66. Museumwijk (Zuidwijk) (neighborhood)
-- 105. Nachtegalenpark (Wilrijksplein) (neighborhood)
-- 41. Offerandestraat (Stationswijk) (neighborhood)
-- 87. Oostkwartier (neighborhood)
-- 102. Op ten Bergh (neighborhood)
-- 53. Oudaan (Spaanse Wallen) (neighborhood)
-- 7. Oude Haven (neighborhood)
-- 100. Oude Justitie (neighborhood)
-- 64. Oude Schipperdokken (Zuidwijk) (neighborhood)
-- 57. Pelikaanstraat (Stationswijk) (neighborhood)
-- 96. Posthof (neighborhood)
-- 31. Potgieterstraat (Noordwijk) (neighborhood)
-- 58. Provinciestraat (Stationswijk) (neighborhood)
-- 76. Schelde (neighborhood)
-- 34. Scheldekaden Noord (neighborhood)
-- 21. Schijnpoort (Dam - Schijnpoort) (neighborhood)
-- 11. Slachthuiswijk (Dam - Schijnpoort) (neighborhood)
-- 6. Sportpaleis (neighborhood)
-- 18. St.-Amandus (Noordwijk) (neighborhood)
-- 51. St.-Andries (Spaanse Wallen) (neighborhood)
-- 32. St.-Anna (neighborhood)
-- 17. St.-Jansplein - Trapstraat (Noordwijk) (neighborhood)
-- 92. St.-Laurentius (Zuidwijk) (neighborhood)
-- 50. St.-Michielskaai (Spaanse Wallen) (neighborhood)
-- 82. St.-Vincentius (Oostwijk) (neighborhood)
-- 42. St.-Willebrordus (Noordwijk) (neighborhood)
-- 55. Stadspark (Stationswijk) (neighborhood)
-- 69. Stadspark - Zuid (Oostwijk) (neighborhood)
-- 25. Stadswaag-Begijnhof (Spaanse Wallen) (neighborhood)
-- 84. Stappaerts - Krijgshospitaal (Oostwijk) (neighborhood)
-- 39. Statiekwartier (Stationswijk) (neighborhood)
-- 40. Station - Zoo (Stationswijk) (neighborhood)
-- 75. Stenenbrug - Zuid (neighborhood)
-- 101. Stuivenberg (neighborhood)
-- 19. Stuivenberg - West (neighborhood)
-- 30. Stuivenberg Ziekenhuis (Noordwijk) (neighborhood)
-- 20. Stuivenbergplein (Noordwijk) (neighborhood)
-- 38. Tabaksvest (Spaanse Wallen) (neighborhood)
-- 22. Ten Eekhove (neighborhood)
-- 78. Troonplaats (Zuidwijk) (neighborhood)
-- 95. Turkeyen (neighborhood)
-- 85. Van Diepenbeeckstraat (Oostwijk) (neighborhood)
-- 74. Van de Perrelei (neighborhood)
-- 104. Vestingen (neighborhood)
-- 65. Vlaamse Kaai (Zuidwijk) (neighborhood)
-- 97. Volhardingsstraat (Kiel) (neighborhood)
-- 49. Waalse Kaai (Zuidwijk) (neighborhood)
-- 14. Willemdok (Spaanse Wallen) (neighborhood)
-- 86. Zurenborg (neighborhood)
+- 3. Ijzerlaan (Dam - Schijnport) (neighborhood)
+- 51. Jezuitencollege (Stationswijk) (neighborhood)
+- 96. Karel Oomstraat (neighborhood)
+- 57. Kattenberg (neighborhood)
+- 33. Kipdorp - St.-Jacobs (Spaanse Wallen) (neighborhood)
+- 17. Klapdorp - Brouwersvliet (neighborhood)
+- 49. Kns - Nat. Bank (Spaanse Wallen) (neighborhood)
+- 103. Kolonielaan (Cam. Huysmanslaan) (neighborhood)
+- 54. Kroonstraat - West (neighborhood)
+- 91. Lamorinierestr. - Zuid (Ebes) (oostwijk) (neighborhood)
+- 88. Lange Elzenstraat (Zuidwijk) (neighborhood)
+- 32. Meir - Leysstraat (Spaanse Wallen) (neighborhood)
+- 63. Museumwijk (Zuidwijk) (neighborhood)
+- 104. Nachtegalenpark (Wilrijksplein) (neighborhood)
+- 36. Offerandestraat (Stationswijk) (neighborhood)
+- 82. Oostkwartier (neighborhood)
+- 99. Op ten Bergh (neighborhood)
+- 48. Oudaan (Spaanse Wallen) (neighborhood)
+- 5. Oude Haven (neighborhood)
+- 97. Oude Justitie (neighborhood)
+- 60. Oude Schipperdokken (Zuidwijk) (neighborhood)
+- 52. Pelikaanstraat (Stationswijk) (neighborhood)
+- 101. Posthof (neighborhood)
+- 38. Potgieterstraat (Noordwijk) (neighborhood)
+- 68. Provinciestraat (Stationswijk) (neighborhood)
+- 73. Schelde (neighborhood)
+- 29. Scheldekaden Noord (neighborhood)
+- 28. Schijnpoort (Dam - Schijnpoort) (neighborhood)
+- 8. Slachthuiswijk (Dam - Schijnpoort) (neighborhood)
+- 10. Sportpaleis (neighborhood)
+- 23. St.-Amandus (Noordwijk) (neighborhood)
+- 46. St.-Andries (Spaanse Wallen) (neighborhood)
+- 39. St.-Anna (neighborhood)
+- 20. St.-Jansplein - Trapstraat (Noordwijk) (neighborhood)
+- 89. St.-Laurentius (Zuidwijk) (neighborhood)
+- 45. St.-Michielskaai (Spaanse Wallen) (neighborhood)
+- 78. St.-Vincentius (Oostwijk) (neighborhood)
+- 37. St.-Willebrordus (Noordwijk) (neighborhood)
+- 66. Stadspark (Stationswijk) (neighborhood)
+- 65. Stadspark - Zuid (Oostwijk) (neighborhood)
+- 18. Stadswaag-Begijnhof (Spaanse Wallen) (neighborhood)
+- 92. Stappaerts - Krijgshospitaal (Oostwijk) (neighborhood)
+- 34. Statiekwartier (Stationswijk) (neighborhood)
+- 53. Station - Zoo (Stationswijk) (neighborhood)
+- 72. Stenenbrug - Zuid (neighborhood)
+- 105. Stuivenberg (neighborhood)
+- 24. Stuivenberg - West (neighborhood)
+- 27. Stuivenberg Ziekenhuis (Noordwijk) (neighborhood)
+- 26. Stuivenbergplein (Noordwijk) (neighborhood)
+- 50. Tabaksvest (Spaanse Wallen) (neighborhood)
+- 15. Ten Eekhove (neighborhood)
+- 87. Troonplaats (Zuidwijk) (neighborhood)
+- 98. Turkeyen (neighborhood)
+- 80. Van Diepenbeeckstraat (Oostwijk) (neighborhood)
+- 71. Van de Perrelei (neighborhood)
+- 102. Vestingen (neighborhood)
+- 62. Vlaamse Kaai (Zuidwijk) (neighborhood)
+- 94. Volhardingsstraat (Kiel) (neighborhood)
+- 61. Waalse Kaai (Zuidwijk) (neighborhood)
+- 11. Willemdok (Spaanse Wallen) (neighborhood)
+- 93. Zurenborg (neighborhood)
 
 ---

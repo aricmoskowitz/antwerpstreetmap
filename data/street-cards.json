@@ -18376,7 +18376,6 @@
         143.83
       ],
       "crosses": [
-        "Kattendijkbrug",
         "Sasdok-Zuidkaai"
       ]
     },
@@ -18386,7 +18385,6 @@
       "Dinantstraat",
       "Amsterdamstraat",
       "Montevideostraat",
-      "Kattendijkbrug",
       "Braziliëstraat",
       "Limaplein",
       "Limastraat"
@@ -18935,9 +18933,7 @@
         471.45,
         141.01
       ],
-      "crosses": [
-        "Kattendijkbrug"
-      ]
+      "crosses": []
     },
     "end": {
       "point": [
@@ -38224,8 +38220,7 @@
     "intersections": [
       "Floris Primsstraat",
       "Jan Denucéstraat",
-      "Onafhankelijkheidslaan",
-      "Jan Baptist Verlooystraat"
+      "Onafhankelijkheidslaan"
     ]
   },
   {
@@ -38273,14 +38268,12 @@
         793.22
       ],
       "crosses": [
-        "Jan Denucéstraat",
-        "Volhardingstraat"
+        "Jan Denucéstraat"
       ]
     },
     "intersections": [
       "Eric Sasselaan",
-      "Jan Denucéstraat",
-      "Volhardingstraat"
+      "Jan Denucéstraat"
     ]
   },
   {
@@ -38385,56 +38378,6 @@
     ]
   },
   {
-    "name": "Jan Baptist Verlooystraat",
-    "is_square": false,
-    "bbox": [
-      4.39684986002269,
-      51.1924657636972,
-      4.397104206413755,
-      51.192700400400525
-    ],
-    "neighborhood": "KOLONIELAAN (CAM. HUYSMANSLAAN)",
-    "lessons": [
-      "5.10.2",
-      "8.5.9"
-    ],
-    "orientation": {
-      "axis": "northwest–southeast",
-      "from": "northwest",
-      "to": "southeast",
-      "bearing": 146,
-      "shape": "straight"
-    },
-    "start": {
-      "point": [
-        4.39684986002269,
-        51.192700400400525
-      ],
-      "pixel": [
-        405.18,
-        819.14
-      ],
-      "crosses": [
-        "Eric Sasselaan",
-        "Onafhankelijkheidslaan"
-      ]
-    },
-    "end": {
-      "point": [
-        4.397104206413755,
-        51.1924657636972
-      ],
-      "pixel": [
-        407.73,
-        822.91
-      ],
-      "crosses": []
-    },
-    "intersections": [
-      "Eric Sasselaan"
-    ]
-  },
-  {
     "name": "Jan Denucéstraat",
     "is_square": false,
     "bbox": [
@@ -38493,7 +38436,7 @@
     "is_square": false,
     "bbox": [
       4.372214014415605,
-      51.198278768780455,
+      51.1987781548381,
       4.375866911891888,
       51.19951274667014
     ],
@@ -38503,20 +38446,20 @@
       "8.5.11"
     ],
     "orientation": {
-      "axis": "southeast–northwest",
-      "from": "southeast",
-      "to": "northwest",
-      "bearing": 293,
+      "axis": "east–west",
+      "from": "east",
+      "to": "west",
+      "bearing": 280,
       "shape": "straight"
     },
     "start": {
       "point": [
-        4.375625147413726,
-        51.198278768780455
+        4.375801220553099,
+        51.1987781548381
       ],
       "pixel": [
-        191.67,
-        729.55
+        193.44,
+        721.53
       ],
       "crosses": []
     },
@@ -38590,7 +38533,7 @@
     "name": "Onafhankelijkheidslaan",
     "is_square": false,
     "bbox": [
-      4.392234857229167,
+      4.392364846512784,
       51.192678293204786,
       4.396646305900563,
       51.19416796244599
@@ -38604,112 +38547,7 @@
       "axis": "northwest–southeast",
       "from": "northwest",
       "to": "southeast",
-      "bearing": 113,
-      "shape": "straight"
-    },
-    "start": {
-      "point": [
-        4.392234857229167,
-        51.19384042202225
-      ],
-      "pixel": [
-        358.75,
-        800.83
-      ],
-      "crosses": [
-        "Willem Eekelersstraat"
-      ]
-    },
-    "end": {
-      "point": [
-        4.396646305900563,
-        51.192678293204786
-      ],
-      "pixel": [
-        403.13,
-        819.49
-      ],
-      "crosses": [
-        "Eric Sasselaan",
-        "Jan Baptist Verlooystraat"
-      ]
-    },
-    "intersections": [
-      "Willem Eekelersstraat",
-      "Eric Sasselaan"
-    ]
-  },
-  {
-    "name": "Volhardingstraat",
-    "is_square": false,
-    "bbox": [
-      4.390678426206173,
-      51.194279815621194,
-      4.390701883965391,
-      51.19431404738612
-    ],
-    "neighborhood": "KOLONIELAAN (CAM. HUYSMANSLAAN)",
-    "lessons": [
-      "5.10.2",
-      "8.5.22"
-    ],
-    "orientation": {
-      "axis": "northeast–southwest",
-      "from": "northeast",
-      "to": "southwest",
-      "bearing": 203,
-      "shape": "straight"
-    },
-    "start": {
-      "point": [
-        4.390701883965391,
-        51.19431404738612
-      ],
-      "pixel": [
-        343.33,
-        793.22
-      ],
-      "crosses": [
-        "Floris Primsstraat",
-        "Jan Denucéstraat"
-      ]
-    },
-    "end": {
-      "point": [
-        4.390678426206173,
-        51.194279815621194
-      ],
-      "pixel": [
-        343.09,
-        793.77
-      ],
-      "crosses": [
-        "Floris Primsstraat"
-      ]
-    },
-    "intersections": [
-      "Floris Primsstraat"
-    ]
-  },
-  {
-    "name": "Willem Eekelersstraat",
-    "is_square": false,
-    "bbox": [
-      4.392364846512784,
-      51.193797798935506,
-      4.392385837795334,
-      51.193859097689106
-    ],
-    "neighborhood": "KOLONIELAAN (CAM. HUYSMANSLAAN)",
-    "lessons": [
-      "5.10.2",
-      "8.5.22"
-    ],
-    "orientation": {
-      "axis": "north–south",
-      "from": "north",
-      "to": "south",
-      "bearing": 168,
+      "bearing": 114,
       "shape": "straight"
     },
     "start": {
@@ -38721,25 +38559,23 @@
         360.06,
         800.53
       ],
-      "crosses": [
-        "Onafhankelijkheidslaan"
-      ]
+      "crosses": []
     },
     "end": {
       "point": [
-        4.392385837795334,
-        51.193797798935506
+        4.396646305900563,
+        51.192678293204786
       ],
       "pixel": [
-        360.27,
-        801.51
+        403.13,
+        819.49
       ],
       "crosses": [
-        "Onafhankelijkheidslaan"
+        "Eric Sasselaan"
       ]
     },
     "intersections": [
-      "Onafhankelijkheidslaan"
+      "Eric Sasselaan"
     ]
   },
   {
@@ -39557,55 +39393,10 @@
     ]
   },
   {
-    "name": "Sasdok",
-    "is_square": false,
-    "bbox": [
-      4.4039910015195565,
-      51.23508121227967,
-      4.404263908020781,
-      51.235156759801136
-    ],
-    "neighborhood": "OUDE HAVEN",
-    "lessons": [
-      "2.3.3",
-      "8.5.17"
-    ],
-    "orientation": {
-      "axis": "southeast–northwest",
-      "from": "southeast",
-      "to": "northwest",
-      "bearing": 294,
-      "shape": "straight"
-    },
-    "start": {
-      "point": [
-        4.404263908020781,
-        51.23508121227967
-      ],
-      "pixel": [
-        479.76,
-        138.53
-      ],
-      "crosses": []
-    },
-    "end": {
-      "point": [
-        4.4039910015195565,
-        51.235156759801136
-      ],
-      "pixel": [
-        477.01,
-        137.32
-      ],
-      "crosses": []
-    },
-    "intersections": []
-  },
-  {
     "name": "Siberiabruggen",
     "is_square": false,
     "bbox": [
-      4.4062957744085365,
+      4.407183030625924,
       51.24146093463589,
       4.407866248590107,
       51.24152952051982
@@ -39619,19 +39410,21 @@
       "axis": "west–east",
       "from": "west",
       "to": "east",
-      "bearing": 94,
+      "bearing": 99,
       "shape": "straight"
     },
     "start": {
       "point": [
-        4.4062957744085365,
-        51.24152677775594
+        4.407183030625924,
+        51.24152920861384
       ],
       "pixel": [
-        500.19,
-        35.02
+        509.12,
+        34.98
       ],
-      "crosses": []
+      "crosses": [
+        "Siberiastraat"
+      ]
     },
     "end": {
       "point": [
@@ -39770,8 +39563,8 @@
     "bbox": [
       4.40853549165778,
       51.240144342828486,
-      4.412352360793223,
-      51.24185232840851
+      4.412064992936574,
+      51.24126484114068
     ],
     "neighborhood": "HOUTDOK",
     "lessons": [
@@ -39782,7 +39575,7 @@
       "axis": "west–east",
       "from": "west",
       "to": "east",
-      "bearing": 71,
+      "bearing": 83,
       "shape": "curved"
     },
     "start": {
@@ -39802,14 +39595,17 @@
     },
     "end": {
       "point": [
-        4.412352360793223,
-        51.24182175136697
+        4.412064992936574,
+        51.24126484114068
       ],
       "pixel": [
-        561.12,
-        30.28
+        558.23,
+        39.22
       ],
-      "crosses": []
+      "crosses": [
+        "Straatsburgdok",
+        "Straatsburgdok-Zuidkaai"
+      ]
     },
     "intersections": [
       "Mexicostraat",
@@ -50317,56 +50113,6 @@
     ]
   },
   {
-    "name": "Turnhoutsebaan",
-    "is_square": false,
-    "bbox": [
-      4.453916195978687,
-      51.21946499433895,
-      4.454069172854485,
-      51.219519049872716
-    ],
-    "neighborhood": "DEURNE - GEMEENTEHUIS",
-    "lessons": [
-      "1.1.1",
-      "7.1.1",
-      "8.5.1"
-    ],
-    "orientation": {
-      "axis": "southwest–northeast",
-      "from": "southwest",
-      "to": "northeast",
-      "bearing": 61,
-      "shape": "straight"
-    },
-    "start": {
-      "point": [
-        4.453916195978687,
-        51.21946499433895
-      ],
-      "pixel": [
-        979.22,
-        389.32
-      ],
-      "crosses": [
-        "Turnhoutsebaan"
-      ]
-    },
-    "end": {
-      "point": [
-        4.454069172854485,
-        51.219519049872716
-      ],
-      "pixel": [
-        980.76,
-        388.45
-      ],
-      "crosses": [
-        "Turnhoutsebaan"
-      ]
-    },
-    "intersections": []
-  },
-  {
     "name": "'s-Herenstraat",
     "is_square": false,
     "bbox": [
@@ -52634,7 +52380,7 @@
     ],
     "neighborhood": "BO / KLEINE RING",
     "lessons": [
-      "7.1.2",
+      "7.1.1",
       "8.5.9"
     ],
     "orientation": {
@@ -52872,7 +52618,7 @@
     ],
     "neighborhood": "STENENBRUG - ZUID",
     "lessons": [
-      "7.1.2",
+      "7.1.1",
       "8.5.10"
     ],
     "orientation": {
@@ -52909,51 +52655,6 @@
     "intersections": [
       "Luitenant Lippenslaan"
     ]
-  },
-  {
-    "name": "Kalverveld",
-    "is_square": false,
-    "bbox": [
-      4.445351470237437,
-      51.20788104373011,
-      4.445864944696431,
-      51.208271306239936
-    ],
-    "neighborhood": "VAN DE PERRELEI",
-    "lessons": [
-      "7.1.2",
-      "8.5.10"
-    ],
-    "orientation": {
-      "axis": "southwest–northeast",
-      "from": "southwest",
-      "to": "northeast",
-      "bearing": 39,
-      "shape": "straight"
-    },
-    "start": {
-      "point": [
-        4.445351470237437,
-        51.20788104373011
-      ],
-      "pixel": [
-        893.07,
-        575.35
-      ],
-      "crosses": []
-    },
-    "end": {
-      "point": [
-        4.445864944696431,
-        51.208271306239936
-      ],
-      "pixel": [
-        898.23,
-        569.08
-      ],
-      "crosses": []
-    },
-    "intersections": []
   },
   {
     "name": "Karel Geertsstraat",
@@ -55034,20 +54735,20 @@
     "is_square": false,
     "bbox": [
       4.443686701054697,
-      51.21254054765194,
-      4.448131630008704,
+      51.212589971489415,
+      4.448106147680713,
       51.21475241285427
     ],
     "neighborhood": "BO / KLEINE RING",
     "lessons": [
-      "7.1.2",
+      "7.1.1",
       "8.5.19"
     ],
     "orientation": {
       "axis": "northwest–southeast",
       "from": "northwest",
       "to": "southeast",
-      "bearing": 127,
+      "bearing": 125,
       "shape": "straight"
     },
     "start": {
@@ -55065,22 +54766,19 @@
     },
     "end": {
       "point": [
-        4.448067918001068,
-        51.21254054765194
+        4.448106147680713,
+        51.21271017406437
       ],
       "pixel": [
-        920.39,
-        500.52
+        920.78,
+        497.79
       ],
-      "crosses": [
-        "Collegelaan"
-      ]
+      "crosses": []
     },
     "intersections": [
       "Turnhoutsebaan",
       "Engelselei",
-      "Noordersingel",
-      "Collegelaan"
+      "Noordersingel"
     ]
   },
   {
@@ -55381,9 +55079,7 @@
         978.5,
         389.86
       ],
-      "crosses": [
-        "Turnhoutsebaan"
-      ]
+      "crosses": []
     },
     "intersections": [
       "Carnotstraat",
@@ -57020,8 +56716,8 @@
     "bbox": [
       4.433094836054825,
       51.19818292265189,
-      4.436754933138979,
-      51.20107061456434
+      4.436207897480859,
+      51.20084365886376
     ],
     "neighborhood": "VESTINGEN",
     "lessons": [
@@ -57032,17 +56728,17 @@
       "axis": "north–south",
       "from": "north",
       "to": "south",
-      "bearing": 200,
+      "bearing": 201,
       "shape": "straight"
     },
     "start": {
       "point": [
-        4.436292385432934,
-        51.20107061456434
+        4.436207897480859,
+        51.20084365886376
       ],
       "pixel": [
-        801.94,
-        684.72
+        801.09,
+        688.36
       ],
       "crosses": [
         "Politieplein"
@@ -59358,8 +59054,8 @@
     "is_square": false,
     "bbox": [
       4.422025492765957,
-      51.19154589827581,
-      4.423217039838903,
+      51.19166973242622,
+      4.423031218453321,
       51.192489183463806
     ],
     "neighborhood": "VESTINGEN",
@@ -59371,7 +59067,7 @@
       "axis": "northwest–southeast",
       "from": "northwest",
       "to": "southeast",
-      "bearing": 136,
+      "bearing": 134,
       "shape": "straight"
     },
     "start": {
@@ -59390,12 +59086,12 @@
     },
     "end": {
       "point": [
-        4.423217039838903,
-        51.19160944449429
+        4.423031218453321,
+        51.19177161836248
       ],
       "pixel": [
-        670.41,
-        836.66
+        668.54,
+        834.05
       ],
       "crosses": []
     },
@@ -61888,62 +61584,11 @@
     ]
   },
   {
-    "name": "Collegelaan",
-    "is_square": false,
-    "bbox": [
-      4.448106147680713,
-      51.21271017406437,
-      4.448221815780645,
-      51.212802294802195
-    ],
-    "neighborhood": "COLLEGE",
-    "lessons": [
-      "7.1.2",
-      "8.5.5"
-    ],
-    "orientation": {
-      "axis": "southwest–northeast",
-      "from": "southwest",
-      "to": "northeast",
-      "bearing": 38,
-      "shape": "straight"
-    },
-    "start": {
-      "point": [
-        4.448106147680713,
-        51.21271017406437
-      ],
-      "pixel": [
-        920.78,
-        497.79
-      ],
-      "crosses": [
-        "Stenenbrug"
-      ]
-    },
-    "end": {
-      "point": [
-        4.448221815780645,
-        51.212802294802195
-      ],
-      "pixel": [
-        921.94,
-        496.31
-      ],
-      "crosses": [
-        "Stenenbrug"
-      ]
-    },
-    "intersections": [
-      "Stenenbrug"
-    ]
-  },
-  {
     "name": "D'Herbouvillekaai",
     "is_square": false,
     "bbox": [
-      4.366244605144096,
-      51.200719154838055,
+      4.366943495909498,
+      51.200879699063165,
       4.379167309566214,
       51.20539395250779
     ],
@@ -61957,7 +61602,7 @@
       "axis": "northeast–southwest",
       "from": "northeast",
       "to": "southwest",
-      "bearing": 240,
+      "bearing": 239,
       "shape": "straight"
     },
     "start": {
@@ -61976,12 +61621,12 @@
     },
     "end": {
       "point": [
-        4.366244605144096,
-        51.200719154838055
+        4.367018702737317,
+        51.200879699063165
       ],
       "pixel": [
-        97.31,
-        690.36
+        105.09,
+        687.78
       ],
       "crosses": []
     },
@@ -62332,7 +61977,7 @@
     "name": "Jan Van Rijswijcklaan",
     "is_square": false,
     "bbox": [
-      4.398917367118,
+      4.399117529162668,
       51.191841833980064,
       4.410817506434027,
       51.19843218927655
@@ -62347,7 +61992,7 @@
       "axis": "northeast–southwest",
       "from": "northeast",
       "to": "southwest",
-      "bearing": 229,
+      "bearing": 228,
       "shape": "straight"
     },
     "start": {
@@ -62367,12 +62012,12 @@
     },
     "end": {
       "point": [
-        4.398917367118,
-        51.19195389314516
+        4.399117529162668,
+        51.19189738571215
       ],
       "pixel": [
-        425.97,
-        831.13
+        427.99,
+        832.03
       ],
       "crosses": []
     },
@@ -62386,55 +62031,6 @@
       "Bosmanslei",
       "Desguinlei",
       "Generaal Robertsplantsoen"
-    ]
-  },
-  {
-    "name": "Kattendijkbrug",
-    "is_square": false,
-    "bbox": [
-      4.403250656549741,
-      51.23443698949734,
-      4.403333301070337,
-      51.235156372306356
-    ],
-    "neighborhood": "OUDE HAVEN",
-    "lessons": [
-      "2.3.3",
-      "8.5.10"
-    ],
-    "orientation": {
-      "axis": "south–north",
-      "from": "south",
-      "to": "north",
-      "bearing": 4,
-      "shape": "straight"
-    },
-    "start": {
-      "point": [
-        4.40325989269318,
-        51.23443698949734
-      ],
-      "pixel": [
-        469.66,
-        148.87
-      ],
-      "crosses": [
-        "Rijnkaai"
-      ]
-    },
-    "end": {
-      "point": [
-        4.403331194514028,
-        51.235156372306356
-      ],
-      "pixel": [
-        470.37,
-        137.32
-      ],
-      "crosses": []
-    },
-    "intersections": [
-      "Rijnkaai"
     ]
   },
   {
@@ -62942,7 +62538,7 @@
     "is_square": false,
     "bbox": [
       4.3869419273504375,
-      51.195243338999916,
+      51.19528695088018,
       4.39021749236827,
       51.19858137768985
     ],
@@ -63104,12 +62700,12 @@
     "bbox": [
       4.440378645241609,
       51.20809168352206,
-      4.446544551592852,
-      51.208759093954015
+      4.446452421445198,
+      51.20874183116843
     ],
     "neighborhood": "VAN DE PERRELEI",
     "lessons": [
-      "7.1.2",
+      "7.1.1",
       "8.5.14"
     ],
     "orientation": {
@@ -63136,12 +62732,12 @@
     },
     "end": {
       "point": [
-        4.446544551592852,
-        51.208759093954015
+        4.446452421445198,
+        51.20874183116843
       ],
       "pixel": [
-        905.07,
-        561.25
+        904.14,
+        561.52
       ],
       "crosses": [
         "Joe Englishstraat"
@@ -63417,7 +63013,7 @@
       4.41306833456707,
       51.23069684819327,
       4.420821021880284,
-      51.24033246278779
+      51.239821934062306
     ],
     "neighborhood": "IJZERLAAN (DAM - SCHIJNPORT)",
     "lessons": [
@@ -63428,7 +63024,7 @@
       "axis": "southwest–northeast",
       "from": "southwest",
       "to": "northeast",
-      "bearing": 24,
+      "bearing": 27,
       "shape": "straight"
     },
     "start": {
@@ -63447,14 +63043,16 @@
     },
     "end": {
       "point": [
-        4.4200651119022245,
-        51.24033246278779
+        4.420477721959239,
+        51.23974950517703
       ],
       "pixel": [
-        638.7,
-        54.2
+        642.85,
+        63.56
       ],
-      "crosses": []
+      "crosses": [
+        "Asiadok"
+      ]
     },
     "intersections": [
       "Italiëlei",
