@@ -322,8 +322,10 @@ var MapRender = (function () {
       case "smallTriangle":
         return "M0,-2 L1.5,1.8 L0,0.9 L-1.5,1.8 Z";
       case "blossomOval":
+        // full markup (not bare path data): the leaf <path> plus a blossom
+        // group, so genusSymbolMarkup must not wrap it in another <path d>
         return (
-          "M0,-1.8 C1.2,-1.3 1.2,1.3 0,1.8 C-1.2,1.3 -1.2,-1.3 0,-1.8 Z" +
+          '<path d="M0,-1.8 C1.2,-1.3 1.2,1.3 0,1.8 C-1.2,1.3 -1.2,-1.3 0,-1.8 Z" fill="{{c}}"/>' +
           '<g transform="translate(1.1,-1.6) scale(0.45)">' +
           [0, 72, 144, 216, 288]
             .map(function (deg) {
