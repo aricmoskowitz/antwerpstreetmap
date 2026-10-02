@@ -35,6 +35,127 @@ with open(SRC / "antwerp-curriculum-data.json") as f:
     curriculum = json.load(f)
 
 # ------------------------------------------------------------------
+# Trim dead-end road stubs clipped at the ring boundary
+# ------------------------------------------------------------------
+# The source data has no highway/access tags, so streets whose geometry
+# was cut exactly at the ring-boundary edge during extraction leave a
+# spurious dead end at the clip line - not a real cul-de-sac. Detected as:
+# a degree-1 node (graph_core's same junction logic used by the Walk game)
+# sitting within 5m of ring_boundary, with its edge under 100m long (longer
+# ones - mostly bridges and real streets that happen to be clipped there -
+# are left alone; see README). All 46 current matches are single-part
+# edges touching one end of their source line, so trimming is a plain
+# slice from whichever end holds the stub.
+import sys as _sys  # noqa: E402
+
+_sys.path.insert(0, str(Path(__file__).resolve().parent))
+from graph_core import build_graph as _build_graph, haversine_m as _haversine_m  # noqa: E402
+
+_EDGE_TOL_M = 5.0
+_STUB_MAX_M = 100.0
+
+
+def _is_walkable_for_trim(name):
+    return not name.strip().lower().endswith("tunnel")
+
+
+def _dist_to_ring_m(pt, ring):
+    lat0 = ring[0][1]
+    cos0 = math.cos(math.radians(lat0))
+    R = 6371000.0
+
+    def xy(p):
+        return (p[0] * cos0 * math.pi / 180 * R, p[1] * math.pi / 180 * R)
+
+    px, py = xy(pt)
+    best = float("inf")
+    rxy = [xy(p) for p in ring] + [xy(ring[0])]
+    for i in range(len(rxy) - 1):
+        ax, ay = rxy[i]
+        bx, by = rxy[i + 1]
+        dx, dy = bx - ax, by - ay
+        if dx == 0 and dy == 0:
+            d = math.hypot(px - ax, py - ay)
+        else:
+            t = max(0, min(1, ((px - ax) * dx + (py - ay) * dy) / (dx * dx + dy * dy)))
+            d = math.hypot(px - (ax + t * dx), py - (ay + t * dy))
+        best = min(best, d)
+    return best
+
+
+def trim_dead_end_edge_stubs(streets, ring_boundary):
+    g = _build_graph(streets, _is_walkable_for_trim)
+    nodes, edges = g["nodes"], g["edges"]
+    degree = [0] * len(nodes)
+    incident = [[] for _ in nodes]
+    for ei, e in enumerate(edges):
+        degree[e["a"]] += 1
+        degree[e["b"]] += 1
+        incident[e["a"]].append(ei)
+        incident[e["b"]].append(ei)
+
+    to_trim = []  # (street_idx, line_idx, keep_slice_fn)
+    for n, d in enumerate(degree):
+        if d != 1:
+            continue
+        if _dist_to_ring_m(nodes[n], ring_boundary) > _EDGE_TOL_M:
+            continue
+        e = edges[incident[n][0]]
+        if e["len"] > _STUB_MAX_M or len(e["parts"]) != 1:
+            continue
+        (street_idx, line_idx), i0, i1 = e["parts"][0]
+        lo, hi = min(i0, i1), max(i0, i1)
+        line = streets[street_idx]["lines"][line_idx]
+        if lo == 0 and hi < len(line) - 1:
+            to_trim.append((street_idx, line_idx, ("tail_at_start", hi)))
+        elif hi == len(line) - 1 and lo > 0:
+            to_trim.append((street_idx, line_idx, ("tail_at_end", lo)))
+        elif lo == 0 and hi == len(line) - 1:
+            to_trim.append((street_idx, line_idx, ("whole_line",)))
+        else:
+            print(f"  ! skipping unexpected mid-line stub: {streets[street_idx]['name']} line {line_idx}")
+
+    # A fully isolated 2-point stub line (degree-1 at BOTH ends, nothing
+    # else touching it) gets detected once from each end, producing two
+    # identical entries for the same (street_idx, line_idx) - dedupe before
+    # applying, or a "whole_line" drop would be attempted twice.
+    to_trim = list({(s, l): (s, l, how) for s, l, how in to_trim}.values())
+
+    # Apply trims highest line_idx first so dropping a whole line doesn't
+    # shift the indices of trims still queued for the same street.
+    to_trim.sort(key=lambda t: (t[0], -t[1]))
+    trimmed_count = 0
+    dropped_lines = 0
+    for street_idx, line_idx, how in to_trim:
+        line = streets[street_idx]["lines"][line_idx]
+        if how[0] == "tail_at_start":
+            streets[street_idx]["lines"][line_idx] = line[how[1] :]
+        elif how[0] == "tail_at_end":
+            streets[street_idx]["lines"][line_idx] = line[: how[1] + 1]
+        else:  # whole_line: the entire line IS the stub
+            del streets[street_idx]["lines"][line_idx]
+            dropped_lines += 1
+            continue
+        trimmed_count += 1
+
+    removed_streets = []
+    for s in streets:
+        if not s["lines"]:
+            removed_streets.append(s["name"])
+    if removed_streets:
+        streets[:] = [s for s in streets if s["lines"]]
+
+    print(
+        f"dead-end stub trim: {trimmed_count} edge(s) shortened, "
+        f"{dropped_lines} whole stub line(s) dropped, "
+        f"{len(removed_streets)} street(s) left with no geometry "
+        f"{removed_streets if removed_streets else ''}"
+    )
+
+
+trim_dead_end_edge_stubs(base["streets"], base["ring_boundary"])
+
+# ------------------------------------------------------------------
 # Name normalization (for matching curriculum objects to base geometry)
 # ------------------------------------------------------------------
 
@@ -515,7 +636,13 @@ for n in base["neighborhoods"]:
 # ------------------------------------------------------------------
 
 bg_streets_d = line_path_d([seg for s in base["streets"] for seg in s["lines"]])
-bg_waterways_d = line_path_d([seg for w in base["waterways"] for seg in w["lines"]])
+# Split by type so rivers/docks can render as a wide band and canals a
+# moderate one, instead of every waterway sharing one thin stroke width.
+bg_waterways_river_dock_d = line_path_d(
+    [seg for w in base["waterways"] if w["type"] in ("river", "dock") for seg in w["lines"]]
+)
+bg_waterways_canal_d = line_path_d([seg for w in base["waterways"] if w["type"] == "canal" for seg in w["lines"]])
+bg_waterways_stream_d = line_path_d([seg for w in base["waterways"] if w["type"] == "stream" for seg in w["lines"]])
 bg_neighborhoods_d = " ".join(
     objects["neighborhood"][norm(n["name"])]["d"] for n in base["neighborhoods"]
 )
@@ -558,6 +685,12 @@ def tree_markers():
     for t in base["trees"]["notable_trees"]:
         x, y = project((t["lon"], t["lat"]))
         out.append({"x": x, "y": y, "kind": "notable", "name": t["name"]})
+    for t in base["trees"].get("significant_park_trees", []):
+        x, y = project((t["lon"], t["lat"]))
+        # Ginkgo reuses the existing ginkgo symbol; every other genus gets
+        # its own symbol (defined in map-render.js's GENUS_TREE_ICONS).
+        kind = "ginkgo" if t["genus"] == "Ginkgo" else "genus-" + t["genus"].lower()
+        out.append({"x": x, "y": y, "kind": kind, "name": t["species"], "park": t["park"]})
     return out
 
 
@@ -626,7 +759,9 @@ map_data = {
     "viewBox": f"0 0 {VIEW_W:.1f} {VIEW_H:.2f}",
     "boundary": boundary_d,
     "bgStreets": bg_streets_d,
-    "bgWaterways": bg_waterways_d,
+    "bgWaterwaysRiverDock": bg_waterways_river_dock_d,
+    "bgWaterwaysCanal": bg_waterways_canal_d,
+    "bgWaterwaysStream": bg_waterways_stream_d,
     "bgNeighborhoods": bg_neighborhoods_d,
     "bgBuildingsPlain": bg_buildings_plain_d,
     "bgBuildingsChurch": bg_buildings_church_d,

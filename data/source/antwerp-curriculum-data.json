@@ -50,12 +50,6 @@
                   "number": 5
                 },
                 {
-                  "name": "Turnhoutsebaan",
-                  "type": "road",
-                  "length_m": 5383,
-                  "number": 4
-                },
-                {
                   "name": "Noorderlaan",
                   "type": "road",
                   "length_m": 5052,
@@ -90,6 +84,12 @@
                   "type": "road",
                   "length_m": 3391,
                   "number": 9
+                },
+                {
+                  "name": "Turnhoutsebaan",
+                  "type": "road",
+                  "length_m": 5377,
+                  "number": 4
                 }
               ]
             },
@@ -617,126 +617,126 @@
                   "type": "building",
                   "area_m2": 4415,
                   "is_church": false,
-                  "number": 19
+                  "number": 21
                 },
                 {
                   "name": "Stadscampus: Gebouw A",
                   "type": "building",
                   "area_m2": 4268,
                   "is_church": false,
-                  "number": 7
+                  "number": 10
                 },
                 {
                   "name": "Stadsarchief Sint-Felix pakhuis",
                   "type": "building",
                   "area_m2": 3669,
                   "is_church": false,
-                  "number": 5
+                  "number": 3
                 },
                 {
                   "name": "Boerentoren",
                   "type": "building",
                   "area_m2": 3595,
                   "is_church": false,
-                  "number": 10
+                  "number": 8
                 },
                 {
                   "name": "M HKA - Museum van Hedendaagse Kunst Antwerpen",
                   "type": "building",
                   "area_m2": 3092,
                   "is_church": false,
-                  "number": 15
+                  "number": 13
                 },
                 {
                   "name": "Bourlaschouwburg",
                   "type": "building",
                   "area_m2": 2489,
                   "is_church": false,
-                  "number": 12
+                  "number": 16
                 },
                 {
                   "name": "Handelsbeurs",
                   "type": "building",
                   "area_m2": 2436,
                   "is_church": false,
-                  "number": 11
+                  "number": 9
                 },
                 {
                   "name": "De Roma",
                   "type": "building",
                   "area_m2": 2322,
                   "is_church": false,
-                  "number": 20
+                  "number": 19
                 },
                 {
                   "name": "Koningin Elisabethzaal",
                   "type": "building",
                   "area_m2": 2170,
                   "is_church": false,
-                  "number": 13
+                  "number": 11
                 },
                 {
                   "name": "De Beukelaer",
                   "type": "building",
                   "area_m2": 2044,
                   "is_church": false,
-                  "number": 21
+                  "number": 22
                 },
                 {
                   "name": "Stadhuis Antwerpen",
                   "type": "building",
                   "area_m2": 1754,
                   "is_church": false,
-                  "number": 8
+                  "number": 6
                 },
                 {
                   "name": "Loodswezen",
                   "type": "building",
                   "area_m2": 1630,
                   "is_church": false,
-                  "number": 3
+                  "number": 1
                 },
                 {
                   "name": "Feestzaal Harmonie",
                   "type": "building",
                   "area_m2": 1619,
                   "is_church": false,
-                  "number": 22
+                  "number": 24
                 },
                 {
                   "name": "Museum aan de Stroom",
                   "type": "building",
                   "area_m2": 1487,
                   "is_church": false,
-                  "number": 4
+                  "number": 2
                 },
                 {
                   "name": "Hessenhuis",
                   "type": "building",
                   "area_m2": 1431,
                   "is_church": false,
-                  "number": 6
+                  "number": 4
                 },
                 {
                   "name": "Antwerpen-Berchem (station)",
                   "type": "building",
                   "area_m2": 1424,
                   "is_church": false,
-                  "number": 24
+                  "number": 26
                 },
                 {
                   "name": "Zuiderpershuis",
                   "type": "building",
                   "area_m2": 1328,
                   "is_church": false,
-                  "number": 16
+                  "number": 14
                 },
                 {
                   "name": "Het Steen",
                   "type": "building",
                   "area_m2": 1235,
                   "is_church": false,
-                  "number": 1
+                  "number": 5
                 },
                 {
                   "name": "Lindner Hotel Antwerp",
@@ -757,28 +757,42 @@
                   "type": "building",
                   "area_m2": 889,
                   "is_church": false,
-                  "number": 14
+                  "number": 12
                 },
                 {
                   "name": "Oudaan",
                   "type": "building",
                   "area_m2": 781,
                   "is_church": false,
-                  "number": 9
+                  "number": 15
                 },
                 {
                   "name": "Kasteel de Bergeyck",
                   "type": "building",
                   "area_m2": 780,
                   "is_church": false,
-                  "number": 23
+                  "number": 25
                 },
                 {
                   "name": "Vleeshuis",
                   "type": "building",
                   "area_m2": 764,
                   "is_church": false,
-                  "number": 2
+                  "number": 7
+                },
+                {
+                  "name": "ZAS Vincentius",
+                  "type": "building",
+                  "area_m2": 29302,
+                  "is_church": false,
+                  "number": 20
+                },
+                {
+                  "name": "AZ Monica Antwerpen",
+                  "type": "building",
+                  "area_m2": 9020,
+                  "is_church": false,
+                  "number": 23
                 }
               ]
             }
@@ -1112,35 +1126,35 @@
                   "type": "neighborhood",
                   "object_count": 22,
                   "region": "Historic Center & 't Eilandje",
-                  "number": 8
+                  "number": 13
                 },
                 {
                   "name": "Willemdok (Spaanse Wallen)",
                   "type": "neighborhood",
                   "object_count": 15,
                   "region": "Historic Center & 't Eilandje",
-                  "number": 6
+                  "number": 8
                 },
                 {
                   "name": "Oude Haven",
                   "type": "neighborhood",
                   "object_count": 11,
                   "region": "Historic Center & 't Eilandje",
-                  "number": 5
+                  "number": 3
                 },
                 {
                   "name": "Houtdok",
                   "type": "neighborhood",
                   "object_count": 11,
                   "region": "Historic Center & 't Eilandje",
-                  "number": 2
+                  "number": 1
                 },
                 {
                   "name": "Hessenhuis (Spaanse Wallen)",
                   "type": "neighborhood",
                   "object_count": 10,
                   "region": "Historic Center & 't Eilandje",
-                  "number": 11
+                  "number": 9
                 },
                 {
                   "name": "Stappaerts - Krijgshospitaal (Oostwijk)",
@@ -1161,14 +1175,14 @@
                   "type": "neighborhood",
                   "object_count": 9,
                   "region": "Historic Center & 't Eilandje",
-                  "number": 29
+                  "number": 25
                 },
                 {
                   "name": "Groenplaats (Spaanse Wallen)",
                   "type": "neighborhood",
                   "object_count": 8,
                   "region": "Historic Center & 't Eilandje",
-                  "number": 15
+                  "number": 14
                 },
                 {
                   "name": "Oude Justitie",
@@ -1182,42 +1196,42 @@
                   "type": "neighborhood",
                   "object_count": 8,
                   "region": "Zurenborg & the Borgerhout Edge",
-                  "number": 39
+                  "number": 38
                 },
                 {
                   "name": "Museumwijk (Zuidwijk)",
                   "type": "neighborhood",
                   "object_count": 8,
                   "region": "Zuid & Kiel",
-                  "number": 26
+                  "number": 35
                 },
                 {
                   "name": "'t Eilandje",
                   "type": "neighborhood",
                   "object_count": 8,
                   "region": "Historic Center & 't Eilandje",
-                  "number": 1
+                  "number": 4
                 },
                 {
                   "name": "Stadswaag-Begijnhof (Spaanse Wallen)",
                   "type": "neighborhood",
                   "object_count": 7,
                   "region": "Historic Center & 't Eilandje",
-                  "number": 10
+                  "number": 7
                 },
                 {
                   "name": "Kipdorp - St.-Jacobs (Spaanse Wallen)",
                   "type": "neighborhood",
                   "object_count": 7,
                   "region": "Historic Center & 't Eilandje",
-                  "number": 9
+                  "number": 16
                 },
                 {
                   "name": "St.-Andries (Spaanse Wallen)",
                   "type": "neighborhood",
                   "object_count": 7,
                   "region": "Zuid & Kiel",
-                  "number": 25
+                  "number": 22
                 },
                 {
                   "name": "Karel Oomstraat",
@@ -1238,42 +1252,42 @@
                   "type": "neighborhood",
                   "object_count": 6,
                   "region": "Dam, Schijnpoort & Spoor Noord",
-                  "number": 7
+                  "number": 5
                 },
                 {
                   "name": "Albertdok",
                   "type": "neighborhood",
                   "object_count": 6,
                   "region": "Historic Center & 't Eilandje",
-                  "number": 3
+                  "number": 2
                 },
                 {
                   "name": "Provinciestraat (Stationswijk)",
                   "type": "neighborhood",
                   "object_count": 6,
                   "region": "Zurenborg & the Borgerhout Edge",
-                  "number": 31
+                  "number": 28
                 },
                 {
                   "name": "Meir - Leysstraat (Spaanse Wallen)",
                   "type": "neighborhood",
                   "object_count": 5,
                   "region": "Historic Center & 't Eilandje",
-                  "number": 16
+                  "number": 15
                 },
                 {
                   "name": "Jezuitencollege (Stationswijk)",
                   "type": "neighborhood",
                   "object_count": 5,
                   "region": "Historic Center & 't Eilandje",
-                  "number": 17
+                  "number": 27
                 },
                 {
                   "name": "Fonteinstraat",
                   "type": "neighborhood",
                   "object_count": 5,
                   "region": "Zurenborg & the Borgerhout Edge",
-                  "number": 34
+                  "number": 31
                 },
                 {
                   "name": "Op ten Bergh",
@@ -1287,49 +1301,49 @@
                   "type": "neighborhood",
                   "object_count": 5,
                   "region": "Zuid & Kiel",
-                  "number": 24
+                  "number": 21
                 },
                 {
                   "name": "Bo / Kleine Ring",
                   "type": "neighborhood",
                   "object_count": 5,
                   "region": "The Deurne Edge & Ring-East",
-                  "number": 23
+                  "number": 20
                 },
                 {
                   "name": "Stuivenbergplein (Noordwijk)",
                   "type": "neighborhood",
                   "object_count": 4,
                   "region": "Dam, Schijnpoort & Spoor Noord",
-                  "number": 14
+                  "number": 12
                 },
                 {
                   "name": "St.-Anna",
                   "type": "neighborhood",
                   "object_count": 4,
                   "region": "Zurenborg & the Borgerhout Edge",
-                  "number": 21
+                  "number": 19
                 },
                 {
                   "name": "Oudaan (Spaanse Wallen)",
                   "type": "neighborhood",
                   "object_count": 4,
                   "region": "Historic Center & 't Eilandje",
-                  "number": 28
+                  "number": 24
                 },
                 {
                   "name": "Den Bleekhof",
                   "type": "neighborhood",
                   "object_count": 4,
                   "region": "Zurenborg & the Borgerhout Edge",
-                  "number": 33
+                  "number": 39
                 },
                 {
                   "name": "St.-Vincentius (Oostwijk)",
                   "type": "neighborhood",
                   "object_count": 4,
                   "region": "Oostwijk & the Justitiewijk",
-                  "number": 37
+                  "number": 36
                 },
                 {
                   "name": "Zurenborg",
@@ -1357,49 +1371,49 @@
                   "type": "neighborhood",
                   "object_count": 4,
                   "region": "Zuid & Kiel",
-                  "number": 35
+                  "number": 33
                 },
                 {
                   "name": "De Conincplein - Z. (Stationswijk)",
                   "type": "neighborhood",
                   "object_count": 3,
                   "region": "Historic Center & 't Eilandje",
-                  "number": 19
+                  "number": 18
                 },
                 {
                   "name": "De Peperbus",
                   "type": "neighborhood",
                   "object_count": 3,
                   "region": "Zurenborg & the Borgerhout Edge",
-                  "number": 22
+                  "number": 32
                 },
                 {
                   "name": "Gevangenis (Spaanse Wallen)",
                   "type": "neighborhood",
                   "object_count": 3,
                   "region": "Zuid & Kiel",
-                  "number": 27
+                  "number": 23
                 },
                 {
                   "name": "Borgerhout - Gemeentehuis",
                   "type": "neighborhood",
                   "object_count": 3,
                   "region": "Zurenborg & the Borgerhout Edge",
-                  "number": 32
+                  "number": 29
                 },
                 {
                   "name": "Stadspark (Stationswijk)",
                   "type": "neighborhood",
                   "object_count": 3,
                   "region": "Historic Center & 't Eilandje",
-                  "number": 30
+                  "number": 26
                 },
                 {
                   "name": "Charlottalei (Oostwijk)",
                   "type": "neighborhood",
                   "object_count": 3,
                   "region": "Oostwijk & the Justitiewijk",
-                  "number": 38
+                  "number": 37
                 },
                 {
                   "name": "Troonplaats (Zuidwijk)",
@@ -1420,42 +1434,42 @@
                   "type": "neighborhood",
                   "object_count": 3,
                   "region": "Historic Center & 't Eilandje",
-                  "number": 18
+                  "number": 17
                 },
                 {
                   "name": "Vlaamse Kaai (Zuidwijk)",
                   "type": "neighborhood",
                   "object_count": 3,
                   "region": "Zuid & Kiel",
-                  "number": 36
+                  "number": 34
                 },
                 {
                   "name": "Kattenberg",
                   "type": "neighborhood",
                   "object_count": 3,
                   "region": "Zurenborg & the Borgerhout Edge",
-                  "number": 20
+                  "number": 30
                 },
                 {
                   "name": "Sportpaleis",
                   "type": "neighborhood",
                   "object_count": 2,
                   "region": "Dam, Schijnpoort & Spoor Noord",
-                  "number": 4
+                  "number": 6
                 },
                 {
                   "name": "St.-Jansplein - Trapstraat (Noordwijk)",
                   "type": "neighborhood",
                   "object_count": 2,
                   "region": "Historic Center & 't Eilandje",
-                  "number": 12
+                  "number": 10
                 },
                 {
                   "name": "St.-Amandus (Noordwijk)",
                   "type": "neighborhood",
                   "object_count": 2,
                   "region": "Dam, Schijnpoort & Spoor Noord",
-                  "number": 13
+                  "number": 11
                 }
               ]
             },
@@ -2446,19 +2460,19 @@
                   "name": "Kempenstraat",
                   "type": "road",
                   "length_m": 988,
-                  "number": 7
+                  "number": 5
                 },
                 {
                   "name": "Ellermanstraat",
                   "type": "road",
                   "length_m": 897,
-                  "number": 9
+                  "number": 6
                 },
                 {
                   "name": "Kattendijkdok",
                   "type": "road",
                   "length_m": 842,
-                  "number": 4
+                  "number": 2
                 },
                 {
                   "name": "Marguerie Schuilhaven",
@@ -2467,40 +2481,28 @@
                   "number": 8
                 },
                 {
-                  "name": "Kattendijkbrug",
-                  "type": "road",
-                  "length_m": 160,
-                  "number": 1
-                },
-                {
                   "name": "Limastraat",
                   "type": "road",
                   "length_m": 78,
-                  "number": 3
+                  "number": 1
                 },
                 {
                   "name": "Tallinnstraat",
                   "type": "road",
                   "length_m": 55,
-                  "number": 6
-                },
-                {
-                  "name": "Sasdok",
-                  "type": "road",
-                  "length_m": 21,
-                  "number": 2
+                  "number": 4
                 },
                 {
                   "name": "Architect Hugo Van Kuycktuin",
                   "type": "road",
                   "length_m": 13,
-                  "number": 10
+                  "number": 7
                 },
                 {
                   "name": "Calcuttastraat",
                   "type": "road",
                   "length_m": 13,
-                  "number": 5
+                  "number": 3
                 }
               ]
             }
@@ -7624,7 +7626,7 @@
                 {
                   "name": "Domein Hertoghe",
                   "type": "park",
-                  "number": 6
+                  "number": 5
                 },
                 {
                   "name": "Arthur Goemaerelei",
@@ -7639,12 +7641,12 @@
                 {
                   "name": "Doornelei",
                   "type": "road",
-                  "number": 7
+                  "number": 6
                 },
                 {
                   "name": "Jan Van Rijswijcklaan",
                   "type": "road",
-                  "number": 5
+                  "number": 7
                 },
                 {
                   "name": "Markgravelei",
@@ -8073,7 +8075,7 @@
                 {
                   "name": "Verdraagzaamheidsplein",
                   "type": "square",
-                  "number": 6
+                  "number": 7
                 },
                 {
                   "name": "Kapel van het Allerheiligste Sacrament",
@@ -8099,6 +8101,13 @@
                   "name": "Mechelsesteenweg",
                   "type": "road",
                   "number": 5
+                },
+                {
+                  "name": "ZAS Vincentius",
+                  "type": "building",
+                  "area_m2": 29302,
+                  "is_church": false,
+                  "number": 6
                 }
               ]
             },
@@ -8235,7 +8244,7 @@
                 {
                   "name": "Koningin Elisabethlei",
                   "type": "road",
-                  "number": 7
+                  "number": 8
                 },
                 {
                   "name": "Gerechtshof",
@@ -8245,7 +8254,7 @@
                 {
                   "name": "Feestzaal Harmonie",
                   "type": "building",
-                  "number": 5
+                  "number": 6
                 },
                 {
                   "name": "Aarschotplaats",
@@ -8265,12 +8274,19 @@
                 {
                   "name": "Harmonie",
                   "type": "park",
-                  "number": 6
+                  "number": 7
                 },
                 {
                   "name": "Koning Albertpark",
                   "type": "park",
-                  "number": 8
+                  "number": 9
+                },
+                {
+                  "name": "AZ Monica Antwerpen",
+                  "type": "building",
+                  "area_m2": 9020,
+                  "is_church": false,
+                  "number": 5
                 }
               ]
             },
@@ -8846,7 +8862,7 @@
                   "name": "Gerard Le Grellelaan",
                   "type": "road",
                   "length_m": 707,
-                  "number": 16
+                  "number": 13
                 },
                 {
                   "name": "Ballaarstraat",
@@ -8900,7 +8916,7 @@
                   "name": "Floris Primsstraat",
                   "type": "road",
                   "length_m": 142,
-                  "number": 13
+                  "number": 12
                 },
                 {
                   "name": "Lemméstraat",
@@ -8913,24 +8929,6 @@
                   "type": "road",
                   "length_m": 112,
                   "number": 7
-                },
-                {
-                  "name": "Jan Baptist Verlooystraat",
-                  "type": "road",
-                  "length_m": 35,
-                  "number": 15
-                },
-                {
-                  "name": "Willem Eekelersstraat",
-                  "type": "road",
-                  "length_m": 7,
-                  "number": 14
-                },
-                {
-                  "name": "Volhardingstraat",
-                  "type": "road",
-                  "length_m": 4,
-                  "number": 12
                 }
               ]
             }
@@ -10402,12 +10400,12 @@
           "lessons": [
             {
               "id": "7.1.1",
-              "title": "Notable Roads & Squares, Parks & Waterways",
+              "title": "Notable Roads, Landmarks, Parks, Waterways & Other Streets",
               "objects": [
                 {
                   "name": "Foorplein",
                   "type": "square",
-                  "number": 4
+                  "number": 5
                 },
                 {
                   "name": "Buurtpark Spoor Oost",
@@ -10417,7 +10415,7 @@
                 {
                   "name": "Buurtpark Dokter Van De Perrelei",
                   "type": "park",
-                  "number": 7
+                  "number": 9
                 },
                 {
                   "name": "Buurtspoorweglei",
@@ -10432,54 +10430,38 @@
                 {
                   "name": "Turnhoutsebaan",
                   "type": "road",
-                  "number": 5
+                  "length_m": 5377,
+                  "number": 6
                 },
                 {
                   "name": "Turnhoutsebaan",
                   "type": "road",
-                  "number": 6
-                }
-              ]
-            },
-            {
-              "id": "7.1.2",
-              "title": "Other Streets",
-              "objects": [
+                  "length_m": 5377,
+                  "number": 7
+                },
                 {
                   "name": "Stenenbrug",
                   "type": "road",
                   "length_m": 955,
-                  "number": 2
+                  "number": 8
                 },
                 {
                   "name": "Luitenant Lippenslaan",
                   "type": "road",
                   "length_m": 850,
-                  "number": 4
+                  "number": 10
                 },
                 {
                   "name": "Hof ter Lo",
                   "type": "road",
                   "length_m": 164,
-                  "number": 1
+                  "number": 4
                 },
                 {
                   "name": "Joe Englishstraat",
                   "type": "road",
                   "length_m": 148,
-                  "number": 6
-                },
-                {
-                  "name": "Kalverveld",
-                  "type": "road",
-                  "length_m": 59,
-                  "number": 5
-                },
-                {
-                  "name": "Collegelaan",
-                  "type": "road",
-                  "length_m": 13,
-                  "number": 3
+                  "number": 11
                 }
               ]
             }
@@ -10497,22 +10479,22 @@
           "lessons": [
             {
               "id": "8.1.1",
-              "title": "Complete List (79)",
+              "title": "Complete List (81)",
               "objects": [
                 {
                   "name": "Antwerpen-Berchem (station)",
                   "type": "building",
-                  "number": 71
+                  "number": 73
                 },
                 {
                   "name": "Antwerpen-Zuid (station)",
                   "type": "building",
-                  "number": 72
+                  "number": 74
                 },
                 {
                   "name": "Basiliek van het Heilig Hart",
                   "type": "building",
-                  "number": 75
+                  "number": 77
                 },
                 {
                   "name": "Boerentoren",
@@ -10537,12 +10519,12 @@
                 {
                   "name": "Church (unnamed)",
                   "type": "building",
-                  "number": 76
+                  "number": 78
                 },
                 {
                   "name": "De Beukelaer",
                   "type": "building",
-                  "number": 67
+                  "number": 68
                 },
                 {
                   "name": "De Roma",
@@ -10552,12 +10534,12 @@
                 {
                   "name": "De Singel en AP Hogeschool - Campus De Singel",
                   "type": "building",
-                  "number": 79
+                  "number": 81
                 },
                 {
                   "name": "De Slag van Waterloo",
                   "type": "building",
-                  "number": 70
+                  "number": 72
                 },
                 {
                   "name": "De Vijf Werelddeelen",
@@ -10582,7 +10564,7 @@
                 {
                   "name": "Feestzaal Harmonie",
                   "type": "building",
-                  "number": 68
+                  "number": 70
                 },
                 {
                   "name": "Gerechtshof",
@@ -10632,12 +10614,12 @@
                 {
                   "name": "Hoofdsynagoge van de Israelisch Orthodoxe Gemeente Machsiké Hadass",
                   "type": "building",
-                  "number": 64
+                  "number": 65
                 },
                 {
                   "name": "Huzur",
                   "type": "building",
-                  "number": 66
+                  "number": 67
                 },
                 {
                   "name": "Instituut Onze-Lieve-Vrouw Middelares",
@@ -10662,7 +10644,7 @@
                 {
                   "name": "Kasteel de Bergeyck",
                   "type": "building",
-                  "number": 77
+                  "number": 79
                 },
                 {
                   "name": "Koningin Elisabethzaal",
@@ -10747,7 +10729,7 @@
                 {
                   "name": "Provincial Institute PIVA",
                   "type": "building",
-                  "number": 73
+                  "number": 75
                 },
                 {
                   "name": "Shopping Stadsfeestzaal",
@@ -10782,7 +10764,7 @@
                 {
                   "name": "Sint-Bonifaciuskerk",
                   "type": "building",
-                  "number": 69
+                  "number": 71
                 },
                 {
                   "name": "Sint-Carolus Borromeuskerk",
@@ -10807,7 +10789,7 @@
                 {
                   "name": "Sint-Hubertuskerk",
                   "type": "building",
-                  "number": 78
+                  "number": 80
                 },
                 {
                   "name": "Sint-Jacobskerk",
@@ -10827,7 +10809,7 @@
                 {
                   "name": "Sint-Laurentiuskerk",
                   "type": "building",
-                  "number": 74
+                  "number": 76
                 },
                 {
                   "name": "Sint-Michielskerk",
@@ -10837,7 +10819,7 @@
                 {
                   "name": "Sint-Norbertuskerk",
                   "type": "building",
-                  "number": 65
+                  "number": 66
                 },
                 {
                   "name": "Sint-Pauluskerk",
@@ -10893,6 +10875,20 @@
                   "name": "Zwembad Plantin-Moretus",
                   "type": "building",
                   "number": 58
+                },
+                {
+                  "name": "ZAS Vincentius",
+                  "type": "building",
+                  "area_m2": 29302,
+                  "is_church": false,
+                  "number": 64
+                },
+                {
+                  "name": "AZ Monica Antwerpen",
+                  "type": "building",
+                  "area_m2": 9020,
+                  "is_church": false,
+                  "number": 69
                 }
               ]
             }
@@ -11873,11 +11869,6 @@
                   "number": 5
                 },
                 {
-                  "name": "Turnhoutsebaan",
-                  "type": "road",
-                  "number": 4
-                },
-                {
                   "name": "Noorderlaan",
                   "type": "road",
                   "number": 2
@@ -11906,6 +11897,12 @@
                   "name": "Jan Van Rijswijcklaan",
                   "type": "road",
                   "number": 9
+                },
+                {
+                  "name": "Turnhoutsebaan",
+                  "type": "road",
+                  "length_m": 5377,
+                  "number": 4
                 }
               ]
             },
@@ -12924,19 +12921,19 @@
             },
             {
               "id": "8.5.5",
-              "title": "Other Streets (B–D) (50)",
+              "title": "Other Streets (B–D) (49)",
               "objects": [
                 {
                   "name": "Brabantstraat",
                   "type": "road",
                   "length_m": 56,
-                  "number": 25
+                  "number": 27
                 },
                 {
                   "name": "Braderijstraat",
                   "type": "road",
                   "length_m": 73,
-                  "number": 15
+                  "number": 16
                 },
                 {
                   "name": "Braziliëstraat",
@@ -12954,73 +12951,73 @@
                   "name": "Brederodestraat",
                   "type": "road",
                   "length_m": 1112,
-                  "number": 41
+                  "number": 31
                 },
                 {
                   "name": "Bredestraat",
                   "type": "road",
                   "length_m": 134,
-                  "number": 24
+                  "number": 26
                 },
                 {
                   "name": "Bresstraat",
                   "type": "road",
                   "length_m": 132,
-                  "number": 32
+                  "number": 34
                 },
                 {
                   "name": "Breughelstraat",
                   "type": "road",
                   "length_m": 223,
-                  "number": 33
+                  "number": 36
                 },
                 {
                   "name": "Breydelstraat",
                   "type": "road",
                   "length_m": 211,
-                  "number": 18
+                  "number": 19
                 },
                 {
                   "name": "Broederminstraat",
                   "type": "road",
                   "length_m": 313,
-                  "number": 42
+                  "number": 32
                 },
                 {
                   "name": "Bronstraat",
                   "type": "road",
                   "length_m": 61,
-                  "number": 48
+                  "number": 49
                 },
                 {
                   "name": "Brouwersvliet",
                   "type": "road",
                   "length_m": 530,
-                  "number": 8
+                  "number": 9
                 },
                 {
                   "name": "Brugstraat",
                   "type": "road",
                   "length_m": 140,
-                  "number": 10
+                  "number": 11
                 },
                 {
                   "name": "Brusselstraat",
                   "type": "road",
                   "length_m": 405,
-                  "number": 38
+                  "number": 40
                 },
                 {
                   "name": "Burchtgracht",
                   "type": "road",
                   "length_m": 217,
-                  "number": 14
+                  "number": 7
                 },
                 {
                   "name": "Burgerwelzijn",
                   "type": "road",
                   "length_m": 84,
-                  "number": 22
+                  "number": 14
                 },
                 {
                   "name": "Cadixstraat",
@@ -13038,31 +13035,31 @@
                   "name": "Callensstraat",
                   "type": "road",
                   "length_m": 155,
-                  "number": 47
+                  "number": 48
                 },
                 {
                   "name": "Cameliastraat",
                   "type": "road",
                   "length_m": 111,
-                  "number": 49
+                  "number": 45
                 },
                 {
                   "name": "Carnotstraat",
                   "type": "road",
                   "length_m": 1678,
-                  "number": 19
+                  "number": 20
                 },
                 {
                   "name": "Cassiersstraat",
                   "type": "road",
                   "length_m": 278,
-                  "number": 9
+                  "number": 10
                 },
                 {
                   "name": "Catharina Beersmansstraat",
                   "type": "road",
                   "length_m": 200,
-                  "number": 39
+                  "number": 41
                 },
                 {
                   "name": "Catharina Pepijnstraat",
@@ -13074,19 +13071,19 @@
                   "name": "Cellebroedersstraat",
                   "type": "road",
                   "length_m": 137,
-                  "number": 17
+                  "number": 18
                 },
                 {
                   "name": "Ceresstraat",
                   "type": "road",
                   "length_m": 79,
-                  "number": 23
+                  "number": 24
                 },
                 {
                   "name": "Ceulemansstraat",
                   "type": "road",
                   "length_m": 188,
-                  "number": 13
+                  "number": 15
                 },
                 {
                   "name": "Chocoladegang",
@@ -13098,25 +13095,25 @@
                   "name": "Clara Peetershof",
                   "type": "road",
                   "length_m": 422,
-                  "number": 30
+                  "number": 33
                 },
                 {
                   "name": "Clementinastraat",
                   "type": "road",
                   "length_m": 242,
-                  "number": 44
+                  "number": 35
                 },
                 {
                   "name": "Clément van Bogaerttunnel",
                   "type": "road",
                   "length_m": 61,
-                  "number": 36
+                  "number": 38
                 },
                 {
                   "name": "Cobdenstraat",
                   "type": "road",
                   "length_m": 203,
-                  "number": 46
+                  "number": 47
                 },
                 {
                   "name": "Coebergerstraat",
@@ -13125,106 +13122,100 @@
                   "number": 43
                 },
                 {
-                  "name": "Collegelaan",
-                  "type": "road",
-                  "length_m": 13,
-                  "number": 28
-                },
-                {
                   "name": "Congresstraat",
                   "type": "road",
                   "length_m": 341,
-                  "number": 20
+                  "number": 21
                 },
                 {
                   "name": "Consciencestraat",
                   "type": "road",
                   "length_m": 308,
-                  "number": 34
+                  "number": 37
                 },
                 {
                   "name": "Constitutiestraat",
                   "type": "road",
                   "length_m": 372,
-                  "number": 21
+                  "number": 22
                 },
                 {
                   "name": "Copernicuslaan",
                   "type": "road",
                   "length_m": 128,
-                  "number": 26
+                  "number": 28
                 },
                 {
                   "name": "Coppenolstraat",
                   "type": "road",
                   "length_m": 73,
-                  "number": 16
+                  "number": 17
                 },
                 {
                   "name": "Coquilhatstraat",
                   "type": "road",
                   "length_m": 261,
-                  "number": 31
+                  "number": 25
                 },
                 {
                   "name": "Coveliersstraat",
                   "type": "road",
                   "length_m": 159,
-                  "number": 45
+                  "number": 44
                 },
                 {
                   "name": "Crauwelengang",
                   "type": "road",
                   "length_m": 42,
-                  "number": 7
+                  "number": 8
                 },
                 {
                   "name": "Cronjéstraat",
                   "type": "road",
                   "length_m": 123,
-                  "number": 27
+                  "number": 23
                 },
                 {
                   "name": "Cuperusstraat",
                   "type": "road",
                   "length_m": 729,
-                  "number": 37
+                  "number": 39
                 },
                 {
                   "name": "Cuylitsstraat",
                   "type": "road",
                   "length_m": 420,
-                  "number": 29
+                  "number": 30
                 },
                 {
                   "name": "Daenenstraat",
                   "type": "road",
                   "length_m": 211,
-                  "number": 50
+                  "number": 46
                 },
                 {
                   "name": "Dahliastraat",
                   "type": "road",
                   "length_m": 146,
-                  "number": 11
+                  "number": 12
                 },
                 {
                   "name": "Dambruggestraat",
                   "type": "road",
                   "length_m": 1283,
-                  "number": 12
+                  "number": 13
                 },
                 {
                   "name": "De Beuckerstraat",
                   "type": "road",
                   "length_m": 199,
-                  "number": 40
+                  "number": 42
                 },
                 {
                   "name": "De Boeystraat",
                   "type": "road",
                   "length_m": 88,
-                  "number": 35
+                  "number": 29
                 }
               ]
             },
@@ -14148,7 +14139,7 @@
             },
             {
               "id": "8.5.9",
-              "title": "Other Streets (H–J) (50)",
+              "title": "Other Streets (H–J) (49)",
               "objects": [
                 {
                   "name": "Haverstraat",
@@ -14160,151 +14151,151 @@
                   "name": "Heilig Hartstraat",
                   "type": "road",
                   "length_m": 247,
-                  "number": 50
+                  "number": 49
                 },
                 {
                   "name": "Heilige Geeststraat",
                   "type": "road",
                   "length_m": 79,
-                  "number": 20
+                  "number": 22
                 },
                 {
                   "name": "Helmstraat",
                   "type": "road",
                   "length_m": 709,
-                  "number": 28
+                  "number": 30
                 },
                 {
                   "name": "Hemelstraat",
                   "type": "road",
                   "length_m": 157,
-                  "number": 34
+                  "number": 36
                 },
                 {
                   "name": "Henri La Fontainestraat",
                   "type": "road",
                   "length_m": 311,
-                  "number": 43
+                  "number": 44
                 },
                 {
                   "name": "Henri Storckpad",
                   "type": "road",
                   "length_m": 90,
-                  "number": 37
+                  "number": 33
                 },
                 {
                   "name": "Henri Van Heurckstraat",
                   "type": "road",
                   "length_m": 132,
-                  "number": 33
+                  "number": 26
                 },
                 {
                   "name": "Herderinstraat",
                   "type": "road",
                   "length_m": 133,
-                  "number": 15
+                  "number": 16
                 },
                 {
                   "name": "Herderstraat",
                   "type": "road",
                   "length_m": 152,
-                  "number": 17
+                  "number": 18
                 },
                 {
                   "name": "Hertoginstraat",
                   "type": "road",
                   "length_m": 222,
-                  "number": 42
+                  "number": 37
                 },
                 {
                   "name": "Hertsdeinstraat",
                   "type": "road",
                   "length_m": 158,
-                  "number": 39
+                  "number": 42
                 },
                 {
                   "name": "Hessenbrug",
                   "type": "road",
                   "length_m": 49,
-                  "number": 11
+                  "number": 12
                 },
                 {
                   "name": "Hessenstraatje",
                   "type": "road",
                   "length_m": 88,
-                  "number": 10
+                  "number": 11
                 },
                 {
                   "name": "Hof ter Bekestraat",
                   "type": "road",
                   "length_m": 196,
-                  "number": 45
+                  "number": 41
                 },
                 {
                   "name": "Hof ter Elst",
                   "type": "road",
                   "length_m": 37,
-                  "number": 16
+                  "number": 17
                 },
                 {
                   "name": "Hof ter Lo",
                   "type": "road",
                   "length_m": 164,
-                  "number": 31
+                  "number": 20
                 },
                 {
                   "name": "Hof Van Camp",
                   "type": "road",
                   "length_m": 17,
-                  "number": 14
+                  "number": 15
                 },
                 {
                   "name": "Hofstraat",
                   "type": "road",
                   "length_m": 119,
-                  "number": 5
+                  "number": 6
                 },
                 {
                   "name": "Hogeweg",
                   "type": "road",
                   "length_m": 317,
-                  "number": 48
+                  "number": 47
                 },
                 {
                   "name": "Hogeweg",
                   "type": "road",
                   "length_m": 254,
-                  "number": 49
+                  "number": 48
                 },
                 {
                   "name": "Hollandstraat",
                   "type": "road",
                   "length_m": 228,
-                  "number": 13
+                  "number": 14
                 },
                 {
                   "name": "Hoofdkerkstraat",
                   "type": "road",
                   "length_m": 49,
-                  "number": 6
+                  "number": 7
                 },
                 {
                   "name": "Hoogstraat",
                   "type": "road",
                   "length_m": 325,
-                  "number": 19
+                  "number": 21
                 },
                 {
                   "name": "Hoornstraat",
                   "type": "road",
                   "length_m": 80,
-                  "number": 9
+                  "number": 10
                 },
                 {
                   "name": "Hopland",
                   "type": "road",
                   "length_m": 292,
-                  "number": 25
+                  "number": 27
                 },
                 {
                   "name": "Houtdok",
@@ -14316,49 +14307,49 @@
                   "name": "Houtenbrug",
                   "type": "road",
                   "length_m": 38,
-                  "number": 8
+                  "number": 9
                 },
                 {
                   "name": "Houwerstraat",
                   "type": "road",
                   "length_m": 112,
-                  "number": 12
+                  "number": 13
                 },
                 {
                   "name": "Hoveniersstraat",
                   "type": "road",
                   "length_m": 169,
-                  "number": 26
+                  "number": 28
                 },
                 {
                   "name": "Huidevettersstraat",
                   "type": "road",
                   "length_m": 752,
-                  "number": 23
+                  "number": 24
                 },
                 {
                   "name": "Huikstraat",
                   "type": "road",
                   "length_m": 201,
-                  "number": 7
+                  "number": 8
                 },
                 {
                   "name": "Huybrechtsstraat",
                   "type": "road",
                   "length_m": 217,
-                  "number": 27
+                  "number": 29
                 },
                 {
                   "name": "Ieperstraat",
                   "type": "road",
                   "length_m": 131,
-                  "number": 38
+                  "number": 40
                 },
                 {
                   "name": "IJzerenwaag",
                   "type": "road",
                   "length_m": 67,
-                  "number": 22
+                  "number": 23
                 },
                 {
                   "name": "IJzerlaan",
@@ -14376,103 +14367,97 @@
                   "name": "Isabella Brantstraat",
                   "type": "road",
                   "length_m": 239,
-                  "number": 40
+                  "number": 34
                 },
                 {
                   "name": "Israelietenstraat",
                   "type": "road",
                   "length_m": 44,
-                  "number": 24
+                  "number": 25
                 },
                 {
                   "name": "Jaak De Braeckeleerstraat",
                   "type": "road",
                   "length_m": 116,
-                  "number": 29
+                  "number": 31
                 },
                 {
                   "name": "Jacob Jacobsstraat",
                   "type": "road",
                   "length_m": 280,
-                  "number": 36
+                  "number": 39
                 },
                 {
                   "name": "Jacob Jordaensstraat",
                   "type": "road",
                   "length_m": 402,
-                  "number": 35
-                },
-                {
-                  "name": "Jan Baptist Verlooystraat",
-                  "type": "road",
-                  "length_m": 35,
-                  "number": 46
+                  "number": 38
                 },
                 {
                   "name": "Jan Blockxstraat",
                   "type": "road",
                   "length_m": 153,
-                  "number": 41
+                  "number": 43
                 },
                 {
                   "name": "Jan Blomstraat",
                   "type": "road",
                   "length_m": 55,
-                  "number": 21
+                  "number": 5
                 },
                 {
                   "name": "Jan Breydelstraat",
                   "type": "road",
                   "length_m": 297,
-                  "number": 47
+                  "number": 46
                 },
                 {
                   "name": "Jan De Laetstraat",
                   "type": "road",
                   "length_m": 158,
-                  "number": 30
+                  "number": 32
                 },
                 {
                   "name": "Jan Denucéstraat",
                   "type": "road",
                   "length_m": 1121,
-                  "number": 44
+                  "number": 45
                 },
                 {
                   "name": "Jan Frans Willemsstraat",
                   "type": "road",
                   "length_m": 68,
-                  "number": 32
+                  "number": 35
                 },
                 {
                   "name": "Jan Palfijnstraat",
                   "type": "road",
                   "length_m": 177,
-                  "number": 18
+                  "number": 19
                 }
               ]
             },
             {
               "id": "8.5.10",
-              "title": "Other Streets (J–K) (50)",
+              "title": "Other Streets (J–K) (48)",
               "objects": [
                 {
                   "name": "Jan Van Asperenpad",
                   "type": "road",
                   "length_m": 292,
-                  "number": 42
+                  "number": 30
                 },
                 {
                   "name": "Jan Van Beersstraat",
                   "type": "road",
                   "length_m": 156,
-                  "number": 43
+                  "number": 41
                 },
                 {
                   "name": "Jan van Gentstraat",
                   "type": "road",
                   "length_m": 189,
-                  "number": 31
+                  "number": 33
                 },
                 {
                   "name": "Jan van Lierstraat",
@@ -14484,55 +14469,55 @@
                   "name": "Jan Vanhoenackerstraat",
                   "type": "road",
                   "length_m": 302,
-                  "number": 30
+                  "number": 32
                 },
                 {
                   "name": "Jeanne Brabantstunnel",
                   "type": "road",
                   "length_m": 538,
-                  "number": 25
+                  "number": 21
                 },
                 {
                   "name": "Jef Cassiersstraat",
                   "type": "road",
                   "length_m": 308,
-                  "number": 41
+                  "number": 29
                 },
                 {
                   "name": "Jennevalstraat",
                   "type": "road",
                   "length_m": 162,
-                  "number": 49
+                  "number": 47
                 },
                 {
                   "name": "Jeruzalemstraat",
                   "type": "road",
                   "length_m": 102,
-                  "number": 12
+                  "number": 14
                 },
                 {
                   "name": "Jezusstraat",
                   "type": "road",
                   "length_m": 219,
-                  "number": 24
+                  "number": 20
                 },
                 {
                   "name": "Jezuïetenrui",
                   "type": "road",
                   "length_m": 69,
-                  "number": 13
+                  "number": 15
                 },
                 {
                   "name": "Joannasteeg",
                   "type": "road",
                   "length_m": 65,
-                  "number": 20
+                  "number": 10
                 },
                 {
                   "name": "Jodenstraat",
                   "type": "road",
                   "length_m": 227,
-                  "number": 22
+                  "number": 25
                 },
                 {
                   "name": "Joe Englishstraat",
@@ -14544,7 +14529,7 @@
                   "name": "Jonghelinckstraat",
                   "type": "road",
                   "length_m": 147,
-                  "number": 44
+                  "number": 42
                 },
                 {
                   "name": "Joossensgang",
@@ -14556,73 +14541,73 @@
                   "name": "Jos Brabantstunnel",
                   "type": "road",
                   "length_m": 619,
-                  "number": 26
+                  "number": 22
                 },
                 {
                   "name": "Jos Smolderenstraat",
                   "type": "road",
                   "length_m": 588,
-                  "number": 29
+                  "number": 31
                 },
                 {
                   "name": "Jozef Balstraat",
                   "type": "road",
                   "length_m": 125,
-                  "number": 47
+                  "number": 45
                 },
                 {
                   "name": "Jozef De Bomstraat",
                   "type": "road",
                   "length_m": 306,
-                  "number": 38
+                  "number": 39
                 },
                 {
                   "name": "Jozef de Hasquestraat",
                   "type": "road",
                   "length_m": 54,
-                  "number": 15
+                  "number": 8
                 },
                 {
                   "name": "Jozef Liesstraat",
                   "type": "road",
                   "length_m": 118,
-                  "number": 33
+                  "number": 35
                 },
                 {
                   "name": "Jules Bordetstraat",
                   "type": "road",
                   "length_m": 353,
-                  "number": 45
+                  "number": 44
                 },
                 {
                   "name": "Juliaan Dillensstraat",
                   "type": "road",
                   "length_m": 199,
-                  "number": 46
+                  "number": 43
                 },
                 {
                   "name": "Justitiestraat",
                   "type": "road",
                   "length_m": 388,
-                  "number": 37
+                  "number": 38
                 },
                 {
                   "name": "Kaasbrug",
                   "type": "road",
                   "length_m": 39,
-                  "number": 14
+                  "number": 7
                 },
                 {
                   "name": "Kaasrui",
                   "type": "road",
                   "length_m": 72,
-                  "number": 10
+                  "number": 13
                 },
                 {
                   "name": "Kaasstraat",
                   "type": "road",
                   "length_m": 105,
-                  "number": 9
+                  "number": 12
                 },
                 {
                   "name": "Kalkstraat",
@@ -14634,37 +14619,31 @@
                   "name": "Kalverstraat",
                   "type": "road",
                   "length_m": 319,
-                  "number": 7
-                },
-                {
-                  "name": "Kalverveld",
-                  "type": "road",
-                  "length_m": 59,
-                  "number": 39
+                  "number": 9
                 },
                 {
                   "name": "Kalverwei",
                   "type": "road",
                   "length_m": 56,
-                  "number": 8
+                  "number": 11
                 },
                 {
                   "name": "Kambalastraat",
                   "type": "road",
                   "length_m": 296,
-                  "number": 3
+                  "number": 2
                 },
                 {
                   "name": "Kammenstraat",
                   "type": "road",
                   "length_m": 371,
-                  "number": 21
+                  "number": 23
                 },
                 {
                   "name": "Kapucinessenstraat",
                   "type": "road",
                   "length_m": 271,
-                  "number": 36
+                  "number": 24
                 },
                 {
                   "name": "Karel Geertsstraat",
@@ -14676,25 +14655,25 @@
                   "name": "Karel Oomsstraat",
                   "type": "road",
                   "length_m": 929,
-                  "number": 48
+                  "number": 46
                 },
                 {
                   "name": "Karel Rogierstraat",
                   "type": "road",
                   "length_m": 190,
-                  "number": 34
+                  "number": 36
                 },
                 {
                   "name": "Kasteelpleinstraat",
                   "type": "road",
                   "length_m": 309,
-                  "number": 35
+                  "number": 37
                 },
                 {
                   "name": "Kasteelstraat",
                   "type": "road",
                   "length_m": 301,
-                  "number": 32
+                  "number": 34
                 },
                 {
                   "name": "Kattenberg",
@@ -14703,16 +14682,10 @@
                   "number": 27
                 },
                 {
-                  "name": "Kattendijkbrug",
-                  "type": "road",
-                  "length_m": 160,
-                  "number": 1
-                },
-                {
                   "name": "Kattendijkdok",
                   "type": "road",
                   "length_m": 842,
-                  "number": 2
+                  "number": 1
                 },
                 {
                   "name": "Kattenstraat",
@@ -14730,7 +14703,7 @@
                   "name": "Keistraat",
                   "type": "road",
                   "length_m": 177,
-                  "number": 11
+                  "number": 6
                 },
                 {
                   "name": "Keizerstraat",
@@ -14742,19 +14715,19 @@
                   "name": "Kelderstraat",
                   "type": "road",
                   "length_m": 86,
-                  "number": 23
+                  "number": 26
                 },
                 {
                   "name": "Kemmelbergstraat",
                   "type": "road",
                   "length_m": 314,
-                  "number": 50
+                  "number": 48
                 },
                 {
                   "name": "Kempenstraat",
                   "type": "road",
                   "length_m": 988,
-                  "number": 6
+                  "number": 3
                 }
               ]
             },
@@ -16038,13 +16011,13 @@
                   "name": "Montignystraat",
                   "type": "road",
                   "length_m": 890,
-                  "number": 46
+                  "number": 47
                 },
                 {
                   "name": "Moonsstraat",
                   "type": "road",
                   "length_m": 194,
-                  "number": 47
+                  "number": 48
                 },
                 {
                   "name": "Morgenstraat",
@@ -16074,7 +16047,7 @@
                   "name": "Mozartstraat",
                   "type": "road",
                   "length_m": 120,
-                  "number": 48
+                  "number": 42
                 },
                 {
                   "name": "Muizenstraat",
@@ -16158,7 +16131,7 @@
                   "name": "Nerviërsstraat",
                   "type": "road",
                   "length_m": 202,
-                  "number": 42
+                  "number": 43
                 },
                 {
                   "name": "Nicole Van Goethempad",
@@ -16206,7 +16179,7 @@
                   "name": "Nottebohmstraat",
                   "type": "road",
                   "length_m": 199,
-                  "number": 44
+                  "number": 45
                 },
                 {
                   "name": "Oedenkovenstraat",
@@ -16236,7 +16209,7 @@
                   "name": "Omheining Statie van Borgerhout",
                   "type": "road",
                   "length_m": 342,
-                  "number": 45
+                  "number": 46
                 },
                 {
                   "name": "Ommeganckstraat",
@@ -16272,7 +16245,7 @@
                   "name": "Oostenstraat",
                   "type": "road",
                   "length_m": 419,
-                  "number": 43
+                  "number": 44
                 },
                 {
                   "name": "Oranjestraat",
@@ -16596,37 +16569,37 @@
             },
             {
               "id": "8.5.17",
-              "title": "Other Streets (P–S) (50)",
+              "title": "Other Streets (P–S) (49)",
               "objects": [
                 {
                   "name": "Pretoriastraat",
                   "type": "road",
                   "length_m": 381,
-                  "number": 49
+                  "number": 46
                 },
                 {
                   "name": "Prins Leopoldstraat",
                   "type": "road",
                   "length_m": 251,
-                  "number": 37
+                  "number": 39
                 },
                 {
                   "name": "Prinsesstraat",
                   "type": "road",
                   "length_m": 187,
-                  "number": 11
+                  "number": 10
                 },
                 {
                   "name": "Prinsstraat",
                   "type": "road",
                   "length_m": 185,
-                  "number": 10
+                  "number": 9
                 },
                 {
                   "name": "Provinciestraat",
                   "type": "road",
                   "length_m": 1107,
-                  "number": 35
+                  "number": 36
                 },
                 {
                   "name": "Pruynenstraat",
@@ -16650,37 +16623,37 @@
                   "name": "Quinten Matsijsdoorgang",
                   "type": "road",
                   "length_m": 20,
-                  "number": 7
+                  "number": 6
                 },
                 {
                   "name": "Raafstraat",
                   "type": "road",
                   "length_m": 67,
-                  "number": 45
+                  "number": 38
                 },
                 {
                   "name": "Raapstraat",
                   "type": "road",
                   "length_m": 148,
-                  "number": 8
+                  "number": 7
                 },
                 {
                   "name": "Ramstraat",
                   "type": "road",
                   "length_m": 187,
-                  "number": 44
+                  "number": 45
                 },
                 {
                   "name": "Ranststraat",
                   "type": "road",
                   "length_m": 151,
-                  "number": 28
+                  "number": 29
                 },
                 {
                   "name": "Rechtestraat",
                   "type": "road",
                   "length_m": 99,
-                  "number": 30
+                  "number": 31
                 },
                 {
                   "name": "Regentstraat",
@@ -16692,37 +16665,37 @@
                   "name": "Reizigersstraat",
                   "type": "road",
                   "length_m": 107,
-                  "number": 38
+                  "number": 40
                 },
                 {
                   "name": "Rembrandtstraat",
                   "type": "road",
                   "length_m": 170,
-                  "number": 42
+                  "number": 35
                 },
                 {
                   "name": "Repenstraat",
                   "type": "road",
                   "length_m": 49,
-                  "number": 5
+                  "number": 4
                 },
                 {
                   "name": "Resedastraat",
                   "type": "road",
                   "length_m": 84,
-                  "number": 50
+                  "number": 49
                 },
                 {
                   "name": "Reuzenpoort",
                   "type": "road",
                   "length_m": 58,
-                  "number": 36
+                  "number": 27
                 },
                 {
                   "name": "Reuzenstraat",
                   "type": "road",
                   "length_m": 149,
-                  "number": 29
+                  "number": 30
                 },
                 {
                   "name": "Reyndersstraat",
@@ -16734,19 +16707,19 @@
                   "name": "Richardstraat",
                   "type": "road",
                   "length_m": 147,
-                  "number": 16
+                  "number": 15
                 },
                 {
                   "name": "Riemstraat",
                   "type": "road",
                   "length_m": 195,
-                  "number": 31
+                  "number": 32
                 },
                 {
                   "name": "Rigastraat",
                   "type": "road",
                   "length_m": 186,
-                  "number": 2
+                  "number": 1
                 },
                 {
                   "name": "Rijfstraat",
@@ -16758,19 +16731,19 @@
                   "name": "Rijke Beukelaarstraat",
                   "type": "road",
                   "length_m": 75,
-                  "number": 20
+                  "number": 19
                 },
                 {
                   "name": "Rijkenhoek",
                   "type": "road",
                   "length_m": 40,
-                  "number": 17
+                  "number": 16
                 },
                 {
                   "name": "Rijnpoortvest",
                   "type": "road",
                   "length_m": 154,
-                  "number": 14
+                  "number": 13
                 },
                 {
                   "name": "Robert Molsstraat",
@@ -16782,19 +16755,19 @@
                   "name": "Rodestraat",
                   "type": "road",
                   "length_m": 255,
-                  "number": 13
+                  "number": 12
                 },
                 {
                   "name": "Roland Verhavertpad",
                   "type": "road",
                   "length_m": 176,
-                  "number": 46
+                  "number": 41
                 },
                 {
                   "name": "Rolwagenstraat",
                   "type": "road",
                   "length_m": 269,
-                  "number": 43
+                  "number": 37
                 },
                 {
                   "name": "Rosier",
@@ -16806,67 +16779,61 @@
                   "name": "Roskamgang",
                   "type": "road",
                   "length_m": 50,
-                  "number": 9
+                  "number": 8
                 },
                 {
                   "name": "Rotterdamstraat",
                   "type": "road",
                   "length_m": 356,
-                  "number": 15
+                  "number": 14
                 },
                 {
                   "name": "Rozenstraat",
                   "type": "road",
                   "length_m": 66,
-                  "number": 12
+                  "number": 11
                 },
                 {
                   "name": "Rudolfstraat",
                   "type": "road",
                   "length_m": 215,
-                  "number": 40
+                  "number": 43
                 },
                 {
                   "name": "Rupelstraat",
                   "type": "road",
                   "length_m": 250,
-                  "number": 4
+                  "number": 3
                 },
                 {
                   "name": "Salm-Salmstraat",
                   "type": "road",
                   "length_m": 77,
-                  "number": 33
+                  "number": 20
                 },
                 {
                   "name": "Samberstraat",
                   "type": "road",
                   "length_m": 497,
-                  "number": 3
+                  "number": 2
                 },
                 {
                   "name": "Sandersstraatje",
                   "type": "road",
                   "length_m": 36,
-                  "number": 19
+                  "number": 18
                 },
                 {
                   "name": "Sanderusstraat",
                   "type": "road",
                   "length_m": 396,
-                  "number": 41
-                },
-                {
-                  "name": "Sasdok",
-                  "type": "road",
-                  "length_m": 21,
-                  "number": 1
+                  "number": 44
                 },
                 {
                   "name": "Saucierstraat",
                   "type": "road",
                   "length_m": 52,
-                  "number": 6
+                  "number": 5
                 },
                 {
                   "name": "Schaafstraat",
@@ -16878,25 +16845,25 @@
                   "name": "Schaliënstraat",
                   "type": "road",
                   "length_m": 177,
-                  "number": 39
+                  "number": 42
                 },
                 {
                   "name": "Schapenstraat",
                   "type": "road",
                   "length_m": 192,
-                  "number": 27
+                  "number": 28
                 },
                 {
                   "name": "Scheldeken",
                   "type": "road",
                   "length_m": 165,
-                  "number": 18
+                  "number": 17
                 },
                 {
                   "name": "Scheldestraat",
                   "type": "road",
                   "length_m": 524,
-                  "number": 32
+                  "number": 33
                 }
               ]
             },
@@ -18126,7 +18093,7 @@
             },
             {
               "id": "8.5.22",
-              "title": "Other Streets (V–Z) (50)",
+              "title": "Other Streets (V–Z) (48)",
               "objects": [
                 {
                   "name": "Vlissingenstraat",
@@ -18135,16 +18102,10 @@
                   "number": 1
                 },
                 {
-                  "name": "Volhardingstraat",
-                  "type": "road",
-                  "length_m": 4,
-                  "number": 44
-                },
-                {
                   "name": "Volkstraat",
                   "type": "road",
                   "length_m": 313,
-                  "number": 29
+                  "number": 24
                 },
                 {
                   "name": "Vondelstraat",
@@ -18156,19 +18117,19 @@
                   "name": "Vooruitzichtstraat",
                   "type": "road",
                   "length_m": 144,
-                  "number": 20
+                  "number": 21
                 },
                 {
                   "name": "Vorstermanstraat",
                   "type": "road",
                   "length_m": 136,
-                  "number": 28
+                  "number": 30
                 },
                 {
                   "name": "Vredestraat",
                   "type": "road",
                   "length_m": 727,
-                  "number": 50
+                  "number": 48
                 },
                 {
                   "name": "Vrijdagmarktstraatje",
@@ -18180,13 +18141,13 @@
                   "name": "Vrijheidstraat",
                   "type": "road",
                   "length_m": 247,
-                  "number": 30
+                  "number": 31
                 },
                 {
                   "name": "Waaistraat",
                   "type": "road",
                   "length_m": 61,
-                  "number": 22
+                  "number": 25
                 },
                 {
                   "name": "Waaslandtunnel",
@@ -18198,7 +18159,7 @@
                   "name": "Walemstraat",
                   "type": "road",
                   "length_m": 242,
-                  "number": 47
+                  "number": 40
                 },
                 {
                   "name": "Walenstraat",
@@ -18222,37 +18183,37 @@
                   "name": "Wapenstraat",
                   "type": "road",
                   "length_m": 100,
-                  "number": 27
+                  "number": 22
                 },
                 {
                   "name": "Wapper",
                   "type": "road",
                   "length_m": 414,
-                  "number": 25
+                  "number": 27
                 },
                 {
                   "name": "Wasstraat",
                   "type": "road",
                   "length_m": 248,
-                  "number": 48
+                  "number": 41
                 },
                 {
                   "name": "Waterfordstraat",
                   "type": "road",
                   "length_m": 157,
-                  "number": 41
+                  "number": 43
                 },
                 {
                   "name": "Waterloostraat",
                   "type": "road",
                   "length_m": 227,
-                  "number": 43
+                  "number": 45
                 },
                 {
                   "name": "Weidestraat",
                   "type": "road",
                   "length_m": 272,
-                  "number": 42
+                  "number": 44
                 },
                 {
                   "name": "Weilandstraat",
@@ -18264,7 +18225,7 @@
                   "name": "Welvaartstraat",
                   "type": "road",
                   "length_m": 279,
-                  "number": 31
+                  "number": 32
                 },
                 {
                   "name": "Werkstraat",
@@ -18276,7 +18237,7 @@
                   "name": "Wetstraat",
                   "type": "road",
                   "length_m": 368,
-                  "number": 18
+                  "number": 19
                 },
                 {
                   "name": "Wezenbergpad",
@@ -18288,19 +18249,19 @@
                   "name": "Wiegstraat",
                   "type": "road",
                   "length_m": 143,
-                  "number": 23
+                  "number": 16
                 },
                 {
                   "name": "Wijnegemstraat",
                   "type": "road",
                   "length_m": 200,
-                  "number": 19
+                  "number": 20
                 },
                 {
                   "name": "Wijngaardbrug",
                   "type": "road",
                   "length_m": 31,
-                  "number": 16
+                  "number": 17
                 },
                 {
                   "name": "Wijngaardstraat",
@@ -18321,34 +18282,28 @@
                   "number": 8
                 },
                 {
-                  "name": "Willem Eekelersstraat",
-                  "type": "road",
-                  "length_m": 7,
-                  "number": 45
-                },
-                {
                   "name": "Willem Lepelstraat",
                   "type": "road",
                   "length_m": 250,
-                  "number": 21
+                  "number": 23
                 },
                 {
                   "name": "Willem Linnigstraat",
                   "type": "road",
                   "length_m": 100,
-                  "number": 17
+                  "number": 18
                 },
                 {
                   "name": "Willem Tellstraat",
                   "type": "road",
                   "length_m": 42,
-                  "number": 24
+                  "number": 26
                 },
                 {
                   "name": "Willem Van Laarstraat",
                   "type": "road",
                   "length_m": 267,
-                  "number": 49
+                  "number": 47
                 },
                 {
                   "name": "Willemdok",
@@ -18366,7 +18321,7 @@
                   "name": "Wipstraat",
                   "type": "road",
                   "length_m": 195,
-                  "number": 32
+                  "number": 28
                 },
                 {
                   "name": "Wisselstraat",
@@ -18378,7 +18333,7 @@
                   "name": "Woeringenstraat",
                   "type": "road",
                   "length_m": 214,
-                  "number": 40
+                  "number": 42
                 },
                 {
                   "name": "Wolfstraat",
@@ -18414,7 +18369,7 @@
                   "name": "Zegelstraat",
                   "type": "road",
                   "length_m": 135,
-                  "number": 26
+                  "number": 29
                 },
                 {
                   "name": "Zegepraalstraat",
@@ -18569,217 +18524,217 @@
                 {
                   "name": "'t Eilandje",
                   "type": "neighborhood",
-                  "number": 8
+                  "number": 6
                 },
                 {
                   "name": "Albertdok",
                   "type": "neighborhood",
-                  "number": 5
+                  "number": 2
                 },
                 {
                   "name": "Albertpark (Oostwijk)",
                   "type": "neighborhood",
-                  "number": 93
+                  "number": 90
                 },
                 {
                   "name": "An-2000 / Nieuw Gerechtshof",
                   "type": "neighborhood",
-                  "number": 77
+                  "number": 86
                 },
                 {
                   "name": "An-2020 / Kielsbroek+kielpark",
                   "type": "neighborhood",
-                  "number": 89
+                  "number": 85
                 },
                 {
                   "name": "An-2020 / Petroleum-Zuid",
                   "type": "neighborhood",
-                  "number": 88
+                  "number": 84
                 },
                 {
                   "name": "An-2060 / Slachthuis-Lobroekdok",
                   "type": "neighborhood",
-                  "number": 12
+                  "number": 14
                 },
                 {
                   "name": "An-2060 / Spoor-Noord Site",
                   "type": "neighborhood",
-                  "number": 10
+                  "number": 13
                 },
                 {
                   "name": "Antwerpen Kern - Oude Stad (Sp Wall)",
                   "type": "neighborhood",
-                  "number": 23
+                  "number": 16
                 },
                 {
                   "name": "Astrid Bad (Oostwijk)",
                   "type": "neighborhood",
-                  "number": 83
+                  "number": 79
                 },
                 {
                   "name": "Atheneum (Stationswijk)",
                   "type": "neighborhood",
-                  "number": 26
+                  "number": 21
                 },
                 {
                   "name": "Bell (Zuidwijk)",
                   "type": "neighborhood",
-                  "number": 79
+                  "number": 74
                 },
                 {
                   "name": "Bo / Kleine Ring",
                   "type": "neighborhood",
-                  "number": 33
+                  "number": 41
                 },
                 {
                   "name": "Borgerhout - Gemeentehuis",
                   "type": "neighborhood",
-                  "number": 60
+                  "number": 55
                 },
                 {
                   "name": "C. Teichmann Plaats (Zuidwijk)",
                   "type": "neighborhood",
-                  "number": 81
+                  "number": 77
                 },
                 {
                   "name": "Charlottalei (Oostwijk)",
                   "type": "neighborhood",
-                  "number": 70
+                  "number": 67
                 },
                 {
                   "name": "College",
                   "type": "neighborhood",
-                  "number": 63
+                  "number": 59
                 },
                 {
                   "name": "Dageraadplaats - Ooststatie (Oostwijk)",
                   "type": "neighborhood",
-                  "number": 71
+                  "number": 81
                 },
                 {
                   "name": "Dam (Dam - Schijnpoort)",
                   "type": "neighborhood",
-                  "number": 9
+                  "number": 7
                 },
                 {
                   "name": "Dambruggestraat-N. (Stationswijk)",
                   "type": "neighborhood",
-                  "number": 28
+                  "number": 22
                 },
                 {
                   "name": "De Conincplein - Z. (Stationswijk)",
                   "type": "neighborhood",
-                  "number": 27
+                  "number": 35
                 },
                 {
                   "name": "De Peperbus",
                   "type": "neighborhood",
-                  "number": 44
+                  "number": 58
                 },
                 {
                   "name": "De Zavel (Noordwijk)",
                   "type": "neighborhood",
-                  "number": 29
+                  "number": 25
                 },
                 {
                   "name": "Den Bleekhof",
                   "type": "neighborhood",
-                  "number": 72
+                  "number": 69
                 },
                 {
                   "name": "Deurne - Gemeentehuis",
                   "type": "neighborhood",
-                  "number": 48
+                  "number": 44
                 },
                 {
                   "name": "Deurne - Huiskens",
                   "type": "neighborhood",
-                  "number": 46
+                  "number": 42
                 },
                 {
                   "name": "Deurne - het Dorp",
                   "type": "neighborhood",
-                  "number": 47
+                  "number": 43
                 },
                 {
                   "name": "Duboisstraat (Noordwijk)",
                   "type": "neighborhood",
-                  "number": 16
+                  "number": 12
                 },
                 {
                   "name": "Duivelshoek",
                   "type": "neighborhood",
-                  "number": 4
+                  "number": 9
                 },
                 {
                   "name": "Fonteinstraat",
                   "type": "neighborhood",
-                  "number": 62
+                  "number": 70
                 },
                 {
                   "name": "Foorplein",
                   "type": "neighborhood",
-                  "number": 45
+                  "number": 40
                 },
                 {
                   "name": "Fransen Plaats (Zuidwijk)",
                   "type": "neighborhood",
-                  "number": 91
+                  "number": 95
                 },
                 {
                   "name": "Gagelvelden",
                   "type": "neighborhood",
-                  "number": 3
+                  "number": 4
                 },
                 {
                   "name": "Gas (Oostwijk)",
                   "type": "neighborhood",
-                  "number": 73
+                  "number": 83
                 },
                 {
                   "name": "Gerechtshof (Zuidw)",
                   "type": "neighborhood",
-                  "number": 68
+                  "number": 75
                 },
                 {
                   "name": "Gerechtshof (Zuidwijk)",
                   "type": "neighborhood",
-                  "number": 67
+                  "number": 64
                 },
                 {
                   "name": "Gevangenis (Spaanse Wallen)",
                   "type": "neighborhood",
-                  "number": 52
+                  "number": 47
                 },
                 {
                   "name": "Groenplaats (Spaanse Wallen)",
                   "type": "neighborhood",
-                  "number": 36
+                  "number": 31
                 },
                 {
                   "name": "Harmonie (Zuidwijk)",
                   "type": "neighborhood",
-                  "number": 80
+                  "number": 76
                 },
                 {
                   "name": "Hessenhuis (Spaanse Wallen)",
                   "type": "neighborhood",
-                  "number": 15
+                  "number": 19
                 },
                 {
                   "name": "Het Laar",
                   "type": "neighborhood",
-                  "number": 43
+                  "number": 56
                 },
                 {
                   "name": "Hofveld",
                   "type": "neighborhood",
-                  "number": 103
+                  "number": 100
                 },
                 {
                   "name": "Hoogstraat (Spaanse Wallen)",
                   "type": "neighborhood",
-                  "number": 35
+                  "number": 30
                 },
                 {
                   "name": "Houtdok",
@@ -18789,307 +18744,307 @@
                 {
                   "name": "Ijzerlaan (Dam - Schijnport)",
                   "type": "neighborhood",
-                  "number": 2
+                  "number": 3
                 },
                 {
                   "name": "Jezuitencollege (Stationswijk)",
                   "type": "neighborhood",
-                  "number": 56
+                  "number": 51
                 },
                 {
                   "name": "Karel Oomstraat",
                   "type": "neighborhood",
-                  "number": 99
+                  "number": 96
                 },
                 {
                   "name": "Kattenberg",
                   "type": "neighborhood",
-                  "number": 61
+                  "number": 57
                 },
                 {
                   "name": "Kipdorp - St.-Jacobs (Spaanse Wallen)",
                   "type": "neighborhood",
-                  "number": 24
+                  "number": 33
                 },
                 {
                   "name": "Klapdorp - Brouwersvliet",
                   "type": "neighborhood",
-                  "number": 13
+                  "number": 17
                 },
                 {
                   "name": "Kns - Nat. Bank (Spaanse Wallen)",
                   "type": "neighborhood",
-                  "number": 54
+                  "number": 49
                 },
                 {
                   "name": "Kolonielaan (Cam. Huysmanslaan)",
                   "type": "neighborhood",
-                  "number": 98
+                  "number": 103
                 },
                 {
                   "name": "Kroonstraat - West",
                   "type": "neighborhood",
-                  "number": 59
+                  "number": 54
                 },
                 {
                   "name": "Lamorinierestr. - Zuid (Ebes) (oostwijk)",
                   "type": "neighborhood",
-                  "number": 94
+                  "number": 91
                 },
                 {
                   "name": "Lange Elzenstraat (Zuidwijk)",
                   "type": "neighborhood",
-                  "number": 90
+                  "number": 88
                 },
                 {
                   "name": "Meir - Leysstraat (Spaanse Wallen)",
                   "type": "neighborhood",
-                  "number": 37
+                  "number": 32
                 },
                 {
                   "name": "Museumwijk (Zuidwijk)",
                   "type": "neighborhood",
-                  "number": 66
+                  "number": 63
                 },
                 {
                   "name": "Nachtegalenpark (Wilrijksplein)",
                   "type": "neighborhood",
-                  "number": 105
+                  "number": 104
                 },
                 {
                   "name": "Offerandestraat (Stationswijk)",
                   "type": "neighborhood",
-                  "number": 41
+                  "number": 36
                 },
                 {
                   "name": "Oostkwartier",
                   "type": "neighborhood",
-                  "number": 87
+                  "number": 82
                 },
                 {
                   "name": "Op ten Bergh",
                   "type": "neighborhood",
-                  "number": 102
+                  "number": 99
                 },
                 {
                   "name": "Oudaan (Spaanse Wallen)",
                   "type": "neighborhood",
-                  "number": 53
+                  "number": 48
                 },
                 {
                   "name": "Oude Haven",
                   "type": "neighborhood",
-                  "number": 7
+                  "number": 5
                 },
                 {
                   "name": "Oude Justitie",
                   "type": "neighborhood",
-                  "number": 100
+                  "number": 97
                 },
                 {
                   "name": "Oude Schipperdokken (Zuidwijk)",
                   "type": "neighborhood",
-                  "number": 64
+                  "number": 60
                 },
                 {
                   "name": "Pelikaanstraat (Stationswijk)",
                   "type": "neighborhood",
-                  "number": 57
+                  "number": 52
                 },
                 {
                   "name": "Posthof",
                   "type": "neighborhood",
-                  "number": 96
+                  "number": 101
                 },
                 {
                   "name": "Potgieterstraat (Noordwijk)",
                   "type": "neighborhood",
-                  "number": 31
+                  "number": 38
                 },
                 {
                   "name": "Provinciestraat (Stationswijk)",
                   "type": "neighborhood",
-                  "number": 58
+                  "number": 68
                 },
                 {
                   "name": "Schelde",
                   "type": "neighborhood",
-                  "number": 76
+                  "number": 73
                 },
                 {
                   "name": "Scheldekaden Noord",
                   "type": "neighborhood",
-                  "number": 34
+                  "number": 29
                 },
                 {
                   "name": "Schijnpoort (Dam - Schijnpoort)",
                   "type": "neighborhood",
-                  "number": 21
+                  "number": 28
                 },
                 {
                   "name": "Slachthuiswijk (Dam - Schijnpoort)",
                   "type": "neighborhood",
-                  "number": 11
+                  "number": 8
                 },
                 {
                   "name": "Sportpaleis",
                   "type": "neighborhood",
-                  "number": 6
+                  "number": 10
                 },
                 {
                   "name": "St.-Amandus (Noordwijk)",
                   "type": "neighborhood",
-                  "number": 18
+                  "number": 23
                 },
                 {
                   "name": "St.-Andries (Spaanse Wallen)",
                   "type": "neighborhood",
-                  "number": 51
+                  "number": 46
                 },
                 {
                   "name": "St.-Anna",
                   "type": "neighborhood",
-                  "number": 32
+                  "number": 39
                 },
                 {
                   "name": "St.-Jansplein - Trapstraat (Noordwijk)",
                   "type": "neighborhood",
-                  "number": 17
+                  "number": 20
                 },
                 {
                   "name": "St.-Laurentius (Zuidwijk)",
                   "type": "neighborhood",
-                  "number": 92
+                  "number": 89
                 },
                 {
                   "name": "St.-Michielskaai (Spaanse Wallen)",
                   "type": "neighborhood",
-                  "number": 50
+                  "number": 45
                 },
                 {
                   "name": "St.-Vincentius (Oostwijk)",
                   "type": "neighborhood",
-                  "number": 82
+                  "number": 78
                 },
                 {
                   "name": "St.-Willebrordus (Noordwijk)",
                   "type": "neighborhood",
-                  "number": 42
+                  "number": 37
                 },
                 {
                   "name": "Stadspark (Stationswijk)",
                   "type": "neighborhood",
-                  "number": 55
+                  "number": 66
                 },
                 {
                   "name": "Stadspark - Zuid (Oostwijk)",
                   "type": "neighborhood",
-                  "number": 69
+                  "number": 65
                 },
                 {
                   "name": "Stadswaag-Begijnhof (Spaanse Wallen)",
                   "type": "neighborhood",
-                  "number": 25
+                  "number": 18
                 },
                 {
                   "name": "Stappaerts - Krijgshospitaal (Oostwijk)",
                   "type": "neighborhood",
-                  "number": 84
+                  "number": 92
                 },
                 {
                   "name": "Statiekwartier (Stationswijk)",
                   "type": "neighborhood",
-                  "number": 39
+                  "number": 34
                 },
                 {
                   "name": "Station - Zoo (Stationswijk)",
                   "type": "neighborhood",
-                  "number": 40
+                  "number": 53
                 },
                 {
                   "name": "Stenenbrug - Zuid",
                   "type": "neighborhood",
-                  "number": 75
+                  "number": 72
                 },
                 {
                   "name": "Stuivenberg",
                   "type": "neighborhood",
-                  "number": 101
+                  "number": 105
                 },
                 {
                   "name": "Stuivenberg - West",
                   "type": "neighborhood",
-                  "number": 19
+                  "number": 24
                 },
                 {
                   "name": "Stuivenberg Ziekenhuis (Noordwijk)",
                   "type": "neighborhood",
-                  "number": 30
+                  "number": 27
                 },
                 {
                   "name": "Stuivenbergplein (Noordwijk)",
                   "type": "neighborhood",
-                  "number": 20
+                  "number": 26
                 },
                 {
                   "name": "Tabaksvest (Spaanse Wallen)",
                   "type": "neighborhood",
-                  "number": 38
+                  "number": 50
                 },
                 {
                   "name": "Ten Eekhove",
                   "type": "neighborhood",
-                  "number": 22
+                  "number": 15
                 },
                 {
                   "name": "Troonplaats (Zuidwijk)",
                   "type": "neighborhood",
-                  "number": 78
+                  "number": 87
                 },
                 {
                   "name": "Turkeyen",
                   "type": "neighborhood",
-                  "number": 95
+                  "number": 98
                 },
                 {
                   "name": "Van Diepenbeeckstraat (Oostwijk)",
                   "type": "neighborhood",
-                  "number": 85
+                  "number": 80
                 },
                 {
                   "name": "Van de Perrelei",
                   "type": "neighborhood",
-                  "number": 74
+                  "number": 71
                 },
                 {
                   "name": "Vestingen",
                   "type": "neighborhood",
-                  "number": 104
+                  "number": 102
                 },
                 {
                   "name": "Vlaamse Kaai (Zuidwijk)",
                   "type": "neighborhood",
-                  "number": 65
+                  "number": 62
                 },
                 {
                   "name": "Volhardingsstraat (Kiel)",
                   "type": "neighborhood",
-                  "number": 97
+                  "number": 94
                 },
                 {
                   "name": "Waalse Kaai (Zuidwijk)",
                   "type": "neighborhood",
-                  "number": 49
+                  "number": 61
                 },
                 {
                   "name": "Willemdok (Spaanse Wallen)",
                   "type": "neighborhood",
-                  "number": 14
+                  "number": 11
                 },
                 {
                   "name": "Zurenborg",
                   "type": "neighborhood",
-                  "number": 86
+                  "number": 93
                 }
               ]
             }

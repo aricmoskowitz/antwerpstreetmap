@@ -387,11 +387,31 @@ header.lesson-header {
   pointer-events: none;
 }
 
-.bg-waterways {
+.bg-waterways-stream {
   fill: none;
   stroke: var(--water);
   stroke-width: 1.2;
   opacity: 0.3;
+  vector-effect: non-scaling-stroke;
+  pointer-events: none;
+}
+
+.bg-waterways-canal {
+  fill: none;
+  stroke: var(--water);
+  stroke-width: 4;
+  stroke-linecap: round;
+  opacity: 0.3;
+  vector-effect: non-scaling-stroke;
+  pointer-events: none;
+}
+
+.bg-waterways-river-dock {
+  fill: none;
+  stroke: var(--water);
+  stroke-width: 8;
+  stroke-linecap: round;
+  opacity: 0.32;
   vector-effect: non-scaling-stroke;
   pointer-events: none;
 }

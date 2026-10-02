@@ -247,10 +247,116 @@ var MapRender = (function () {
 
   /* ============================== SCENERY (shared background layers) ============================== */
 
+  // Genus icon system (base map change request): each genus of a
+  // "significant park tree" gets its own symbol, reused everywhere that
+  // genus appears. Built from a small set of shape templates (leaf habit)
+  // rather than one bespoke illustration per genus - genus is still always
+  // visually distinct, since no two genera share both the same shape AND
+  // the same color.
+  var GENUS_TREE_ICONS = {
+    // palmate / star-lobed leaves
+    acer: { shape: "lobedStar", color: "#c1542c" }, // maple - autumn red-orange
+    platanus: { shape: "lobedStar", color: "#7a8a4a" }, // plane tree - olive
+    liquidambar: { shape: "lobedStar", color: "#8a3b5a" }, // sweetgum - deep red-purple
+    // oak
+    quercus: { shape: "roundLobed", color: "#5c6b2e" },
+    // simple ovals
+    fagus: { shape: "simpleOval", color: "#9c6b3e" }, // beech - copper
+    celtis: { shape: "simpleOval", color: "#4a7a3a" },
+    castanea: { shape: "simpleOval", color: "#4e7a2f" },
+    alnus: { shape: "simpleOval", color: "#3f6b4a" },
+    carpinus: { shape: "simpleOval", color: "#4a7a3a" },
+    ulmus: { shape: "simpleOval", color: "#5a7a3a" },
+    // heart-shaped
+    tilia: { shape: "heart", color: "#5a8a3a" },
+    catalpa: { shape: "heart", color: "#7a9a4a" },
+    // palmate compound (horse chestnut)
+    aesculus: { shape: "compoundFan", color: "#3f7a3a" },
+    // pinnate compound (small leaflets along a stem)
+    fraxinus: { shape: "pinnateCompound", color: "#4a7a4a" },
+    robinia: { shape: "pinnateCompound", color: "#6a9a4a" },
+    gleditsia: { shape: "pinnateCompound", color: "#7aa54a" },
+    juglans: { shape: "pinnateCompound", color: "#5a5a2a" },
+    // conifers
+    pinus: { shape: "conifer", color: "#2f5a3a" },
+    cedrus: { shape: "conifer", color: "#2f5a4a" },
+    taxus: { shape: "conifer", color: "#2a4a2a" },
+    thuja: { shape: "conifer", color: "#3a5a3a" },
+    // distinctive single-genus shapes
+    liriodendron: { shape: "tulip", color: "#8a9a3a" }, // tulip tree
+    betula: { shape: "smallTriangle", color: "#8a9a5a" }, // birch
+    prunus: { shape: "blossomOval", color: "#6a8a4a" }, // cherry
+    pyrus: { shape: "blossomOval", color: "#5a7a3a" }, // pear
+    populus: { shape: "narrowOval", color: "#6a7a5a" }, // poplar
+    salix: { shape: "droopingBlade", color: "#7a9a6a" }, // willow
+  };
+
+  function leafShapePath(shape) {
+    switch (shape) {
+      case "lobedStar":
+        return "M0,-2.2 L0.5,-0.6 L2.1,-0.9 L1,0.4 L2,1.9 L0.5,1.1 L0,2.3 L-0.5,1.1 L-2,1.9 L-1,0.4 L-2.1,-0.9 L-0.5,-0.6 Z";
+      case "roundLobed":
+        return "M0,-2.1 C1,-2 1,-1 1.6,-0.9 C1.1,-0.5 1.4,0.1 1.9,0.3 C1.3,0.6 1.4,1.1 1.8,1.4 C1.1,1.5 0.8,1.9 0.9,2.3 C0.3,1.9 -0.3,1.9 -0.9,2.3 C-0.8,1.9 -1.1,1.5 -1.8,1.4 C-1.4,1.1 -1.3,0.6 -1.9,0.3 C-1.4,0.1 -1.1,-0.5 -1.6,-0.9 C-1,-1 -1,-2 0,-2.1 Z";
+      case "simpleOval":
+        return "M0,-2.2 C1.5,-1.6 1.5,1.2 0,2.2 C-1.5,1.2 -1.5,-1.6 0,-2.2 Z";
+      case "heart":
+        return "M0,2.2 C-2.3,0.2 -1.9,-1.9 -0.4,-1.9 C0,-1.9 0,-1.3 0,-1.3 C0,-1.3 0,-1.9 0.4,-1.9 C1.9,-1.9 2.3,0.2 0,2.2 Z";
+      case "compoundFan":
+        return [0, 60, 120, 180, 240]
+          .map(function (deg) {
+            return (
+              '<ellipse cx="0" cy="-1.3" rx="0.55" ry="1.3" transform="rotate(' + (deg - 120) + ')" fill="{{c}}"/>'
+            );
+          })
+          .join("");
+      case "pinnateCompound":
+        return [-1.6, -0.8, 0, 0.8, 1.6]
+          .map(function (x) {
+            return '<ellipse cx="' + x + '" cy="0" rx="0.55" ry="0.9" fill="{{c}}"/>';
+          })
+          .join("");
+      case "conifer":
+        return "M0,-2.3 L1.7,1 L0.7,0.7 L1.3,2.2 L-1.3,2.2 L-0.7,0.7 L-1.7,1 Z";
+      case "tulip":
+        return "M0,-2.2 L1.2,-0.6 L2,0.3 L0.6,0.1 L0,2.2 L-0.6,0.1 L-2,0.3 L-1.2,-0.6 Z";
+      case "smallTriangle":
+        return "M0,-2 L1.5,1.8 L0,0.9 L-1.5,1.8 Z";
+      case "blossomOval":
+        return (
+          "M0,-1.8 C1.2,-1.3 1.2,1.3 0,1.8 C-1.2,1.3 -1.2,-1.3 0,-1.8 Z" +
+          '<g transform="translate(1.1,-1.6) scale(0.45)">' +
+          [0, 72, 144, 216, 288]
+            .map(function (deg) {
+              return '<ellipse cx="0" cy="-1.3" rx="0.7" ry="1.1" fill="#f2d9e6" transform="rotate(' + deg + ')"/>';
+            })
+            .join("") +
+          '<circle r="0.5" fill="#c9a227"/></g>'
+        );
+      case "narrowOval":
+        return "M0,-2.4 C0.9,-1.7 0.9,1.7 0,2.4 C-0.9,1.7 -0.9,-1.7 0,-2.4 Z";
+      case "droopingBlade":
+        return "M-0.3,-2.3 C0.6,-1.2 1.1,0.6 1.5,2.3 C0.5,1.9 -0.2,1.2 -0.6,0 C-0.9,-0.8 -0.7,-1.6 -0.3,-2.3 Z";
+      default:
+        return "M0,-2 C1,-2 1,2 0,2 C-1,2 -1,-2 0,-2 Z";
+    }
+  }
+
+  function genusSymbolMarkup(genus, icon) {
+    var body = leafShapePath(icon.shape);
+    if (body.indexOf("{{c}}") !== -1) {
+      body = body.split("{{c}}").join(icon.color);
+    } else if (body.indexOf("<") !== 0) {
+      body = '<path d="' + body + '" fill="' + icon.color + '"/>';
+    }
+    return '<symbol id="tree-genus-' + genus + '" viewBox="-3 -3 6 6">' + body + "</symbol>";
+  }
+
   var TREE_DEFS =
     '<defs>' +
     '<symbol id="tree-ginkgo" viewBox="-3 -3 6 6">' +
-    '<path d="M0,1.6 C-2,1.6 -2.4,-0.9 -1.3,-2 C-0.6,-1.3 -0.3,-0.6 0,0.1 C0.3,-0.6 0.6,-1.3 1.3,-2 C2.4,-0.9 2,1.6 0,1.6 Z" fill="#4a7a3a"/>' +
+    // Autumn ginkgo leaf: a fan with the characteristic center notch/cleft,
+    // in autumn yellow rather than the previous green almond shape.
+    '<path d="M0,2 C-2.1,1.6 -2.6,-0.3 -2.2,-1.5 C-1.9,-1.1 -1.3,-0.9 -0.7,-1.1 C-0.35,-1.35 -0.12,-1.7 0,-2.1 C0.12,-1.7 0.35,-1.35 0.7,-1.1 C1.3,-0.9 1.9,-1.1 2.2,-1.5 C2.6,-0.3 2.1,1.6 0,2 Z" fill="#e8b324"/>' +
     '</symbol>' +
     '<symbol id="tree-magnolia" viewBox="-3 -3 6 6">' +
     [0, 72, 144, 216, 288]
@@ -265,6 +371,11 @@ var MapRender = (function () {
     '<rect x="-0.3" y="0.4" width="0.6" height="1.3" fill="#6b4a2a"/>' +
     '<circle cy="-0.4" r="1.5" fill="#4a7a3a"/>' +
     '</symbol>' +
+    Object.keys(GENUS_TREE_ICONS)
+      .map(function (g) {
+        return genusSymbolMarkup(g, GENUS_TREE_ICONS[g]);
+      })
+      .join("") +
     '</defs>';
 
   var TREE_SIZE = { ginkgo: 3, magnolia: 3, notable: 5, "ginkgo-cluster": 4.5, "magnolia-cluster": 4.5 };
@@ -275,6 +386,10 @@ var MapRender = (function () {
     "ginkgo-cluster": "tree-ginkgo",
     "magnolia-cluster": "tree-magnolia",
   };
+  Object.keys(GENUS_TREE_ICONS).forEach(function (g) {
+    TREE_SIZE["genus-" + g] = 5;
+    TREE_SYMBOL["genus-" + g] = "tree-genus-" + g;
+  });
 
   function treeMarkersSVG() {
     var out = "";
@@ -324,8 +439,14 @@ var MapRender = (function () {
       '<path class="bg-rail" d="' +
       MAP_DATA.bgRail +
       '"/>' +
-      '<path class="bg-waterways" d="' +
-      MAP_DATA.bgWaterways +
+      '<path class="bg-waterways-canal" d="' +
+      MAP_DATA.bgWaterwaysCanal +
+      '"/>' +
+      '<path class="bg-waterways-stream" d="' +
+      MAP_DATA.bgWaterwaysStream +
+      '"/>' +
+      '<path class="bg-waterways-river-dock" d="' +
+      MAP_DATA.bgWaterwaysRiverDock +
       '"/>' +
       '<path class="bg-streets" d="' +
       MAP_DATA.bgStreets +
