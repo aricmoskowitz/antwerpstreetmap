@@ -1729,3 +1729,226 @@ header.lesson-header {
 .swatch.fast {
   background: var(--accent);
 }
+
+/* ---------- explore (free map) ---------- */
+
+.explore-page #app {
+  /* the map uses the full window, even on desktop */
+  max-width: none;
+  height: 100vh;
+  height: 100dvh;
+  min-height: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.explore-topbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: calc(10px + env(safe-area-inset-top)) 12px 10px;
+  border-bottom: 1px solid var(--line);
+  flex: none;
+}
+
+.explore-title {
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 600;
+  font-size: 1.15rem;
+}
+
+.explore-map {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+.explore-map svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+  -webkit-user-select: none;
+  user-select: none;
+  cursor: pointer;
+}
+
+.explore-zoom {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.explore-zoom button {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  color: var(--ink);
+  font-size: 1.3rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+}
+
+.explore-zoom button:active {
+  background: var(--bg);
+}
+
+.explore-hint {
+  position: absolute;
+  left: 50%;
+  bottom: calc(14px + env(safe-area-inset-bottom));
+  transform: translateX(-50%);
+  max-width: calc(100% - 32px);
+  background: var(--ink);
+  color: var(--bg);
+  font-size: 0.85rem;
+  padding: 8px 14px;
+  border-radius: 999px;
+  text-align: center;
+  pointer-events: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.explore-info {
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  bottom: calc(10px + env(safe-area-inset-bottom));
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 2px 16px 2px 16px;
+  padding: 12px 48px 12px 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.explore-close {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 44px;
+  height: 44px;
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.explore-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--street);
+}
+
+.explore-label-tree {
+  color: var(--good);
+}
+
+.explore-label-waterway {
+  color: var(--water);
+}
+
+.explore-label-building {
+  color: var(--ring);
+}
+
+.explore-label-park {
+  color: var(--good);
+}
+
+.explore-name {
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 600;
+  font-size: 1.3rem;
+  line-height: 1.2;
+  margin-top: 2px;
+}
+
+.explore-sci {
+  color: var(--ink);
+  font-size: 0.9rem;
+  margin-top: 2px;
+}
+
+.explore-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px 12px;
+  color: var(--muted);
+  font-size: 0.8rem;
+  margin-top: 6px;
+}
+
+.explore-sel-casing,
+.explore-sel-line {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+  pointer-events: none;
+}
+
+.explore-sel-casing {
+  stroke: var(--panel);
+  opacity: 0.9;
+}
+
+.explore-sel-line {
+  stroke: var(--target);
+}
+
+.explore-sel-poly {
+  fill: var(--target);
+  fill-opacity: 0.35;
+  fill-rule: evenodd;
+  stroke: var(--target);
+  stroke-width: 2;
+  vector-effect: non-scaling-stroke;
+  pointer-events: none;
+}
+
+.explore-sel-tree circle {
+  fill: none;
+  stroke: var(--target);
+  stroke-width: 3;
+  vector-effect: non-scaling-stroke;
+  pointer-events: none;
+}
+
+.explore-also {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.explore-also-chip {
+  appearance: none;
+  border: 1px solid var(--line);
+  background: var(--bg);
+  color: var(--ink);
+  font: inherit;
+  border-radius: 999px;
+  padding: 6px 10px;
+  min-height: 32px;
+  cursor: pointer;
+}

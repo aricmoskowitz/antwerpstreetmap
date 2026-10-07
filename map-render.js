@@ -35,9 +35,13 @@ var MapRender = (function () {
     return [minX, minY, maxX, maxY];
   }
 
-  function clampViewBox(vb) {
-    var w = Math.min(Math.max(vb.w, MIN_VB_W), FULL_VB.w);
-    var h = w / MAP_ASPECT;
+  // `aspect` (width / height of the on-screen map) defaults to the map's own
+  // aspect - the Learn, Scroll and Walk maps are sized to it; Explore fills
+  // the screen and passes its real aspect instead.
+  function clampViewBox(vb, aspect) {
+    aspect = aspect || MAP_ASPECT;
+    var w = Math.min(Math.max(vb.w, MIN_VB_W), Math.max(FULL_VB.w, FULL_VB.h * aspect));
+    var h = w / aspect;
     var minX = FULL_VB.x - w * 0.9;
     var maxX = FULL_VB.x + FULL_VB.w - w * 0.1;
     var minY = FULL_VB.y - h * 0.9;
@@ -54,6 +58,7 @@ var MapRender = (function () {
     opts = opts || {};
     var padding = opts.padding != null ? opts.padding : FIT_PADDING;
     var minSize = opts.minSize != null ? opts.minSize : FIT_MIN_SIZE;
+    var aspect = opts.aspect || MAP_ASPECT;
     var w = Math.max(bbox[2] - bbox[0], 1);
     var h = Math.max(bbox[3] - bbox[1], 1);
     var cx = (bbox[0] + bbox[2]) / 2;
@@ -61,26 +66,46 @@ var MapRender = (function () {
     w *= 1 + padding * 2;
     h *= 1 + padding * 2;
     w = Math.max(w, minSize);
-    h = Math.max(h, minSize / MAP_ASPECT);
-    if (w / h < MAP_ASPECT) {
-      w = h * MAP_ASPECT;
+    h = Math.max(h, minSize / aspect);
+    if (w / h < aspect) {
+      w = h * aspect;
     } else {
-      h = w / MAP_ASPECT;
+      h = w / aspect;
     }
     // Fully contain the fitted window within the real map extent (rather
     // than the looser pan clamp, which permits overscroll during
     // interaction but would otherwise leave a large/whole-map target
     // off-center here).
     if (w >= FULL_VB.w || h >= FULL_VB.h) {
-      return { x: FULL_VB.x, y: FULL_VB.y, w: FULL_VB.w, h: FULL_VB.h };
+      // the whole map, centered (exactly FULL_VB at the map's own aspect)
+      var fw = Math.max(FULL_VB.w, FULL_VB.h * aspect);
+      var fh = fw / aspect;
+      return { x: FULL_VB.x + (FULL_VB.w - fw) / 2, y: FULL_VB.y + (FULL_VB.h - fh) / 2, w: fw, h: fh };
     }
     var x = Math.min(Math.max(cx - w / 2, FULL_VB.x), FULL_VB.x + FULL_VB.w - w);
     var y = Math.min(Math.max(cy - h / 2, FULL_VB.y), FULL_VB.y + FULL_VB.h - h);
     return { x: x, y: y, w: w, h: h };
   }
 
-  function createMapController(svg, homeBBox, onTap) {
-    var home = fitViewBoxForBBox(homeBBox);
+  // opts (all optional, used by Explore):
+  //   aspect():          current width / height of the svg on screen
+  //   fit:               options for fitViewBoxForBBox when framing homeBBox
+  //   onTapPoint(pt, u): called on every single tap with the tapped point in
+  //                      map units and u = map units per screen pixel
+  function createMapController(svg, homeBBox, onTap, opts) {
+    opts = opts || {};
+    function aspect() {
+      return opts.aspect ? opts.aspect() : MAP_ASPECT;
+    }
+    function fitHome() {
+      var fit = {};
+      Object.keys(opts.fit || {}).forEach(function (k) {
+        fit[k] = opts.fit[k];
+      });
+      fit.aspect = aspect();
+      return fitViewBoxForBBox(homeBBox, fit);
+    }
+    var home = fitHome();
     var vb = { x: home.x, y: home.y, w: home.w, h: home.h };
 
     function apply() {
@@ -101,8 +126,25 @@ var MapRender = (function () {
     }
 
     function reset() {
+      home = fitHome();
       vb = { x: home.x, y: home.y, w: home.w, h: home.h };
       apply();
+    }
+
+    // Re-fit after the svg's on-screen aspect changed (rotation, resize),
+    // keeping the same center and width.
+    function resize() {
+      var cx = vb.x + vb.w / 2;
+      var cy = vb.y + vb.h / 2;
+      var w = vb.w;
+      var h = w / aspect();
+      vb = clampViewBox({ x: cx - w / 2, y: cy - h / 2, w: w, h: h }, aspect());
+      apply();
+    }
+
+    function zoomBy(factor) {
+      var rect = svg.getBoundingClientRect();
+      zoomAt(rect.left + rect.width / 2, rect.top + rect.height / 2, factor);
     }
 
     function clientToUser(clientX, clientY) {
@@ -117,12 +159,12 @@ var MapRender = (function () {
       var before = clientToUser(clientX, clientY);
       var rect = svg.getBoundingClientRect();
       var newW = vb.w / factor;
-      var clamped = clampViewBox({ x: vb.x, y: vb.y, w: newW, h: newW / MAP_ASPECT });
+      var clamped = clampViewBox({ x: vb.x, y: vb.y, w: newW, h: newW / aspect() }, aspect());
       vb.w = clamped.w;
       vb.h = clamped.h;
       vb.x = before.x - ((clientX - rect.left) / rect.width) * vb.w;
       vb.y = before.y - ((clientY - rect.top) / rect.height) * vb.h;
-      var reclamped = clampViewBox(vb);
+      var reclamped = clampViewBox(vb, aspect());
       vb = reclamped;
       apply();
     }
@@ -174,7 +216,7 @@ var MapRender = (function () {
         var rect = svg.getBoundingClientRect();
         vb.x -= (dx / rect.width) * vb.w;
         vb.y -= (dy / rect.height) * vb.h;
-        var clamped = clampViewBox(vb);
+        var clamped = clampViewBox(vb, aspect());
         vb.x = clamped.x;
         vb.y = clamped.y;
         dragLast = { x: e.clientX, y: e.clientY };
@@ -194,6 +236,11 @@ var MapRender = (function () {
     });
 
     function handleTap(clientX, clientY) {
+      if (opts.onTapPoint) {
+        var rect = svg.getBoundingClientRect();
+        opts.onTapPoint(clientToUser(clientX, clientY), vb.w / rect.width);
+      }
+      if (!onTap) return;
       var el = document.elementFromPoint(clientX, clientY);
       if (!el) return;
       var t = el.closest("[data-idx]");
@@ -218,7 +265,7 @@ var MapRender = (function () {
           } else {
             lastTapTime = now;
             lastTapPos = startPos;
-            if (onTap) handleTap(startPos.x, startPos.y);
+            if (onTap || opts.onTapPoint) handleTap(startPos.x, startPos.y);
           }
         }
         startPointerPos = null;
@@ -242,7 +289,7 @@ var MapRender = (function () {
     );
 
     apply();
-    return { reset: reset };
+    return { reset: reset, resize: resize, zoomBy: zoomBy };
   }
 
   /* ============================== SCENERY (shared background layers) ============================== */
@@ -483,6 +530,7 @@ var MapRender = (function () {
   return {
     FULL_VB: FULL_VB,
     MAP_ASPECT: MAP_ASPECT,
+    TREE_SIZE: TREE_SIZE,
     unionBBox: unionBBox,
     fitViewBoxForBBox: fitViewBoxForBBox,
     createMapController: createMapController,

@@ -88,6 +88,7 @@
       card("learn.html", "Learn", "Lessons &amp; quizzes", learnProgress) +
       card("scroll.html", "Scroll", "Browse every street, one card at a time", scrollProgress) +
       card("walk.html", "Walk", "Find your way from A to B", walkProgress) +
+      card("explore.html", "Explore", "Roam the map &mdash; tap any street, park, building or tree") +
       "</div>";
 
     document.getElementById("app").innerHTML = html;

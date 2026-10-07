@@ -672,26 +672,27 @@ def tree_markers():
     out = []
     for t in base["trees"]["ginkgo_individual"]:
         x, y = project((t["lon"], t["lat"]))
-        out.append({"x": x, "y": y, "kind": "ginkgo"})
+        out.append({"x": x, "y": y, "kind": "ginkgo", "name": t["species"], "girth": t.get("girth")})
     for t in base["trees"]["ginkgo_clusters"]:
         x, y = project((t["lon"], t["lat"]))
         out.append({"x": x, "y": y, "kind": "ginkgo-cluster", "count": t["count"]})
     for t in base["trees"]["magnolia_individual"]:
         x, y = project((t["lon"], t["lat"]))
-        out.append({"x": x, "y": y, "kind": "magnolia"})
+        out.append({"x": x, "y": y, "kind": "magnolia", "name": t["species"]})
     for t in base["trees"]["magnolia_clusters"]:
         x, y = project((t["lon"], t["lat"]))
         out.append({"x": x, "y": y, "kind": "magnolia-cluster", "count": t["count"]})
     for t in base["trees"]["notable_trees"]:
         x, y = project((t["lon"], t["lat"]))
-        out.append({"x": x, "y": y, "kind": "notable", "name": t["name"]})
+        out.append({"x": x, "y": y, "kind": "notable", "name": t["name"], "note": t.get("note")})
     for t in base["trees"].get("significant_park_trees", []):
         x, y = project((t["lon"], t["lat"]))
         # Ginkgo reuses the existing ginkgo symbol; every other genus gets
         # its own symbol (defined in map-render.js's GENUS_TREE_ICONS).
         kind = "ginkgo" if t["genus"] == "Ginkgo" else "genus-" + t["genus"].lower()
-        out.append({"x": x, "y": y, "kind": kind, "name": t["species"], "park": t["park"]})
-    return out
+        out.append({"x": x, "y": y, "kind": kind, "name": t["species"], "park": t["park"], "girth": t.get("girth")})
+    # Drop empty optional fields (girth/note) so the generated file stays lean.
+    return [{k: v for k, v in m.items() if v is not None} for m in out]
 
 
 tree_marker_list = tree_markers()

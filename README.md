@@ -13,12 +13,12 @@ Live app: `index.html` (deployed via GitHub Pages from `main`).
 
 ## Pages
 
-The app is three plain HTML pages, not a single-page app with routes — each
+The app is five plain HTML pages, not a single-page app with routes — each
 is its own entry point, sharing `style.css` and the map-rendering code:
 
-- **`index.html`** — the home menu. Two choices, Learn and Scroll, each with
-  a progress line read from existing localStorage (lesson count for Learn,
-  last card seen for Scroll). Loads only `curriculum-data.js` (to count
+- **`index.html`** — the home menu: Learn, Scroll, Walk and Explore, each
+  of the first three with a progress line read from existing localStorage
+  (lessons complete, last card seen, routes walked). Loads only `curriculum-data.js` (to count
   lessons) and `menu.js`; no map data, so it's light.
 - **`learn.html`** — the original curriculum app (lessons, Learn/Quiz, the
   pan/zoom map). This is what `index.html` used to be before Change Request
@@ -29,8 +29,11 @@ is its own entry point, sharing `style.css` and the map-rendering code:
 - **`walk.html`** — the Walk game: get from A to B by naming the roads of a
   contiguous path (Easy: multiple choice along the fastest path; Hard: type
   any road that continues the walk). See "Walk game" below.
+- **`explore.html`** — the whole map to roam freely: tap a tree to see what
+  kind it is, or a street, square, waterway, building or park to see its
+  name. See "Explore" below.
 
-All three keep the same Add-to-Home-Screen icon and meta tags, and are
+All pages keep the same Add-to-Home-Screen icon and meta tags, and are
 same-origin, so an already-installed home-screen app keeps working.
 
 ## How it's built
@@ -276,6 +279,35 @@ node build/test_walk.js              # tie-break, anchors, Hard validation,
                                      # 1,000-round Easy invariant, hint play-through
 ```
 
+## Explore
+
+`explore.html` + `explore.js` show the full base map, filling the screen
+(the shared map controller takes the screen's real aspect ratio here, where
+the other pages size their map to the map's own). Pan, pinch or scroll to
+zoom, double-tap to zoom in, and the +, &minus; and &#x2922; buttons zoom or
+show the whole map again.
+
+- **Hit-testing is geometric, not DOM-based.** Streets are drawn sub-pixel
+  thin and tree icons are a few pixels wide, so a tap picks the nearest
+  line or tree within 14 screen px (6 px when the tap is inside a building
+  or park, so the area itself stays tappable), then the smallest building
+  or park containing the point. Trees get a small bonus so they win close
+  ties against the road they stand on.
+- **"Also here" chips.** The source data has roads and squares sharing exact
+  geometry (Lobroekdok follows Denderstraat's vertices; many squares are
+  drawn from their surrounding streets) and tree icons covering tiny parks.
+  Everything else effectively on the tapped spot is offered as a chip, so
+  every object is reachable: in testing, every one of the 1,096 roads, 127
+  squares, 15 waterways, 81 buildings, 41 parks and 245 tree markers.
+- **Trees** show an English common name and the botanical name (italic,
+  &times; for hybrids, cultivar in quotes), from the species recorded in the
+  source data: e.g. "Horse chestnut &mdash; *Aesculus hippocastanum*", with
+  the park and trunk girth where known. The common names are a lookup in
+  `explore.js` (full species, then binomial, then genus). Clustered ginkgos
+  and magnolias show as a group with their count. `preprocess.py` now keeps
+  each tree's species, girth and note in `map-data.js` for this.
+- **Every card** also names the neighborhood the tap landed in.
+
 ## localStorage keys
 
 - `antwerpRing.v1` — Learn's existing progress (`{progress, lastOpened,
@@ -288,6 +320,7 @@ node build/test_walk.js              # tie-break, anchors, Hard validation,
 - `antwerpWalk.v1` — Walk: `{mode, filter, played: {easy, hard}, misses,
   hints}`. Also only reads `antwerpRing.v1`, for its "lessons I've started"
   filter.
+- Explore stores nothing.
 
 ## Scope notes
 
