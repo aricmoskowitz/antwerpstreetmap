@@ -460,7 +460,7 @@
                   "number": 7
                 },
                 {
-                  "name": "Sint-Willibrorduskerk",
+                  "name": "Sint-Willibrorduskerk (Antwerpen)",
                   "type": "building",
                   "area_m2": 2635,
                   "is_church": true,
@@ -6908,7 +6908,7 @@
               "title": "Squares, Parks & Waterways & Landmarks & Buildings",
               "objects": [
                 {
-                  "name": "Sint-Willibrorduskerk",
+                  "name": "Sint-Willibrorduskerk (Antwerpen)",
                   "type": "building",
                   "number": 2
                 },
@@ -8589,6 +8589,11 @@
                   "name": "Posthoflei",
                   "type": "road",
                   "number": 5
+                },
+                {
+                  "name": "Sint-Willibrorduskerk (Berchem)",
+                  "type": "building",
+                  "number": 6
                 }
               ]
             },
@@ -10479,57 +10484,57 @@
           "lessons": [
             {
               "id": "8.1.1",
-              "title": "Complete List (81)",
+              "title": "Complete List (82)",
               "objects": [
                 {
                   "name": "Antwerpen-Berchem (station)",
                   "type": "building",
-                  "number": 73
+                  "number": 75
                 },
                 {
                   "name": "Antwerpen-Zuid (station)",
                   "type": "building",
-                  "number": 74
+                  "number": 76
                 },
                 {
                   "name": "Basiliek van het Heilig Hart",
                   "type": "building",
-                  "number": 77
+                  "number": 78
                 },
                 {
                   "name": "Boerentoren",
                   "type": "building",
-                  "number": 28
+                  "number": 20
                 },
                 {
                   "name": "Bourlaschouwburg",
                   "type": "building",
-                  "number": 30
+                  "number": 35
                 },
                 {
                   "name": "Centraal Station",
                   "type": "building",
-                  "number": 33
+                  "number": 39
                 },
                 {
                   "name": "Christus’ Geboortekerk",
                   "type": "building",
-                  "number": 55
+                  "number": 57
                 },
                 {
                   "name": "Church (unnamed)",
                   "type": "building",
-                  "number": 78
+                  "number": 79
                 },
                 {
                   "name": "De Beukelaer",
                   "type": "building",
-                  "number": 68
+                  "number": 71
                 },
                 {
                   "name": "De Roma",
                   "type": "building",
-                  "number": 45
+                  "number": 50
                 },
                 {
                   "name": "De Singel en AP Hogeschool - Campus De Singel",
@@ -10539,57 +10544,57 @@
                 {
                   "name": "De Slag van Waterloo",
                   "type": "building",
-                  "number": 72
+                  "number": 70
                 },
                 {
                   "name": "De Vijf Werelddeelen",
                   "type": "building",
-                  "number": 52
+                  "number": 53
                 },
                 {
                   "name": "Delbekehuis",
                   "type": "building",
-                  "number": 16
+                  "number": 10
                 },
                 {
                   "name": "Districtshuis Borgerhout",
                   "type": "building",
-                  "number": 44
+                  "number": 48
                 },
                 {
                   "name": "Erfgoedbibliotheek Hendrik Conscience",
                   "type": "building",
-                  "number": 14
+                  "number": 19
                 },
                 {
                   "name": "Feestzaal Harmonie",
                   "type": "building",
-                  "number": 70
+                  "number": 67
                 },
                 {
                   "name": "Gerechtshof",
                   "type": "building",
-                  "number": 53
+                  "number": 55
                 },
                 {
                   "name": "Handelsbeurs",
                   "type": "building",
-                  "number": 29
+                  "number": 22
                 },
                 {
                   "name": "Heilig-Hartkerk",
                   "type": "building",
-                  "number": 22
+                  "number": 26
                 },
                 {
                   "name": "Heilige Familie en Sint-Corneliuskerk",
                   "type": "building",
-                  "number": 57
+                  "number": 49
                 },
                 {
                   "name": "Heilige Geestkerk",
                   "type": "building",
-                  "number": 63
+                  "number": 66
                 },
                 {
                   "name": "Hessenhuis",
@@ -10599,67 +10604,67 @@
                 {
                   "name": "Het Steen",
                   "type": "building",
-                  "number": 9
+                  "number": 7
                 },
                 {
                   "name": "Hollandse Synagoge",
                   "type": "building",
-                  "number": 61
+                  "number": 54
                 },
                 {
                   "name": "Hoofdsynagoge van Shomre Hadas",
                   "type": "building",
-                  "number": 56
+                  "number": 58
                 },
                 {
                   "name": "Hoofdsynagoge van de Israelisch Orthodoxe Gemeente Machsiké Hadass",
                   "type": "building",
-                  "number": 65
+                  "number": 59
                 },
                 {
                   "name": "Huzur",
                   "type": "building",
-                  "number": 67
+                  "number": 63
                 },
                 {
                   "name": "Instituut Onze-Lieve-Vrouw Middelares",
                   "type": "building",
-                  "number": 20
+                  "number": 24
                 },
                 {
                   "name": "International Baptist Church",
                   "type": "building",
-                  "number": 62
+                  "number": 65
                 },
                 {
                   "name": "Justitiepaleis Antwerpen",
                   "type": "building",
-                  "number": 59
+                  "number": 62
                 },
                 {
                   "name": "Kapel van het Allerheiligste Sacrament",
                   "type": "building",
-                  "number": 54
+                  "number": 56
                 },
                 {
                   "name": "Kasteel de Bergeyck",
                   "type": "building",
-                  "number": 79
+                  "number": 80
                 },
                 {
                   "name": "Koningin Elisabethzaal",
                   "type": "building",
-                  "number": 34
+                  "number": 27
                 },
                 {
                   "name": "Koninklijk Museum voor Schone Kunsten Antwerpen (KMSKA)",
                   "type": "building",
-                  "number": 50
+                  "number": 52
                 },
                 {
                   "name": "Lindner Hotel Antwerp",
                   "type": "building",
-                  "number": 42
+                  "number": 47
                 },
                 {
                   "name": "Loodswezen",
@@ -10669,17 +10674,17 @@
                 {
                   "name": "M HKA - Museum van Hedendaagse Kunst Antwerpen",
                   "type": "building",
-                  "number": 48
+                  "number": 43
                 },
                 {
                   "name": "Mayer van den Bergh",
                   "type": "building",
-                  "number": 39
+                  "number": 34
                 },
                 {
                   "name": "Modepaleis",
                   "type": "building",
-                  "number": 25
+                  "number": 17
                 },
                 {
                   "name": "Museum aan de Stroom",
@@ -10689,157 +10694,157 @@
                 {
                   "name": "Noorse Zeemanskerk",
                   "type": "building",
-                  "number": 6
+                  "number": 5
                 },
                 {
                   "name": "Onze-Lieve-Vrouw van Gratiekerk",
                   "type": "building",
-                  "number": 41
+                  "number": 38
                 },
                 {
                   "name": "Onze-Lieve-Vrouw-ter-Sneeuwkerk",
                   "type": "building",
-                  "number": 37
+                  "number": 41
                 },
                 {
                   "name": "Onze-Lieve-Vrouwekathedraal",
                   "type": "building",
-                  "number": 12
+                  "number": 18
                 },
                 {
                   "name": "Oudaan",
                   "type": "building",
-                  "number": 27
+                  "number": 33
                 },
                 {
                   "name": "Pagodepoort",
                   "type": "building",
-                  "number": 32
+                  "number": 25
                 },
                 {
                   "name": "Planetarium",
                   "type": "building",
-                  "number": 35
+                  "number": 28
                 },
                 {
                   "name": "Protestants Evangelische kerk",
                   "type": "building",
-                  "number": 19
+                  "number": 12
                 },
                 {
                   "name": "Provincial Institute PIVA",
                   "type": "building",
-                  "number": 75
+                  "number": 77
                 },
                 {
                   "name": "Shopping Stadsfeestzaal",
                   "type": "building",
-                  "number": 31
+                  "number": 37
                 },
                 {
                   "name": "Sint-Amanduskerk",
                   "type": "building",
-                  "number": 7
+                  "number": 6
                 },
                 {
                   "name": "Sint-Andrieskerk",
                   "type": "building",
-                  "number": 24
+                  "number": 31
                 },
                 {
                   "name": "Sint-Annakerk",
                   "type": "building",
-                  "number": 23
+                  "number": 30
                 },
                 {
                   "name": "Sint-Antoniuskerk",
                   "type": "building",
-                  "number": 5
+                  "number": 13
                 },
                 {
                   "name": "Sint-Augustinuskerk",
                   "type": "building",
-                  "number": 26
+                  "number": 32
                 },
                 {
                   "name": "Sint-Bonifaciuskerk",
                   "type": "building",
-                  "number": 71
+                  "number": 69
                 },
                 {
                   "name": "Sint-Carolus Borromeuskerk",
                   "type": "building",
-                  "number": 15
+                  "number": 21
                 },
                 {
                   "name": "Sint-Catharinakerk",
                   "type": "building",
-                  "number": 21
+                  "number": 14
                 },
                 {
                   "name": "Sint-Dominicuskerk",
                   "type": "building",
-                  "number": 43
+                  "number": 40
                 },
                 {
                   "name": "Sint-Eligiuskerk",
                   "type": "building",
-                  "number": 8
+                  "number": 15
                 },
                 {
                   "name": "Sint-Hubertuskerk",
                   "type": "building",
-                  "number": 80
+                  "number": 74
                 },
                 {
                   "name": "Sint-Jacobskerk",
                   "type": "building",
-                  "number": 18
+                  "number": 23
                 },
                 {
                   "name": "Sint-Janskerk",
                   "type": "building",
-                  "number": 46
+                  "number": 42
                 },
                 {
                   "name": "Sint-Joriskerk",
                   "type": "building",
-                  "number": 38
+                  "number": 46
                 },
                 {
                   "name": "Sint-Laurentiuskerk",
                   "type": "building",
-                  "number": 76
+                  "number": 72
                 },
                 {
                   "name": "Sint-Michielskerk",
                   "type": "building",
-                  "number": 60
+                  "number": 64
                 },
                 {
                   "name": "Sint-Norbertuskerk",
                   "type": "building",
-                  "number": 66
+                  "number": 60
                 },
                 {
                   "name": "Sint-Pauluskerk",
                   "type": "building",
-                  "number": 13
+                  "number": 9
                 },
                 {
                   "name": "Sint-Walburgiskerk",
                   "type": "building",
-                  "number": 51
+                  "number": 45
                 },
                 {
-                  "name": "Sint-Willibrorduskerk",
+                  "name": "Sint-Willibrorduskerk (Antwerpen)",
                   "type": "building",
-                  "number": 36
+                  "number": 29
                 },
                 {
                   "name": "Stadhuis Antwerpen",
                   "type": "building",
-                  "number": 10
+                  "number": 16
                 },
                 {
                   "name": "Stadsarchief Sint-Felix pakhuis",
@@ -10849,46 +10854,51 @@
                 {
                   "name": "Stadscampus: Gebouw A",
                   "type": "building",
-                  "number": 17
+                  "number": 11
                 },
                 {
                   "name": "Stadsschouwburg",
                   "type": "building",
-                  "number": 40
+                  "number": 36
                 },
                 {
                   "name": "Vleeshuis",
                   "type": "building",
-                  "number": 11
+                  "number": 8
                 },
                 {
                   "name": "Waterpoort",
                   "type": "building",
-                  "number": 47
+                  "number": 51
                 },
                 {
                   "name": "Zuiderpershuis",
                   "type": "building",
-                  "number": 49
+                  "number": 44
                 },
                 {
                   "name": "Zwembad Plantin-Moretus",
                   "type": "building",
-                  "number": 58
+                  "number": 61
                 },
                 {
                   "name": "ZAS Vincentius",
                   "type": "building",
                   "area_m2": 29302,
                   "is_church": false,
-                  "number": 64
+                  "number": 68
                 },
                 {
                   "name": "AZ Monica Antwerpen",
                   "type": "building",
                   "area_m2": 9020,
                   "is_church": false,
-                  "number": 69
+                  "number": 73
+                },
+                {
+                  "name": "Sint-Willibrorduskerk (Berchem)",
+                  "type": "building",
+                  "number": 82
                 }
               ]
             }

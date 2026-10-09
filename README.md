@@ -298,7 +298,7 @@ show the whole map again.
   drawn from their surrounding streets) and tree icons covering tiny parks.
   Everything else effectively on the tapped spot is offered as a chip, so
   every object is reachable: in testing, every one of the 1,096 roads, 127
-  squares, 15 waterways, 81 buildings, 41 parks and 245 tree markers.
+  squares, 15 waterways, 82 buildings, 41 parks and 245 tree markers.
 - **Trees** show an English common name and the botanical name (italic,
   &times; for hybrids, cultivar in quotes), from the species recorded in the
   source data: e.g. "Horse chestnut &mdash; *Aesculus hippocastanum*", with

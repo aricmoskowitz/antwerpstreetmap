@@ -12,16 +12,16 @@
 
 #### 1.1.1 Ten Longest Roads on the Map (10)
 
-- 9. Binnensingel (road) — 8.54 km
+- 10. Binnensingel (road) — 8.54 km
 - 1. Italiëlei (road) — 5.65 km
-- 3. Noordersingel (road) — 5.65 km
+- 5. Noordersingel (road) — 5.65 km
 - 2. Noorderlaan (road) — 5.05 km
-- 4. Amerikalei (road) — 4.91 km
-- 8. Mechelsesteenweg (road) — 3.92 km
-- 5. Frankrijklei (road) — 3.49 km
-- 6. Plantin en Moretuslei (road) — 3.40 km
-- 7. Jan Van Rijswijcklaan (road) — 3.39 km
-- Turnhoutsebaan (road) — 5.38 km
+- 6. Amerikalei (road) — 4.91 km
+- 7. Mechelsesteenweg (road) — 3.92 km
+- 3. Frankrijklei (road) — 3.49 km
+- 8. Plantin en Moretuslei (road) — 3.40 km
+- 9. Jan Van Rijswijcklaan (road) — 3.39 km
+- 4. Turnhoutsebaan (road) — 5.38 km
 
 #### 1.1.2 Waterfront Quays ("-kaai" streets) over 500m (19)
 
@@ -90,7 +90,7 @@
 - 10. Sint-Jacobskerk (building) — 4,726 m²
 - 21. Sint-Michielskerk (building) — 2,853 m²
 - 7. Sint-Andrieskerk (building) — 2,777 m²
-- 11. Sint-Willibrorduskerk (building) — 2,635 m²
+- 11. Sint-Willibrorduskerk (Antwerpen) (building) — 2,635 m²
 - 1. Sint-Pauluskerk (building) — 2,594 m²
 - 3. Sint-Antoniuskerk (building) — 2,490 m²
 - 13. Sint-Janskerk (building) — 2,431 m²
@@ -1341,7 +1341,7 @@
 
 #### 4.6.1 Squares, Parks & Waterways & Landmarks & Buildings (5)
 
-- 2. Sint-Willibrorduskerk (building)
+- 2. Sint-Willibrorduskerk (Antwerpen) (building)
 - 4. Districtshuis Borgerhout (building)
 - 1. Willibrordusplein (square)
 - 3. Moorkensplein (square)
@@ -1683,13 +1683,14 @@
 
 ### 5.9 Charlottalei (Oostwijk) + Posthof + Stuivenberg
 
-#### 5.9.1 Notable Roads & Squares, Parks & Waterways & Landmarks & Buildings (5)
+#### 5.9.1 Notable Roads & Squares, Parks & Waterways & Landmarks & Buildings (6)
 
 - 2. Christus’ Geboortekerk (building)
 - 4. Frans Van Hombeeckplein (square)
 - 3. Brialmontlei (road)
 - 1. Charlottalei (road)
 - 5. Posthoflei (road)
+- Sint-Willibrorduskerk (Berchem) (building)
 
 #### 5.9.2 Other Streets (33)
 
@@ -2056,17 +2057,17 @@
 
 #### 7.1.1 Notable Roads, Landmarks, Parks, Waterways & Other Streets (11)
 
-- 4. Foorplein (square)
+- 5. Foorplein (square)
 - 2. Buurtpark Spoor Oost (park)
-- 5. Buurtpark Dokter Van De Perrelei (park)
+- 9. Buurtpark Dokter Van De Perrelei (park)
 - 1. Buurtspoorweglei (road)
 - 3. Noordersingel (road)
-- Turnhoutsebaan (road) — 5.38 km
-- Turnhoutsebaan (road) — 5.38 km
-- 3. Stenenbrug (road) — 0.95 km
-- 2. Luitenant Lippenslaan (road) — 0.85 km
-- 1. Hof ter Lo (road) — 0.16 km
-- 4. Joe Englishstraat (road) — 0.15 km
+- 6. Turnhoutsebaan (road) — 5.38 km
+- 7. Turnhoutsebaan (road) — 5.38 km
+- 8. Stenenbrug (road) — 0.95 km
+- 10. Luitenant Lippenslaan (road) — 0.85 km
+- 4. Hof ter Lo (road) — 0.16 km
+- 11. Joe Englishstraat (road) — 0.15 km
 
 ---
 
@@ -2074,7 +2075,7 @@
 
 ### 8.1 All Landmarks & Buildings
 
-#### 8.1.1 Complete List (81) (81)
+#### 8.1.1 Complete List (82) (82)
 
 - 73. Antwerpen-Berchem (station) (building)
 - 74. Antwerpen-Zuid (station) (building)
@@ -2146,7 +2147,7 @@
 - 66. Sint-Norbertuskerk (building)
 - 13. Sint-Pauluskerk (building)
 - 51. Sint-Walburgiskerk (building)
-- 36. Sint-Willibrorduskerk (building)
+- 36. Sint-Willibrorduskerk (Antwerpen) (building)
 - 10. Stadhuis Antwerpen (building)
 - 3. Stadsarchief Sint-Felix pakhuis (building)
 - 17. Stadscampus: Gebouw A (building)
@@ -2157,6 +2158,7 @@
 - 58. Zwembad Plantin-Moretus (building)
 - 64. ZAS Vincentius (building) — 29,302 m²
 - 69. AZ Monica Antwerpen (building) — 9,020 m²
+- Sint-Willibrorduskerk (Berchem) (building)
 
 ### 8.2 All Waterways
 
@@ -2360,16 +2362,16 @@
 
 #### 8.5.1 Ten Longest (10) (10)
 
-- 9. Binnensingel (road)
+- 10. Binnensingel (road)
 - 1. Italiëlei (road)
-- 3. Noordersingel (road)
+- 5. Noordersingel (road)
 - 2. Noorderlaan (road)
-- 4. Amerikalei (road)
-- 8. Mechelsesteenweg (road)
-- 5. Frankrijklei (road)
-- 6. Plantin en Moretuslei (road)
-- 7. Jan Van Rijswijcklaan (road)
-- Turnhoutsebaan (road) — 5.38 km
+- 6. Amerikalei (road)
+- 7. Mechelsesteenweg (road)
+- 3. Frankrijklei (road)
+- 8. Plantin en Moretuslei (road)
+- 9. Jan Van Rijswijcklaan (road)
+- 4. Turnhoutsebaan (road) — 5.38 km
 
 #### 8.5.2 Kaai & Lei Streets (79) (79)
 
