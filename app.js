@@ -121,14 +121,7 @@
   /* ============================== HOME SCREEN ============================== */
 
   function brandMark() {
-    return (
-      '<svg class="brand-mark" viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg">' +
-      '<rect width="180" height="180" fill="#f6f3ec" rx="26"/>' +
-      '<path d="' +
-      MAP_DATA.iconPath +
-      '" fill="#c85a2e"/>' +
-      "</svg>"
-    );
+    return '<img class="brand-mark" src="icons/favicon.svg" alt="" width="38" height="38">';
   }
 
   function objectCountLabel(lesson) {

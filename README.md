@@ -42,6 +42,24 @@ redirects (to `index.html#learn` etc., which opens that tab and then drops
 the hash), so old bookmarks and already-installed home-screen icons keep
 working.
 
+## App icon
+
+`icons/` holds the home-screen icon (`apple-touch-icon.png`, 180px), the
+browser-tab icons (`favicon.svg`, `favicon-32.png`) and the master
+`icon.svg`; Learn's header shows the same icon. `build/make_icon.py` draws
+them all from the source map data, so re-run it after the ring boundary
+changes:
+
+```
+python3 build/make_icon.py
+```
+
+It's four flat shapes in the colours of the province of Antwerp's flag: the
+ring (red, corners softened), the Schelde (blue) flowing past the quays and
+bending away west at the north end, the Leien as one white boulevard, and
+the Stadspark (yellow, drawn larger than life so it reads at icon size).
+The PNGs are drawn with Pillow from the same shapes as the SVGs.
+
 ## How it's built
 
 - **No backend, no client-side build step.** `index.html` loads `style.css`

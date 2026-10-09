@@ -697,65 +697,6 @@ def tree_markers():
 
 tree_marker_list = tree_markers()
 
-# ------------------------------------------------------------------
-# App icon: a simplified silhouette of the ring boundary itself
-# ------------------------------------------------------------------
-
-
-def rdp(points, epsilon):
-    if len(points) < 3:
-        return points
-
-    def dist_point_to_seg(p, a, b):
-        ax, ay = a
-        bx, by = b
-        px, py = p
-        dx, dy = bx - ax, by - ay
-        if dx == 0 and dy == 0:
-            return math.hypot(px - ax, py - ay)
-        t = max(0, min(1, ((px - ax) * dx + (py - ay) * dy) / (dx * dx + dy * dy)))
-        return math.hypot(px - (ax + t * dx), py - (ay + t * dy))
-
-    dmax, index = 0, 0
-    for k in range(1, len(points) - 1):
-        d = dist_point_to_seg(points[k], points[0], points[-1])
-        if d > dmax:
-            index, dmax = k, d
-    if dmax > epsilon:
-        left = rdp(points[: index + 1], epsilon)
-        right = rdp(points[index:], epsilon)
-        return left[:-1] + right
-    return [points[0], points[-1]]
-
-
-def build_icon_path(size=180, pad=0.08, epsilon=0.001):
-    simplified = rdp(base["ring_boundary"][:-1], epsilon)
-    ilons = [p[0] for p in simplified]
-    ilats = [p[1] for p in simplified]
-    ilon_min, ilon_max = min(ilons), max(ilons)
-    ilat_min, ilat_max = min(ilats), max(ilats)
-    ilat0 = (ilat_min + ilat_max) / 2
-    icos0 = math.cos(math.radians(ilat0))
-    ilon_span = (ilon_max - ilon_min) * (1 + 2 * pad)
-    ilat_span = (ilat_max - ilat_min) * (1 + 2 * pad)
-    ilon_min -= (ilon_max - ilon_min) * pad
-    top_lat = ilat_max + (ilat_max - ilat_min) * pad
-    iscale = min(size / (ilon_span * icos0), size / ilat_span)
-    proj = []
-    for lon, lat in simplified:
-        x = (lon - ilon_min) * icos0 * iscale
-        y = (top_lat - lat) * iscale
-        proj.append((x, y))
-    xs = [p[0] for p in proj]
-    ys = [p[1] for p in proj]
-    offx = (size - (max(xs) - min(xs))) / 2 - min(xs)
-    offy = (size - (max(ys) - min(ys))) / 2 - min(ys)
-    proj = [(round(x + offx, 1), round(y + offy, 1)) for x, y in proj]
-    return "M " + " L ".join(f"{x},{y}" for x, y in proj) + " Z"
-
-
-icon_path = build_icon_path()
-
 map_data = {
     "viewBox": f"0 0 {VIEW_W:.1f} {VIEW_H:.2f}",
     "boundary": boundary_d,
@@ -772,7 +713,6 @@ map_data = {
     "bgRail": bg_rail_d,
     "trees": tree_marker_list,
     "objects": objects,
-    "iconPath": icon_path,
 }
 
 # ------------------------------------------------------------------
