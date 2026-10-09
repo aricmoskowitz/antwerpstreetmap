@@ -323,14 +323,27 @@
   function treeInfo(t) {
     var cluster = /-cluster$/.test(t.kind);
     if (t.kind === "notable") {
-      // "European Beech (Fagus sylvatica) — monumental tree"
+      // "European Beech (Fagus sylvatica) — monumental tree, 505 cm girth"
       var m = /^(.*?)\s*\(([^)]+)\)/.exec(t.name || "");
-      var note = (t.note || "").replace(/\s*Reference:.*$/, "");
+      var girth = /(\d+)\s*cm girth/.exec(t.name || "");
+      // keep the note's description, drop source citations meant for
+      // maintainers ("Reference: …", "City tree registry OBJECTID …")
+      var note = (t.note || "")
+        .replace(/\.\s*$/, "")
+        .split(/\.\s+/)
+        .filter(function (sentence) {
+          return sentence && !/^Reference:|registry|OBJECTID/i.test(sentence);
+        })
+        .join(". ");
+      if (note) note += ".";
+      var meta = [];
+      if (girth) meta.push("Trunk " + girth[1] + " cm around");
+      if (note) meta.push(note);
       return {
         label: "Monumental tree",
         title: m ? m[1].charAt(0) + m[1].slice(1).toLowerCase() : t.name,
         sub: m ? "<i>" + esc(m[2]) + "</i>" : "",
-        meta: note ? [note] : [],
+        meta: meta,
       };
     }
     if (cluster) {
@@ -380,13 +393,8 @@
 
   /* ============================== PAGE ============================== */
 
-  document.body.classList.add("explore-page");
-  var appEl = document.getElementById("app");
+  var appEl = document.getElementById("view-explore");
   appEl.innerHTML =
-    '<div class="explore-topbar">' +
-    '<a class="back-btn" href="index.html">&larr; Menu</a>' +
-    '<div class="explore-title">Explore</div>' +
-    "</div>" +
     '<div class="explore-map" id="exploreMap">' +
     '<svg id="exploreSvg" viewBox="' +
     MAP_DATA.viewBox +
@@ -436,7 +444,13 @@
     controller.resize();
   });
   document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape") select(null);
+    if (e.key === "Escape" && !appEl.hidden) select(null);
+  });
+  // the window may have been resized (or rotated) while another tab was open
+  AppShell.register("explore", {
+    onShow: function () {
+      controller.resize();
+    },
   });
 
   // Screen px -> the local units of a .badge group (which the controller

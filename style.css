@@ -1,4 +1,5 @@
 :root {
+  --tabbar-h: calc(58px + env(safe-area-inset-bottom));
   --bg: #f6f3ec;
   --panel: #ffffff;
   --ink: #2a2f2b;
@@ -45,7 +46,106 @@ body {
   flex-direction: column;
   position: relative;
   padding-top: env(safe-area-inset-top);
+  /* room for the fixed tab bar */
+  padding-bottom: var(--tabbar-h);
+}
+
+/* ---------- app shell: views + bottom tab bar ---------- */
+
+.view {
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 auto;
+}
+
+.view[hidden] {
+  display: none !important;
+}
+
+/* Scroll and Explore fill exactly the space above the tab bar; the page
+   itself doesn't scroll. Learn and Walk scroll the page as usual. */
+body[data-tab="scroll"] #app,
+body[data-tab="explore"] #app {
+  height: 100vh;
+  height: 100dvh;
+  min-height: 0;
+  overflow: hidden;
+}
+
+body[data-tab="scroll"] .view,
+body[data-tab="explore"] .view {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* the Explore map uses the full window width, even on desktop */
+body[data-tab="explore"] #app {
+  max-width: none;
+}
+
+/* Learn renders into #learn-root (its reset modal sits beside it) */
+#learn-root {
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 auto;
+}
+
+.view-status {
+  padding: 48px 24px;
+  text-align: center;
+  color: var(--muted);
+}
+
+.tabbar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: var(--tabbar-h);
   padding-bottom: env(safe-area-inset-bottom);
+  display: flex;
+  justify-content: center;
+  background: var(--panel);
+  border-top: 1px solid var(--line);
+  z-index: 25; /* under Learn's detail sheet (30) and the reset modal (40) */
+}
+
+.tabbar-tab {
+  appearance: none;
+  border: none;
+  background: transparent;
+  flex: 1 1 0;
+  max-width: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  color: var(--muted);
+  font: inherit;
+  font-size: 0.7rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.tabbar-tab svg {
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.tabbar-tab.active {
+  color: var(--ring);
+}
+
+.tabbar-tab:focus-visible {
+  outline: 2px solid var(--target);
+  outline-offset: -4px;
 }
 
 h1,
@@ -886,77 +986,14 @@ header.lesson-header {
   display: none !important;
 }
 
-/* ---------- home menu ---------- */
-
-.menu-header {
-  padding: calc(28px + env(safe-area-inset-top)) 20px 8px;
-  text-align: center;
-}
-
-.menu-header h1 {
-  font-size: 1.5rem;
-  font-weight: 700;
-}
-
-.menu-header .sub {
-  font-size: 0.85rem;
-  color: var(--muted);
-  margin-top: 4px;
-}
-
-.menu-cards {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  padding: 18px 18px calc(18px + env(safe-area-inset-bottom));
-}
-
-.menu-card {
-  display: block;
-  background: var(--panel);
-  border: 1px solid var(--line);
-  border-radius: 2px 16px 2px 16px;
-  padding: 20px 20px;
-  text-decoration: none;
-  color: var(--ink);
-  min-height: 44px;
-}
-
-.menu-card-title {
-  font-family: "Fraunces", serif;
-  font-size: 1.3rem;
-  font-weight: 700;
-}
-
-.menu-card-sub {
-  font-size: 0.88rem;
-  color: var(--muted);
-  margin-top: 4px;
-}
-
-.menu-card-progress {
-  font-size: 0.78rem;
-  color: var(--accent);
-  margin-top: 10px;
-  font-weight: 600;
-}
-
 /* ---------- scroll feed ---------- */
-
-.scroll-page #app {
-  height: 100vh;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-}
 
 .scroll-topbar {
   flex: 0 0 auto;
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: calc(10px + env(safe-area-inset-top)) 12px 10px;
+  padding: 10px 12px;
   border-bottom: 1px solid var(--line);
   background: var(--bg);
 }
@@ -1110,7 +1147,7 @@ header.lesson-header {
   flex: 0 1 auto;
   min-height: 0;
   overflow-y: auto;
-  padding: 10px 16px calc(8px + env(safe-area-inset-bottom));
+  padding: 10px 16px 8px;
   display: flex;
   flex-direction: column;
   gap: 7px;
@@ -1232,16 +1269,16 @@ header.lesson-header {
 
 /* ---------- walk game (Change Request 4) ---------- */
 
-.walk-page #app {
+#view-walk {
   /* room for the fixed Hard-mode entry bar */
-  padding-bottom: calc(84px + env(safe-area-inset-bottom));
+  padding-bottom: 84px;
 }
 
 .walk-topbar {
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: calc(10px + env(safe-area-inset-top)) 12px 10px;
+  padding: 10px 12px;
   border-bottom: 1px solid var(--line);
 }
 
@@ -1580,13 +1617,14 @@ header.lesson-header {
   position: fixed;
   left: 0;
   right: 0;
-  bottom: var(--kb, 0px);
+  /* above the tab bar, or above the on-screen keyboard while typing */
+  bottom: max(var(--kb, 0px), var(--tabbar-h));
   max-width: 480px;
   margin: 0 auto;
   z-index: 20;
   background: var(--bg);
   border-top: 1px solid var(--line);
-  padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
+  padding: 10px 12px;
 }
 
 .walk-entry-row {
@@ -1732,31 +1770,6 @@ header.lesson-header {
 
 /* ---------- explore (free map) ---------- */
 
-.explore-page #app {
-  /* the map uses the full window, even on desktop */
-  max-width: none;
-  height: 100vh;
-  height: 100dvh;
-  min-height: 0;
-  padding: 0;
-  overflow: hidden;
-}
-
-.explore-topbar {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: calc(10px + env(safe-area-inset-top)) 12px 10px;
-  border-bottom: 1px solid var(--line);
-  flex: none;
-}
-
-.explore-title {
-  font-family: "Fraunces", Georgia, serif;
-  font-weight: 600;
-  font-size: 1.15rem;
-}
-
 .explore-map {
   position: relative;
   flex: 1 1 auto;
@@ -1807,7 +1820,7 @@ header.lesson-header {
 .explore-hint {
   position: absolute;
   left: 50%;
-  bottom: calc(14px + env(safe-area-inset-bottom));
+  bottom: 14px;
   transform: translateX(-50%);
   max-width: calc(100% - 32px);
   background: var(--ink);
@@ -1824,7 +1837,7 @@ header.lesson-header {
   position: absolute;
   left: 10px;
   right: 10px;
-  bottom: calc(10px + env(safe-area-inset-bottom));
+  bottom: 10px;
   background: var(--panel);
   border: 1px solid var(--line);
   border-radius: 2px 16px 2px 16px;

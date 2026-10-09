@@ -139,11 +139,9 @@
 
   /* ============================== SHELL ============================== */
 
-  document.body.classList.add("walk-page");
-  var appEl = document.getElementById("app");
+  var appEl = document.getElementById("view-walk");
   appEl.innerHTML =
     '<div class="walk-topbar">' +
-    '<a class="back-btn" href="index.html">&larr; Menu</a>' +
     '<div class="walk-mode" role="group" aria-label="Difficulty">' +
     '<button data-mode="easy">Easy</button><button data-mode="hard">Hard</button></div>' +
     '<select class="walk-filter" id="walkFilter" aria-label="Which objects">' +

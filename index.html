@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Antwerp Inside the Ring</title>
-<meta name="description" content="Learn the streets, squares, waterways, buildings, parks, and neighborhoods of Antwerp's historic core through a browsable map and tap-to-answer quiz.">
+<meta name="description" content="Learn the streets, squares, waterways, buildings, parks, trees and neighborhoods of Antwerp's historic core: browse street cards, take map quizzes, walk routes and explore the map.">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -16,9 +16,26 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div id="app"></div>
+<div id="app">
+<section class="view" id="view-scroll" hidden></section>
+<section class="view" id="view-learn" hidden>
+  <div id="learn-root" data-mount></div>
+  <div class="modal-backdrop" id="resetModal" hidden>
+    <div class="modal-card">
+      <h3>Reset all progress?</h3>
+      <p>This clears every module's quiz score. This can't be undone.</p>
+      <div class="modal-btn-row">
+        <button class="btn btn-secondary" id="resetCancel">Cancel</button>
+        <button class="btn btn-primary" id="resetConfirm">Reset</button>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="view" id="view-walk" hidden></section>
+<section class="view" id="view-explore" hidden></section>
+</div>
+<nav class="tabbar" id="tabbar" aria-label="App sections"></nav>
 
-<script src="data/generated/curriculum-data.js"></script>
-<script src="menu.js"></script>
+<script src="shell.js"></script>
 </body>
 </html>

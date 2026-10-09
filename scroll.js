@@ -168,8 +168,6 @@
 
   /* ============================== UI SHELL ============================== */
 
-  document.body.classList.add("scroll-page");
-
   var ORDER_LABELS = {
     curriculum: "Curriculum",
     region: "Region",
@@ -177,10 +175,9 @@
     shuffle: "Shuffle",
   };
 
-  var appEl = document.getElementById("app");
+  var appEl = document.getElementById("view-scroll");
   appEl.innerHTML =
     '<div class="scroll-topbar">' +
-    '<a class="back-btn" href="index.html">&larr; Menu</a>' +
     '<button class="scroll-back-chip hidden" id="backChip">&larr; Back</button>' +
     '<select class="scroll-order-select" id="orderSelect">' +
     Object.keys(ORDER_LABELS)
@@ -556,10 +553,19 @@
   feedEl.addEventListener("scroll", function () {
     clearTimeout(scrollTimer);
     scrollTimer = setTimeout(function () {
+      if (!feedEl.clientHeight) return; // view hidden (another tab is open)
       state.positions[state.order] = currentPos();
       save();
     }, 150);
   });
 
   renderList();
+
+  // Back from another tab: hiding the view can drop the feed's scroll
+  // offset, so put the card the reader was on back in place.
+  AppShell.register("scroll", {
+    onShow: function () {
+      feedEl.scrollTop = (state.positions[state.order] || 0) * feedEl.clientHeight;
+    },
+  });
 })();
