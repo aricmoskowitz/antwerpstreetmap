@@ -1,5 +1,5 @@
 :root {
-  --tabbar-h: calc(58px + env(safe-area-inset-bottom));
+  --tabbar-h: calc(50px + env(safe-area-inset-bottom));
   --bg: #f6f3ec;
   --panel: #ffffff;
   --ink: #2a2f2b;
@@ -62,9 +62,10 @@ body {
   display: none !important;
 }
 
-/* Scroll and Explore fill exactly the space above the tab bar; the page
-   itself doesn't scroll. Learn and Walk scroll the page as usual. */
+/* Scroll, Walk and Explore fill exactly the space above the tab bar; the
+   page itself doesn't scroll. Learn scrolls the page as usual. */
 body[data-tab="scroll"] #app,
+body[data-tab="walk"] #app,
 body[data-tab="explore"] #app {
   height: 100vh;
   height: 100dvh;
@@ -73,6 +74,7 @@ body[data-tab="explore"] #app {
 }
 
 body[data-tab="scroll"] .view,
+body[data-tab="walk"] .view,
 body[data-tab="explore"] .view {
   flex: 1 1 auto;
   min-height: 0;
@@ -121,17 +123,17 @@ body[data-tab="explore"] #app {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 3px;
+  gap: 2px;
   color: var(--muted);
   font: inherit;
-  font-size: 0.7rem;
+  font-size: 0.66rem;
   font-weight: 600;
   cursor: pointer;
 }
 
 .tabbar-tab svg {
-  width: 24px;
-  height: 24px;
+  width: 22px;
+  height: 22px;
   fill: none;
   stroke: currentColor;
   stroke-width: 1.8;
@@ -1269,16 +1271,20 @@ header.lesson-header {
 
 /* ---------- walk game (Change Request 4) ---------- */
 
-#view-walk {
-  /* room for the fixed Hard-mode entry bar */
-  padding-bottom: 84px;
+#view-walk.walk-done .walk-map {
+  min-height: 50%;
+}
+
+/* room for the fixed Hard-mode entry bar, only while it's shown */
+#view-walk.walk-has-entry {
+  padding-bottom: 66px;
 }
 
 .walk-topbar {
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 10px 12px;
+  padding: 6px 12px;
   border-bottom: 1px solid var(--line);
 }
 
@@ -1294,7 +1300,7 @@ header.lesson-header {
 .walk-mode button {
   border: none;
   background: transparent;
-  min-height: 44px;
+  min-height: 36px;
   padding: 0 14px;
   border-radius: 999px;
   font-family: "Inter", sans-serif;
@@ -1313,7 +1319,7 @@ header.lesson-header {
 .walk-filter {
   flex: 1;
   min-width: 0;
-  min-height: 44px;
+  min-height: 40px;
   appearance: none;
   border: 1px solid var(--line);
   background: var(--panel);
@@ -1328,7 +1334,8 @@ header.lesson-header {
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 10px 14px;
+  padding: 6px 14px;
+  flex: none;
 }
 
 .walk-end {
@@ -1379,6 +1386,8 @@ header.lesson-header {
 
 .walk-map {
   position: relative;
+  flex: 1 1 auto;
+  min-height: 140px;
   background: var(--bg);
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
@@ -1491,14 +1500,17 @@ header.lesson-header {
 }
 
 .walk-panel {
-  padding: 12px 12px 16px;
+  flex: 0 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 8px 12px 10px;
 }
 
 .walk-card {
   background: var(--panel);
   border: 1px solid var(--line);
   border-radius: 2px 16px 2px 16px;
-  padding: 14px;
+  padding: 10px 12px;
 }
 
 .walk-empty p {
@@ -1518,26 +1530,29 @@ header.lesson-header {
   font-family: "Fraunces", serif;
   font-size: 1.05rem;
   font-weight: 600;
-  margin: 2px 0 10px;
+  margin: 2px 0 8px;
   line-height: 1.3;
 }
 
 .walk-options {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 8px;
 }
 
 .walk-option {
   appearance: none;
-  min-height: 48px;
+  min-height: 44px;
+  min-width: 0;
   text-align: left;
-  padding: 10px 14px;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+  padding: 6px 12px;
   background: var(--bg);
   border: 1px solid var(--line);
   border-radius: 2px 14px 2px 14px;
   font-family: "Inter", sans-serif;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   font-weight: 600;
   color: var(--ink);
   cursor: pointer;
@@ -1548,11 +1563,6 @@ header.lesson-header {
   border-color: var(--bad);
   color: #fff;
   opacity: 0.85;
-}
-
-.walk-option.hinted {
-  border-color: var(--good);
-  box-shadow: inset 0 0 0 2px var(--good);
 }
 
 .walk-hint-btn {
@@ -1576,8 +1586,8 @@ header.lesson-header {
 
 .walk-msg {
   font-size: 0.85rem;
-  margin: 0 0 10px;
-  padding: 8px 10px;
+  margin: 0 0 8px;
+  padding: 6px 10px;
   border-radius: 2px 10px 2px 10px;
   background: var(--bg);
 }
@@ -1689,12 +1699,27 @@ header.lesson-header {
 
 .walk-summary h2 {
   font-size: 1.25rem;
+  margin: 0;
+}
+
+.walk-summary-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
   margin-bottom: 10px;
+}
+
+.walk-summary-head .btn {
+  width: auto;
+  margin: 0;
+  flex: none;
 }
 
 .walk-stats {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
   gap: 6px;
   margin-bottom: 10px;
 }

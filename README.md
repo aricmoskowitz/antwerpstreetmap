@@ -285,7 +285,22 @@ python3 build/street_graph.py
 fastest path (A* for the true shortest distance under the rules, then a
 fewest-road-changes search within 2% of it), shortest walk along a given
 road sequence (layered Dijkstra, for Hard-mode distances), Easy-mode
-distractors, Hard-mode validation and hints. `walk-page.js` is the UI.
+distractors, Hard-mode validation and hints. `walk-page.js` is the UI:
+
+- **Easy** has no hint. While it asks "You're on X. Which road next?", the
+  route so far - including X - is drawn up to the junction where the next
+  turn is, with the blue dot there. Easy follows the fastest path, so that
+  junction is known in advance, and the wrong options never touch X, so
+  marking it gives none of them away. (When the next turn is at the very
+  junction where you joined X, there's nothing of X to draw yet.)
+- **Hard** keeps the dot where you joined the current road: you can turn
+  off anywhere along it, so the next junction isn't known until you name
+  the next road. It has a Hint button.
+- **Layout:** the tab fills the screen above the tab bar without page
+  scrolling. The map takes whatever height the question card leaves (at
+  least 140px; half the height on the end-of-round summary, whose card
+  scrolls on its own), and Easy's four options sit in a two-by-two grid.
+
 Tests:
 
 ```
