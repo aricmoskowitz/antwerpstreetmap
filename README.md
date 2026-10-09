@@ -18,7 +18,7 @@ bottom to switch between them: **Scroll** (the default when the app opens),
 **Learn**, **Walk** and **Explore**. Switching tabs never reloads the page
 or changes the address.
 
-- **Scroll** — one card per street/square (1,225 of them, including 2
+- **Scroll** — one card per street/square (1,215 of them, including 2
   duplicate-named-but-physically-distinct entries — see "Scroll feed"
   below), browsable as a vertical swipe list.
 - **Learn** — the curriculum: lessons, Learn/Quiz, the pan/zoom map.
@@ -49,7 +49,7 @@ working.
   files it needs as plain `<script>` tags.
 - **Map rendering is a single inline SVG**, projected with an equirectangular
   + `cos(latitude)` correction, no tile server or mapping library. One shared
-  base map is reused across all 135 lessons and all 1,225 Scroll cards; every
+  base map is reused across all 135 lessons and all 1,215 Scroll cards; every
   screen also renders the full scenery layer (streets, waterways,
   neighborhood outlines, parks, buildings, tram/rail lines, and both tree
   species) dimmed for context, then overlays just its own objects as bright
@@ -157,7 +157,7 @@ size/coverage violations.)
 
 A handful of objects still only appear once, all pre-existing and out of
 this script's scope: a few kaai/lei streets and one square/park from the
-original curated lists, and the 18 neighborhoods that had zero tracked
+original curated lists, and the 16 neighborhoods that had zero tracked
 objects to begin with (they still only list in Section 8, since
 Foundations' 1.5.1 explicitly filters to neighborhoods *with* tracked
 objects — that filter is unchanged).
@@ -218,8 +218,16 @@ scrolling on an iPhone (checked across all cards at 375&times;548 up to
 
 **Known data notes** (from the last generation run):
 
-- **1,225 cards.** The source data has 1,233 street entries; `preprocess.py`
-  trims dead-end stubs clipped at the ring, which leaves 8 of them with no
+- **The southern edge follows the railway, not the R1.** From the ring
+  corner at the Kennedy tunnel (beside Buurtpark Nieuw Zuid) to Posthofbrug
+  near Berchem station, `ring_boundary` traces the railway tracks, so Kiel
+  is outside the map; Posthofbrug then joins the R1 edge. The source data
+  has no track for 233 m near Berchem (the old boundary had clipped it), so
+  that stretch follows the old boundary. Everything south of the tracks was
+  removed from the source data, and streets crossing the line were cut at it.
+
+- **1,215 cards.** The source data has 1,221 street entries; `preprocess.py`
+  trims dead-end stubs clipped at the ring, which leaves 6 of them with no
   geometry, so they get no card. Two names (Hogeweg, Statiestraat) each
   exist as two physically distinct entries in the source data. Each entry
   gets its own card, since that's what the authoritative source data
@@ -227,7 +235,7 @@ scrolling on an iPhone (checked across all cards at 375&times;548 up to
 - **2 streets/squares show zero intersections**: Flamingoplein and Moeke
   Bitterpeeënstraat — both checked individually; each is a tiny clipped
   fragment (tens of meters across), not a bug in the intersection matching.
-- **87 dead ends** (one bare endpoint with nothing within ~20m).
+- **76 dead ends** (one bare endpoint with nothing within ~20m).
 - **23 curved streets** (path length more than 1.3&times; the straight-line
   distance between its two endpoints).
 - **0 "about the name" explanations.** The curriculum data has no free-text
@@ -261,7 +269,7 @@ python3 build/street_graph.py
   road meeting it; a building or park is at every walkable road within 40 m
   of its footprint (nearest road if none - one park). Neighborhoods and
   waterways aren't endpoints. Only roads in the largest connected component
-  (99.1% of nodes) are attached; 2 tiny clipped fragments (Flamingoplein,
+  (99.0% of nodes) are attached; 2 tiny clipped fragments (Flamingoplein,
   Moeke Bitterpeeënstraat) are orphans.
 - **Anchors (a deliberate refinement):** the game's rules are road-level,
   exactly as specified - the round is complete the moment you turn onto one
@@ -305,8 +313,8 @@ show the whole map again.
   geometry (Lobroekdok follows Denderstraat's vertices; many squares are
   drawn from their surrounding streets) and tree icons covering tiny parks.
   Everything else effectively on the tapped spot is offered as a chip, so
-  every object is reachable: in testing, every one of the 1,096 roads, 127
-  squares, 15 waterways, 82 buildings, 41 parks and 245 tree markers.
+  every object is reachable: in testing, every one of the 1,086 roads, 127
+  squares, 15 waterways, 82 buildings, 39 parks and 239 tree markers.
 - **Trees** show an English common name and the botanical name (italic,
   &times; for hybrids, cultivar in quotes), from the species recorded in the
   source data: e.g. "Horse chestnut &mdash; *Aesculus hippocastanum*", with
