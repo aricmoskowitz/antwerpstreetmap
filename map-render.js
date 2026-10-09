@@ -467,12 +467,23 @@ var MapRender = (function () {
     return out;
   }
 
+  // The tree symbols are defined once per document, not inside every map:
+  // the app shows several maps at once (one per view, plus Scroll's cards),
+  // and <use href="#id"> resolves to the first element with that id - which
+  // could otherwise sit inside a hidden view.
+  (function installTreeDefs() {
+    var holder = document.createElement("div");
+    holder.setAttribute("aria-hidden", "true");
+    holder.style.cssText = "position:absolute;width:0;height:0;overflow:hidden";
+    holder.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="0" height="0">' + TREE_DEFS + "</svg>";
+    document.body.appendChild(holder);
+  })();
+
   // Full base-map context (change-request-1): parks, neighborhoods, tram,
   // rail, waterways, streets, buildings, trees, ring boundary. Every page's
   // map includes this, dimmed, underneath whatever it highlights itself.
   function sceneryLayersSVG() {
     return (
-      TREE_DEFS +
       '<path class="bg-parks-major" d="' +
       MAP_DATA.bgParksMajor +
       '"/>' +

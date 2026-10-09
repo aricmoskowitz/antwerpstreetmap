@@ -2,9 +2,10 @@
 """
 Computes each lesson's reading-order object numbering (Change Request 3,
 Change 2) and writes it into antwerp-curriculum-data.json as a "number"
-field on every object. Run after rebuild_curriculum.py and before
-preprocess.py (preprocess.py copies the curriculum JSON into
-curriculum-data.js verbatim, so the numbers must already be in the file):
+field on every object, then regenerates antwerp-curriculum.md from it. Run
+after rebuild_curriculum.py and before preprocess.py (preprocess.py copies
+the curriculum JSON into curriculum-data.js verbatim, so the numbers must
+already be in the file):
 
     python3 build/number_lesson_objects.py
 
@@ -39,6 +40,7 @@ import sys
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from reading_order import reading_order
+from curriculum_md import write_markdown
 
 norm = pp.norm
 
@@ -83,3 +85,6 @@ with open(SRC / "antwerp-curriculum-data.json", "w") as f:
 print(f"numbered {object_count} objects across {lesson_count} lessons")
 print(f"lesson sizes: min {size_min}, max {size_max}")
 print(f"wrote {SRC / 'antwerp-curriculum-data.json'}")
+
+write_markdown(curriculum, SRC / "antwerp-curriculum.md")
+print(f"wrote {SRC / 'antwerp-curriculum.md'}")

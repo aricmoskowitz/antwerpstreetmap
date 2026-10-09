@@ -101,7 +101,7 @@
 
   /* ============================== ROUTER ============================== */
 
-  var appEl = document.getElementById("app");
+  var appEl = document.getElementById("learn-root");
   var route = { screen: "home" };
 
   function go(newRoute) {
@@ -144,9 +144,6 @@
   function renderHome() {
     var html = "";
     html +=
-      '<div class="top-row" style="padding:12px 16px 0;">' +
-      '<a class="back-btn" href="index.html">&larr; Menu</a>' +
-      "</div>" +
       '<div class="home-header">' +
       brandMark() +
       "<div><h1>Antwerp Inside the Ring</h1>" +

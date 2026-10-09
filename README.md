@@ -13,34 +13,40 @@ Live app: `index.html` (deployed via GitHub Pages from `main`).
 
 ## Pages
 
-The app is five plain HTML pages, not a single-page app with routes — each
-is its own entry point, sharing `style.css` and the map-rendering code:
+The app is one page, `index.html`, with four views and a tab bar along the
+bottom to switch between them: **Scroll** (the default when the app opens),
+**Learn**, **Walk** and **Explore**. Switching tabs never reloads the page
+or changes the address.
 
-- **`index.html`** — the home menu: Learn, Scroll, Walk and Explore, each
-  of the first three with a progress line read from existing localStorage
-  (lessons complete, last card seen, routes walked). Loads only `curriculum-data.js` (to count
-  lessons) and `menu.js`; no map data, so it's light.
-- **`learn.html`** — the original curriculum app (lessons, Learn/Quiz, the
-  pan/zoom map). This is what `index.html` used to be before Change Request
-  2 added the home menu in front of it.
-- **`scroll.html`** — the Scroll feed: one card per street/square (1,225 of
-  them, including 2 duplicate-named-but-physically-distinct entries — see
-  "Scroll feed" below), browsable as a vertical swipe list.
-- **`walk.html`** — the Walk game: get from A to B by naming the roads of a
-  contiguous path (Easy: multiple choice along the fastest path; Hard: type
-  any road that continues the walk). See "Walk game" below.
-- **`explore.html`** — the whole map to roam freely: tap a tree to see what
-  kind it is, or a street, square, waterway, building or park to see its
-  name. See "Explore" below.
+- **Scroll** — one card per street/square (1,225 of them, including 2
+  duplicate-named-but-physically-distinct entries — see "Scroll feed"
+  below), browsable as a vertical swipe list.
+- **Learn** — the curriculum: lessons, Learn/Quiz, the pan/zoom map.
+- **Walk** — get from A to B by naming the roads of a contiguous path
+  (Easy: multiple choice along the fastest path; Hard: type any road that
+  continues the walk). See "Walk game" below.
+- **Explore** — the whole map to roam freely: tap a tree to see what kind it
+  is, or a street, square, waterway, building or park to see its name. See
+  "Explore" below.
 
-All pages keep the same Add-to-Home-Screen icon and meta tags, and are
-same-origin, so an already-installed home-screen app keeps working.
+`shell.js` builds the tab bar and loads each view's scripts the first time
+its tab is opened (the map and street data are large, and a visit often
+uses only one or two views; scripts shared between views load once). A view
+then stays in the page while hidden, so switching back resumes exactly where
+you were - a lesson mid-quiz, a Walk round, the Explore viewport, the Scroll
+card. Views that need to re-measure after being hidden register an `onShow`
+hook with `AppShell.register()`.
+
+`learn.html`, `scroll.html`, `walk.html` and `explore.html` are now only
+redirects (to `index.html#learn` etc., which opens that tab and then drops
+the hash), so old bookmarks and already-installed home-screen icons keep
+working.
 
 ## How it's built
 
-- **No backend, no client-side build step.** Each page loads `style.css`
-  and its own script plus the generated data files it needs as plain
-  `<script>` tags.
+- **No backend, no client-side build step.** `index.html` loads `style.css`
+  and `shell.js`; the shell adds each view's script and the generated data
+  files it needs as plain `<script>` tags.
 - **Map rendering is a single inline SVG**, projected with an equirectangular
   + `cos(latitude)` correction, no tile server or mapping library. One shared
   base map is reused across all 135 lessons and all 1,225 Scroll cards; every
@@ -122,8 +128,8 @@ python3 build/preprocess.py
 
 ### Curriculum coverage
 
-`build/rebuild_curriculum.py` regenerates `antwerp-curriculum-data.json` (and
-the `.md` alongside it) so that **every object in the base map — every road,
+`build/rebuild_curriculum.py` regenerates `antwerp-curriculum-data.json` so
+that **every object in the base map — every road,
 square, waterway, park, building, and neighborhood — appears in at least one
 lesson**, and almost all of them in at least two (once geographically, once
 in Section 8's review). The original curriculum only covered the curated
@@ -144,8 +150,10 @@ python3 build/rebuild_curriculum.py && python3 build/number_lesson_objects.py &&
 (`number_lesson_objects.py` must run after the curriculum's final object
 lists are set and before `preprocess.py`, since it writes each object's
 reading-order `number` into the same JSON that `preprocess.py` then copies
-into `curriculum-data.js` verbatim. `build/check_curriculum.py` is good to
-run after, to re-confirm zero size/coverage violations.)
+into `curriculum-data.js` verbatim. It also writes the human-readable
+`antwerp-curriculum.md` from the numbered JSON, via `build/curriculum_md.py`.
+`build/check_curriculum.py` is good to run after, to re-confirm zero
+size/coverage violations.)
 
 A handful of objects still only appear once, all pre-existing and out of
 this script's scope: a few kaai/lei streets and one square/park from the
@@ -281,7 +289,7 @@ node build/test_walk.js              # tie-break, anchors, Hard validation,
 
 ## Explore
 
-`explore.html` + `explore.js` show the full base map, filling the screen
+The Explore tab (`explore.js`) shows the full base map, filling the screen
 (the shared map controller takes the screen's real aspect ratio here, where
 the other pages size their map to the map's own). Pan, pinch or scroll to
 zoom, double-tap to zoom in, and the +, &minus; and &#x2922; buttons zoom or
