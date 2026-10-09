@@ -165,6 +165,11 @@
   var inputEl = document.getElementById("walkInput");
   var filterEl = document.getElementById("walkFilter");
 
+  function showEntry(on) {
+    entryEl.classList.toggle("hidden", !on);
+    appEl.classList.toggle("walk-has-entry", on);
+  }
+
   function syncTopbar() {
     document.querySelectorAll(".walk-mode button").forEach(function (b) {
       b.classList.toggle("active", b.getAttribute("data-mode") === state.mode);
@@ -222,7 +227,6 @@
       misses: 0,
       hints: 0,
       qi: 0, // Easy: index into round.questions
-      hintedQ: -1,
       seq: [], // Hard: roads entered so far
       walk: null, // Hard: shortest walk along seq
       done: false,
@@ -234,9 +238,10 @@
   }
 
   function renderEmpty() {
+    appEl.classList.remove("walk-done");
     promptEl.innerHTML = "";
     mapEl.innerHTML = "";
-    entryEl.classList.add("hidden");
+    showEntry(false);
     var started = state.filter === "started";
     panelEl.innerHTML =
       '<div class="walk-card walk-empty">' +
@@ -277,6 +282,24 @@
 
   var svg = null,
     controller = null;
+
+  function mapAspect() {
+    // the svg's own box: the map container adds a border top and bottom
+    var r = (svg || mapEl).getBoundingClientRect();
+    return r.width && r.height ? r.width / r.height : MapRender.MAP_ASPECT;
+  }
+  // re-fit when the map's box changes: a message appearing in the panel,
+  // rotation, or coming back from another tab
+  if (window.ResizeObserver) {
+    new ResizeObserver(function () {
+      if (controller && mapEl.clientHeight) controller.resize();
+    }).observe(mapEl);
+  }
+  AppShell.register("walk", {
+    onShow: function () {
+      if (controller) controller.resize();
+    },
+  });
 
   function localPx(px) {
     // badge-style groups are drawn in local units and scaled with the
@@ -325,7 +348,6 @@
       if (b) boxes.push(b.bbox);
     });
     var bbox = MapRender.unionBBox(boxes);
-    mapEl.style.aspectRatio = String(MapRender.MAP_ASPECT);
     mapEl.innerHTML =
       '<svg id="walkSvg" viewBox="' +
       MAP_DATA.viewBox +
@@ -339,7 +361,8 @@
       "</svg>" +
       '<button class="map-recenter" id="walkRecenter" aria-label="Recenter map" title="Recenter">⤢</button>';
     svg = document.getElementById("walkSvg");
-    controller = MapRender.createMapController(svg, bbox, null);
+    // the map takes whatever height the panel leaves, so its shape varies
+    controller = MapRender.createMapController(svg, bbox, null, { aspect: mapAspect });
     document.getElementById("walkRecenter").addEventListener("click", function () {
       controller.reset();
     });
@@ -494,6 +517,8 @@
   /* ---------- panel ---------- */
 
   function renderPanel() {
+    // the end-of-round summary is long: keep the map big, scroll the card
+    appEl.classList.toggle("walk-done", !!R.done);
     if (R.done) return renderSummary();
     if (R.mode === "easy") renderEasy();
     else renderHard();
@@ -507,7 +532,7 @@
   /* ---------- Easy ---------- */
 
   function renderEasy() {
-    entryEl.classList.add("hidden");
+    showEntry(false);
     var round = R.round;
     var q = round.questions[R.qi];
     var steps = round.path.steps;
@@ -515,6 +540,11 @@
       q.index === 0
         ? "Which road at A do you start on?"
         : "You’re on " + roadName(q.current[0]) + ". Which road next?";
+    // The route so far, including the road you're on now, drawn up to the
+    // junction where the next turn is - with the dot there. (Easy follows
+    // the fastest path, so that junction is known; the wrong options never
+    // touch the current road, so marking it gives none of them away.)
+    drawWalk(steps, q.index, q.index >= 1 ? turnNode(round.path, q.index) : null);
     var html =
       '<div class="walk-card">' +
       '<div class="walk-step-label">Step ' +
@@ -531,7 +561,6 @@
         .map(function (r) {
           var cls = "walk-option";
           if (R.wrong && R.wrong[r]) cls += " wrong";
-          if (R.hintedQ === R.qi && r === q.correct) cls += " hinted";
           return (
             '<button class="' +
             cls +
@@ -546,22 +575,12 @@
         })
         .join("") +
       "</div>" +
-      '<button class="walk-hint-btn" id="walkEasyHint"' +
-      (R.hintedQ === R.qi ? " disabled" : "") +
-      ">Hint</button>" +
       "</div>";
     panelEl.innerHTML = html;
     panelEl.querySelectorAll(".walk-option").forEach(function (b) {
       b.addEventListener("click", function () {
         easyPick(parseInt(b.getAttribute("data-road"), 10));
       });
-    });
-    document.getElementById("walkEasyHint").addEventListener("click", function () {
-      if (R.hintedQ === R.qi) return;
-      R.hintedQ = R.qi;
-      R.hints++;
-      R.msg = { kind: "info", text: "Hint: it’s " + roadName(q.correct) + "." };
-      renderEasy();
     });
   }
 
@@ -579,10 +598,6 @@
     }
     R.wrong = {};
     R.msg = { kind: "good", text: "Yes — " + roadName(r) + "." };
-    var i = q.index;
-    // walked so far: every road before this one, up to the junction with it
-    var hasTurned = i >= 1;
-    drawWalk(round.path.steps, i, hasTurned ? turnNode(round.path, i) : null);
     R.qi++;
     if (R.qi >= round.questions.length) return finish();
     renderEasy();
@@ -620,7 +635,7 @@
         : "") +
       "</div>";
     panelEl.innerHTML = html;
-    entryEl.classList.remove("hidden");
+    showEntry(true);
   }
 
   function hardSubmit(road, viaHint) {
@@ -727,12 +742,12 @@
     R.msg = null;
     inputEl.blur();
     closeDropdown();
-    entryEl.classList.add("hidden");
+    showEntry(false);
     state.played[R.mode] = (state.played[R.mode] || 0) + 1;
     state.misses += R.misses;
     state.hints += R.hints;
     save();
-    renderSummary();
+    renderPanel();
   }
 
   function seqList(roads) {
@@ -781,11 +796,13 @@
 
     var html =
       '<div class="walk-card walk-summary">' +
-      "<h2>You reached B</h2>" +
+      // "New route" sits beside the heading so it's reachable without scrolling
+      '<div class="walk-summary-head"><h2>You reached B</h2>' +
+      '<button class="btn btn-primary" id="walkNext">New route</button></div>' +
       '<div class="walk-stats">' +
       stat("Road steps", playerRoads.length) +
       stat("Misses", R.misses) +
-      stat("Hints", R.hints) +
+      (R.mode === "hard" ? stat("Hints", R.hints) : "") +
       stat("Distance", fmtDist(playerDist)) +
       "</div>" +
       comparison +
@@ -800,7 +817,6 @@
           seqList(fastest.roads) +
           "</div></div>"
         : '<div class="walk-col-head"><span class="swatch you"></span>Route &middot; ' + fmtDist(fastest.dist) + "</div>" + seqList(playerRoads)) +
-      '<button class="btn btn-primary" id="walkNext">New route</button>' +
       "</div>";
     panelEl.innerHTML = html;
     document.getElementById("walkNext").addEventListener("click", newRound);
