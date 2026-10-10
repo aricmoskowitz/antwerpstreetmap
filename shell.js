@@ -150,32 +150,62 @@ var AppShell = (function () {
     });
   }
 
-  // iOS home-screen apps (status bar "black-translucent") sometimes launch
-  // with the viewport measured as if the status bar took up space: 100dvh
-  // and the fixed tab bar end that much short of the bottom of the screen.
-  // iOS corrects it once the page becomes scrollable (opening Learn did it),
-  // so do that briefly ourselves: overflow the page, scroll a pixel, undo.
-  function nudgeStandaloneViewport() {
-    var standalone =
-      window.navigator.standalone ||
-      (window.matchMedia && window.matchMedia("(display-mode: standalone)").matches);
-    if (!standalone) return;
-    var root = document.documentElement;
+  // iOS home-screen apps (status bar "black-translucent"; seen on iOS 26)
+  // can launch with the screen measured as if the status bar took up space:
+  // innerHeight, 100dvh and the fixed tab bar all end that much short of the
+  // bottom of the screen. iOS re-measures once the page is scrollable
+  // (opening Learn always fixed it), but a single nudge right at load came
+  // too early. So in home-screen mode:
+  //  - the page stays 1px taller than the screen (html.standalone in
+  //    style.css), the way Learn's long page is scrollable;
+  //  - while the height still reads short, the page is scrolled a pixel and
+  //    back, retried for a few seconds and on the first touch.
+  var STANDALONE =
+    window.navigator.standalone === true ||
+    (window.matchMedia && window.matchMedia("(display-mode: standalone)").matches);
+
+  // true when the window is clearly shorter than the iPhone screen. iOS keeps
+  // screen.width/height in portrait terms, so swap them in landscape.
+  function viewportShort() {
+    if (!/iPhone/.test(navigator.userAgent)) return false;
+    var landscape = window.matchMedia && window.matchMedia("(orientation: landscape)").matches;
+    var full = landscape ? screen.width : screen.height;
+    var gap = full - window.innerHeight;
+    return gap > 20 && gap < 100; // about a status bar; not a split screen
+  }
+
+  function nudgeViewport() {
     var y = window.scrollY;
+    var root = document.documentElement;
     root.classList.add("viewport-nudge");
     void root.offsetHeight; // apply the taller page before scrolling
     window.scrollTo(0, y + 1);
-    requestAnimationFrame(function () {
-      requestAnimationFrame(function () {
-        root.classList.remove("viewport-nudge");
-        window.scrollTo(0, y);
+    setTimeout(function () {
+      root.classList.remove("viewport-nudge");
+      window.scrollTo(0, y);
+    }, 250);
+  }
+
+  function fixViewportIfShort() {
+    if (viewportShort()) nudgeViewport();
+  }
+
+  if (STANDALONE) {
+    document.documentElement.classList.add("standalone");
+    window.addEventListener("load", function () {
+      nudgeViewport(); // always once, in case innerHeight can't tell
+      [400, 1000, 2000, 4000].forEach(function (ms) {
+        setTimeout(fixViewportIfShort, ms);
       });
     });
+    window.addEventListener("touchstart", fixViewportIfShort, { passive: true, once: true });
+    window.addEventListener("pageshow", function (e) {
+      if (e.persisted) fixViewportIfShort();
+    });
+    document.addEventListener("visibilitychange", function () {
+      if (!document.hidden) setTimeout(fixViewportIfShort, 300);
+    });
   }
-  window.addEventListener("load", nudgeStandaloneViewport);
-  window.addEventListener("pageshow", function (e) {
-    if (e.persisted) nudgeStandaloneViewport();
-  });
 
   renderTabbar();
   // The old per-mode pages (learn.html etc.) redirect here as index.html#learn;

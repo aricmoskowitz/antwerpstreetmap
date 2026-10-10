@@ -37,7 +37,12 @@ body {
   overscroll-behavior: none;
 }
 
-/* set for two frames at launch by shell.js (see nudgeStandaloneViewport) */
+/* iPhone home-screen app only (see the viewport notes in shell.js): keep the
+   page scrollable by a pixel, and briefly by more while it's being nudged */
+html.standalone body {
+  min-height: calc(100% + 1px);
+}
+
 html.viewport-nudge body {
   min-height: calc(100% + 100px);
 }
@@ -1052,6 +1057,7 @@ header.lesson-header {
   min-height: 0;
   overflow-y: scroll;
   scroll-snap-type: y mandatory;
+  overscroll-behavior-y: contain; /* don't hand swipes on to the page */
   -webkit-overflow-scrolling: touch;
 }
 

@@ -42,12 +42,14 @@ redirects (to `index.html#learn` etc., which opens that tab and then drops
 the hash), so old bookmarks and already-installed home-screen icons keep
 working.
 
-When opened from the iPhone home screen, iOS sometimes launches the app
-with the screen measured as if the status bar took up space, leaving the
-tab bar floating that far above the bottom until the page first scrolls.
-`shell.js` works around it at launch (`nudgeStandaloneViewport`): for two
-frames it makes the page a little taller and scrolls it by a pixel, then
-undoes both. It only runs in home-screen (standalone) mode.
+When opened from the iPhone home screen, iOS (seen on iOS 26) sometimes
+launches the app with the screen measured as if the status bar took up
+space, leaving the tab bar floating that far above the bottom. iOS
+re-measures once the page is scrollable (opening Learn always fixed it), so
+in home-screen mode only, `shell.js` keeps the page one pixel taller than
+the screen (`html.standalone`) and, while `innerHeight` still reads short of
+the screen, scrolls the page a pixel and back, retried for a few seconds
+after launch and on the first touch.
 
 ## App icon
 
