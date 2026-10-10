@@ -561,7 +561,9 @@
 
   /* ============================== ROUNDS ============================== */
 
-  var MIN_STEPS = 3,
+  // At least two roads between A's road and B's: a three-road route (A's
+  // road, one road, B's road) is too easy to be worth a round.
+  var MIN_STEPS = 4,
     MAX_STEPS = 8;
 
   // Easy-mode distractors for one step: roads that do NOT share any node
@@ -626,16 +628,30 @@
     });
   }
 
+  // The roads that count as arriving at B. A street or square is reached by
+  // stepping onto it - so the last road you name is B itself; a building or
+  // park by any road at it. (A square's attached roads also include every
+  // street meeting it: fine for leaving a square at A, but turning onto one
+  // of those isn't arriving at the square.)
+  function endRoads(g, b) {
+    if (b.t === "square") {
+      var sq = g.roadByName.get(b.n);
+      if (sq != null) return [sq];
+    }
+    return b.r;
+  }
+
   // The routing context for a pair of endpoints. startRoads/targets are the
   // road-level rules; start/target carry the anchors used for distance.
   function makeRound(g, a, b) {
+    var ends = endRoads(g, b);
     return {
       a: a,
       b: b,
       startRoads: a.r.slice(),
       start: g.anchorsOf(a),
-      target: g.targetOf(b),
-      targets: new Set(b.r),
+      target: ends === b.r ? g.targetOf(b) : g.targetOnRoads(ends),
+      targets: new Set(ends),
     };
   }
 

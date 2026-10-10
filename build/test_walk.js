@@ -172,7 +172,8 @@ function testRealRounds() {
   const data = require(path.join(__dirname, "..", "data", "street-graph.json"));
   const g = new Walk.Graph(data);
   const rng = Walk.seededRng(20261001);
-  let steps = 0;
+  let steps = 0,
+    squareEnds = 0;
   for (let i = 0; i < 1000; i++) {
     const round = Walk.generateRound(g, g.objects, { mode: "easy", rng });
     assert(round, `round ${i} failed to generate`);
@@ -181,6 +182,20 @@ function testRealRounds() {
     const aSet = new Set(round.a.r);
     assert(!round.b.r.some((r) => aSet.has(r)), `round ${i}: A and B share a road`);
     for (let k = 1; k < roads.length; k++) assert(g.touches(roads[k - 1], roads[k]), `round ${i}: path not contiguous`);
+    assert(roads.length >= 4, `round ${i}: at least two roads between A's road and B's`);
+    // the round ends on arrival at B: only the last road is one of B's
+    roads.forEach((r, k) => assert.strictEqual(round.targets.has(r), k === roads.length - 1, `round ${i}: arrives at B only on the last road`));
+    // a street or square B: the last road you name is B itself
+    if (round.b.t === "road" || round.b.t === "square") {
+      assert.strictEqual(g.roads[roads[roads.length - 1]].n, round.b.n, `round ${i}: last road is B itself`);
+    }
+    if (round.b.t === "square") {
+      squareEnds++;
+      // turning onto a street that merely meets the square isn't arriving
+      const sq = g.roadByName.get(round.b.n);
+      round.b.r.filter((r) => r !== sq).forEach((r) => assert(!round.targets.has(r), `round ${i}: a street meeting B isn't B`));
+    }
+    assert.strictEqual(round.questions[round.questions.length - 1].correct, roads[roads.length - 1], `round ${i}: last question asks for B's road`);
 
     for (const q of round.questions) {
       steps++;
@@ -195,6 +210,7 @@ function testRealRounds() {
     }
   }
   console.log(`PASS: 1000 Easy rounds, ${steps} steps - every step has exactly one contiguous option`);
+  console.log(`PASS: every round has 4+ roads and ends on arriving at B (B itself for streets and the ${squareEnds} square Bs)`);
 }
 
 // A Hard player who only ever presses Hint - after first wandering off
