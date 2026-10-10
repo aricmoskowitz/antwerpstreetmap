@@ -18,7 +18,7 @@ bottom to switch between them: **Scroll** (the default when the app opens),
 **Learn**, **Walk** and **Explore**. Switching tabs never reloads the page
 or changes the address.
 
-- **Scroll** — one card per street/square (1,215 of them, including 2
+- **Scroll** — one card per street/square (1,214 of them, including 2
   duplicate-named-but-physically-distinct entries — see "Scroll feed"
   below), browsable as a vertical swipe list.
 - **Learn** — the curriculum: lessons, Learn/Quiz, the pan/zoom map.
@@ -67,7 +67,7 @@ The PNGs are drawn with Pillow from the same shapes as the SVGs.
   files it needs as plain `<script>` tags.
 - **Map rendering is a single inline SVG**, projected with an equirectangular
   + `cos(latitude)` correction, no tile server or mapping library. One shared
-  base map is reused across all 135 lessons and all 1,215 Scroll cards; every
+  base map is reused across all 135 lessons and all 1,214 Scroll cards; every
   screen also renders the full scenery layer (streets, waterways,
   neighborhood outlines, parks, buildings, tram/rail lines, and both tree
   species) dimmed for context, then overlays just its own objects as bright
@@ -175,7 +175,7 @@ size/coverage violations.)
 
 A handful of objects still only appear once, all pre-existing and out of
 this script's scope: a few kaai/lei streets and one square/park from the
-original curated lists, and the 16 neighborhoods that had zero tracked
+original curated lists, and the 12 neighborhoods that had zero tracked
 objects to begin with (they still only list in Section 8, since
 Foundations' 1.5.1 explicitly filters to neighborhoods *with* tracked
 objects — that filter is unchanged).
@@ -244,8 +244,17 @@ scrolling on an iPhone (checked across all cards at 375&times;548 up to
   that stretch follows the old boundary. Everything south of the tracks was
   removed from the source data, and streets crossing the line were cut at it.
 
-- **1,215 cards.** The source data has 1,221 street entries; `preprocess.py`
-  trims dead-end stubs clipped at the ring, which leaves 6 of them with no
+- **No sliver neighborhoods on the east edge.** Nine neighborhoods that were
+  only slivers between the ring and its neighbors (0.1 - 3.3 ha each: Van de
+  Perrelei, Stenenbrug - Zuid, College, Deurne - Huiskens, Deurne - Het Dorp,
+  Ten Eekhove, Sportpaleis, Duivelshoek, Gagelvelden) were removed, with
+  Deurne - Gemeentehuis, which lay entirely inside them. There the ring
+  boundary follows the edges of the neighborhoods next to them, and
+  everything beyond it (Joe Englishstraat, part of the Albertkanaal) is gone.
+  91 neighborhoods remain.
+
+- **1,214 cards.** The source data has 1,219 street entries; `preprocess.py`
+  trims dead-end stubs clipped at the ring, which leaves 5 of them with no
   geometry, so they get no card. Two names (Hogeweg, Statiestraat) each
   exist as two physically distinct entries in the source data. Each entry
   gets its own card, since that's what the authoritative source data
@@ -354,7 +363,7 @@ show the whole map again.
   geometry (Lobroekdok follows Denderstraat's vertices; many squares are
   drawn from their surrounding streets) and tree icons covering tiny parks.
   Everything else effectively on the tapped spot is offered as a chip, so
-  every object is reachable: in testing, every one of the 1,086 roads, 127
+  every object is reachable: in testing, every one of the 1,085 roads, 127
   squares, 15 waterways, 82 buildings, 39 parks and 239 tree markers.
 - **Trees** show an English common name and the botanical name (italic,
   &times; for hybrids, cultivar in quotes), from the species recorded in the
