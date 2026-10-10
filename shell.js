@@ -150,6 +150,33 @@ var AppShell = (function () {
     });
   }
 
+  // iOS home-screen apps (status bar "black-translucent") sometimes launch
+  // with the viewport measured as if the status bar took up space: 100dvh
+  // and the fixed tab bar end that much short of the bottom of the screen.
+  // iOS corrects it once the page becomes scrollable (opening Learn did it),
+  // so do that briefly ourselves: overflow the page, scroll a pixel, undo.
+  function nudgeStandaloneViewport() {
+    var standalone =
+      window.navigator.standalone ||
+      (window.matchMedia && window.matchMedia("(display-mode: standalone)").matches);
+    if (!standalone) return;
+    var root = document.documentElement;
+    var y = window.scrollY;
+    root.classList.add("viewport-nudge");
+    void root.offsetHeight; // apply the taller page before scrolling
+    window.scrollTo(0, y + 1);
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        root.classList.remove("viewport-nudge");
+        window.scrollTo(0, y);
+      });
+    });
+  }
+  window.addEventListener("load", nudgeStandaloneViewport);
+  window.addEventListener("pageshow", function (e) {
+    if (e.persisted) nudgeStandaloneViewport();
+  });
+
   renderTabbar();
   // The old per-mode pages (learn.html etc.) redirect here as index.html#learn;
   // honour that once, then drop the hash so the address stays the plain app URL.

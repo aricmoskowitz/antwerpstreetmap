@@ -42,6 +42,13 @@ redirects (to `index.html#learn` etc., which opens that tab and then drops
 the hash), so old bookmarks and already-installed home-screen icons keep
 working.
 
+When opened from the iPhone home screen, iOS sometimes launches the app
+with the screen measured as if the status bar took up space, leaving the
+tab bar floating that far above the bottom until the page first scrolls.
+`shell.js` works around it at launch (`nudgeStandaloneViewport`): for two
+frames it makes the page a little taller and scrolls it by a pixel, then
+undoes both. It only runs in home-screen (standalone) mode.
+
 ## App icon
 
 `icons/` holds the home-screen icon (`apple-touch-icon.png`, 180px), the
@@ -247,9 +254,12 @@ The card's name sits in a panel cut into the top-left of the map (with its
 kind - Street, Square, Dock, Park, Church... - above it), so it's read
 first, before the street labels on the map. The map is framed so the card's
 subject sits below that panel, and no street label goes under it. "View in
-Explore" at the bottom of the card switches to the Explore tab with that
+Explore", on the right just below the map (beside the direction line),
+switches to the Explore tab with that
 subject highlighted, its info card open and the map framed on it
-(`AppShell.show("explore", {focus: {type, name}})`). The card is laid out
+(`AppShell.show("explore", {focus: {type, name}})`). The footer keeps only
+the neighborhood and lessons on the left and the feed position on the
+right. The card is laid out
 to fit without scrolling on an iPhone (checked across all cards at
 375&times;548 up to 430&times;739 viewports); the map takes whatever height
 the text leaves.

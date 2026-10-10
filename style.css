@@ -37,6 +37,11 @@ body {
   overscroll-behavior: none;
 }
 
+/* set for two frames at launch by shell.js (see nudgeStandaloneViewport) */
+html.viewport-nudge body {
+  min-height: calc(100% + 100px);
+}
+
 #app {
   max-width: 480px;
   margin: 0 auto;
@@ -1287,20 +1292,27 @@ header.lesson-header {
   padding-top: 7px;
   border-top: 1px solid var(--line);
   display: flex;
-  flex-direction: column;
-  gap: 6px;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 10px;
   font-size: 0.72rem;
   color: var(--muted);
 }
 
-.scroll-card-actions {
+/* first row under the map: direction or size, then "View in Explore" */
+.sc-top {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 10px;
 }
 
+.sc-top .sc-dir {
+  min-width: 0;
+}
+
 .scroll-explore-btn {
+  flex: none;
   appearance: none;
   border: 1px solid var(--line);
   background: var(--panel);
