@@ -289,22 +289,19 @@
     );
   }
 
-  function footerHTML(c, idx, pos, listLen) {
+  // neighborhood and lessons on the left, the position in the feed on the right
+  function footerHTML(c, pos, listLen) {
     var bits = [];
     if (c.neighborhood) bits.push(escapeHTML(c.neighborhood));
     if (c.lessons.length) bits.push("lesson " + escapeHTML(c.lessons.join(", ")));
     var counter = (pos + 1).toLocaleString() + " / " + listLen.toLocaleString();
     return (
-      '<div class="scroll-footer-meta">' +
+      '<span class="scroll-footer-meta">' +
       (bits.join(" &middot; ") || "&mdash;") +
-      "</div>" +
-      '<div class="scroll-card-actions">' +
-      '<button class="scroll-explore-btn" data-idx="' +
-      idx +
-      '">View in Explore &rarr;</button>' +
+      "</span>" +
       '<span class="scroll-counter">' +
       counter +
-      "</span></div>"
+      "</span>"
     );
   }
 
@@ -524,27 +521,33 @@
       html += '<div class="sc-about"><span class="sc-label">About the name</span> ' + escapeHTML(c.about) + "</div>";
     }
 
+    // first row, right under the map: the direction (or size) on the left,
+    // "View in Explore" on the right
+    var lead = "";
     if (c.kind === "road") {
       var o = c.orientation;
-      html +=
-        '<div class="sc-dir">' +
-        o.from +
-        " &rarr; " +
-        o.to +
-        (o.shape === "curved" ? ' <span class="sc-muted">&middot; curved</span>' : "") +
-        "</div>";
+      lead = o.from + " &rarr; " + o.to + (o.shape === "curved" ? ' <span class="sc-muted">&middot; curved</span>' : "");
+    } else if (c.kind !== "square") {
+      lead = factsLine(c);
+    }
+    html +=
+      '<div class="sc-top"><div class="sc-dir">' +
+      lead +
+      '</div><button class="scroll-explore-btn" data-idx="' +
+      idx +
+      '">View in Explore &rarr;</button></div>';
+
+    if (c.kind === "road") {
       html +=
         '<div class="sc-ends"><span class="sc-start-word">Start</span> ' +
         endText(c.start) +
         " &rarr; " +
         endText(c.end) +
         "</div>";
-    } else if (c.kind !== "square") {
-      html += '<div class="sc-dir">' + factsLine(c) + "</div>";
     }
     html += chipsHeading(c);
     html += chipList(crossNames(c));
-    html += '<div class="scroll-card-footer">' + footerHTML(c, idx, pos, listLen) + "</div>";
+    html += '<div class="scroll-card-footer">' + footerHTML(c, pos, listLen) + "</div>";
     html += "</div></div>";
     return html;
   }

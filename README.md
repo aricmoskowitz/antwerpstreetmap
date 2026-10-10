@@ -247,9 +247,12 @@ The card's name sits in a panel cut into the top-left of the map (with its
 kind - Street, Square, Dock, Park, Church... - above it), so it's read
 first, before the street labels on the map. The map is framed so the card's
 subject sits below that panel, and no street label goes under it. "View in
-Explore" at the bottom of the card switches to the Explore tab with that
+Explore", on the right just below the map (beside the direction line),
+switches to the Explore tab with that
 subject highlighted, its info card open and the map framed on it
-(`AppShell.show("explore", {focus: {type, name}})`). The card is laid out
+(`AppShell.show("explore", {focus: {type, name}})`). The footer keeps only
+the neighborhood and lessons on the left and the feed position on the
+right. The card is laid out
 to fit without scrolling on an iPhone (checked across all cards at
 375&times;548 up to 430&times;739 viewports); the map takes whatever height
 the text leaves.
