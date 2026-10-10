@@ -42,6 +42,13 @@ redirects (to `index.html#learn` etc., which opens that tab and then drops
 the hash), so old bookmarks and already-installed home-screen icons keep
 working.
 
+When opened from the iPhone home screen, iOS sometimes launches the app
+with the screen measured as if the status bar took up space, leaving the
+tab bar floating that far above the bottom until the page first scrolls.
+`shell.js` works around it at launch (`nudgeStandaloneViewport`): for two
+frames it makes the page a little taller and scrolls it by a pixel, then
+undoes both. It only runs in home-screen (standalone) mode.
+
 ## App icon
 
 `icons/` holds the home-screen icon (`apple-touch-icon.png`, 180px), the
