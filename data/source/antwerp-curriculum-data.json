@@ -18321,7 +18321,7 @@
           "lessons": [
             {
               "id": "8.6.1",
-              "title": "Complete List (91)",
+              "title": "Complete List (90)",
               "objects": [
                 {
                   "name": "'t Eilandje",
@@ -18336,12 +18336,12 @@
                 {
                   "name": "Albertpark (Oostwijk)",
                   "type": "neighborhood",
-                  "number": 82
+                  "number": 81
                 },
                 {
                   "name": "An-2000 / Nieuw Gerechtshof",
                   "type": "neighborhood",
-                  "number": 67
+                  "number": 66
                 },
                 {
                   "name": "An-2060 / Slachthuis-Lobroekdok",
@@ -18361,7 +18361,7 @@
                 {
                   "name": "Astrid Bad (Oostwijk)",
                   "type": "neighborhood",
-                  "number": 74
+                  "number": 73
                 },
                 {
                   "name": "Atheneum (Stationswijk)",
@@ -18371,32 +18371,32 @@
                 {
                   "name": "Bell (Zuidwijk)",
                   "type": "neighborhood",
-                  "number": 69
+                  "number": 68
                 },
                 {
                   "name": "Bo / Kleine Ring",
                   "type": "neighborhood",
-                  "number": 38
+                  "number": 37
                 },
                 {
                   "name": "Borgerhout - Gemeentehuis",
                   "type": "neighborhood",
-                  "number": 51
+                  "number": 50
                 },
                 {
                   "name": "C. Teichmann Plaats (Zuidwijk)",
                   "type": "neighborhood",
-                  "number": 71
+                  "number": 70
                 },
                 {
                   "name": "Charlottalei (Oostwijk)",
                   "type": "neighborhood",
-                  "number": 63
+                  "number": 62
                 },
                 {
                   "name": "Dageraadplaats - Ooststatie (Oostwijk)",
                   "type": "neighborhood",
-                  "number": 64
+                  "number": 63
                 },
                 {
                   "name": "Dam (Dam - Schijnpoort)",
@@ -18416,7 +18416,7 @@
                 {
                   "name": "De Peperbus",
                   "type": "neighborhood",
-                  "number": 54
+                  "number": 53
                 },
                 {
                   "name": "De Zavel (Noordwijk)",
@@ -18426,7 +18426,7 @@
                 {
                   "name": "Den Bleekhof",
                   "type": "neighborhood",
-                  "number": 65
+                  "number": 64
                 },
                 {
                   "name": "Duboisstraat (Noordwijk)",
@@ -18436,37 +18436,32 @@
                 {
                   "name": "Fonteinstraat",
                   "type": "neighborhood",
-                  "number": 53
-                },
-                {
-                  "name": "Foorplein",
-                  "type": "neighborhood",
-                  "number": 37
+                  "number": 52
                 },
                 {
                   "name": "Fransen Plaats (Zuidwijk)",
                   "type": "neighborhood",
-                  "number": 80
+                  "number": 79
                 },
                 {
                   "name": "Gas (Oostwijk)",
                   "type": "neighborhood",
-                  "number": 66
+                  "number": 65
                 },
                 {
                   "name": "Gerechtshof (Zuidw)",
                   "type": "neighborhood",
-                  "number": 61
+                  "number": 60
                 },
                 {
                   "name": "Gerechtshof (Zuidwijk)",
                   "type": "neighborhood",
-                  "number": 60
+                  "number": 59
                 },
                 {
                   "name": "Gevangenis (Spaanse Wallen)",
                   "type": "neighborhood",
-                  "number": 41
+                  "number": 40
                 },
                 {
                   "name": "Groenplaats (Spaanse Wallen)",
@@ -18476,7 +18471,7 @@
                 {
                   "name": "Harmonie (Zuidwijk)",
                   "type": "neighborhood",
-                  "number": 70
+                  "number": 69
                 },
                 {
                   "name": "Hessenhuis (Spaanse Wallen)",
@@ -18491,7 +18486,7 @@
                 {
                   "name": "Hofveld",
                   "type": "neighborhood",
-                  "number": 91
+                  "number": 90
                 },
                 {
                   "name": "Hoogstraat (Spaanse Wallen)",
@@ -18511,17 +18506,17 @@
                 {
                   "name": "Jezuitencollege (Stationswijk)",
                   "type": "neighborhood",
-                  "number": 46
+                  "number": 45
                 },
                 {
                   "name": "Karel Oomstraat",
                   "type": "neighborhood",
-                  "number": 89
+                  "number": 88
                 },
                 {
                   "name": "Kattenberg",
                   "type": "neighborhood",
-                  "number": 52
+                  "number": 51
                 },
                 {
                   "name": "Kipdorp - St.-Jacobs (Spaanse Wallen)",
@@ -18536,22 +18531,22 @@
                 {
                   "name": "Kns - Nat. Bank (Spaanse Wallen)",
                   "type": "neighborhood",
-                  "number": 43
+                  "number": 42
                 },
                 {
                   "name": "Kroonstraat - West",
                   "type": "neighborhood",
-                  "number": 50
+                  "number": 49
                 },
                 {
                   "name": "Lamorinierestr. - Zuid (Ebes) (oostwijk)",
                   "type": "neighborhood",
-                  "number": 73
+                  "number": 72
                 },
                 {
                   "name": "Lange Elzenstraat (Zuidwijk)",
                   "type": "neighborhood",
-                  "number": 79
+                  "number": 78
                 },
                 {
                   "name": "Meir - Leysstraat (Spaanse Wallen)",
@@ -18561,12 +18556,12 @@
                 {
                   "name": "Museumwijk (Zuidwijk)",
                   "type": "neighborhood",
-                  "number": 59
+                  "number": 58
                 },
                 {
                   "name": "Nachtegalenpark (Wilrijksplein)",
                   "type": "neighborhood",
-                  "number": 88
+                  "number": 87
                 },
                 {
                   "name": "Offerandestraat (Stationswijk)",
@@ -18576,17 +18571,17 @@
                 {
                   "name": "Oostkwartier",
                   "type": "neighborhood",
-                  "number": 78
+                  "number": 77
                 },
                 {
                   "name": "Op ten Bergh",
                   "type": "neighborhood",
-                  "number": 85
+                  "number": 84
                 },
                 {
                   "name": "Oudaan (Spaanse Wallen)",
                   "type": "neighborhood",
-                  "number": 42
+                  "number": 41
                 },
                 {
                   "name": "Oude Haven",
@@ -18596,22 +18591,22 @@
                 {
                   "name": "Oude Justitie",
                   "type": "neighborhood",
-                  "number": 83
+                  "number": 82
                 },
                 {
                   "name": "Oude Schipperdokken (Zuidwijk)",
                   "type": "neighborhood",
-                  "number": 56
+                  "number": 55
                 },
                 {
                   "name": "Pelikaanstraat (Stationswijk)",
                   "type": "neighborhood",
-                  "number": 47
+                  "number": 46
                 },
                 {
                   "name": "Posthof",
                   "type": "neighborhood",
-                  "number": 86
+                  "number": 85
                 },
                 {
                   "name": "Potgieterstraat (Noordwijk)",
@@ -18621,12 +18616,12 @@
                 {
                   "name": "Provinciestraat (Stationswijk)",
                   "type": "neighborhood",
-                  "number": 49
+                  "number": 48
                 },
                 {
                   "name": "Schelde",
                   "type": "neighborhood",
-                  "number": 55
+                  "number": 54
                 },
                 {
                   "name": "Scheldekaden Noord",
@@ -18651,7 +18646,7 @@
                 {
                   "name": "St.-Andries (Spaanse Wallen)",
                   "type": "neighborhood",
-                  "number": 40
+                  "number": 39
                 },
                 {
                   "name": "St.-Anna",
@@ -18666,17 +18661,17 @@
                 {
                   "name": "St.-Laurentius (Zuidwijk)",
                   "type": "neighborhood",
-                  "number": 81
+                  "number": 80
                 },
                 {
                   "name": "St.-Michielskaai (Spaanse Wallen)",
                   "type": "neighborhood",
-                  "number": 39
+                  "number": 38
                 },
                 {
                   "name": "St.-Vincentius (Oostwijk)",
                   "type": "neighborhood",
-                  "number": 72
+                  "number": 71
                 },
                 {
                   "name": "St.-Willebrordus (Noordwijk)",
@@ -18686,12 +18681,12 @@
                 {
                   "name": "Stadspark (Stationswijk)",
                   "type": "neighborhood",
-                  "number": 45
+                  "number": 44
                 },
                 {
                   "name": "Stadspark - Zuid (Oostwijk)",
                   "type": "neighborhood",
-                  "number": 62
+                  "number": 61
                 },
                 {
                   "name": "Stadswaag-Begijnhof (Spaanse Wallen)",
@@ -18701,7 +18696,7 @@
                 {
                   "name": "Stappaerts - Krijgshospitaal (Oostwijk)",
                   "type": "neighborhood",
-                  "number": 75
+                  "number": 74
                 },
                 {
                   "name": "Statiekwartier (Stationswijk)",
@@ -18711,12 +18706,12 @@
                 {
                   "name": "Station - Zoo (Stationswijk)",
                   "type": "neighborhood",
-                  "number": 48
+                  "number": 47
                 },
                 {
                   "name": "Stuivenberg",
                   "type": "neighborhood",
-                  "number": 90
+                  "number": 89
                 },
                 {
                   "name": "Stuivenberg - West",
@@ -18736,37 +18731,37 @@
                 {
                   "name": "Tabaksvest (Spaanse Wallen)",
                   "type": "neighborhood",
-                  "number": 44
+                  "number": 43
                 },
                 {
                   "name": "Troonplaats (Zuidwijk)",
                   "type": "neighborhood",
-                  "number": 68
+                  "number": 67
                 },
                 {
                   "name": "Turkeyen",
                   "type": "neighborhood",
-                  "number": 84
+                  "number": 83
                 },
                 {
                   "name": "Van Diepenbeeckstraat (Oostwijk)",
                   "type": "neighborhood",
-                  "number": 76
+                  "number": 75
                 },
                 {
                   "name": "Vestingen",
                   "type": "neighborhood",
-                  "number": 87
+                  "number": 86
                 },
                 {
                   "name": "Vlaamse Kaai (Zuidwijk)",
                   "type": "neighborhood",
-                  "number": 58
+                  "number": 57
                 },
                 {
                   "name": "Waalse Kaai (Zuidwijk)",
                   "type": "neighborhood",
-                  "number": 57
+                  "number": 56
                 },
                 {
                   "name": "Willemdok (Spaanse Wallen)",
@@ -18776,7 +18771,7 @@
                 {
                   "name": "Zurenborg",
                   "type": "neighborhood",
-                  "number": 77
+                  "number": 76
                 }
               ]
             }

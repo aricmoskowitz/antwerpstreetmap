@@ -175,7 +175,7 @@ size/coverage violations.)
 
 A handful of objects still only appear once, all pre-existing and out of
 this script's scope: a few kaai/lei streets and one square/park from the
-original curated lists, and the 12 neighborhoods that had zero tracked
+original curated lists, and the 11 neighborhoods that had zero tracked
 objects to begin with (they still only list in Section 8, since
 Foundations' 1.5.1 explicitly filters to neighborhoods *with* tracked
 objects — that filter is unchanged).
@@ -251,7 +251,10 @@ scrolling on an iPhone (checked across all cards at 375&times;548 up to
   Deurne - Gemeentehuis, which lay entirely inside them. There the ring
   boundary follows the edges of the neighborhoods next to them, and
   everything beyond it (Joe Englishstraat, part of the Albertkanaal) is gone.
-  91 neighborhoods remain.
+  Foorplein was merged into Bo / Kleine Ring: its 4.9 ha already lay inside
+  Bo / Kleine Ring's outline, so only its own entry went, and Bo / Kleine
+  Ring's density became the area-weighted mix of the two (787 and 14,838 ->
+  1,625 people/km²). 90 neighborhoods remain.
 
 - **1,214 cards.** The source data has 1,219 street entries; `preprocess.py`
   trims dead-end stubs clipped at the ring, which leaves 5 of them with no
