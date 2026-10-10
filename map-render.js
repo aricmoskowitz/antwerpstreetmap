@@ -142,6 +142,22 @@ var MapRender = (function () {
       apply();
     }
 
+    // Frame bbox (map units); insetBottom: screen px at the bottom to keep
+    // clear (e.g. under an info card) - the bbox is fitted above it.
+    function fitTo(bbox, fit, insetBottom) {
+      var rect = svg.getBoundingClientRect();
+      var inset = Math.min(insetBottom || 0, rect.height * 0.5);
+      var o = {};
+      Object.keys(fit || {}).forEach(function (k) {
+        o[k] = fit[k];
+      });
+      o.aspect = rect.height > inset ? rect.width / (rect.height - inset) : aspect();
+      var v = fitViewBoxForBBox(bbox, o);
+      var u = v.w / rect.width;
+      vb = { x: v.x, y: v.y, w: v.w, h: v.h + inset * u };
+      apply();
+    }
+
     function zoomBy(factor) {
       var rect = svg.getBoundingClientRect();
       zoomAt(rect.left + rect.width / 2, rect.top + rect.height / 2, factor);
@@ -289,7 +305,7 @@ var MapRender = (function () {
     );
 
     apply();
-    return { reset: reset, resize: resize, zoomBy: zoomBy };
+    return { reset: reset, resize: resize, zoomBy: zoomBy, fitTo: fitTo };
   }
 
   /* ============================== SCENERY (shared background layers) ============================== */

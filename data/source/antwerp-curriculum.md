@@ -194,14 +194,14 @@
 
 - 10. Schelde (waterway)
 - 2. Straatsburgdok (waterway)
-- 9. Willemdok (waterway)
-- 6. Asiadok (waterway)
-- 7. Lobroekdok (waterway)
+- 8. Willemdok (waterway)
+- 4. Asiadok (waterway)
+- 9. Lobroekdok (waterway)
 - 1. Houtdok (waterway)
-- 8. Bonapartedok (waterway)
-- 3. Albertkanaal (waterway)
-- 4. Kattendijkdok (waterway)
-- 5. Kempischdok (waterway)
+- 6. Bonapartedok (waterway)
+- 5. Albertkanaal (waterway)
+- 7. Kattendijkdok (waterway)
+- 3. Kempischdok (waterway)
 
 ### 1.5 Neighborhoods
 
@@ -435,10 +435,10 @@
 #### 2.3.2 Squares, Parks & Waterways & Landmarks & Buildings (6)
 
 - 4. Loodswezen (building)
-- 1. Limaplein (square)
+- 2. Limaplein (square)
 - 6. Zeeuwsekoornmarkt (square)
 - 3. Kattendijkdok (waterway)
-- 2. Kattendijksluis (waterway)
+- 1. Kattendijksluis (waterway)
 - 5. Verbindingsdok (waterway)
 
 #### 2.3.3 Other Streets (8)
@@ -703,11 +703,11 @@
 
 #### 2.11.1 Squares, Parks & Waterways & Notable Roads (6)
 
-- 4. Straatsburgdok-Zuidkaai (road)
+- 3. Straatsburgdok-Zuidkaai (road)
 - 5. Albertkanaal (waterway)
 - 2. Amerikadok (waterway)
 - 6. Asiadok (waterway)
-- 3. Straatsburgdok (waterway)
+- 4. Straatsburgdok (waterway)
 - 1. Suezdok (waterway)
 
 ### 2.12 Meir - Leysstraat (Spaanse Wallen)
@@ -887,11 +887,11 @@
 
 #### 2.17.1 Squares, Parks & Waterways (5)
 
-- 4. Vlasmarkt (square)
-- 5. Vrijdagmarkt (square)
+- 3. Vlasmarkt (square)
+- 4. Vrijdagmarkt (square)
 - 1. Sint-Paulusplaats (square)
 - 2. Van Schoonbekeplein (square)
-- 3. Schelde (waterway)
+- 5. Schelde (waterway)
 
 #### 2.17.2 Other Streets (45)
 
@@ -953,8 +953,8 @@
 - 5. Pieter Densplein (square)
 - 4. Vetten Osplein (square)
 - 1. Buurtpark Noordschippersdok (park)
-- 3. Groot Schijn (waterway)
-- 2. Lobroekdok (waterway)
+- 2. Groot Schijn (waterway)
+- 3. Lobroekdok (waterway)
 
 #### 3.1.2 Other Streets (10)
 
@@ -2143,21 +2143,21 @@
 
 #### 8.2.1 Complete List (15) (15)
 
-- 4. Albertkanaal (waterway)
-- 2. Amerikadok (waterway)
-- 9. Asiadok (waterway)
-- 12. Bonapartedok (waterway)
-- 11. Groot Schijn (waterway)
-- 7. Houtdok (waterway)
-- 6. Kattendijkdok (waterway)
-- 5. Kattendijksluis (waterway)
-- 8. Kempischdok (waterway)
-- 10. Lobroekdok (waterway)
+- 7. Albertkanaal (waterway)
+- 3. Amerikadok (waterway)
+- 6. Asiadok (waterway)
+- 8. Bonapartedok (waterway)
+- 14. Groot Schijn (waterway)
+- 4. Houtdok (waterway)
+- 9. Kattendijkdok (waterway)
+- 1. Kattendijksluis (waterway)
+- 12. Kempischdok (waterway)
+- 13. Lobroekdok (waterway)
 - 15. Schelde (waterway)
-- 3. Straatsburgdok (waterway)
-- 1. Suezdok (waterway)
-- 13. Verbindingsdok (waterway)
-- 14. Willemdok (waterway)
+- 5. Straatsburgdok (waterway)
+- 2. Suezdok (waterway)
+- 10. Verbindingsdok (waterway)
+- 11. Willemdok (waterway)
 
 ### 8.3 All Squares
 

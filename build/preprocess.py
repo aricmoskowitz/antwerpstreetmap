@@ -572,16 +572,24 @@ for s in base["streets"]:
         "bbox": bbox_of_lines(s["lines"]),
     }
 
+# The source splits some waterways over several entries (the Schelde has
+# three, Willemdok a dock and a canal piece): one object per name with all
+# of their lines - typed by the longest piece - rather than the last entry
+# overwriting the others.
+waterways_by_name = {}
 for w in base["waterways"]:
-    key = norm(w["name"])
+    waterways_by_name.setdefault(norm(w["name"]), []).append(w)
+for key, parts in waterways_by_name.items():
+    lines = [seg for w in parts for seg in w["lines"]]
+    main = max(parts, key=lambda w: lines_length_m(w["lines"]))
     objects["waterway"][key] = {
-        "name": w["name"],
+        "name": main["name"],
         "kind": "line",
-        "d": line_path_d(w["lines"]),
-        "badge": list(midpoint_of_longest(w["lines"])),
-        "water_type": w["type"],
-        "length_m": lines_length_m(w["lines"]),
-        "bbox": bbox_of_lines(w["lines"]),
+        "d": line_path_d(lines),
+        "badge": list(midpoint_of_longest(lines)),
+        "water_type": main["type"],
+        "length_m": lines_length_m(lines),
+        "bbox": bbox_of_lines(lines),
     }
 
 for l in base["landmarks"]:

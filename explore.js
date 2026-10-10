@@ -236,6 +236,13 @@
   var LINES = objectFeatures("road").concat(objectFeatures("square"), objectFeatures("waterway"));
   var BUILDINGS = objectFeatures("building");
   var PARKS = objectFeatures("park");
+
+  // type|NAME -> feature, for opening a given object (Scroll's "View in
+  // Explore")
+  var BY_KEY = {};
+  LINES.concat(BUILDINGS, PARKS).forEach(function (f) {
+    BY_KEY[f.type + "|" + f.obj.name.toUpperCase()] = f;
+  });
   var NEIGHBORHOODS = objectFeatures("neighborhood");
   var TREES = MAP_DATA.trees.map(function (t) {
     return { type: "tree", tree: t, x: t.x, y: t.y, r: (MapRender.TREE_SIZE[t.kind] || 3) / 2 };
@@ -446,10 +453,23 @@
   document.addEventListener("keydown", function (e) {
     if (e.key === "Escape" && !appEl.hidden) select(null);
   });
-  // the window may have been resized (or rotated) while another tab was open
+  // Open one object: highlight it, show its card, and frame it on the map
+  // above the card.
+  function focusOn(type, name) {
+    var f = BY_KEY[type + "|" + String(name).toUpperCase()];
+    if (!f) return false;
+    var b = f.bbox;
+    select(f, { x: (b[0] + b[2]) / 2, y: (b[1] + b[3]) / 2 }, [f]);
+    controller.fitTo(b, { padding: 0.5, minSize: 60 }, infoEl.getBoundingClientRect().height + 24);
+    return true;
+  }
+
+  // the window may have been resized (or rotated) while another tab was open;
+  // payload.focus: {type, name} to open (from Scroll's "View in Explore")
   AppShell.register("explore", {
-    onShow: function () {
+    onShow: function (payload) {
       controller.resize();
+      if (payload && payload.focus) focusOn(payload.focus.type, payload.focus.name);
     },
   });
 
@@ -568,5 +588,5 @@
   }
 
   // test hook (Playwright): tap-free access to the hit-tester
-  window.__explore = { hitTest: hitTest, select: select, commonName: commonName, treeInfo: treeInfo };
+  window.__explore = { hitTest: hitTest, select: select, commonName: commonName, treeInfo: treeInfo, focusOn: focusOn };
 })();

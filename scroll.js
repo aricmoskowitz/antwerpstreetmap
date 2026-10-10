@@ -65,8 +65,11 @@
 
   /* ============================== NAME INDEX ============================== */
 
+  // The street chips jump to that street's (or square's) card - not to a
+  // waterway or building sharing its name (Lobroekdok is both).
   var NAME_TO_IDX = {};
   STREET_CARDS.forEach(function (c, i) {
+    if (c.kind !== "road" && c.kind !== "square") return;
     var k = norm(c.name);
     if (!(k in NAME_TO_IDX)) NAME_TO_IDX[k] = i;
   });
@@ -219,7 +222,7 @@
 
     if (!list.length) {
       feedEl.innerHTML =
-        '<div class="scroll-empty">No streets from lessons you’ve started yet. Try unchecking ' +
+        '<div class="scroll-empty">No cards from lessons you’ve started yet. Try unchecking ' +
         '&ldquo;Started only&rdquo;, or start a lesson in Learn first.</div>';
       return;
     }
@@ -286,19 +289,70 @@
     );
   }
 
-  function footerHTML(c, pos, listLen) {
+  function footerHTML(c, idx, pos, listLen) {
     var bits = [];
     if (c.neighborhood) bits.push(escapeHTML(c.neighborhood));
     if (c.lessons.length) bits.push("lesson " + escapeHTML(c.lessons.join(", ")));
     var counter = (pos + 1).toLocaleString() + " / " + listLen.toLocaleString();
     return (
-      '<span class="scroll-footer-meta">' +
+      '<div class="scroll-footer-meta">' +
       (bits.join(" &middot; ") || "&mdash;") +
-      "</span>" +
+      "</div>" +
+      '<div class="scroll-card-actions">' +
+      '<button class="scroll-explore-btn" data-idx="' +
+      idx +
+      '">View in Explore &rarr;</button>' +
       '<span class="scroll-counter">' +
       counter +
-      "</span>"
+      "</span></div>"
     );
+  }
+
+  /* ---------- what kind of place a card is ---------- */
+
+  var WATER_LABEL = { river: "River", dock: "Dock", canal: "Canal", stream: "Stream" };
+
+  function kindLabel(c) {
+    switch (c.kind) {
+      case "square":
+        return "Square";
+      case "waterway":
+        return WATER_LABEL[c.facts.water_type] || "Waterway";
+      case "park":
+        return c.facts.park_type === "buurtpark" ? "Neighborhood park" : "Park";
+      case "building":
+        return c.facts.is_church ? "Church" : "Building";
+      default:
+        return "Street";
+    }
+  }
+
+  // the streets drawn and labelled on the map and listed as chips
+  function crossNames(c) {
+    return c.intersections || c.near || [];
+  }
+
+  function fmtArea(m2) {
+    return m2 >= 10000 ? (m2 / 10000).toFixed(1) + " ha" : m2.toLocaleString() + " m²";
+  }
+
+  function factsLine(c) {
+    var f = c.facts;
+    if (c.kind === "waterway") return (f.length_m / 1000).toFixed(2) + " km inside the ring";
+    if (c.kind === "park") return fmtArea(f.area_m2);
+    return fmtArea(f.area_m2) + " footprint";
+  }
+
+  function chipsHeading(c) {
+    var n = crossNames(c).length;
+    var label = {
+      road: "Meets along the way",
+      square: "Streets that meet here",
+      waterway: "Along or across it",
+      park: "Streets around it",
+      building: "Streets around it",
+    }[c.kind];
+    return '<div class="sc-label">' + label + " &middot; " + n + "</div>";
   }
 
   /* ---------- card map ---------- */
@@ -312,6 +366,7 @@
 
   function parsePolylines(d) {
     return d
+      .replace(/ Z/g, "")
       .split("M ")
       .filter(function (x) {
         return x.trim();
@@ -347,10 +402,14 @@
     return a[0] < b[2] && b[0] < a[2] && a[1] < b[3] && b[1] < a[3];
   }
 
-  function buildMapSVG(c, baseObj, box) {
+  // title: the name panel's box in map pixels [w, h] - the subject is fitted
+  // into the map below it, and no label goes under it
+  function buildMapSVG(c, baseObj, box, title) {
     var vb = MapRender.fitViewBoxForBBox(baseObj.bbox, { padding: 0.35, minSize: 55 });
-    // widen/heighten (never crop) to the map box's aspect ratio
-    var aspect = box.w / box.h;
+    var inset = Math.min(title[1] + 6, box.h * 0.45);
+    // widen/heighten (never crop) to the aspect ratio of the map below the
+    // title, then extend the view up behind the title
+    var aspect = box.w / (box.h - inset);
     if (vb.w / vb.h < aspect) {
       var nw = vb.h * aspect;
       vb.x -= (nw - vb.w) / 2;
@@ -361,6 +420,8 @@
       vb.h = nh;
     }
     var u = vb.w / box.w; // world units per screen pixel
+    vb.y -= inset * u;
+    vb.h += inset * u;
     function toPx(p) {
       return [(p[0] - vb.x) / u, (p[1] - vb.y) / u];
     }
@@ -368,11 +429,14 @@
     var focusLines = parsePolylines(baseObj.d).map(function (l) {
       return l.map(toPx);
     });
-    var placed = [[box.w - 44, 0, box.w, 44]]; // north arrow
+    var placed = [
+      [box.w - 44, 0, box.w, 44], // north arrow
+      [0, 0, title[0] + 4, title[1] + 4], // name panel
+    ];
 
     var crossSVG = "",
       labelSVG = "";
-    c.intersections.forEach(function (name) {
+    crossNames(c).forEach(function (name) {
       var ob = MapRender.resolveObjectByName(name, "road") || MapRender.resolveObjectByName(name, "square");
       if (!ob) return;
       crossSVG += '<path class="scroll-cross-line" d="' + ob.d + '"/>';
@@ -433,7 +497,7 @@
       '<svg viewBox="' + vb.x + " " + vb.y + " " + vb.w + " " + vb.h + '" xmlns="http://www.w3.org/2000/svg">' +
       MapRender.sceneryLayersSVG() +
       crossSVG +
-      '<path class="scroll-target-line" d="' + baseObj.d + '"/>' +
+      '<path class="' + (baseObj.kind === "polygon" ? "scroll-target-poly" : "scroll-target-line") + '" d="' + baseObj.d + '"/>' +
       labelSVG +
       "</svg>"
     );
@@ -441,21 +505,26 @@
 
   function buildCardHTML(idx, pos, listLen) {
     var c = STREET_CARDS[idx];
-    var type = c.is_square ? "square" : "road";
-    var baseObj = MapRender.resolveObjectByName(c.name, type);
+    var baseObj = MapRender.resolveObjectByName(c.name, c.kind);
     var html = '<div class="scroll-card">';
+    // The name sits in a panel cut into the top-left of the map - read
+    // first, before the street labels on the map
     html +=
       '<div class="scroll-card-map">' +
       (baseObj ? "" : '<div class="scroll-map-missing">Map unavailable</div>') +
+      '<div class="scroll-card-title"><div class="sc-kind">' +
+      kindLabel(c) +
+      '</div><h2 class="scroll-card-name">' +
+      escapeHTML(c.name) +
+      "</h2></div>" +
       '<div class="scroll-north-arrow" aria-hidden="true">N&uarr;</div></div>';
     html += '<div class="scroll-card-body">';
-    html += '<h2 class="scroll-card-name">' + escapeHTML(c.name) + "</h2>";
 
     if (c.about) {
       html += '<div class="sc-about"><span class="sc-label">About the name</span> ' + escapeHTML(c.about) + "</div>";
     }
 
-    if (!c.is_square) {
+    if (c.kind === "road") {
       var o = c.orientation;
       html +=
         '<div class="sc-dir">' +
@@ -470,12 +539,12 @@
         " &rarr; " +
         endText(c.end) +
         "</div>";
-      html += '<div class="sc-label">Meets along the way &middot; ' + c.intersections.length + "</div>";
-    } else {
-      html += '<div class="sc-label">Streets that meet here &middot; ' + c.intersections.length + "</div>";
+    } else if (c.kind !== "square") {
+      html += '<div class="sc-dir">' + factsLine(c) + "</div>";
     }
-    html += chipList(c.intersections);
-    html += '<div class="scroll-card-footer">' + footerHTML(c, pos, listLen) + "</div>";
+    html += chipsHeading(c);
+    html += chipList(crossNames(c));
+    html += '<div class="scroll-card-footer">' + footerHTML(c, idx, pos, listLen) + "</div>";
     html += "</div></div>";
     return html;
   }
@@ -486,12 +555,13 @@
     slot.innerHTML = buildCardHTML(idx, pos, listLen);
     slot.dataset.populated = "1";
     var c = STREET_CARDS[idx];
-    var baseObj = MapRender.resolveObjectByName(c.name, c.is_square ? "square" : "road");
+    var baseObj = MapRender.resolveObjectByName(c.name, c.kind);
     if (!baseObj) return;
     var mapEl = slot.querySelector(".scroll-card-map");
     var r = mapEl.getBoundingClientRect();
     var box = { w: r.width || feedEl.clientWidth || 390, h: r.height || 300 };
-    mapEl.insertAdjacentHTML("afterbegin", buildMapSVG(c, baseObj, box));
+    var t = slot.querySelector(".scroll-card-title").getBoundingClientRect();
+    mapEl.insertAdjacentHTML("afterbegin", buildMapSVG(c, baseObj, box, [t.width, t.height]));
   }
 
 
@@ -530,6 +600,14 @@
   }
 
   feedEl.addEventListener("click", function (e) {
+    var explore = e.target.closest(".scroll-explore-btn");
+    if (explore) {
+      // open this card's subject in Explore: zoomed to it, highlighted, with
+      // its info card showing
+      var c = STREET_CARDS[+explore.getAttribute("data-idx")];
+      AppShell.show("explore", { focus: { type: c.kind, name: c.name } });
+      return;
+    }
     var chip = e.target.closest(".scroll-chip");
     if (!chip) return;
     jumpToName(chip.getAttribute("data-name"));

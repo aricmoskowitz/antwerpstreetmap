@@ -1065,19 +1065,19 @@
                   "name": "Willemdok",
                   "type": "waterway",
                   "length_m": 1291,
-                  "number": 9
+                  "number": 8
                 },
                 {
                   "name": "Asiadok",
                   "type": "waterway",
                   "length_m": 930,
-                  "number": 6
+                  "number": 4
                 },
                 {
                   "name": "Lobroekdok",
                   "type": "waterway",
                   "length_m": 901,
-                  "number": 7
+                  "number": 9
                 },
                 {
                   "name": "Houtdok",
@@ -1089,25 +1089,25 @@
                   "name": "Bonapartedok",
                   "type": "waterway",
                   "length_m": 830,
-                  "number": 8
+                  "number": 6
                 },
                 {
                   "name": "Albertkanaal",
                   "type": "waterway",
                   "length_m": 806,
-                  "number": 3
+                  "number": 5
                 },
                 {
                   "name": "Kattendijkdok",
                   "type": "waterway",
                   "length_m": 778,
-                  "number": 4
+                  "number": 7
                 },
                 {
                   "name": "Kempischdok",
                   "type": "waterway",
                   "length_m": 511,
-                  "number": 5
+                  "number": 3
                 }
               ]
             }
@@ -2372,7 +2372,7 @@
                 {
                   "name": "Limaplein",
                   "type": "square",
-                  "number": 1
+                  "number": 2
                 },
                 {
                   "name": "Zeeuwsekoornmarkt",
@@ -2387,7 +2387,7 @@
                 {
                   "name": "Kattendijksluis",
                   "type": "waterway",
-                  "number": 2
+                  "number": 1
                 },
                 {
                   "name": "Verbindingsdok",
@@ -3675,7 +3675,7 @@
                 {
                   "name": "Straatsburgdok-Zuidkaai",
                   "type": "road",
-                  "number": 4
+                  "number": 3
                 },
                 {
                   "name": "Albertkanaal",
@@ -3695,7 +3695,7 @@
                 {
                   "name": "Straatsburgdok",
                   "type": "waterway",
-                  "number": 3
+                  "number": 4
                 },
                 {
                   "name": "Suezdok",
@@ -4588,12 +4588,12 @@
                 {
                   "name": "Vlasmarkt",
                   "type": "square",
-                  "number": 4
+                  "number": 3
                 },
                 {
                   "name": "Vrijdagmarkt",
                   "type": "square",
-                  "number": 5
+                  "number": 4
                 },
                 {
                   "name": "Sint-Paulusplaats",
@@ -4608,7 +4608,7 @@
                 {
                   "name": "Schelde",
                   "type": "waterway",
-                  "number": 3
+                  "number": 5
                 }
               ]
             },
@@ -4927,12 +4927,12 @@
                 {
                   "name": "Groot Schijn",
                   "type": "waterway",
-                  "number": 3
+                  "number": 2
                 },
                 {
                   "name": "Lobroekdok",
                   "type": "waterway",
-                  "number": 2
+                  "number": 3
                 }
               ]
             },
@@ -10783,52 +10783,52 @@
                 {
                   "name": "Albertkanaal",
                   "type": "waterway",
-                  "number": 4
+                  "number": 7
                 },
                 {
                   "name": "Amerikadok",
                   "type": "waterway",
-                  "number": 2
+                  "number": 3
                 },
                 {
                   "name": "Asiadok",
                   "type": "waterway",
-                  "number": 9
+                  "number": 6
                 },
                 {
                   "name": "Bonapartedok",
                   "type": "waterway",
-                  "number": 12
+                  "number": 8
                 },
                 {
                   "name": "Groot Schijn",
                   "type": "waterway",
-                  "number": 11
+                  "number": 14
                 },
                 {
                   "name": "Houtdok",
                   "type": "waterway",
-                  "number": 7
+                  "number": 4
                 },
                 {
                   "name": "Kattendijkdok",
                   "type": "waterway",
-                  "number": 6
+                  "number": 9
                 },
                 {
                   "name": "Kattendijksluis",
                   "type": "waterway",
-                  "number": 5
+                  "number": 1
                 },
                 {
                   "name": "Kempischdok",
                   "type": "waterway",
-                  "number": 8
+                  "number": 12
                 },
                 {
                   "name": "Lobroekdok",
                   "type": "waterway",
-                  "number": 10
+                  "number": 13
                 },
                 {
                   "name": "Schelde",
@@ -10838,22 +10838,22 @@
                 {
                   "name": "Straatsburgdok",
                   "type": "waterway",
-                  "number": 3
+                  "number": 5
                 },
                 {
                   "name": "Suezdok",
                   "type": "waterway",
-                  "number": 1
+                  "number": 2
                 },
                 {
                   "name": "Verbindingsdok",
                   "type": "waterway",
-                  "number": 13
+                  "number": 10
                 },
                 {
                   "name": "Willemdok",
                   "type": "waterway",
-                  "number": 14
+                  "number": 11
                 }
               ]
             }

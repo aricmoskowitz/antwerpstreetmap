@@ -18,9 +18,9 @@ bottom to switch between them: **Scroll** (the default when the app opens),
 **Learn**, **Walk** and **Explore**. Switching tabs never reloads the page
 or changes the address.
 
-- **Scroll** — one card per street/square (1,214 of them, including 2
-  duplicate-named-but-physically-distinct entries — see "Scroll feed"
-  below), browsable as a vertical swipe list.
+- **Scroll** — one card per street, square, waterway, park and building
+  (1,350 of them — see "Scroll feed" below), browsable as a vertical swipe
+  list.
 - **Learn** — the curriculum: lessons, Learn/Quiz, the pan/zoom map.
 - **Walk** — get from A to B by naming the roads of a contiguous path
   (Easy: multiple choice along the fastest path; Hard: type any road that
@@ -208,7 +208,9 @@ surveyed municipal boundaries.
 `build/street_cards.py` generates `data/street-cards.json` (and
 `data/generated/street-cards.js`, the same data wrapped as `const
 STREET_CARDS = [...]` for plain `<script>` loading) — one fact-only record
-per road/square in the base map, for the Scroll page. It reuses
+per street, square, waterway, park and building in the base map, for the
+Scroll page: 1,214 streets and squares, 15 waterways, 39 parks and 82
+buildings (churches included). Each record has a `kind`. It reuses
 `preprocess.py`'s projection and reconstructed neighborhood polygons rather
 than re-deriving them (imported via `importlib.util`, the same pattern
 `rebuild_curriculum.py` uses). Run it after `preprocess.py`:
@@ -218,9 +220,18 @@ python3 build/street_cards.py
 ```
 
 Each record carries facts only — name, orientation, which streets it meets
-and where, neighborhood, curriculum lessons — never geometry. Scroll's own
+and where, neighborhood, curriculum lessons — never geometry. Waterway,
+park and building cards carry the streets *around* them instead (`near`):
+for a park or building every street within 40 m of its footprint (the
+distance the Walk game uses), listed clockwise from north; for a waterway
+its quays and bridges (within 25 m, widening to 100 m for docks drawn along
+the water's edge), listed along it. The Schelde is special: the data's
+river line runs mid-river, 200-260 m out from the quays, so its card lists
+the streets *facing* it - from every 25 m along the river, the first
+street straight inland - plus the tunnels under it. Their `facts` give the
+kind of water, park or building and its size. Scroll's own
 map draws from the same already-projected paths in `map-data.js` that Learn
-uses (`MapRender.resolveObjectByName(name, "road" | "square")`), so geometry
+uses (`MapRender.resolveObjectByName(name, kind)`), so geometry
 is never duplicated between the two data files. See the docstring in
 `build/street_cards.py` for exactly how intersections, start/end, and
 orientation are derived (shared-vertex matching, not geometric crossing, so
@@ -230,9 +241,18 @@ Orientation is directional, written start &rarr; end: a street whose
 start (the end nearest Grote Markt, the house-numbering heuristic) is its
 south end reads "south–north". Below it, the streets at the start and the
 end are listed the same way, e.g. "Start Britselei and Kasteelpleinstraat
-&rarr; Bolivarplaats". The card's text is laid out to fit without
-scrolling on an iPhone (checked across all cards at 375&times;548 up to
-430&times;739 viewports); the map takes whatever height the text leaves.
+&rarr; Bolivarplaats".
+
+The card's name sits in a panel cut into the top-left of the map (with its
+kind - Street, Square, Dock, Park, Church... - above it), so it's read
+first, before the street labels on the map. The map is framed so the card's
+subject sits below that panel, and no street label goes under it. "View in
+Explore" at the bottom of the card switches to the Explore tab with that
+subject highlighted, its info card open and the map framed on it
+(`AppShell.show("explore", {focus: {type, name}})`). The card is laid out
+to fit without scrolling on an iPhone (checked across all cards at
+375&times;548 up to 430&times;739 viewports); the map takes whatever height
+the text leaves.
 
 **Known data notes** (from the last generation run):
 
@@ -256,7 +276,12 @@ scrolling on an iPhone (checked across all cards at 375&times;548 up to
   Ring's density became the area-weighted mix of the two (787 and 14,838 ->
   1,625 people/km²). 90 neighborhoods remain.
 
-- **1,214 cards.** The source data has 1,219 street entries; `preprocess.py`
+- **One waterway per name.** The source splits six waterways over several
+  entries (the Schelde over three; Willemdok and Straatsburgdok each into a
+  dock and a canal piece). `preprocess.py` merges them into one map object
+  with all of their lines, typed by the longest piece - before, the last
+  entry overwrote the others, so the Schelde was a 126 m stub on the map.
+- **1,214 street and square cards.** The source data has 1,219 street entries; `preprocess.py`
   trims dead-end stubs clipped at the ring, which leaves 5 of them with no
   geometry, so they get no card. Two names (Hogeweg, Statiestraat) each
   exist as two physically distinct entries in the source data. Each entry
