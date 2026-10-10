@@ -1126,21 +1126,21 @@
                   "type": "neighborhood",
                   "object_count": 22,
                   "region": "Historic Center & 't Eilandje",
-                  "number": 8
+                  "number": 7
                 },
                 {
                   "name": "Willemdok (Spaanse Wallen)",
                   "type": "neighborhood",
                   "object_count": 15,
                   "region": "Historic Center & 't Eilandje",
-                  "number": 5
+                  "number": 4
                 },
                 {
                   "name": "Oude Haven",
                   "type": "neighborhood",
                   "object_count": 11,
                   "region": "Historic Center & 't Eilandje",
-                  "number": 4
+                  "number": 3
                 },
                 {
                   "name": "Houtdok",
@@ -1154,14 +1154,14 @@
                   "type": "neighborhood",
                   "object_count": 10,
                   "region": "Historic Center & 't Eilandje",
-                  "number": 11
+                  "number": 10
                 },
                 {
                   "name": "Stappaerts - Krijgshospitaal (Oostwijk)",
                   "type": "neighborhood",
                   "object_count": 10,
                   "region": "Oostwijk & the Justitiewijk",
-                  "number": 41
+                  "number": 44
                 },
                 {
                   "name": "An-2000 / Nieuw Gerechtshof",
@@ -1175,84 +1175,84 @@
                   "type": "neighborhood",
                   "object_count": 9,
                   "region": "Historic Center & 't Eilandje",
-                  "number": 31
+                  "number": 21
                 },
                 {
                   "name": "Groenplaats (Spaanse Wallen)",
                   "type": "neighborhood",
                   "object_count": 8,
                   "region": "Historic Center & 't Eilandje",
-                  "number": 16
+                  "number": 19
                 },
                 {
                   "name": "Oude Justitie",
                   "type": "neighborhood",
                   "object_count": 8,
                   "region": "Oostwijk & the Justitiewijk",
-                  "number": 46
+                  "number": 47
                 },
                 {
                   "name": "Dageraadplaats - Ooststatie (Oostwijk)",
                   "type": "neighborhood",
                   "object_count": 8,
                   "region": "Zurenborg & the Borgerhout Edge",
-                  "number": 42
+                  "number": 35
                 },
                 {
                   "name": "Museumwijk (Zuidwijk)",
                   "type": "neighborhood",
                   "object_count": 8,
                   "region": "Zuid & Kiel",
-                  "number": 29
+                  "number": 31
                 },
                 {
                   "name": "'t Eilandje",
                   "type": "neighborhood",
                   "object_count": 8,
                   "region": "Historic Center & 't Eilandje",
-                  "number": 6
+                  "number": 5
                 },
                 {
                   "name": "Stadswaag-Begijnhof (Spaanse Wallen)",
                   "type": "neighborhood",
                   "object_count": 7,
                   "region": "Historic Center & 't Eilandje",
-                  "number": 10
+                  "number": 9
                 },
                 {
                   "name": "Kipdorp - St.-Jacobs (Spaanse Wallen)",
                   "type": "neighborhood",
                   "object_count": 7,
                   "region": "Historic Center & 't Eilandje",
-                  "number": 9
+                  "number": 8
                 },
                 {
                   "name": "St.-Andries (Spaanse Wallen)",
                   "type": "neighborhood",
                   "object_count": 7,
                   "region": "Zuid & Kiel",
-                  "number": 28
+                  "number": 17
                 },
                 {
                   "name": "Karel Oomstraat",
                   "type": "neighborhood",
                   "object_count": 7,
                   "region": "Oostwijk & the Justitiewijk",
-                  "number": 49
+                  "number": 46
                 },
                 {
                   "name": "Vestingen",
                   "type": "neighborhood",
                   "object_count": 7,
                   "region": "Oostwijk & the Justitiewijk",
-                  "number": 50
+                  "number": 49
                 },
                 {
                   "name": "An-2060 / Slachthuis-Lobroekdok",
                   "type": "neighborhood",
                   "object_count": 6,
                   "region": "Dam, Schijnpoort & Spoor Noord",
-                  "number": 7
+                  "number": 6
                 },
                 {
                   "name": "Albertdok",
@@ -1273,14 +1273,14 @@
                   "type": "neighborhood",
                   "object_count": 5,
                   "region": "Historic Center & 't Eilandje",
-                  "number": 17
+                  "number": 22
                 },
                 {
                   "name": "Jezuitencollege (Stationswijk)",
                   "type": "neighborhood",
                   "object_count": 5,
                   "region": "Historic Center & 't Eilandje",
-                  "number": 18
+                  "number": 23
                 },
                 {
                   "name": "Fonteinstraat",
@@ -1301,14 +1301,14 @@
                   "type": "neighborhood",
                   "object_count": 5,
                   "region": "Zuid & Kiel",
-                  "number": 26
+                  "number": 29
                 },
                 {
                   "name": "Bo / Kleine Ring",
                   "type": "neighborhood",
                   "object_count": 5,
                   "region": "The Deurne Edge & Ring-East",
-                  "number": 24
+                  "number": 16
                 },
                 {
                   "name": "Stuivenbergplein (Noordwijk)",
@@ -1322,14 +1322,14 @@
                   "type": "neighborhood",
                   "object_count": 4,
                   "region": "Zurenborg & the Borgerhout Edge",
-                  "number": 22
+                  "number": 15
                 },
                 {
                   "name": "Oudaan (Spaanse Wallen)",
                   "type": "neighborhood",
                   "object_count": 4,
                   "region": "Historic Center & 't Eilandje",
-                  "number": 30
+                  "number": 20
                 },
                 {
                   "name": "Den Bleekhof",
@@ -1343,63 +1343,63 @@
                   "type": "neighborhood",
                   "object_count": 4,
                   "region": "Oostwijk & the Justitiewijk",
-                  "number": 40
+                  "number": 42
                 },
                 {
                   "name": "Zurenborg",
                   "type": "neighborhood",
                   "object_count": 4,
                   "region": "Zurenborg & the Borgerhout Edge",
-                  "number": 43
+                  "number": 45
                 },
                 {
                   "name": "St.-Laurentius (Zuidwijk)",
                   "type": "neighborhood",
                   "object_count": 4,
                   "region": "Oostwijk & the Justitiewijk",
-                  "number": 44
+                  "number": 40
                 },
                 {
                   "name": "Albertpark (Oostwijk)",
                   "type": "neighborhood",
                   "object_count": 4,
                   "region": "Oostwijk & the Justitiewijk",
-                  "number": 45
+                  "number": 41
                 },
                 {
                   "name": "Oude Schipperdokken (Zuidwijk)",
                   "type": "neighborhood",
                   "object_count": 4,
                   "region": "Zuid & Kiel",
-                  "number": 25
+                  "number": 28
                 },
                 {
                   "name": "De Conincplein - Z. (Stationswijk)",
                   "type": "neighborhood",
                   "object_count": 3,
                   "region": "Historic Center & 't Eilandje",
-                  "number": 20
+                  "number": 12
                 },
                 {
                   "name": "De Peperbus",
                   "type": "neighborhood",
                   "object_count": 3,
                   "region": "Zurenborg & the Borgerhout Edge",
-                  "number": 23
+                  "number": 27
                 },
                 {
                   "name": "Gevangenis (Spaanse Wallen)",
                   "type": "neighborhood",
                   "object_count": 3,
                   "region": "Zuid & Kiel",
-                  "number": 15
+                  "number": 18
                 },
                 {
                   "name": "Borgerhout - Gemeentehuis",
                   "type": "neighborhood",
                   "object_count": 3,
                   "region": "Zurenborg & the Borgerhout Edge",
-                  "number": 35
+                  "number": 25
                 },
                 {
                   "name": "Stadspark (Stationswijk)",
@@ -1427,42 +1427,35 @@
                   "type": "neighborhood",
                   "object_count": 3,
                   "region": "Oostwijk & the Justitiewijk",
-                  "number": 47
+                  "number": 43
                 },
                 {
                   "name": "Statiekwartier (Stationswijk)",
                   "type": "neighborhood",
                   "object_count": 3,
                   "region": "Historic Center & 't Eilandje",
-                  "number": 19
+                  "number": 24
                 },
                 {
                   "name": "Vlaamse Kaai (Zuidwijk)",
                   "type": "neighborhood",
                   "object_count": 3,
                   "region": "Zuid & Kiel",
-                  "number": 27
+                  "number": 30
                 },
                 {
                   "name": "Kattenberg",
                   "type": "neighborhood",
                   "object_count": 3,
                   "region": "Zurenborg & the Borgerhout Edge",
-                  "number": 21
-                },
-                {
-                  "name": "Sportpaleis",
-                  "type": "neighborhood",
-                  "object_count": 2,
-                  "region": "Dam, Schijnpoort & Spoor Noord",
-                  "number": 3
+                  "number": 26
                 },
                 {
                   "name": "St.-Jansplein - Trapstraat (Noordwijk)",
                   "type": "neighborhood",
                   "object_count": 2,
                   "region": "Historic Center & 't Eilandje",
-                  "number": 12
+                  "number": 11
                 },
                 {
                   "name": "St.-Amandus (Noordwijk)",
@@ -1482,91 +1475,91 @@
                   "type": "neighborhood",
                   "object_count": 2,
                   "region": "Dam, Schijnpoort & Spoor Noord",
-                  "number": 9
+                  "number": 8
                 },
                 {
                   "name": "Hoogstraat (Spaanse Wallen)",
                   "type": "neighborhood",
                   "object_count": 2,
                   "region": "Historic Center & 't Eilandje",
-                  "number": 14
+                  "number": 4
                 },
                 {
                   "name": "Pelikaanstraat (Stationswijk)",
                   "type": "neighborhood",
                   "object_count": 2,
                   "region": "Historic Center & 't Eilandje",
-                  "number": 16
+                  "number": 14
                 },
                 {
                   "name": "Stadspark - Zuid (Oostwijk)",
                   "type": "neighborhood",
                   "object_count": 2,
                   "region": "Oostwijk & the Justitiewijk",
-                  "number": 28
+                  "number": 24
                 },
                 {
                   "name": "Astrid Bad (Oostwijk)",
                   "type": "neighborhood",
                   "object_count": 2,
                   "region": "Oostwijk & the Justitiewijk",
-                  "number": 29
+                  "number": 25
                 },
                 {
                   "name": "C. Teichmann Plaats (Zuidwijk)",
                   "type": "neighborhood",
                   "object_count": 2,
                   "region": "Oostwijk & the Justitiewijk",
-                  "number": 27
+                  "number": 23
                 },
                 {
                   "name": "Lange Elzenstraat (Zuidwijk)",
                   "type": "neighborhood",
                   "object_count": 2,
                   "region": "Zuid & Kiel",
-                  "number": 31
+                  "number": 26
                 },
                 {
                   "name": "Fransen Plaats (Zuidwijk)",
                   "type": "neighborhood",
                   "object_count": 2,
                   "region": "Oostwijk & the Justitiewijk",
-                  "number": 32
+                  "number": 27
                 },
                 {
                   "name": "Nachtegalenpark (Wilrijksplein)",
                   "type": "neighborhood",
                   "object_count": 2,
                   "region": "Oostwijk & the Justitiewijk",
-                  "number": 35
+                  "number": 30
                 },
                 {
                   "name": "Klapdorp - Brouwersvliet",
                   "type": "neighborhood",
                   "object_count": 2,
                   "region": "Historic Center & 't Eilandje",
-                  "number": 6
+                  "number": 5
                 },
                 {
                   "name": "Station - Zoo (Stationswijk)",
                   "type": "neighborhood",
                   "object_count": 2,
                   "region": "Zurenborg & the Borgerhout Edge",
-                  "number": 17
+                  "number": 15
                 },
                 {
                   "name": "Bell (Zuidwijk)",
                   "type": "neighborhood",
                   "object_count": 2,
                   "region": "Zuid & Kiel",
-                  "number": 23
+                  "number": 19
                 },
                 {
                   "name": "Stuivenberg - West",
                   "type": "neighborhood",
                   "object_count": 2,
                   "region": "Dam, Schijnpoort & Spoor Noord",
-                  "number": 8
+                  "number": 7
                 },
                 {
                   "name": "An-2060 / Spoor-Noord Site",
@@ -1580,35 +1573,21 @@
                   "type": "neighborhood",
                   "object_count": 2,
                   "region": "Zurenborg & the Borgerhout Edge",
-                  "number": 20
+                  "number": 17
                 },
                 {
                   "name": "St.-Willebrordus (Noordwijk)",
                   "type": "neighborhood",
                   "object_count": 2,
                   "region": "Zurenborg & the Borgerhout Edge",
-                  "number": 19
-                },
-                {
-                  "name": "Duivelshoek",
-                  "type": "neighborhood",
-                  "object_count": 1,
-                  "region": "Dam, Schijnpoort & Spoor Noord",
-                  "number": 5
-                },
-                {
-                  "name": "Ten Eekhove",
-                  "type": "neighborhood",
-                  "object_count": 1,
-                  "region": "Dam, Schijnpoort & Spoor Noord",
-                  "number": 11
+                  "number": 9
                 },
                 {
                   "name": "Scheldekaden Noord",
                   "type": "neighborhood",
                   "object_count": 1,
                   "region": "Zuid & Kiel",
-                  "number": 13
+                  "number": 12
                 },
                 {
                   "name": "Stuivenberg Ziekenhuis (Noordwijk)",
@@ -1622,56 +1601,56 @@
                   "type": "neighborhood",
                   "object_count": 1,
                   "region": "Historic Center & 't Eilandje",
-                  "number": 7
+                  "number": 6
                 },
                 {
                   "name": "St.-Michielskaai (Spaanse Wallen)",
                   "type": "neighborhood",
                   "object_count": 1,
                   "region": "Zuid & Kiel",
-                  "number": 12
+                  "number": 11
                 },
                 {
                   "name": "Gerechtshof (Zuidwijk)",
                   "type": "neighborhood",
                   "object_count": 1,
                   "region": "Zuid & Kiel",
-                  "number": 24
+                  "number": 20
                 },
                 {
                   "name": "Gerechtshof (Zuidw)",
                   "type": "neighborhood",
                   "object_count": 1,
                   "region": "Oostwijk & the Justitiewijk",
-                  "number": 25
+                  "number": 21
                 },
                 {
                   "name": "Harmonie (Zuidwijk)",
                   "type": "neighborhood",
                   "object_count": 1,
                   "region": "Oostwijk & the Justitiewijk",
-                  "number": 26
+                  "number": 22
                 },
                 {
                   "name": "Stuivenberg",
                   "type": "neighborhood",
                   "object_count": 1,
                   "region": "Oostwijk & the Justitiewijk",
-                  "number": 33
+                  "number": 28
                 },
                 {
                   "name": "Posthof",
                   "type": "neighborhood",
                   "object_count": 1,
                   "region": "Oostwijk & the Justitiewijk",
-                  "number": 34
+                  "number": 29
                 },
                 {
                   "name": "Tabaksvest (Spaanse Wallen)",
                   "type": "neighborhood",
                   "object_count": 1,
                   "region": "Historic Center & 't Eilandje",
-                  "number": 15
+                  "number": 13
                 },
                 {
                   "name": "Slachthuiswijk (Dam - Schijnpoort)",
@@ -1688,39 +1667,18 @@
                   "number": 1
                 },
                 {
-                  "name": "Gagelvelden",
-                  "type": "neighborhood",
-                  "object_count": 1,
-                  "region": "Dam, Schijnpoort & Spoor Noord",
-                  "number": 4
-                },
-                {
-                  "name": "Stenenbrug - Zuid",
-                  "type": "neighborhood",
-                  "object_count": 1,
-                  "region": "The Deurne Edge & Ring-East",
-                  "number": 30
-                },
-                {
-                  "name": "Deurne - Gemeentehuis",
-                  "type": "neighborhood",
-                  "object_count": 1,
-                  "region": "The Deurne Edge & Ring-East",
-                  "number": 21
-                },
-                {
                   "name": "Schelde",
                   "type": "neighborhood",
                   "object_count": 1,
                   "region": "Historic Center & 't Eilandje",
-                  "number": 22
+                  "number": 18
                 },
                 {
                   "name": "Kroonstraat - West",
                   "type": "neighborhood",
                   "object_count": 1,
                   "region": "Zurenborg & the Borgerhout Edge",
-                  "number": 18
+                  "number": 16
                 }
               ]
             }
@@ -3722,7 +3680,7 @@
                 {
                   "name": "Albertkanaal",
                   "type": "waterway",
-                  "number": 6
+                  "number": 5
                 },
                 {
                   "name": "Amerikadok",
@@ -3732,7 +3690,7 @@
                 {
                   "name": "Asiadok",
                   "type": "waterway",
-                  "number": 5
+                  "number": 6
                 },
                 {
                   "name": "Straatsburgdok",
@@ -5048,7 +5006,7 @@
         },
         {
           "id": "3.2",
-          "title": "Duivelshoek + Sportpaleis + Slachthuiswijk (Dam - Schijnpoort) + An-2060 / Spoor-Noord Site",
+          "title": "Slachthuiswijk (Dam - Schijnpoort) + An-2060 / Spoor-Noord Site",
           "lessons": [
             {
               "id": "3.2.1",
@@ -5067,7 +5025,7 @@
                 {
                   "name": "Lobroekdok",
                   "type": "waterway",
-                  "number": 4
+                  "number": 5
                 },
                 {
                   "name": "Buurtpark Lange Lobroekstraat",
@@ -5082,7 +5040,7 @@
                 {
                   "name": "Park Spoor Noord",
                   "type": "park",
-                  "number": 5
+                  "number": 4
                 }
               ]
             },
@@ -5594,7 +5552,7 @@
         },
         {
           "id": "3.4",
-          "title": "Stuivenbergplein (Noordwijk) + Stuivenberg Ziekenhuis (Noordwijk) + Ten Eekhove + Gagelvelden + Ijzerlaan (Dam - Schijnport)",
+          "title": "Stuivenbergplein (Noordwijk) + Stuivenberg Ziekenhuis (Noordwijk) + Ijzerlaan (Dam - Schijnport)",
           "lessons": [
             {
               "id": "3.4.1",
@@ -6548,7 +6506,7 @@
                   "name": "Bijlstraat",
                   "type": "road",
                   "length_m": 200,
-                  "number": 4
+                  "number": 3
                 },
                 {
                   "name": "Wijnegemstraat",
@@ -6662,7 +6620,7 @@
                   "name": "Zwarteleeuwstraat",
                   "type": "road",
                   "length_m": 114,
-                  "number": 3
+                  "number": 4
                 },
                 {
                   "name": "Rechtestraat",
@@ -10322,7 +10280,7 @@
       "modules": [
         {
           "id": "7.1",
-          "title": "Bo / Kleine Ring + Stenenbrug - Zuid + Deurne - Gemeentehuis",
+          "title": "Bo / Kleine Ring",
           "lessons": [
             {
               "id": "7.1.1",
@@ -10331,7 +10289,7 @@
                 {
                   "name": "Foorplein",
                   "type": "square",
-                  "number": 5
+                  "number": 8
                 },
                 {
                   "name": "Buurtpark Spoor Oost",
@@ -10352,19 +10310,19 @@
                   "name": "Turnhoutsebaan",
                   "type": "road",
                   "length_m": 5377,
-                  "number": 6
+                  "number": 5
                 },
                 {
                   "name": "Turnhoutsebaan",
                   "type": "road",
                   "length_m": 5377,
-                  "number": 7
+                  "number": 6
                 },
                 {
                   "name": "Stenenbrug",
                   "type": "road",
                   "length_m": 955,
-                  "number": 8
+                  "number": 7
                 },
                 {
                   "name": "Luitenant Lippenslaan",
@@ -10377,12 +10335,6 @@
                   "type": "road",
                   "length_m": 164,
                   "number": 4
-                },
-                {
-                  "name": "Joe Englishstraat",
-                  "type": "road",
-                  "length_m": 148,
-                  "number": 10
                 }
               ]
             }
@@ -14325,7 +14277,7 @@
             },
             {
               "id": "8.5.10",
-              "title": "Other Streets (J–K) (48)",
+              "title": "Other Streets (J–K) (47)",
               "objects": [
                 {
                   "name": "Jan Van Asperenpad",
@@ -14337,7 +14289,7 @@
                   "name": "Jan Van Beersstraat",
                   "type": "road",
                   "length_m": 156,
-                  "number": 41
+                  "number": 40
                 },
                 {
                   "name": "Jan van Gentstraat",
@@ -14373,7 +14325,7 @@
                   "name": "Jennevalstraat",
                   "type": "road",
                   "length_m": 162,
-                  "number": 47
+                  "number": 46
                 },
                 {
                   "name": "Jeruzalemstraat",
@@ -14406,16 +14358,10 @@
                   "number": 25
                 },
                 {
-                  "name": "Joe Englishstraat",
-                  "type": "road",
-                  "length_m": 148,
-                  "number": 40
-                },
-                {
                   "name": "Jonghelinckstraat",
                   "type": "road",
                   "length_m": 147,
-                  "number": 42
+                  "number": 41
                 },
                 {
                   "name": "Joossensgang",
@@ -14439,7 +14385,7 @@
                   "name": "Jozef Balstraat",
                   "type": "road",
                   "length_m": 125,
-                  "number": 45
+                  "number": 44
                 },
                 {
                   "name": "Jozef De Bomstraat",
@@ -14463,13 +14409,13 @@
                   "name": "Jules Bordetstraat",
                   "type": "road",
                   "length_m": 353,
-                  "number": 44
+                  "number": 43
                 },
                 {
                   "name": "Juliaan Dillensstraat",
                   "type": "road",
                   "length_m": 199,
-                  "number": 43
+                  "number": 42
                 },
                 {
                   "name": "Justitiestraat",
@@ -14541,7 +14487,7 @@
                   "name": "Karel Oomsstraat",
                   "type": "road",
                   "length_m": 929,
-                  "number": 46
+                  "number": 45
                 },
                 {
                   "name": "Karel Rogierstraat",
@@ -14607,7 +14553,7 @@
                   "name": "Kemmelbergstraat",
                   "type": "road",
                   "length_m": 314,
-                  "number": 48
+                  "number": 47
                 },
                 {
                   "name": "Kempenstraat",
@@ -18375,7 +18321,7 @@
           "lessons": [
             {
               "id": "8.6.1",
-              "title": "Complete List (101)",
+              "title": "Complete List (90)",
               "objects": [
                 {
                   "name": "'t Eilandje",
@@ -18390,197 +18336,162 @@
                 {
                   "name": "Albertpark (Oostwijk)",
                   "type": "neighborhood",
-                  "number": 88
+                  "number": 81
                 },
                 {
                   "name": "An-2000 / Nieuw Gerechtshof",
                   "type": "neighborhood",
-                  "number": 74
+                  "number": 66
                 },
                 {
                   "name": "An-2060 / Slachthuis-Lobroekdok",
                   "type": "neighborhood",
-                  "number": 14
+                  "number": 11
                 },
                 {
                   "name": "An-2060 / Spoor-Noord Site",
                   "type": "neighborhood",
-                  "number": 13
+                  "number": 9
                 },
                 {
                   "name": "Antwerpen Kern - Oude Stad (Sp Wall)",
                   "type": "neighborhood",
-                  "number": 16
+                  "number": 12
                 },
                 {
                   "name": "Astrid Bad (Oostwijk)",
                   "type": "neighborhood",
-                  "number": 80
+                  "number": 73
                 },
                 {
                   "name": "Atheneum (Stationswijk)",
                   "type": "neighborhood",
-                  "number": 21
+                  "number": 17
                 },
                 {
                   "name": "Bell (Zuidwijk)",
                   "type": "neighborhood",
-                  "number": 75
+                  "number": 68
                 },
                 {
                   "name": "Bo / Kleine Ring",
                   "type": "neighborhood",
-                  "number": 41
+                  "number": 37
                 },
                 {
                   "name": "Borgerhout - Gemeentehuis",
                   "type": "neighborhood",
-                  "number": 55
+                  "number": 50
                 },
                 {
                   "name": "C. Teichmann Plaats (Zuidwijk)",
                   "type": "neighborhood",
-                  "number": 78
+                  "number": 70
                 },
                 {
                   "name": "Charlottalei (Oostwijk)",
                   "type": "neighborhood",
-                  "number": 68
-                },
-                {
-                  "name": "College",
-                  "type": "neighborhood",
-                  "number": 59
+                  "number": 62
                 },
                 {
                   "name": "Dageraadplaats - Ooststatie (Oostwijk)",
                   "type": "neighborhood",
-                  "number": 82
+                  "number": 63
                 },
                 {
                   "name": "Dam (Dam - Schijnpoort)",
                   "type": "neighborhood",
-                  "number": 7
+                  "number": 8
                 },
                 {
                   "name": "Dambruggestraat-N. (Stationswijk)",
                   "type": "neighborhood",
-                  "number": 22
+                  "number": 18
                 },
                 {
                   "name": "De Conincplein - Z. (Stationswijk)",
                   "type": "neighborhood",
-                  "number": 35
+                  "number": 31
                 },
                 {
                   "name": "De Peperbus",
                   "type": "neighborhood",
-                  "number": 58
+                  "number": 53
                 },
                 {
                   "name": "De Zavel (Noordwijk)",
                   "type": "neighborhood",
-                  "number": 25
+                  "number": 21
                 },
                 {
                   "name": "Den Bleekhof",
                   "type": "neighborhood",
-                  "number": 70
-                },
-                {
-                  "name": "Deurne - Gemeentehuis",
-                  "type": "neighborhood",
-                  "number": 44
-                },
-                {
-                  "name": "Deurne - Huiskens",
-                  "type": "neighborhood",
-                  "number": 42
-                },
-                {
-                  "name": "Deurne - het Dorp",
-                  "type": "neighborhood",
-                  "number": 43
+                  "number": 64
                 },
                 {
                   "name": "Duboisstraat (Noordwijk)",
                   "type": "neighborhood",
-                  "number": 12
-                },
-                {
-                  "name": "Duivelshoek",
-                  "type": "neighborhood",
-                  "number": 9
+                  "number": 7
                 },
                 {
                   "name": "Fonteinstraat",
                   "type": "neighborhood",
-                  "number": 71
-                },
-                {
-                  "name": "Foorplein",
-                  "type": "neighborhood",
-                  "number": 40
+                  "number": 52
                 },
                 {
                   "name": "Fransen Plaats (Zuidwijk)",
                   "type": "neighborhood",
-                  "number": 92
-                },
-                {
-                  "name": "Gagelvelden",
-                  "type": "neighborhood",
-                  "number": 4
+                  "number": 79
                 },
                 {
                   "name": "Gas (Oostwijk)",
                   "type": "neighborhood",
-                  "number": 84
+                  "number": 65
                 },
                 {
                   "name": "Gerechtshof (Zuidw)",
                   "type": "neighborhood",
-                  "number": 76
+                  "number": 60
                 },
                 {
                   "name": "Gerechtshof (Zuidwijk)",
                   "type": "neighborhood",
-                  "number": 65
+                  "number": 59
                 },
                 {
                   "name": "Gevangenis (Spaanse Wallen)",
                   "type": "neighborhood",
-                  "number": 47
+                  "number": 40
                 },
                 {
                   "name": "Groenplaats (Spaanse Wallen)",
                   "type": "neighborhood",
-                  "number": 31
+                  "number": 27
                 },
                 {
                   "name": "Harmonie (Zuidwijk)",
                   "type": "neighborhood",
-                  "number": 77
+                  "number": 69
                 },
                 {
                   "name": "Hessenhuis (Spaanse Wallen)",
                   "type": "neighborhood",
-                  "number": 19
+                  "number": 15
                 },
                 {
                   "name": "Het Laar",
                   "type": "neighborhood",
-                  "number": 56
+                  "number": 34
                 },
                 {
                   "name": "Hofveld",
                   "type": "neighborhood",
-                  "number": 97
+                  "number": 90
                 },
                 {
                   "name": "Hoogstraat (Spaanse Wallen)",
                   "type": "neighborhood",
-                  "number": 30
+                  "number": 26
                 },
                 {
                   "name": "Houtdok",
@@ -18595,292 +18506,272 @@
                 {
                   "name": "Jezuitencollege (Stationswijk)",
                   "type": "neighborhood",
-                  "number": 51
+                  "number": 45
                 },
                 {
                   "name": "Karel Oomstraat",
                   "type": "neighborhood",
-                  "number": 93
+                  "number": 88
                 },
                 {
                   "name": "Kattenberg",
                   "type": "neighborhood",
-                  "number": 57
+                  "number": 51
                 },
                 {
                   "name": "Kipdorp - St.-Jacobs (Spaanse Wallen)",
                   "type": "neighborhood",
-                  "number": 33
+                  "number": 29
                 },
                 {
                   "name": "Klapdorp - Brouwersvliet",
                   "type": "neighborhood",
-                  "number": 17
+                  "number": 13
                 },
                 {
                   "name": "Kns - Nat. Bank (Spaanse Wallen)",
                   "type": "neighborhood",
-                  "number": 49
+                  "number": 42
                 },
                 {
                   "name": "Kroonstraat - West",
                   "type": "neighborhood",
-                  "number": 54
+                  "number": 49
                 },
                 {
                   "name": "Lamorinierestr. - Zuid (Ebes) (oostwijk)",
                   "type": "neighborhood",
-                  "number": 89
+                  "number": 72
                 },
                 {
                   "name": "Lange Elzenstraat (Zuidwijk)",
                   "type": "neighborhood",
-                  "number": 86
+                  "number": 78
                 },
                 {
                   "name": "Meir - Leysstraat (Spaanse Wallen)",
                   "type": "neighborhood",
-                  "number": 32
+                  "number": 28
                 },
                 {
                   "name": "Museumwijk (Zuidwijk)",
                   "type": "neighborhood",
-                  "number": 64
+                  "number": 58
                 },
                 {
                   "name": "Nachtegalenpark (Wilrijksplein)",
                   "type": "neighborhood",
-                  "number": 99
+                  "number": 87
                 },
                 {
                   "name": "Offerandestraat (Stationswijk)",
                   "type": "neighborhood",
-                  "number": 36
+                  "number": 32
                 },
                 {
                   "name": "Oostkwartier",
                   "type": "neighborhood",
-                  "number": 83
+                  "number": 77
                 },
                 {
                   "name": "Op ten Bergh",
                   "type": "neighborhood",
-                  "number": 96
+                  "number": 84
                 },
                 {
                   "name": "Oudaan (Spaanse Wallen)",
                   "type": "neighborhood",
-                  "number": 48
+                  "number": 41
                 },
                 {
                   "name": "Oude Haven",
                   "type": "neighborhood",
-                  "number": 5
+                  "number": 4
                 },
                 {
                   "name": "Oude Justitie",
                   "type": "neighborhood",
-                  "number": 94
+                  "number": 82
                 },
                 {
                   "name": "Oude Schipperdokken (Zuidwijk)",
                   "type": "neighborhood",
-                  "number": 61
+                  "number": 55
                 },
                 {
                   "name": "Pelikaanstraat (Stationswijk)",
                   "type": "neighborhood",
-                  "number": 52
+                  "number": 46
                 },
                 {
                   "name": "Posthof",
                   "type": "neighborhood",
-                  "number": 98
+                  "number": 85
                 },
                 {
                   "name": "Potgieterstraat (Noordwijk)",
                   "type": "neighborhood",
-                  "number": 38
+                  "number": 35
                 },
                 {
                   "name": "Provinciestraat (Stationswijk)",
                   "type": "neighborhood",
-                  "number": 69
+                  "number": 48
                 },
                 {
                   "name": "Schelde",
                   "type": "neighborhood",
-                  "number": 60
+                  "number": 54
                 },
                 {
                   "name": "Scheldekaden Noord",
                   "type": "neighborhood",
-                  "number": 29
+                  "number": 25
                 },
                 {
                   "name": "Schijnpoort (Dam - Schijnpoort)",
                   "type": "neighborhood",
-                  "number": 28
+                  "number": 24
                 },
                 {
                   "name": "Slachthuiswijk (Dam - Schijnpoort)",
-                  "type": "neighborhood",
-                  "number": 8
-                },
-                {
-                  "name": "Sportpaleis",
                   "type": "neighborhood",
                   "number": 10
                 },
                 {
                   "name": "St.-Amandus (Noordwijk)",
                   "type": "neighborhood",
-                  "number": 23
+                  "number": 19
                 },
                 {
                   "name": "St.-Andries (Spaanse Wallen)",
                   "type": "neighborhood",
-                  "number": 46
+                  "number": 39
                 },
                 {
                   "name": "St.-Anna",
                   "type": "neighborhood",
-                  "number": 39
+                  "number": 36
                 },
                 {
                   "name": "St.-Jansplein - Trapstraat (Noordwijk)",
                   "type": "neighborhood",
-                  "number": 20
+                  "number": 16
                 },
                 {
                   "name": "St.-Laurentius (Zuidwijk)",
                   "type": "neighborhood",
-                  "number": 87
+                  "number": 80
                 },
                 {
                   "name": "St.-Michielskaai (Spaanse Wallen)",
                   "type": "neighborhood",
-                  "number": 45
+                  "number": 38
                 },
                 {
                   "name": "St.-Vincentius (Oostwijk)",
                   "type": "neighborhood",
-                  "number": 79
+                  "number": 71
                 },
                 {
                   "name": "St.-Willebrordus (Noordwijk)",
                   "type": "neighborhood",
-                  "number": 37
+                  "number": 33
                 },
                 {
                   "name": "Stadspark (Stationswijk)",
                   "type": "neighborhood",
-                  "number": 67
+                  "number": 44
                 },
                 {
                   "name": "Stadspark - Zuid (Oostwijk)",
                   "type": "neighborhood",
-                  "number": 66
+                  "number": 61
                 },
                 {
                   "name": "Stadswaag-Begijnhof (Spaanse Wallen)",
                   "type": "neighborhood",
-                  "number": 18
+                  "number": 14
                 },
                 {
                   "name": "Stappaerts - Krijgshospitaal (Oostwijk)",
                   "type": "neighborhood",
-                  "number": 90
+                  "number": 74
                 },
                 {
                   "name": "Statiekwartier (Stationswijk)",
                   "type": "neighborhood",
-                  "number": 34
+                  "number": 30
                 },
                 {
                   "name": "Station - Zoo (Stationswijk)",
                   "type": "neighborhood",
-                  "number": 53
-                },
-                {
-                  "name": "Stenenbrug - Zuid",
-                  "type": "neighborhood",
-                  "number": 73
+                  "number": 47
                 },
                 {
                   "name": "Stuivenberg",
                   "type": "neighborhood",
-                  "number": 100
+                  "number": 89
                 },
                 {
                   "name": "Stuivenberg - West",
                   "type": "neighborhood",
-                  "number": 24
+                  "number": 20
                 },
                 {
                   "name": "Stuivenberg Ziekenhuis (Noordwijk)",
                   "type": "neighborhood",
-                  "number": 27
+                  "number": 23
                 },
                 {
                   "name": "Stuivenbergplein (Noordwijk)",
                   "type": "neighborhood",
-                  "number": 26
+                  "number": 22
                 },
                 {
                   "name": "Tabaksvest (Spaanse Wallen)",
                   "type": "neighborhood",
-                  "number": 50
-                },
-                {
-                  "name": "Ten Eekhove",
-                  "type": "neighborhood",
-                  "number": 15
+                  "number": 43
                 },
                 {
                   "name": "Troonplaats (Zuidwijk)",
                   "type": "neighborhood",
-                  "number": 85
+                  "number": 67
                 },
                 {
                   "name": "Turkeyen",
                   "type": "neighborhood",
-                  "number": 95
+                  "number": 83
                 },
                 {
                   "name": "Van Diepenbeeckstraat (Oostwijk)",
                   "type": "neighborhood",
-                  "number": 81
-                },
-                {
-                  "name": "Van de Perrelei",
-                  "type": "neighborhood",
-                  "number": 72
+                  "number": 75
                 },
                 {
                   "name": "Vestingen",
                   "type": "neighborhood",
-                  "number": 101
+                  "number": 86
                 },
                 {
                   "name": "Vlaamse Kaai (Zuidwijk)",
                   "type": "neighborhood",
-                  "number": 63
+                  "number": 57
                 },
                 {
                   "name": "Waalse Kaai (Zuidwijk)",
                   "type": "neighborhood",
-                  "number": 62
+                  "number": 56
                 },
                 {
                   "name": "Willemdok (Spaanse Wallen)",
                   "type": "neighborhood",
-                  "number": 11
+                  "number": 5
                 },
                 {
                   "name": "Zurenborg",
                   "type": "neighborhood",
-                  "number": 91
+                  "number": 76
                 }
               ]
             }

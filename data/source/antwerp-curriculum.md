@@ -205,96 +205,90 @@
 
 ### 1.5 Neighborhoods
 
-#### 1.5.1 Neighborhoods With Tracked Objects, Part 1 of 2 (50)
+#### 1.5.1 Neighborhoods With Tracked Objects, Part 1 of 2 (49)
 
-- 8. Antwerpen Kern - Oude Stad (Sp Wall) (neighborhood)
-- 5. Willemdok (Spaanse Wallen) (neighborhood)
-- 4. Oude Haven (neighborhood)
+- 7. Antwerpen Kern - Oude Stad (Sp Wall) (neighborhood)
+- 4. Willemdok (Spaanse Wallen) (neighborhood)
+- 3. Oude Haven (neighborhood)
 - 1. Houtdok (neighborhood)
-- 11. Hessenhuis (Spaanse Wallen) (neighborhood)
-- 41. Stappaerts - Krijgshospitaal (Oostwijk) (neighborhood)
+- 10. Hessenhuis (Spaanse Wallen) (neighborhood)
+- 44. Stappaerts - Krijgshospitaal (Oostwijk) (neighborhood)
 - 38. An-2000 / Nieuw Gerechtshof (neighborhood)
-- 31. Kns - Nat. Bank (Spaanse Wallen) (neighborhood)
-- 16. Groenplaats (Spaanse Wallen) (neighborhood)
-- 46. Oude Justitie (neighborhood)
-- 42. Dageraadplaats - Ooststatie (Oostwijk) (neighborhood)
-- 29. Museumwijk (Zuidwijk) (neighborhood)
-- 6. 't Eilandje (neighborhood)
-- 10. Stadswaag-Begijnhof (Spaanse Wallen) (neighborhood)
-- 9. Kipdorp - St.-Jacobs (Spaanse Wallen) (neighborhood)
-- 28. St.-Andries (Spaanse Wallen) (neighborhood)
-- 49. Karel Oomstraat (neighborhood)
-- 50. Vestingen (neighborhood)
-- 7. An-2060 / Slachthuis-Lobroekdok (neighborhood)
+- 21. Kns - Nat. Bank (Spaanse Wallen) (neighborhood)
+- 19. Groenplaats (Spaanse Wallen) (neighborhood)
+- 47. Oude Justitie (neighborhood)
+- 35. Dageraadplaats - Ooststatie (Oostwijk) (neighborhood)
+- 31. Museumwijk (Zuidwijk) (neighborhood)
+- 5. 't Eilandje (neighborhood)
+- 9. Stadswaag-Begijnhof (Spaanse Wallen) (neighborhood)
+- 8. Kipdorp - St.-Jacobs (Spaanse Wallen) (neighborhood)
+- 17. St.-Andries (Spaanse Wallen) (neighborhood)
+- 46. Karel Oomstraat (neighborhood)
+- 49. Vestingen (neighborhood)
+- 6. An-2060 / Slachthuis-Lobroekdok (neighborhood)
 - 2. Albertdok (neighborhood)
 - 34. Provinciestraat (Stationswijk) (neighborhood)
-- 17. Meir - Leysstraat (Spaanse Wallen) (neighborhood)
-- 18. Jezuitencollege (Stationswijk) (neighborhood)
+- 22. Meir - Leysstraat (Spaanse Wallen) (neighborhood)
+- 23. Jezuitencollege (Stationswijk) (neighborhood)
 - 37. Fonteinstraat (neighborhood)
 - 48. Op ten Bergh (neighborhood)
-- 26. Waalse Kaai (Zuidwijk) (neighborhood)
-- 24. Bo / Kleine Ring (neighborhood)
+- 29. Waalse Kaai (Zuidwijk) (neighborhood)
+- 16. Bo / Kleine Ring (neighborhood)
 - 14. Stuivenbergplein (Noordwijk) (neighborhood)
-- 22. St.-Anna (neighborhood)
-- 30. Oudaan (Spaanse Wallen) (neighborhood)
+- 15. St.-Anna (neighborhood)
+- 20. Oudaan (Spaanse Wallen) (neighborhood)
 - 36. Den Bleekhof (neighborhood)
-- 40. St.-Vincentius (Oostwijk) (neighborhood)
-- 43. Zurenborg (neighborhood)
-- 44. St.-Laurentius (Zuidwijk) (neighborhood)
-- 45. Albertpark (Oostwijk) (neighborhood)
-- 25. Oude Schipperdokken (Zuidwijk) (neighborhood)
-- 20. De Conincplein - Z. (Stationswijk) (neighborhood)
-- 23. De Peperbus (neighborhood)
-- 15. Gevangenis (Spaanse Wallen) (neighborhood)
-- 35. Borgerhout - Gemeentehuis (neighborhood)
+- 42. St.-Vincentius (Oostwijk) (neighborhood)
+- 45. Zurenborg (neighborhood)
+- 40. St.-Laurentius (Zuidwijk) (neighborhood)
+- 41. Albertpark (Oostwijk) (neighborhood)
+- 28. Oude Schipperdokken (Zuidwijk) (neighborhood)
+- 12. De Conincplein - Z. (Stationswijk) (neighborhood)
+- 27. De Peperbus (neighborhood)
+- 18. Gevangenis (Spaanse Wallen) (neighborhood)
+- 25. Borgerhout - Gemeentehuis (neighborhood)
 - 32. Stadspark (Stationswijk) (neighborhood)
 - 33. Charlottalei (Oostwijk) (neighborhood)
 - 39. Troonplaats (Zuidwijk) (neighborhood)
-- 47. Lamorinierestr. - Zuid (Ebes) (oostwijk) (neighborhood)
-- 19. Statiekwartier (Stationswijk) (neighborhood)
-- 27. Vlaamse Kaai (Zuidwijk) (neighborhood)
-- 21. Kattenberg (neighborhood)
-- 3. Sportpaleis (neighborhood)
-- 12. St.-Jansplein - Trapstraat (Noordwijk) (neighborhood)
+- 43. Lamorinierestr. - Zuid (Ebes) (oostwijk) (neighborhood)
+- 24. Statiekwartier (Stationswijk) (neighborhood)
+- 30. Vlaamse Kaai (Zuidwijk) (neighborhood)
+- 26. Kattenberg (neighborhood)
+- 11. St.-Jansplein - Trapstraat (Noordwijk) (neighborhood)
 - 13. St.-Amandus (Noordwijk) (neighborhood)
 
-#### 1.5.1-2 Neighborhoods With Tracked Objects, Part 2 of 2 (35)
+#### 1.5.1-2 Neighborhoods With Tracked Objects, Part 2 of 2 (30)
 
-- 9. De Zavel (Noordwijk) (neighborhood)
-- 14. Hoogstraat (Spaanse Wallen) (neighborhood)
-- 16. Pelikaanstraat (Stationswijk) (neighborhood)
-- 28. Stadspark - Zuid (Oostwijk) (neighborhood)
-- 29. Astrid Bad (Oostwijk) (neighborhood)
-- 27. C. Teichmann Plaats (Zuidwijk) (neighborhood)
-- 31. Lange Elzenstraat (Zuidwijk) (neighborhood)
-- 32. Fransen Plaats (Zuidwijk) (neighborhood)
-- 35. Nachtegalenpark (Wilrijksplein) (neighborhood)
-- 6. Klapdorp - Brouwersvliet (neighborhood)
-- 17. Station - Zoo (Stationswijk) (neighborhood)
-- 23. Bell (Zuidwijk) (neighborhood)
-- 8. Stuivenberg - West (neighborhood)
+- 8. De Zavel (Noordwijk) (neighborhood)
+- 4. Hoogstraat (Spaanse Wallen) (neighborhood)
+- 14. Pelikaanstraat (Stationswijk) (neighborhood)
+- 24. Stadspark - Zuid (Oostwijk) (neighborhood)
+- 25. Astrid Bad (Oostwijk) (neighborhood)
+- 23. C. Teichmann Plaats (Zuidwijk) (neighborhood)
+- 26. Lange Elzenstraat (Zuidwijk) (neighborhood)
+- 27. Fransen Plaats (Zuidwijk) (neighborhood)
+- 30. Nachtegalenpark (Wilrijksplein) (neighborhood)
+- 5. Klapdorp - Brouwersvliet (neighborhood)
+- 15. Station - Zoo (Stationswijk) (neighborhood)
+- 19. Bell (Zuidwijk) (neighborhood)
+- 7. Stuivenberg - West (neighborhood)
 - 2. An-2060 / Spoor-Noord Site (neighborhood)
-- 20. Het Laar (neighborhood)
-- 19. St.-Willebrordus (Noordwijk) (neighborhood)
-- 5. Duivelshoek (neighborhood)
-- 11. Ten Eekhove (neighborhood)
-- 13. Scheldekaden Noord (neighborhood)
+- 17. Het Laar (neighborhood)
+- 9. St.-Willebrordus (Noordwijk) (neighborhood)
+- 12. Scheldekaden Noord (neighborhood)
 - 10. Stuivenberg Ziekenhuis (Noordwijk) (neighborhood)
-- 7. Dambruggestraat-N. (Stationswijk) (neighborhood)
-- 12. St.-Michielskaai (Spaanse Wallen) (neighborhood)
-- 24. Gerechtshof (Zuidwijk) (neighborhood)
-- 25. Gerechtshof (Zuidw) (neighborhood)
-- 26. Harmonie (Zuidwijk) (neighborhood)
-- 33. Stuivenberg (neighborhood)
-- 34. Posthof (neighborhood)
-- 15. Tabaksvest (Spaanse Wallen) (neighborhood)
+- 6. Dambruggestraat-N. (Stationswijk) (neighborhood)
+- 11. St.-Michielskaai (Spaanse Wallen) (neighborhood)
+- 20. Gerechtshof (Zuidwijk) (neighborhood)
+- 21. Gerechtshof (Zuidw) (neighborhood)
+- 22. Harmonie (Zuidwijk) (neighborhood)
+- 28. Stuivenberg (neighborhood)
+- 29. Posthof (neighborhood)
+- 13. Tabaksvest (Spaanse Wallen) (neighborhood)
 - 3. Slachthuiswijk (Dam - Schijnpoort) (neighborhood)
 - 1. Ijzerlaan (Dam - Schijnport) (neighborhood)
-- 4. Gagelvelden (neighborhood)
-- 30. Stenenbrug - Zuid (neighborhood)
-- 21. Deurne - Gemeentehuis (neighborhood)
-- 22. Schelde (neighborhood)
-- 18. Kroonstraat - West (neighborhood)
+- 18. Schelde (neighborhood)
+- 16. Kroonstraat - West (neighborhood)
 
 ---
 
@@ -710,9 +704,9 @@
 #### 2.11.1 Squares, Parks & Waterways & Notable Roads (6)
 
 - 4. Straatsburgdok-Zuidkaai (road)
-- 6. Albertkanaal (waterway)
+- 5. Albertkanaal (waterway)
 - 2. Amerikadok (waterway)
-- 5. Asiadok (waterway)
+- 6. Asiadok (waterway)
 - 3. Straatsburgdok (waterway)
 - 1. Suezdok (waterway)
 
@@ -975,16 +969,16 @@
 - 2. Lobroekdok (road) — 0.07 km
 - 5. Kalverwei (road) — 0.06 km
 
-### 3.2 Duivelshoek + Sportpaleis + Slachthuiswijk (Dam - Schijnpoort) + An-2060 / Spoor-Noord Site
+### 3.2 Slachthuiswijk (Dam - Schijnpoort) + An-2060 / Spoor-Noord Site
 
 #### 3.2.1 Squares, Parks & Waterways (6)
 
 - 1. Albertkanaal (waterway)
 - 2. Albertkanaal (waterway)
-- 4. Lobroekdok (waterway)
+- 5. Lobroekdok (waterway)
 - 6. Buurtpark Lange Lobroekstraat (park)
 - 3. Damplein (square)
-- 5. Park Spoor Noord (park)
+- 4. Park Spoor Noord (park)
 
 #### 3.2.2 Other Streets (17)
 
@@ -1080,7 +1074,7 @@
 - 6. Duinplak (road) — 0.03 km
 - 1. Hof Van Camp (road) — 0.02 km
 
-### 3.4 Stuivenbergplein (Noordwijk) + Stuivenberg Ziekenhuis (Noordwijk) + Ten Eekhove + Gagelvelden + Ijzerlaan (Dam - Schijnport)
+### 3.4 Stuivenbergplein (Noordwijk) + Stuivenberg Ziekenhuis (Noordwijk) + Ijzerlaan (Dam - Schijnport)
 
 #### 3.4.1 Squares, Parks & Waterways & Landmarks & Buildings (8)
 
@@ -1272,7 +1266,7 @@
 - 19. Terlostraat (road) — 0.24 km
 - 8. Goedendagstraat (road) — 0.24 km
 - 37. Bothastraat (road) — 0.23 km
-- 4. Bijlstraat (road) — 0.20 km
+- 3. Bijlstraat (road) — 0.20 km
 - 16. Wijnegemstraat (road) — 0.20 km
 - 24. Mertensstraat (road) — 0.19 km
 - 31. Sint-Mattheusstraat (road) — 0.19 km
@@ -1291,7 +1285,7 @@
 - 20. Vooruitzichtstraat (road) — 0.14 km
 - 7. Kersbeekstraat (road) — 0.14 km
 - 12. Poststraat (road) — 0.14 km
-- 3. Zwarteleeuwstraat (road) — 0.11 km
+- 4. Zwarteleeuwstraat (road) — 0.11 km
 - 36. Rechtestraat (road) — 0.10 km
 - 30. Tabernakelstraat (road) — 0.09 km
 - 28. Delareystraat (road) — 0.08 km
@@ -2040,20 +2034,19 @@
 
 ## Section 7 — The Deurne Edge & Ring-East
 
-### 7.1 Bo / Kleine Ring + Stenenbrug - Zuid + Deurne - Gemeentehuis
+### 7.1 Bo / Kleine Ring
 
-#### 7.1.1 Notable Roads, Landmarks, Parks, Waterways & Other Streets (10)
+#### 7.1.1 Notable Roads, Landmarks, Parks, Waterways & Other Streets (9)
 
-- 5. Foorplein (square)
+- 8. Foorplein (square)
 - 2. Buurtpark Spoor Oost (park)
 - 1. Buurtspoorweglei (road)
 - 3. Noordersingel (road)
+- 5. Turnhoutsebaan (road) — 5.38 km
 - 6. Turnhoutsebaan (road) — 5.38 km
-- 7. Turnhoutsebaan (road) — 5.38 km
-- 8. Stenenbrug (road) — 0.95 km
+- 7. Stenenbrug (road) — 0.95 km
 - 9. Luitenant Lippenslaan (road) — 0.85 km
 - 4. Hof ter Lo (road) — 0.16 km
-- 10. Joe Englishstraat (road) — 0.15 km
 
 ---
 
@@ -2803,32 +2796,31 @@
 - 35. Jan Frans Willemsstraat (road) — 0.07 km
 - 19. Jan Palfijnstraat (road) — 0.18 km
 
-#### 8.5.10 Other Streets (J–K) (48) (48)
+#### 8.5.10 Other Streets (J–K) (47) (47)
 
 - 30. Jan Van Asperenpad (road) — 0.29 km
-- 41. Jan Van Beersstraat (road) — 0.16 km
+- 40. Jan Van Beersstraat (road) — 0.16 km
 - 33. Jan van Gentstraat (road) — 0.19 km
 - 17. Jan van Lierstraat (road) — 0.08 km
 - 32. Jan Vanhoenackerstraat (road) — 0.30 km
 - 21. Jeanne Brabantstunnel (road) — 0.54 km
 - 29. Jef Cassiersstraat (road) — 0.31 km
-- 47. Jennevalstraat (road) — 0.16 km
+- 46. Jennevalstraat (road) — 0.16 km
 - 14. Jeruzalemstraat (road) — 0.10 km
 - 20. Jezusstraat (road) — 0.22 km
 - 15. Jezuïetenrui (road) — 0.07 km
 - 10. Joannasteeg (road) — 0.07 km
 - 25. Jodenstraat (road) — 0.23 km
-- 40. Joe Englishstraat (road) — 0.15 km
-- 42. Jonghelinckstraat (road) — 0.15 km
+- 41. Jonghelinckstraat (road) — 0.15 km
 - 5. Joossensgang (road) — 0.14 km
 - 22. Jos Brabantstunnel (road) — 0.62 km
 - 31. Jos Smolderenstraat (road) — 0.59 km
-- 45. Jozef Balstraat (road) — 0.12 km
+- 44. Jozef Balstraat (road) — 0.12 km
 - 39. Jozef De Bomstraat (road) — 0.31 km
 - 8. Jozef de Hasquestraat (road) — 0.05 km
 - 35. Jozef Liesstraat (road) — 0.12 km
-- 44. Jules Bordetstraat (road) — 0.35 km
-- 43. Juliaan Dillensstraat (road) — 0.20 km
+- 43. Jules Bordetstraat (road) — 0.35 km
+- 42. Juliaan Dillensstraat (road) — 0.20 km
 - 38. Justitiestraat (road) — 0.39 km
 - 7. Kaasbrug (road) — 0.04 km
 - 13. Kaasrui (road) — 0.07 km
@@ -2840,7 +2832,7 @@
 - 23. Kammenstraat (road) — 0.37 km
 - 24. Kapucinessenstraat (road) — 0.27 km
 - 28. Karel Geertsstraat (road) — 0.30 km
-- 46. Karel Oomsstraat (road) — 0.93 km
+- 45. Karel Oomsstraat (road) — 0.93 km
 - 36. Karel Rogierstraat (road) — 0.19 km
 - 37. Kasteelpleinstraat (road) — 0.31 km
 - 34. Kasteelstraat (road) — 0.30 km
@@ -2851,7 +2843,7 @@
 - 6. Keistraat (road) — 0.18 km
 - 16. Keizerstraat (road) — 0.38 km
 - 26. Kelderstraat (road) — 0.09 km
-- 48. Kemmelbergstraat (road) — 0.31 km
+- 47. Kemmelbergstraat (road) — 0.31 km
 - 3. Kempenstraat (road) — 0.99 km
 
 #### 8.5.11 Other Streets (K) (48) (48)
@@ -3507,108 +3499,97 @@
 
 ### 8.6 All Neighborhoods
 
-#### 8.6.1 Complete List (101) (101)
+#### 8.6.1 Complete List (90) (90)
 
 - 6. 't Eilandje (neighborhood)
 - 2. Albertdok (neighborhood)
-- 88. Albertpark (Oostwijk) (neighborhood)
-- 74. An-2000 / Nieuw Gerechtshof (neighborhood)
-- 14. An-2060 / Slachthuis-Lobroekdok (neighborhood)
-- 13. An-2060 / Spoor-Noord Site (neighborhood)
-- 16. Antwerpen Kern - Oude Stad (Sp Wall) (neighborhood)
-- 80. Astrid Bad (Oostwijk) (neighborhood)
-- 21. Atheneum (Stationswijk) (neighborhood)
-- 75. Bell (Zuidwijk) (neighborhood)
-- 41. Bo / Kleine Ring (neighborhood)
-- 55. Borgerhout - Gemeentehuis (neighborhood)
-- 78. C. Teichmann Plaats (Zuidwijk) (neighborhood)
-- 68. Charlottalei (Oostwijk) (neighborhood)
-- 59. College (neighborhood)
-- 82. Dageraadplaats - Ooststatie (Oostwijk) (neighborhood)
-- 7. Dam (Dam - Schijnpoort) (neighborhood)
-- 22. Dambruggestraat-N. (Stationswijk) (neighborhood)
-- 35. De Conincplein - Z. (Stationswijk) (neighborhood)
-- 58. De Peperbus (neighborhood)
-- 25. De Zavel (Noordwijk) (neighborhood)
-- 70. Den Bleekhof (neighborhood)
-- 44. Deurne - Gemeentehuis (neighborhood)
-- 42. Deurne - Huiskens (neighborhood)
-- 43. Deurne - het Dorp (neighborhood)
-- 12. Duboisstraat (Noordwijk) (neighborhood)
-- 9. Duivelshoek (neighborhood)
-- 71. Fonteinstraat (neighborhood)
-- 40. Foorplein (neighborhood)
-- 92. Fransen Plaats (Zuidwijk) (neighborhood)
-- 4. Gagelvelden (neighborhood)
-- 84. Gas (Oostwijk) (neighborhood)
-- 76. Gerechtshof (Zuidw) (neighborhood)
-- 65. Gerechtshof (Zuidwijk) (neighborhood)
-- 47. Gevangenis (Spaanse Wallen) (neighborhood)
-- 31. Groenplaats (Spaanse Wallen) (neighborhood)
-- 77. Harmonie (Zuidwijk) (neighborhood)
-- 19. Hessenhuis (Spaanse Wallen) (neighborhood)
-- 56. Het Laar (neighborhood)
-- 97. Hofveld (neighborhood)
-- 30. Hoogstraat (Spaanse Wallen) (neighborhood)
+- 81. Albertpark (Oostwijk) (neighborhood)
+- 66. An-2000 / Nieuw Gerechtshof (neighborhood)
+- 11. An-2060 / Slachthuis-Lobroekdok (neighborhood)
+- 9. An-2060 / Spoor-Noord Site (neighborhood)
+- 12. Antwerpen Kern - Oude Stad (Sp Wall) (neighborhood)
+- 73. Astrid Bad (Oostwijk) (neighborhood)
+- 17. Atheneum (Stationswijk) (neighborhood)
+- 68. Bell (Zuidwijk) (neighborhood)
+- 37. Bo / Kleine Ring (neighborhood)
+- 50. Borgerhout - Gemeentehuis (neighborhood)
+- 70. C. Teichmann Plaats (Zuidwijk) (neighborhood)
+- 62. Charlottalei (Oostwijk) (neighborhood)
+- 63. Dageraadplaats - Ooststatie (Oostwijk) (neighborhood)
+- 8. Dam (Dam - Schijnpoort) (neighborhood)
+- 18. Dambruggestraat-N. (Stationswijk) (neighborhood)
+- 31. De Conincplein - Z. (Stationswijk) (neighborhood)
+- 53. De Peperbus (neighborhood)
+- 21. De Zavel (Noordwijk) (neighborhood)
+- 64. Den Bleekhof (neighborhood)
+- 7. Duboisstraat (Noordwijk) (neighborhood)
+- 52. Fonteinstraat (neighborhood)
+- 79. Fransen Plaats (Zuidwijk) (neighborhood)
+- 65. Gas (Oostwijk) (neighborhood)
+- 60. Gerechtshof (Zuidw) (neighborhood)
+- 59. Gerechtshof (Zuidwijk) (neighborhood)
+- 40. Gevangenis (Spaanse Wallen) (neighborhood)
+- 27. Groenplaats (Spaanse Wallen) (neighborhood)
+- 69. Harmonie (Zuidwijk) (neighborhood)
+- 15. Hessenhuis (Spaanse Wallen) (neighborhood)
+- 34. Het Laar (neighborhood)
+- 90. Hofveld (neighborhood)
+- 26. Hoogstraat (Spaanse Wallen) (neighborhood)
 - 1. Houtdok (neighborhood)
 - 3. Ijzerlaan (Dam - Schijnport) (neighborhood)
-- 51. Jezuitencollege (Stationswijk) (neighborhood)
-- 93. Karel Oomstraat (neighborhood)
-- 57. Kattenberg (neighborhood)
-- 33. Kipdorp - St.-Jacobs (Spaanse Wallen) (neighborhood)
-- 17. Klapdorp - Brouwersvliet (neighborhood)
-- 49. Kns - Nat. Bank (Spaanse Wallen) (neighborhood)
-- 54. Kroonstraat - West (neighborhood)
-- 89. Lamorinierestr. - Zuid (Ebes) (oostwijk) (neighborhood)
-- 86. Lange Elzenstraat (Zuidwijk) (neighborhood)
-- 32. Meir - Leysstraat (Spaanse Wallen) (neighborhood)
-- 64. Museumwijk (Zuidwijk) (neighborhood)
-- 99. Nachtegalenpark (Wilrijksplein) (neighborhood)
-- 36. Offerandestraat (Stationswijk) (neighborhood)
-- 83. Oostkwartier (neighborhood)
-- 96. Op ten Bergh (neighborhood)
-- 48. Oudaan (Spaanse Wallen) (neighborhood)
-- 5. Oude Haven (neighborhood)
-- 94. Oude Justitie (neighborhood)
-- 61. Oude Schipperdokken (Zuidwijk) (neighborhood)
-- 52. Pelikaanstraat (Stationswijk) (neighborhood)
-- 98. Posthof (neighborhood)
-- 38. Potgieterstraat (Noordwijk) (neighborhood)
-- 69. Provinciestraat (Stationswijk) (neighborhood)
-- 60. Schelde (neighborhood)
-- 29. Scheldekaden Noord (neighborhood)
-- 28. Schijnpoort (Dam - Schijnpoort) (neighborhood)
-- 8. Slachthuiswijk (Dam - Schijnpoort) (neighborhood)
-- 10. Sportpaleis (neighborhood)
-- 23. St.-Amandus (Noordwijk) (neighborhood)
-- 46. St.-Andries (Spaanse Wallen) (neighborhood)
-- 39. St.-Anna (neighborhood)
-- 20. St.-Jansplein - Trapstraat (Noordwijk) (neighborhood)
-- 87. St.-Laurentius (Zuidwijk) (neighborhood)
-- 45. St.-Michielskaai (Spaanse Wallen) (neighborhood)
-- 79. St.-Vincentius (Oostwijk) (neighborhood)
-- 37. St.-Willebrordus (Noordwijk) (neighborhood)
-- 67. Stadspark (Stationswijk) (neighborhood)
-- 66. Stadspark - Zuid (Oostwijk) (neighborhood)
-- 18. Stadswaag-Begijnhof (Spaanse Wallen) (neighborhood)
-- 90. Stappaerts - Krijgshospitaal (Oostwijk) (neighborhood)
-- 34. Statiekwartier (Stationswijk) (neighborhood)
-- 53. Station - Zoo (Stationswijk) (neighborhood)
-- 73. Stenenbrug - Zuid (neighborhood)
-- 100. Stuivenberg (neighborhood)
-- 24. Stuivenberg - West (neighborhood)
-- 27. Stuivenberg Ziekenhuis (Noordwijk) (neighborhood)
-- 26. Stuivenbergplein (Noordwijk) (neighborhood)
-- 50. Tabaksvest (Spaanse Wallen) (neighborhood)
-- 15. Ten Eekhove (neighborhood)
-- 85. Troonplaats (Zuidwijk) (neighborhood)
-- 95. Turkeyen (neighborhood)
-- 81. Van Diepenbeeckstraat (Oostwijk) (neighborhood)
-- 72. Van de Perrelei (neighborhood)
-- 101. Vestingen (neighborhood)
-- 63. Vlaamse Kaai (Zuidwijk) (neighborhood)
-- 62. Waalse Kaai (Zuidwijk) (neighborhood)
-- 11. Willemdok (Spaanse Wallen) (neighborhood)
-- 91. Zurenborg (neighborhood)
+- 45. Jezuitencollege (Stationswijk) (neighborhood)
+- 88. Karel Oomstraat (neighborhood)
+- 51. Kattenberg (neighborhood)
+- 29. Kipdorp - St.-Jacobs (Spaanse Wallen) (neighborhood)
+- 13. Klapdorp - Brouwersvliet (neighborhood)
+- 42. Kns - Nat. Bank (Spaanse Wallen) (neighborhood)
+- 49. Kroonstraat - West (neighborhood)
+- 72. Lamorinierestr. - Zuid (Ebes) (oostwijk) (neighborhood)
+- 78. Lange Elzenstraat (Zuidwijk) (neighborhood)
+- 28. Meir - Leysstraat (Spaanse Wallen) (neighborhood)
+- 58. Museumwijk (Zuidwijk) (neighborhood)
+- 87. Nachtegalenpark (Wilrijksplein) (neighborhood)
+- 32. Offerandestraat (Stationswijk) (neighborhood)
+- 77. Oostkwartier (neighborhood)
+- 84. Op ten Bergh (neighborhood)
+- 41. Oudaan (Spaanse Wallen) (neighborhood)
+- 4. Oude Haven (neighborhood)
+- 82. Oude Justitie (neighborhood)
+- 55. Oude Schipperdokken (Zuidwijk) (neighborhood)
+- 46. Pelikaanstraat (Stationswijk) (neighborhood)
+- 85. Posthof (neighborhood)
+- 35. Potgieterstraat (Noordwijk) (neighborhood)
+- 48. Provinciestraat (Stationswijk) (neighborhood)
+- 54. Schelde (neighborhood)
+- 25. Scheldekaden Noord (neighborhood)
+- 24. Schijnpoort (Dam - Schijnpoort) (neighborhood)
+- 10. Slachthuiswijk (Dam - Schijnpoort) (neighborhood)
+- 19. St.-Amandus (Noordwijk) (neighborhood)
+- 39. St.-Andries (Spaanse Wallen) (neighborhood)
+- 36. St.-Anna (neighborhood)
+- 16. St.-Jansplein - Trapstraat (Noordwijk) (neighborhood)
+- 80. St.-Laurentius (Zuidwijk) (neighborhood)
+- 38. St.-Michielskaai (Spaanse Wallen) (neighborhood)
+- 71. St.-Vincentius (Oostwijk) (neighborhood)
+- 33. St.-Willebrordus (Noordwijk) (neighborhood)
+- 44. Stadspark (Stationswijk) (neighborhood)
+- 61. Stadspark - Zuid (Oostwijk) (neighborhood)
+- 14. Stadswaag-Begijnhof (Spaanse Wallen) (neighborhood)
+- 74. Stappaerts - Krijgshospitaal (Oostwijk) (neighborhood)
+- 30. Statiekwartier (Stationswijk) (neighborhood)
+- 47. Station - Zoo (Stationswijk) (neighborhood)
+- 89. Stuivenberg (neighborhood)
+- 20. Stuivenberg - West (neighborhood)
+- 23. Stuivenberg Ziekenhuis (Noordwijk) (neighborhood)
+- 22. Stuivenbergplein (Noordwijk) (neighborhood)
+- 43. Tabaksvest (Spaanse Wallen) (neighborhood)
+- 67. Troonplaats (Zuidwijk) (neighborhood)
+- 83. Turkeyen (neighborhood)
+- 75. Van Diepenbeeckstraat (Oostwijk) (neighborhood)
+- 86. Vestingen (neighborhood)
+- 57. Vlaamse Kaai (Zuidwijk) (neighborhood)
+- 56. Waalse Kaai (Zuidwijk) (neighborhood)
+- 5. Willemdok (Spaanse Wallen) (neighborhood)
+- 76. Zurenborg (neighborhood)
 
 ---
