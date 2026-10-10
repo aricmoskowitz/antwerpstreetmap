@@ -8,7 +8,8 @@
 // viewport.
 //
 // Views register optional hooks with AppShell.register(name, {onShow}) for
-// anything that needs fixing up after being hidden (e.g. re-measuring a map).
+// anything that needs fixing up after being hidden (e.g. re-measuring a map);
+// AppShell.show(name, payload) can also pass the view something to do.
 var AppShell = (function () {
   "use strict";
 
@@ -94,9 +95,14 @@ var AppShell = (function () {
     return ready[id];
   }
 
-  function show(id) {
+  // payload (optional) is handed to the view's onShow - e.g. Scroll's "View
+  // in Explore" passes {focus: {type, name}}
+  function show(id, payload) {
     if (!byId[id]) id = DEFAULT_TAB;
-    if (id === current) return;
+    if (id === current) {
+      if (payload && hooks[id] && hooks[id].onShow) hooks[id].onShow(payload);
+      return;
+    }
     if (current) {
       scrollY[current] = window.scrollY;
       viewEl(current).hidden = true;
@@ -113,7 +119,7 @@ var AppShell = (function () {
     window.scrollTo(0, scrollY[id] || 0);
     ensureLoaded(id).then(
       function () {
-        if (current === id && hooks[id] && hooks[id].onShow) hooks[id].onShow();
+        if (current === id && hooks[id] && hooks[id].onShow) hooks[id].onShow(payload);
       },
       function () {}
     );

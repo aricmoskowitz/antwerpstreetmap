@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
 """
 Generates data/street-cards.json: one fact-only record per road (including
-squares) in the base map, for the Scroll feed (Change Request 2). Geometry
+squares), waterway, park and building in the base map, for the Scroll feed
+(Change Request 2). Geometry
 itself is NOT duplicated here - the app draws from the already-projected
 paths in data/generated/map-data.js; this file only adds derived facts
-(orientation, intersections, neighborhood, curriculum lessons) that aren't
-cheap to recompute in the browser.
+(orientation, intersections, nearby streets, neighborhood, curriculum
+lessons) that aren't cheap to recompute in the browser. Every record has a
+"kind": road, square, waterway, park or building.
 
 Run after build/preprocess.py (it imports that module to reuse the
 projection, base data, and reconstructed neighborhood polygons):
@@ -153,7 +155,7 @@ for sec in curriculum["sections"]:
     for mod in sec["modules"]:
         for lesson in mod["lessons"]:
             for obj in lesson["objects"]:
-                if obj["type"] in ("road", "square"):
+                if obj["type"] in ("road", "square", "waterway", "park", "building"):
                     key = (norm(obj["name"]), obj["type"])
                     lessons_by_object.setdefault(key, []).append(lesson["id"])
 
@@ -226,6 +228,7 @@ for idx, s in enumerate(streets):
 
     record = {
         "name": name,
+        "kind": "square" if is_square else "road",
         "is_square": is_square,
         "bbox": bbox,
         "neighborhood": neighborhood,
@@ -338,6 +341,220 @@ for idx, s in enumerate(streets):
     cards.append(record)
 
 # ------------------------------------------------------------------
+# 6. Cards for places: waterways, parks and buildings (churches included).
+#    Instead of orientation and junctions, each lists the streets around it
+#    (parks, buildings - the same 40 m the Walk game uses to attach them to
+#    roads) or along and across it (waterways: quays and bridges), and a
+#    couple of facts: the kind of water, park or building, and its size.
+# ------------------------------------------------------------------
+
+LAT0 = 51.215
+COS0 = math.cos(math.radians(LAT0))
+
+
+def to_m(p):
+    return (p[0] * COS0 * 111320.0, p[1] * 111320.0)
+
+
+def seg_point_m(p, a, b):
+    (px, py), (ax, ay), (bx, by) = p, a, b
+    dx, dy = bx - ax, by - ay
+    L = dx * dx + dy * dy
+    t = 0 if L == 0 else max(0.0, min(1.0, ((px - ax) * dx + (py - ay) * dy) / L))
+    return math.hypot(px - (ax + t * dx), py - (ay + t * dy))
+
+
+def segs_cross(a, b, c, d):
+    def orient(p, q, r):
+        return (q[0] - p[0]) * (r[1] - p[1]) - (q[1] - p[1]) * (r[0] - p[0])
+    o1, o2, o3, o4 = orient(a, b, c), orient(a, b, d), orient(c, d, a), orient(c, d, b)
+    return (o1 > 0) != (o2 > 0) and (o3 > 0) != (o4 > 0)
+
+
+def seg_seg_m(a, b, c, d):
+    if segs_cross(a, b, c, d):
+        return 0.0
+    return min(seg_point_m(a, c, d), seg_point_m(b, c, d), seg_point_m(c, a, b), seg_point_m(d, a, b))
+
+
+street_segs = []  # per street: (bbox in metres, [segments in metres], [vertices in metres])
+for st in streets:
+    segs, verts = [], []
+    for line in st["lines"]:
+        m = [to_m(p) for p in line]
+        verts.extend(m)
+        segs.extend(zip(m, m[1:]))
+    xs = [v[0] for v in verts]
+    ys = [v[1] for v in verts]
+    street_segs.append(((min(xs), min(ys), max(xs), max(ys)), segs, verts))
+
+
+def streets_near(target_segs, radius, inside_ring=None):
+    """{street index: distance m} for streets within `radius` of the target's
+    segments (or with a vertex inside its footprint, e.g. a path in a park)"""
+    xs = [p[0] for s in target_segs for p in s]
+    ys = [p[1] for s in target_segs for p in s]
+    tb = (min(xs) - radius, min(ys) - radius, max(xs) + radius, max(ys) + radius)
+    found = {}
+    for j, (b, segs, verts) in enumerate(street_segs):
+        if b[2] < tb[0] or b[0] > tb[2] or b[3] < tb[1] or b[1] > tb[3]:
+            continue
+        if inside_ring and any(point_in_ring(v, inside_ring) for v in verts):
+            found[j] = 0.0
+            continue
+        best = min(seg_seg_m(a, b2, c, d) for a, b2 in segs for c, d in target_segs)
+        if best <= radius:
+            found[j] = best
+    return found
+
+
+def ordered_names(found, key):
+    out, seen = [], set()
+    for j in sorted(found, key=key):
+        nm = streets[j]["name"]
+        if nm not in seen:
+            seen.add(nm)
+            out.append(nm)
+    return out
+
+
+def place_record(name, kind, pts_ll, rep_pt, facts, near):
+    return {
+        "name": name,
+        "kind": kind,
+        "is_square": False,
+        "bbox": bbox_of(pts_ll),
+        "neighborhood": neighborhood_display_name.get(assign_neighborhood(rep_pt)),
+        "lessons": sorted(set(lessons_by_object.get((norm(name), kind), []))),
+        "facts": facts,
+        "near": near,
+    }
+
+
+WATER_NEAR_M = 25  # quays alongside, bridges across
+# The data's Schelde line runs mid-river, 200-260 m out from the quays and
+# by a varying amount, so no distance threshold separates the quays from
+# the streets behind them. For the river, take the streets facing it
+# instead: from a point every 25 m along the river, look straight inland
+# (perpendicular, away from the water) and keep the first street in sight -
+# plus anything crossing the river line itself (the tunnels under it).
+RIVER_STEP_M = 25
+RIVER_SIGHT_M = 450
+
+
+def river_front(lines_m):
+    ring_m = [to_m(p) for p in base["ring_boundary"]]
+    keep = {}
+    pos = 0.0
+    for m in lines_m:
+        for a, c in zip(m, m[1:]):
+            L = math.hypot(c[0] - a[0], c[1] - a[1])
+            if L == 0:
+                continue
+            tx, ty = (c[0] - a[0]) / L, (c[1] - a[1]) / L
+            n = int(L // RIVER_STEP_M) + 1
+            for i in range(n):
+                t = i / n
+                o = (a[0] + (c[0] - a[0]) * t, a[1] + (c[1] - a[1]) * t)
+                # inland = the side of the line that's inside the ring
+                nx, ny = ty, -tx
+                if not point_in_ring((o[0] + nx * 40, o[1] + ny * 40), ring_m):
+                    nx, ny = -nx, -ny
+                far = (o[0] + nx * RIVER_SIGHT_M, o[1] + ny * RIVER_SIGHT_M)
+                hit, hit_d = None, None
+                for j, (b, ssegs, verts) in enumerate(street_segs):
+                    if b[2] < min(o[0], far[0]) or b[0] > max(o[0], far[0]) or b[3] < min(o[1], far[1]) or b[1] > max(o[1], far[1]):
+                        continue
+                    for s1, s2 in ssegs:
+                        if segs_cross(o, far, s1, s2):
+                            # distance along the sight line to the crossing
+                            d = seg_point_m(o, s1, s2)
+                            if hit_d is None or d < hit_d:
+                                hit, hit_d = j, d
+                if hit is not None and hit not in keep:
+                    keep[hit] = pos + t * L
+            pos += L
+    # tunnels: streets crossing the river line itself
+    river_segs = [s for m in lines_m for s in zip(m, m[1:])]
+    for j, (b, ssegs, verts) in enumerate(street_segs):
+        if j not in keep and any(segs_cross(s1, s2, r1, r2) for s1, s2 in ssegs for r1, r2 in river_segs):
+            keep[j] = 0.0
+    return keep
+AREA_NEAR_M = 40  # streets around a park or building
+
+place_cards = []
+
+# waterways: the source can split one waterway over several entries (the
+# Schelde has three) - one card per name
+water = {}
+for w in base["waterways"]:
+    entry = water.setdefault(w["name"], {"type": w["type"], "lines": [], "longest": 0})
+    entry["lines"].extend(w["lines"])
+    length = pp.lines_length_m(w["lines"])
+    if length > entry["longest"]:  # typed by its longest piece, as in preprocess.py
+        entry["type"], entry["longest"] = w["type"], length
+for name, w in water.items():
+    lines_m = [[to_m(p) for p in line] for line in w["lines"]]
+    segs = [s for m in lines_m for s in zip(m, m[1:])]
+    pts_ll = [p for line in w["lines"] for p in line]
+    longest = max(w["lines"], key=len)
+    # order the streets along the waterway: by position along its main axis
+    a_m, b_m = to_m(pts_ll[0]), to_m(pts_ll[-1])
+    ux, uy = b_m[0] - a_m[0], b_m[1] - a_m[1]
+    # docks drawn along their water's edge can sit further from the quay
+    # road than a bridge does: widen the search until something turns up
+    if w["type"] == "river":
+        found = river_front(lines_m)
+    else:
+        for radius in (WATER_NEAR_M, 50, 100):
+            found = streets_near(segs, radius)
+            if found:
+                break
+
+    def along(j, a_m=a_m, ux=ux, uy=uy):
+        vx = sum(v[0] for v in street_segs[j][2]) / len(street_segs[j][2])
+        vy = sum(v[1] for v in street_segs[j][2]) / len(street_segs[j][2])
+        return (vx - a_m[0]) * ux + (vy - a_m[1]) * uy
+
+    place_cards.append(
+        place_record(
+            name, "waterway", pts_ll, longest[len(longest) // 2],
+            {"water_type": w["type"], "length_m": round(pp.lines_length_m(w["lines"]))},
+            ordered_names(found, along),
+        )
+    )
+
+
+def area_card(name, kind, ring_ll, facts):
+    ring_m = [to_m(p) for p in ring_ll]
+    segs = list(zip(ring_m, ring_m[1:] + ring_m[:1]))
+    found = streets_near(segs, AREA_NEAR_M, inside_ring=ring_m)
+    cx = sum(p[0] for p in ring_m) / len(ring_m)
+    cy = sum(p[1] for p in ring_m) / len(ring_m)
+
+    # streets around it, clockwise from north
+    def angle(j):
+        vs = street_segs[j][2]
+        nearest = min(vs, key=lambda v: math.hypot(v[0] - cx, v[1] - cy))
+        return math.atan2(nearest[0] - cx, nearest[1] - cy) % (2 * math.pi)
+
+    rep = ring_centroid(ring_ll)
+    return place_record(name, kind, ring_ll, rep, facts, ordered_names(found, angle))
+
+
+for pk in base["parks"]:
+    place_cards.append(
+        area_card(pk["name"], "park", pk["ring"], {"park_type": pk["type"], "area_m2": round(pp.ring_area_m2(pk["ring"]))})
+    )
+for lm in base["landmarks"]:
+    place_cards.append(
+        area_card(lm["name"], "building", lm["ring"], {"is_church": lm["is_church"], "area_m2": round(pp.ring_area_m2(lm["ring"]))})
+    )
+
+no_near = [c["name"] for c in place_cards if not c["near"]]
+cards.extend(place_cards)
+
+# ------------------------------------------------------------------
 # 6. Write output + QA summary
 # ------------------------------------------------------------------
 
@@ -363,6 +580,7 @@ print(f"dead ends (empty crosses at an endpoint): {stats['dead_ends']}")
 print(f"streets/squares with 0 intersections (check these): {stats['zero_intersections']}")
 print(f"curved streets: {stats['curved']}")
 print(f"name/history explanations found in curriculum data: {stats['name_explanations']}")
+print(f"place cards: {len(place_cards)} (" + ", ".join(f"{k} {sum(1 for c in place_cards if c['kind'] == k)}" for k in ("waterway", "park", "building")) + f"); with no street nearby: {no_near or 'none'}")
 
 import random
 

@@ -1121,6 +1121,17 @@ header.lesson-header {
   stroke-linecap: round;
 }
 
+/* parks and buildings */
+.scroll-target-poly {
+  fill: var(--target);
+  fill-opacity: 0.35;
+  fill-rule: evenodd;
+  stroke: var(--target);
+  stroke-width: 2.5;
+  vector-effect: non-scaling-stroke;
+  stroke-linejoin: round;
+}
+
 .scroll-cross-line {
   fill: none;
   stroke: var(--street);
@@ -1155,14 +1166,41 @@ header.lesson-header {
   gap: 7px;
 }
 
-.scroll-card-name {
-  font-size: 1.25rem;
+/* The card's name: a panel cut into the map's top-left corner, so it's the
+   first thing read - before the street labels on the map. */
+.scroll-card-title {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  max-width: calc(100% - 56px); /* clear of the north arrow */
+  padding: 10px 16px 10px 16px;
+  background: var(--bg);
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  border-bottom-right-radius: 16px;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.sc-kind {
+  font-size: 0.66rem;
   font-weight: 700;
-  line-height: 1.2;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.scroll-card-name {
+  margin: 1px 0 0;
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.15;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  overflow-wrap: anywhere;
 }
 
 .sc-about {
@@ -1249,11 +1287,35 @@ header.lesson-header {
   padding-top: 7px;
   border-top: 1px solid var(--line);
   display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 10px;
+  flex-direction: column;
+  gap: 6px;
   font-size: 0.72rem;
   color: var(--muted);
+}
+
+.scroll-card-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.scroll-explore-btn {
+  appearance: none;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  color: var(--target);
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 600;
+  border-radius: 999px;
+  padding: 0 14px;
+  min-height: 36px;
+  cursor: pointer;
+}
+
+.scroll-explore-btn:active {
+  background: var(--bg);
 }
 
 .scroll-footer-meta {
