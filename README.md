@@ -285,13 +285,21 @@ python3 build/street_graph.py
   `meta`). "Contains tunnel" would also drop Tunnelplaats, a walkable square.
 - **Attachment:** a street is at itself; a square is at itself plus every
   road meeting it; a building or park is at every walkable road within 40 m
-  of its footprint (nearest road if none - one park). Neighborhoods and
+  of its footprint (nearest road if none - one park). That's where you can
+  *start* from A. *Arriving* at B is stricter for a square: you have to step
+  onto the square itself, not just a street meeting it - so for a street or
+  square B the last road you name is B. Neighborhoods and
   waterways aren't endpoints. Only roads in the largest connected component
   (99.0% of nodes) are attached; 2 tiny clipped fragments (Flamingoplein,
   Moeke Bitterpeeënstraat) are orphans.
+- **Rounds** have 4 to 8 roads (`MIN_STEPS`/`MAX_STEPS` in `walk.js`): at
+  least two roads between A's road and B's, since a three-road route is too
+  easy. When A or B is a place rather than a street, the questions name it:
+  "Which road at Sint-Pauluskerk do you start on?", "You're on Meir. Which
+  road takes you to Stadspark?".
 - **Anchors (a deliberate refinement):** the game's rules are road-level,
   exactly as specified - the round is complete the moment you turn onto one
-  of B's attached roads. But distance and the drawn walk run *to the object*:
+  of B's roads. But distance and the drawn walk run *to the object*:
   along the final road to B's anchor, and from A's anchor along the first.
   Without that, a building beside one end of a long boulevard counted as
   "reached" from the boulevard's far end (a 266 m "fastest route" to a church

@@ -536,10 +536,16 @@
     var round = R.round;
     var q = round.questions[R.qi];
     var steps = round.path.steps;
+    // Name A and B when they're places rather than streets: "Which road at
+    // Sint-Pauluskerk...", "...Which road takes you to Stadspark?" (a street
+    // B is already the answer's own name, so its last question stays plain)
+    var last = q.index === steps.length - 1;
     var ask =
       q.index === 0
-        ? "Which road at A do you start on?"
-        : "You’re on " + roadName(q.current[0]) + ". Which road next?";
+        ? "Which road at " + round.a.n + " do you start on?"
+        : "You’re on " +
+          roadName(q.current[0]) +
+          (last && round.b.t !== "road" ? ". Which road takes you to " + round.b.n + "?" : ". Which road next?");
     // The route so far, including the road you're on now, drawn up to the
     // junction where the next turn is - with the dot there. (Easy follows
     // the fastest path, so that junction is known; the wrong options never
@@ -621,7 +627,7 @@
       '<div class="walk-ask">' +
       (cur
         ? "You’re on <strong>" + esc(cur) + "</strong>. Name the next road."
-        : "Name a road at <strong>A</strong> to start on.") +
+        : "Name a road at <strong>" + esc(round.a.n) + "</strong> to start on.") +
       "</div>" +
       messageHTML() +
       (chips.length
